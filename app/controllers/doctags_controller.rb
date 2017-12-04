@@ -1,0 +1,2 @@
+class DoctagsController < ApplicationController
+end
