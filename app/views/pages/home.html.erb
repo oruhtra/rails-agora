@@ -2,3 +2,27 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <p>Cloudinary is working :) </p>
 <%= cl_image_tag "emlphbx8oy3qgtf2wgp7", height: 300, width: 400, crop: :fill %>
+
+
+<p>Test to get documents </p>
+<div class="container">
+  <div class="row">
+
+    <% User.first.documents.each do |doc| %>
+      <div class="col-xs-12 ">
+
+        <div class="doc-sm">
+          <%= cl_image_tag doc.photo, :width => 400, :height => 500, "format" => 'jpg' %>
+        </div>
+
+        <div class="doc-tag">
+          <% doc.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end  %>
+        </div>
+
+      </div>
+    <% end  %>
+
+  </div>
+</div>

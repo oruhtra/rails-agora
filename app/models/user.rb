@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :documents
+  has_many :documents, dependent: :destroy
   has_many :tags, through: :documents
+  mount_uploader :photo, PhotoUploader
 
   def tags
     self.documents.map {|d| d.tags}.flatten.uniq
   end
+
 end
