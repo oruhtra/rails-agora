@@ -1,0 +1,10 @@
+<h1>Index</h1>
+<ul>
+  <% @documents.each do |d| %>
+    <li>
+      <%= link_to "#{d.name}", document_path(d) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a document", new_document_path %>
