@@ -1,1 +1,25 @@
-<h1>je suis la selection section</h1>
+<h4>Selected documents</h4>
+<div class="selection-content">
+  <ul class="list-unstyled">
+    <% @documents_selected.each do |d| %>
+      <%= link_to document_path(d) do %>
+        <li class="selected-document">
+          <%= cl_image_tag d.photo, class: "document-thumbnail", "format" => 'jpg' %>
+          <div class="unselect">
+          <%= link_to document_path(d, document: {selected: false}), method: :patch do %>
+            <i class="fa fa-times" aria-hidden="true" style="margin: 10px"></i>
+          <% end %>
+
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="action-bar-selection">
+  <ul class="list-inline">
+    <i class="fa fa-share fa-2x" aria-hidden="true" style="margin: 10px"></i>
+    <i class="fa fa-times fa-2x" aria-hidden="true" style="margin: 10px"></i>
+    <i class="fa fa-trash-o fa-2x" aria-hidden="true" style="margin: 10px"></i>
+  </ul>
+  </div>
+</div>
