@@ -2,7 +2,15 @@
   margin-top: 10px;
 }
 .document-container-show {
-  max-height: 70vh;
+  max-height: 80vh;
   overflow: scroll;
   padding: 10px 0;
+}
+
+.title {
+  word-wrap: break-word;
+}
+
+.current-tags {
+  margin-top: 20px;
 }
