@@ -1,8 +1,8 @@
 <div class="feed">
   <% @documents_unselected.each do |document| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
     <div class= "master-card">
-      <div class="card-image" style="background-image: url('<%= cl_image_path document.photo, "format" => 'jpg' %>');">
+      <div class="card-image" style="background-image: url('<%= cl_image_path document.photo, format: :jpg %>');">
       </div>
       <div class="card-description">
           <h5><%= document.name.split("/").last.capitalize %></h5>

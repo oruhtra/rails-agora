@@ -1,13 +1,16 @@
 .selection_section {
+  width: 20%;
   height: 90vh;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.01);
   position: relative;
 }
 
 .selection-content {
-  margin-top: 15px;
+  padding-top: 15px;
+  overflow: scroll;
+  max-height: 70vh;
 }
+
 
 .selected-document {
   margin-bottom: 20px;

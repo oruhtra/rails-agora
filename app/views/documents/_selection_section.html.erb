@@ -1,6 +1,6 @@
 <h4>Selected documents</h4>
 <div class="selection-content">
-  <ul class="list-unstyled">
+  <ul class="list-unstyled selected-documents-content">
     <% @documents_selected.each do |d| %>
       <%= link_to document_path(d) do %>
         <li class="selected-document">
@@ -15,11 +15,12 @@
       <% end %>
     <% end %>
   </ul>
-  <div class="action-bar-selection">
+</div>
+<div class="action-bar-selection">
   <ul class="list-inline">
     <i class="fa fa-share fa-2x" aria-hidden="true" style="margin: 10px"></i>
     <i class="fa fa-times fa-2x" aria-hidden="true" style="margin: 10px"></i>
     <i class="fa fa-trash-o fa-2x" aria-hidden="true" style="margin: 10px"></i>
   </ul>
-  </div>
 </div>
+

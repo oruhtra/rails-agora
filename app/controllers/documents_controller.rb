@@ -24,6 +24,8 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    @doctags = @document.doctags
+    @other_tags = @user.tags - @document.tags
   end
 
   def new

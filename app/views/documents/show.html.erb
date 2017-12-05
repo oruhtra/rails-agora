@@ -1,1 +1,21 @@
-<h1>Document: <%= @document.name %></h1>
+<div class="document-show">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-9 text-center">
+        <div class="document-container-show">
+          <%= cl_image_tag @document.photo, class: "large-document",  "format" => 'jpg' %>
+        </div>
+        <div class="action-bar-show">
+          <ul class="list-inline">
+            <i class="fa fa-share fa-2x" aria-hidden="true" style="margin: 10px"></i>
+            <i class="fa fa-times fa-2x" aria-hidden="true" style="margin: 10px"></i>
+            <i class="fa fa-trash-o fa-2x" aria-hidden="true" style="margin: 10px"></i>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <%= render 'tags_section_show' %>
+      </div>
+    </div>
+  </div>
+</div>
