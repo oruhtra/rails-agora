@@ -43,6 +43,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:name, :url)
+    params.require(:document).permit(:name, :photo, :selected)
   end
 end
