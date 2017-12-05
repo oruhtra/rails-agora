@@ -5,18 +5,23 @@
   <% if @doctags.empty? %>
     <p>No tags selected yet</p>
   <% else %>
-    <% @doctags.each do |t| %>
-      <%= link_to document_doctag_path(@document, t), method: :delete do %>
-      <p><%= t.tag.name %></p>
+    <div class="existing-tags">
+      <p class="text-center" style="font-weight: bolder">Tag existant</p>
+      <% @doctags.each do |t| %>
+        <%= link_to document_doctag_path(@document, t), method: :delete do %>
+        <div class="tag tag-s text-center"><%= t.tag.name %></div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 </div>
 <div class="add-tags">
   <p class="text-center" style="font-weight: bolder">Ajouter des tags</p>
-  <% @other_tags.each do |t| %>
-    <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
-      <p><%= t.name %></p>
+  <ul class="list-inline">
+    <% @other_tags.each do |t| %>
+      <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
+        <i class="tag text-center"><%= t.name %></i>
+      <% end %>
     <% end %>
-  <% end %>
+  </ul>
 </div>
