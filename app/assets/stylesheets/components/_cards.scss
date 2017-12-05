@@ -1,46 +1,44 @@
 .master-card {
-  background-color: FFFFFF;
+  background-color: $darkblue;
   height: 150px;
   width: 120px;
   border-radius: 8px;
   margin: 15px;
   position: relative;
-  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
-  padding: 15px;
+  padding: 5px;
 }
 
 .card-image {
-  height: 100px;
+  height: 100%;
   width: 100%;
   background-size: cover !important;
   background-position: center;
+  opacity: 1;
 }
 
 .card-description {
-  width: 90%;
-  height: 35px;
-  position: absolute;
-  bottom: 10px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background-color: transparent;
+  // width: 90%;
+  // height: 35px;
+  // position: absolute;
+  // bottom: 10px;
+  // border-bottom-left-radius: 5px;
+  // border-bottom-right-radius: 5px;
+  // background-color: transparent;
 }
 
 .card-description h5 {
-  text-align: left;
-  font-size: 6px;
+  font-size: 10px;
   color: $darkblue;
-  line-height: 4px;
+  line-height: 1px;
 }
 
 .card-description p {
-  text-align: right;
-  font-size: 6px;
+  font-size: 10px;
   color: $darkblue;
-  line-height: 4px;
+  line-height: 1px;
 }
 
-.card-image:hover {
+.master-card:hover {
   opacity: 1;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;
   // border-style: solid;
