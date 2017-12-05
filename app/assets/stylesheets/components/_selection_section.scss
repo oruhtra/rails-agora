@@ -1,0 +1,28 @@
+.selection_section {
+  height: 90vh;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.01);
+  position: relative;
+}
+
+.selection-content {
+  margin-top: 15px;
+}
+
+.selected-document {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  // position: relative;
+}
+
+// .unselect {
+//   position: absolute;
+//   right: 5px;
+// }
+
+.action-bar-selection {
+  position: absolute;
+  bottom: 0px;
+  right: 20%
+}
