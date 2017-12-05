@@ -12,4 +12,7 @@ class User < ApplicationRecord
     self.documents.map {|d| d.tags}.flatten.uniq
   end
 
+  def tagsname
+    self.tags.map { |t| t.name }.flatten.uniq
+  end
 end
