@@ -3,10 +3,24 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update]
 
   def index
-    @documents_unselected = Document.where(user_id: @user.id, selected: false)
+    # get unselected documents containing a tag = query
+    aquery = params[:query].split(" ") if params[:query].present?
+    if params[:query].present?
+      @documents_unselected = Document.where(user_id: @user.id, selected: false).select { |doc| !(aquery & doc.tagsname).nil? }
+    else
+      @documents_unselected = Document.where(user_id: @user.id, selected: false)
+    end
+
+    # get selected documents
     @documents_selected = Document.where(user_id: @user.id, selected: true)
-    @user_tags = @user.tags
-    # Ajouter @selected_tags qui vient du résultat
+
+    # get selected tags
+    if params[:query].present?
+      @user_selected_tags = params[:query].split(" ")
+    else
+       @user_selected_tags = []
+    end
+    @user_tags = @user.tagsname - @user_selected_tags
   end
 
   def show
@@ -45,4 +59,16 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:name, :photo, :selected)
   end
+
+  def withtag
+    params[:query].each do |tag|
+      @documents_unselected.reject {|doc| doc.tags }
+
+
+    end
+
+    @documents_unselected
+    @doDocument.where(user_id: @user.id, selected: false)
+  end
+
 end
