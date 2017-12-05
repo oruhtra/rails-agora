@@ -1,28 +1,24 @@
-<div class="container">
-  <div class="row">
-    <% if @documents_selected.empty? %>
-      <div class="col-xs-12">
-        <div class="search_section">
-          <%= render 'search_section' %>
-        </div>
-        <div class="results_section">
-          <%= render 'results_section' %>
-        </div>
+<div class="index-wrapper">
+  <% if @documents_selected.empty? %>
+    <div class="main-section-large">
+      <div class="search_section">
+        <%= render 'search_section' %>
       </div>
-    <% else %>
-      <div class="col-xs-9">
-        <div class="search_section">
-          <%= render 'search_section' %>
-        </div>
-        <div class="results_section">
-          <%= render 'results_section' %>
-        </div>
+      <div class="results_section">
+        <%= render 'results_section' %>
       </div>
-      <div class="col-xs-3">
-        <div class="selection_section text-center">
-          <%= render 'selection_section' %>
-        </div>
+    </div>
+  <% else %>
+    <div class="main-section-medium">
+      <div class="search_section">
+        <%= render 'search_section' %>
       </div>
-    <% end %>
-  </div>
+      <div class="results_section">
+        <%= render 'results_section' %>
+      </div>
+    </div>
+    <div class="selection_section text-center">
+      <%= render 'selection_section' %>
+    </div>
+  <% end %>
 </div>
