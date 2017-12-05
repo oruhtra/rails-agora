@@ -1,6 +1,6 @@
 const urlstring = window.location.href;
 const selectedtags = getParameterByName("query", urlstring);
-const arraySelectedtags = getParameterByName("query", urlstring).split(" ");
+const arraySelectedtags = selectedtags.split(" ");
 
 // get selected tags from query in params
 function getParameterByName(name, url) {
@@ -27,11 +27,12 @@ function generateTagsName(tagName) {
   if (arraySelectedtags.includes(tagName)) {
     return arraySelectedtags.filter(word => word !== tagName);
   } else {
-    return arraySelectedtags.push(tagName);
+    arraySelectedtags.push(tagName);
+    return arraySelectedtags;
   }
 }
 
-
+// click on a tag => add or delete in query params
 function listentag() {
   //  get tags to listen to
   const tags = document.querySelectorAll(".listentag");
@@ -40,25 +41,14 @@ function listentag() {
   event.preventDefault();
   // return the name of the tag
   const tagName = event.currentTarget.innerHTML;
-  console.log(tagName);
-  const allTagName = generateTagsName(tagName);
-  console.log(allTagName);
+  // return all the tags
+  const allTagName = generateTagsName(tagName).join(" ");
   // submit the form with the tag name
-  const searchInput = document.querySelector(".searchtag #query");
-
-  searchInput.value = AllTagName.join(` `) ;
-  event.currentTarget.classList.toggle("tag-s");
-
+  document.querySelector(".searchtag #query").value = allTagName;
   const form = document.querySelector(".searchtag form");
-  // form.submit();
-
+  form.submit();
 }));
 }
 
 showSelectedTag();
 listentag();
-
-
-
-// 2. ajouter dsans searchinput les selected tag
-// 3. si declick
