@@ -1,26 +1,25 @@
-.tag-container{
-
-
-}
-
 .searchtag {
   width: 150px;
   height: 20px;
 }
 
 .tag {
- padding: 20px;
- // min-height: 40px;
- // min-width: 100px;
- text-align: center;
- border-radius: 4px;
- background-color: $blue;
- color: white;
- margin: 5px;
+  float: left;
+  padding: 8px 15px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: $lightblue;
+  color: white;
+  margin: 5px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
-
-
 
 .tag-s {
   background-color: $darkblue;
+  color: white;
+}
+
+.add-tags {
+  clear: both;
+  padding-top: 20px;
 }
