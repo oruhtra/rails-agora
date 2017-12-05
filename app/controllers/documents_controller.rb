@@ -3,7 +3,10 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update]
 
   def index
-    @documents = Document.where(user_id: @user.id)
+    @documents_unselected = Document.where(user_id: @user.id, selected: false)
+    @documents_selected = Document.where(user_id: @user.id, selected: true)
+    @user_tags = @user.tags
+    # Ajouter @selected_tags qui vient du résultat
   end
 
   def show

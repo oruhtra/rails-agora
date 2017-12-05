@@ -1,10 +1,28 @@
-<h1>Index</h1>
-<ul>
-  <% @documents.each do |d| %>
-    <li>
-      <%= link_to "#{d.name}", document_path(d) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add a document", new_document_path %>
+<div class="container">
+  <div class="row">
+    <% if @documents_selected.empty? %>
+      <div class="col-xs-12">
+        <div class="search_section">
+          <%= render 'search_section' %>
+        </div>
+        <div class="results_section">
+          <%= render 'results_section' %>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-xs-10">
+        <div class="search_section">
+          <%= render 'search_section' %>
+        </div>
+        <div class="results_section">
+          <%= render 'results_section' %>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="selection_section">
+          <%= render 'selection_section' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
