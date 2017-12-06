@@ -8,8 +8,8 @@ class DocumentsController < ApplicationController
       @user_selected_tags = Tag.tag_from_tagnames(params[:query].split(" "))
       @documents_unselected = Document.user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
     else
-       @user_selected_tags = []
-       @documents_unselected = Document.where(user_id: @user.id, selected: false)
+      @user_selected_tags = []
+      @documents_unselected = Document.where(user_id: @user.id, selected: false)
     end
 
     # get remaining tags
@@ -61,16 +61,4 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:name, :photo, :selected)
   end
-
-  def withtag
-    params[:query].each do |tag|
-      @documents_unselected.reject {|doc| doc.tags }
-
-
-    end
-
-    @documents_unselected
-    @doDocument.where(user_id: @user.id, selected: false)
-  end
-
 end
