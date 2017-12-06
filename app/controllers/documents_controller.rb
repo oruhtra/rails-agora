@@ -19,14 +19,20 @@ class DocumentsController < ApplicationController
       end
     end
 
+    #remove all nil in the @userselectedtags
+    @user_selected_tags.compact!
+
     # get all tagged document based on selected tags (unselected)
     @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
 
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
 
-    #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query)
-    @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
+    #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
+
+    if !@user_selected_tags.empty?
+      @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
+    end
 
     # select tags true for all remaining documents (OUT FOR NOW)
     # true_for_all_tags = @user_tags.select{ |t| t.occurrence == @documents_unselected.length}
@@ -70,7 +76,7 @@ class DocumentsController < ApplicationController
     authorize @document
 
     @document.update(document_params)
-    redirect_to document_path(@document)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

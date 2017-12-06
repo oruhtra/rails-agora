@@ -13,7 +13,7 @@
       <p style="font-weight: bolder">Tags existants</p>
       <% @doctags.each do |t| %>
         <%= link_to document_doctag_path(@document, t), method: :delete do %>
-        <div class="tag tag-s text-center"><%= t.tag.name %></div>
+        <div class="tag tag-s text-center"><%= t.tag.name_clean %></div>
         <% end %>
       <% end %>
     </div>
@@ -24,7 +24,7 @@
   <ul class="list-inline">
     <% @other_tags.each do |t| %>
       <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
-        <i class="tag text-center"><%= t.name %></i>
+        <i class="tag text-center"><%= t.name_clean %></i>
       <% end %>
     <% end %>
   </ul>

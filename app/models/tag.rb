@@ -25,4 +25,8 @@ class Tag < ApplicationRecord
     self.doctags.length
   end
 
+  # get tag name with "_" replaced by whitespaces
+  def name_clean
+    self.name.gsub(/_/, " ")
+  end
 end

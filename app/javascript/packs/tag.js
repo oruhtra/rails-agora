@@ -50,7 +50,7 @@ function listentag() {
   tags.forEach(tag => tag.addEventListener("click", (event) => {
     event.preventDefault();
     // get the name of the tag & add to existing tag array
-    allTagsName = updateTagsArray(selectedtags, event.currentTarget.innerHTML).join(" ");
+    allTagsName = updateTagsArray(selectedtags, event.currentTarget.id).join(" ");
     // submit the form with all the tag names including the latest
     document.querySelector(".searchtag #query").value = allTagsName;
     document.querySelector(".searchtag form").submit();

@@ -4,12 +4,13 @@ class TagsController < ApplicationController
     @document = Document.find(params[:document_id])
 
     authorize @tag
+    @tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
 
-    if Tag.tag_from_tagnames([params[:tag][:name].downcase]).first.nil?
+    if Tag.tag_from_tagnames([@tag_name]).first.nil?
+      @tag.name = @tag_name
       @tag.save
-      @tag.update(tag_params)
     else
-      @tag = Tag.tag_from_tagnames([params[:tag][:name].downcase]).first
+      @tag = Tag.tag_from_tagnames([@tag_name]).first
     end
 
     if !@document.tags.include?(@tag)
@@ -19,11 +20,5 @@ class TagsController < ApplicationController
       @doctag.save
     end
     redirect_to document_path(@document)
-  end
-
-  private
-
-  def tag_params
-    params.require(:tag).permit(:name)
   end
 end
