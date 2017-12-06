@@ -15,15 +15,17 @@
 
       </div>
 
-        <div class="searchtag hidden">
+        <div class="searchtag ">
           <%= form_tag documents_path, method: :get do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Search for a tag"
+
             %>
           <% end %>
         </div>
+
   </div>
 </div>
 
