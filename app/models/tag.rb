@@ -15,6 +15,11 @@ class Tag < ApplicationRecord
     tagsname_array.map { |n| Tag.where(name: n).first }
   end
 
+   # get tags from tagnames
+  def self.tagnames_from_tags(tags_array)
+    tags_array.map { |t| t.name }
+  end
+
   # calc tag occurrence
   def occurrence
     self.doctags.length

@@ -1,31 +1,35 @@
-<div class="container tag-container">
-  <div class="row">
-    <div class="col-xs-12">
+<div class="search-bar">
+  <%= form_tag(documents_path, method: :get) do %>
+    <%= hidden_field_tag :query, @user_selected_tagnames%>
+    <%= text_field_tag :search_tag, params[:search_tag],
+      class: "form-control",
+      placeholder: "Essayez 'Banque'"
+    %>
+  <% end %>
+</div>
 
+<div class="tags-bar">
+  <!-- affichage selected tags -->
+  <% if !@user_selected_tags.first.nil? %>
+    <% @user_selected_tags.each do |tag| %>
+        <a href="" class="tag listentag tag-s" id="<%=tag.name%>"><%= tag.name %></a>
+    <% end %>
+  <% end %>
+  <!-- affichage the others tags -->
+  <% @user_tags.each do |tag| %>
+     <a href="" class="tag listentag" id="<%=tag.name%>"><%= tag.name %></a>
+  <% end %>
 
-        <!-- affichage selected tags -->
-        <% @user_selected_tags.each do |tag| %>
-            <a href="" class="tag listentag tag-s" id="<%=tag.name%>"><%= tag.name %></a>
-        <% end %>
-        <!-- affichage the others tags -->
-        <% @user_tags.each do |tag| %>
-           <a href="" class="tag listentag" id="<%=tag.name%>"><%= tag.name %></a>
-        <% end %>
-
-
-      </div>
-
-        <div class="searchtag">
-          <%= form_tag documents_path, method: :get do %>
-            <%= hidden_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Search for a tag"
-            %>
-          <% end %>
-        </div>
-
+  <div class="searchtag">
+    <%= form_tag documents_path, method: :get do %>
+      <%= hidden_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for a tag"
+      %>
+    <% end %>
   </div>
 </div>
+
 
 
