@@ -12,8 +12,11 @@ class DocumentsController < ApplicationController
     end
 
     # get search tag and add it to the selected tags
-    if !@tag_class_verified.tag_from_tagnames([params[:search_tag]]).first.nil?
-      @user_selected_tags += @tag_class_verified.tag_from_tagnames([params[:search_tag]])
+    if !params[:search_tag].nil?
+      search_tag_array = @tag_class_verified.tag_from_tagnames(params[:search_tag].split(" "))
+      search_tag_array.each do |t|
+        @user_selected_tags << t unless t.nil? || @user_selected_tags.include?(t)
+      end
     end
 
     # get all tagged document based on selected tags (unselected)
