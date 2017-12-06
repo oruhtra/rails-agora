@@ -1,4 +1,7 @@
 <div class="index-wrapper">
+
+
+
   <% if @documents_selected.empty? %>
     <div class="main-section-large">
       <div class="search_section">
@@ -21,4 +24,13 @@
       <%= render 'selection_section' %>
     </div>
   <% end %>
+
+  <!-- link to create a add a new document -->
+  <%= link_to new_document_path do %>
+    <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
+  <% end %>
 </div>
+
+
+
+
