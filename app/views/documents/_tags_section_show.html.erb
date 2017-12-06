@@ -1,12 +1,16 @@
 <div class="title">
-  <h4><%= @document.name %></h4>
+  <%= simple_form_for(@document) do |f| %>
+    <%= f.input :name, label: "Titre" %>
+    <%= f.submit class:"hidden"%>
+  <% end %>
 </div>
+
 <div class="current-tags">
   <% if @doctags.empty? %>
     <p>No tags selected yet</p>
   <% else %>
     <div class="existing-tags">
-      <p class="text-center" style="font-weight: bolder">Tag existant</p>
+      <p style="font-weight: bolder">Tags existants</p>
       <% @doctags.each do |t| %>
         <%= link_to document_doctag_path(@document, t), method: :delete do %>
         <div class="tag tag-s text-center"><%= t.tag.name %></div>
@@ -16,7 +20,7 @@
   <% end %>
 </div>
 <div class="add-tags">
-  <p class="text-center" style="font-weight: bolder">Ajouter des tags</p>
+  <p  style="font-weight: bolder">Ajouter des tags</p>
   <ul class="list-inline">
     <% @other_tags.each do |t| %>
       <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
@@ -25,3 +29,4 @@
     <% end %>
   </ul>
 </div>
+
