@@ -36,21 +36,17 @@ class DocumentsController < ApplicationController
     @document = Document.new
     @document.user = @user
     @document.update(document_params)
-    @document.name = params["document"]["photo"].original_filename
-    raise
+    @document.name = correctDocumentName(params["document"]["photo"].original_filename)
     if @document.save
-      redirect_to documents_path(@document), method: :patch
+      redirect_to document_path(@document)
     else
       render :new
     end
   end
 
-  def edit
-  end
-
   def update
     @document.update(document_params)
-    redirect_to documents_path
+    redirect_to document_path(@document)
   end
 
 
@@ -68,4 +64,7 @@ class DocumentsController < ApplicationController
     params.require(:document).permit(:name, :photo, :selected)
   end
 
+  def correctDocumentName(uploadedName)
+    uploadedName.gsub("[^\\]*$", "")
+  end
 end

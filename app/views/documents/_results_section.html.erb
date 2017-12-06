@@ -8,7 +8,7 @@
         <% end %>
           <div class="card-description">
             <div style="text-align: left;">
-              <h5><%= document.name.split("/").last.capitalize %></h5>
+              <h5><%= document.name %></h5>
               <p><%=document.updated_at.strftime("%Y-%m") %></p>
             </div>
             <div style="text-align: right;">
@@ -18,9 +18,6 @@
           <% end %>
       </div>
     </div>
-    <div class="text-center card-description">
-      <h5><%= document.name%></h5>
-      <p><%=document.updated_at.strftime("%Y-%m") %></p>
-    </div>
+</div>
   <% end %>
 </div>
