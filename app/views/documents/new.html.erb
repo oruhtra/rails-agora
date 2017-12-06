@@ -1,7 +1,16 @@
-<%= simple_form_for(@document) do |f| %>
-  <%= hidden_field_tag(:user_id, @user.id) %>
-  <%= f.input :name %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= simple_form_for(@document) do |f| %>
+        <%= hidden_field_tag(:user_id, @user.id) %>
+        <%= f.input :name, label: false,  as: :hidden %>
+        <div class="docform">
+        <%= f.input :photo, label: false %>
+        </div>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit 'Add this document', class:"btn btn-primary btnadd" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
