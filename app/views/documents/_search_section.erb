@@ -2,7 +2,7 @@
   <%= form_tag(documents_path, method: :get) do %>
     <%= hidden_field_tag :query, @user_selected_tagnames%>
     <%= text_field_tag :search_tag, params[:search_tag],
-      class: "form-control",
+      class: "form-control border-round",
       placeholder: "Essayez 'Banque'"
     %>
   <% end %>
@@ -29,6 +29,12 @@
       %>
     <% end %>
   </div>
+</div>
+
+<div class="clear-tags">
+  <%= link_to documents_path do %>
+    <i class="fa fa-times" aria-hidden="true" style="margin: 10px"></i>
+  <% end %>
 </div>
 
 
