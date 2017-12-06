@@ -2,6 +2,7 @@ const urlstring = window.location.href;
 const selectedtags = getParameterByName("query", urlstring);
 const arraySelectedtags = selectedtags.split(" ");
 
+
 // get selected tags from query in params
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
