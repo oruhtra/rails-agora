@@ -1,16 +1,20 @@
 <div class="feed">
+  <div class="container">
+    <div class="row">
   <% @documents_unselected.each do |document| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
-    <%= link_to document_path(document) do %>
-    <div class= "master-card">
-      <div class="card-image" style="background-image: url('<%= cl_image_path document.photo, format: :jpg %>');">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <div class="flex">
+          <%= link_to document_path(document) do %>
+          <div class="card" style="background-image: url('<%= cl_image_path document.photo, format: :jpg %>');">
+          </div>
+          <div class="card-description">
+            <h5><%= document.name.split("/").last.capitalize %></h5>
+            <p><%=document.updated_at.strftime("%Y-%m") %></p>
+          </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="text-center card-description">
-      <h5><%= document.name.split("/").last.capitalize %></h5>
-      <p><%=document.updated_at.strftime("%Y-%m") %></p>
-    </div>
   <% end %>
+    </div>
   </div>
-  <% end %>
 </div>

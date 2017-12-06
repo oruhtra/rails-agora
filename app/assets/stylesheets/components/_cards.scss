@@ -1,19 +1,18 @@
-.master-card {
-  background-color: $darkblue;
-  height: 150px;
-  width: 120px;
-  border-radius: 8px;
-  margin: 15px;
-  position: relative;
-  padding: 5px;
+.flex {
+  display: flex;
+  justify-content: space-around;
 }
 
-.card-image {
-  height: 100%;
-  width: 100%;
+.card {
+  border-radius: 6px;
+  height: 150px;
+  width: 120px;
   background-size: cover !important;
   background-position: center;
-  opacity: 1;
+  border-style: solid;
+  border-width: 0.6px;
+  border-color: $blue;
+  filter: blur(2px);
 }
 
 .card-description {
@@ -27,7 +26,7 @@
 }
 
 .card-description h5 {
-  font-size: 10px;
+  font-size: 12px;
   color: $darkblue;
   line-height: 1px;
 }
@@ -38,7 +37,9 @@
   line-height: 1px;
 }
 
-.master-card:hover {
+.card:hover {
+  filter: none;
+  transition: .1s ease-in-out;
   opacity: 1;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;
   // border-style: solid;
