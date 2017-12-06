@@ -3,24 +3,24 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update]
 
   def index
-    # get unselected documents containing a tag = query
-    aquery = params[:query].split(" ") if params[:query].present?
+    # get selected tags and get all unselected documents tagged from query
     if params[:query].present?
-      @documents_unselected = Document.where(user_id: @user.id, selected: false).select { |doc| !(aquery & doc.tagsname).nil? }
-    else
-      @documents_unselected = Document.where(user_id: @user.id, selected: false)
-    end
-
-    # get selected documents
-    @documents_selected = Document.where(user_id: @user.id, selected: true)
-
-    # get selected tags
-    if params[:query].present?
-      @user_selected_tags = params[:query].split(" ")
+      @user_selected_tags = Tag.tag_from_tagnames(params[:query].split(" "))
+      @documents_unselected = Document.user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
     else
        @user_selected_tags = []
+       @documents_unselected = Document.where(user_id: @user.id, selected: false)
     end
-    @user_tags = @user.tagsname - @user_selected_tags
+
+    # get remaining tags
+    @user_tags = Tag.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
+
+    # select tags true for all remaining documents
+    # true_for_all_tags = @user_tags.select{ |t| t.occurrence == @documents_unselected.length}
+    # @user_tags.reject!{ |t| t.occurrence == @documents_unselected.length}
+    # @user_selected_tags = @user_selected_tags + true_for_all_tags
+    # get selected documents
+    @documents_selected = Document.where(user_id: @user.id, selected: true)
   end
 
   def show
