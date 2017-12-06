@@ -42,6 +42,7 @@ class DocumentsController < ApplicationController
 
     @doctags = @document.doctags
     @other_tags = policy_scope(Tag).all - @document.tags
+    @tag = Tag.new
   end
 
   def new

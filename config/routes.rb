@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :documents do
     resources :doctags, only: [:create, :destroy]
   end
+
+  resources :tags, only: :create
 end

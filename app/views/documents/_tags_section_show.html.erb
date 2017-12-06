@@ -28,5 +28,10 @@
       <% end %>
     <% end %>
   </ul>
+  <%= simple_form_for(@tag) do |f| %>
+    <%= hidden_field_tag :document_id, @document.id %>
+    <%= f.input :name, label: false, placeholder: "Créer un tag" %>
+    <%= f.submit class:"hidden"%>
+  <% end %>
 </div>
 
