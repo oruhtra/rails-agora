@@ -15,7 +15,7 @@
 
       </div>
 
-        <div class="searchtag hidden">
+        <div class="searchtag ">
           <%= form_tag documents_path, method: :get do %>
             <%= text_field_tag :query,
               params[:query],
@@ -25,6 +25,7 @@
             %>
           <% end %>
         </div>
+
   </div>
 </div>
 
