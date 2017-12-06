@@ -1,28 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p>Cloudinary is working :) </p>
-<%= cl_image_tag "emlphbx8oy3qgtf2wgp7", height: 300, width: 400, crop: :fill %>
-
-
-<p>Test to get documents </p>
-<div class="container">
-  <div class="row">
-
-    <% User.first.documents.each do |doc| %>
-      <div class="col-xs-12 ">
-
-        <div class="doc-sm">
-          <%= cl_image_tag doc.photo, :width => 400, :height => 500, "format" => 'jpg' %>
-        </div>
-
-        <div class="doc-tag">
-          <% doc.tags.each do |tag| %>
-            <%= tag.name %>
-          <% end  %>
-        </div>
-
-      </div>
-    <% end  %>
-
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://cache.marieclaire.fr/data/photo/w2000_ci/4v/femme-au-bord-phobie-administrative.jpg');">
+  <div class="banner-content">
+    <h1>Agora</h1>
+    <p>Trouvez le bon document quand vous en avez besoin</p>
+    <%= link_to documents_path do %>
+      <div class="btn btn-primary btn-lg">Je me simplifie la vie </div>
+    <% end %>
   </div>
 </div>
