@@ -7,11 +7,13 @@
           </div>
         <% end %>
           <div class="card-description">
+
             <div style="text-align: left;">
               <h5><%= document.name %></h5>
               <p><%=document.updated_at.strftime("%Y-%m") %></p>
             </div>
             <div style="text-align: right;">
+
               <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
               <i id="selectionbox" class="fa fa-square-o" aria-hidden="true"></i>
             </div>

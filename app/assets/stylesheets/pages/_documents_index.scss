@@ -14,3 +14,16 @@
   width: 80%;
   position: relative;
 }
+
+.search_section {
+  margin: 5px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.tags-bar{
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+  overflow: scroll;
+}
