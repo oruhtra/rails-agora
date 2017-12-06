@@ -1,23 +1,26 @@
-<h2 class="text-center">Log in</h2>
+<div class="form" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://cache.marieclaire.fr/data/photo/w2000_ci/4v/femme-au-bord-phobie-administrative.jpg');">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <div class="form-inputs">
-        <%= f.input :email, required: false, autofocus: true %>
-        <%= f.input :password, required: false %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <h2 class="text-center">Log in</h2>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Log in" %>
+        </div>
+
+      <% end %>
+
+          <%= render "devise/shared/links" %>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
-      </div>
-
-    <% end %>
-
-<%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
