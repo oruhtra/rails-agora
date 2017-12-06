@@ -11,12 +11,14 @@ class DocumentsController < ApplicationController
        @user_selected_tags = []
        @documents_unselected = Document.where(user_id: @user.id, selected: false)
     end
+
     # get remaining tags
     @user_tags = Tag.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
+
     # select tags true for all remaining documents
-    true_for_all_tags = @user_tags.select{ |t| t.occurrence == @documents_unselected.length}
-    @user_tags.reject!{ |t| t.occurrence == @documents_unselected.length}
-    @user_selected_tags = @user_selected_tags + true_for_all_tags
+    # true_for_all_tags = @user_tags.select{ |t| t.occurrence == @documents_unselected.length}
+    # @user_tags.reject!{ |t| t.occurrence == @documents_unselected.length}
+    # @user_selected_tags = @user_selected_tags + true_for_all_tags
     # get selected documents
     @documents_selected = Document.where(user_id: @user.id, selected: true)
   end
