@@ -12,14 +12,22 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// adding class "tag-s" to all selected tags
-function showSelectedTag() {
-  selectedtags.split(" ").forEach(function(tag) {
-    if (document.getElementById(tag) !== null) {
-        document.getElementById(tag).classList.add("tag-s");
-    }
+function generateParameters() {
+  const XX = document.querySelectorAll(".tag-s")
+  XX.forEach(tag => {
+    console.log(tag.text);
   });
+  console.log(XX);
 }
+
+// adding class "tag-s" to all selected tags
+// function showSelectedTag() {
+//   selectedtags.split(" ").forEach(function(tag) {
+//     if (document.getElementById(tag) !== null) {
+//         document.getElementById(tag).classList.add("tag-s");
+//     }
+//   });
+// }
 
 // Ajout de tagName si non inclut ou suppression tagname si inclut
 function generateTagsName(tagName) {
@@ -44,9 +52,7 @@ function listentag() {
     const tagName = event.currentTarget.innerHTML;
     // return all the tags
     if (selectedtags === null) {
-      console.log("jesuisnull");
       allTagName = tagName;
-      console.log(allTagName);
     } else {
       allTagName = generateTagsName(tagName).join(" ");
     }
@@ -58,8 +64,9 @@ function listentag() {
   }));
 }
 
-if (selectedtags !== null) {
-    showSelectedTag();
-}
+// if (selectedtags !== null) {
+//     showSelectedTag();
+// }
 
 listentag();
+generateParameters();

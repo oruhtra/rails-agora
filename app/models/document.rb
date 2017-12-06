@@ -11,4 +11,9 @@ class Document < ApplicationRecord
     self.tags.map {|tag| tag.name}
   end
 
+  # get all user documentsw with a tag
+  def self.user_documents_tagged(tags_array)
+    Document.all.select{ |d| tags_array & d.tags == tags_array }
+  end
+
 end

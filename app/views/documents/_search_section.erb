@@ -5,23 +5,22 @@
 
         <!-- affichage selected tags -->
         <% @user_selected_tags.each do |tag| %>
-            <a href="" class="tag listentag" id="<%=tag%>"><%= tag %></a>
+            <a href="" class="tag listentag tag-s" id="<%=tag.name%>"><%= tag.name %></a>
         <% end %>
         <!-- affichage the others tags -->
         <% @user_tags.each do |tag| %>
-           <a href="" class="tag listentag" id="<%=tag%>"><%= tag %></a>
+           <a href="" class="tag listentag" id="<%=tag.name%>"><%= tag.name %></a>
         <% end %>
 
 
       </div>
 
-        <div class="searchtag ">
+        <div class="searchtag">
           <%= form_tag documents_path, method: :get do %>
-            <%= text_field_tag :query,
+            <%= hidden_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Search for a tag"
-
             %>
           <% end %>
         </div>
