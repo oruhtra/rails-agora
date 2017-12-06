@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_user
-  before_action :set_document, only: [:show, :edit, :update]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
     @user_selected_tags = []
@@ -50,7 +50,9 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new
     @document.user = @user
+
     authorize @document
+
     @document.update(document_params)
     @document.name = correctDocumentName(params["document"]["photo"].original_filename)
     if @document.save
@@ -61,12 +63,15 @@ class DocumentsController < ApplicationController
   end
 
   def update
+    authorize @document
+
     @document.update(document_params)
     redirect_to document_path(@document)
   end
 
   def destroy
-    @document = Document.find(params[:id])
+    authorize @document
+
     @document.destroy
     redirect_to documents_path
   end
