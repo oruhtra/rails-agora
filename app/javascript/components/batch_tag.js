@@ -17,7 +17,7 @@ function listenbatchtag() {
   // adding click listener to each tag
   tags.forEach(tag => tag.addEventListener("click", (event) => {
     event.preventDefault();
-    tag.classList.add("tag-s");
+    tag.classList.toggle("tag-s");
     const selectedtags = generateParameters();
     const allTagsName = selectedtags.join(" ");
     console.log(allTagsName);

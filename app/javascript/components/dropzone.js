@@ -7,7 +7,7 @@ function newdropzone() {
   const myDropzone = new Dropzone("#doc-dropzone" );
   myDropzone.on("success", function(file, response) {
     addinput_in_form(response);
-
+    document.getElementById("btnsavedocs").disabled = false;
     });
 
 }
