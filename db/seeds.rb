@@ -1,18 +1,18 @@
-p "destroy users, tags, documents"
+p "Destroy users, tags, documents"
 User.destroy_all
 Document.destroy_all
 Tag.destroy_all
 Doctag.destroy_all
 
-p "creating the current_user"
+p "Creating the current_user"
 
 myuser = User.new(email: "test@mail.com",  password: "123456" )
 myuser.remote_photo_url = "http://www.annonceschatons.fr/wp-content/uploads/2017/07/il_existe_d__sormais_un_parfum_qui_sent_la_fourrure_de_chaton_28.jpeg_north_1200x_white.jpg"
 myuser.save
 
-p "creating tag table"
+p "Creating tag table"
 
-p "creating Macro cat tags"
+p "- creating macro cat tags"
 #Macro-cat
 macro_cat = [
   "Documents personnels",
@@ -42,7 +42,7 @@ macro_cat.each do |tag|
   Tag.create(name: tag)
 end
 
-p "creating Type of document tags"
+p "- creating type of doc tags"
 #Type of document
 type_of_doc = [
 "Carte d'identité",
@@ -78,7 +78,7 @@ type_of_doc.each do |tag|
   Tag.create(name: tag)
 end
 
-p "creating Fournisseur tags"
+p "- creating fournisseur tags"
 #Fournisseur
 fournisseurs = [
 "BNP",
@@ -95,9 +95,13 @@ image =[]
 image << "app/assets/images/doctest/Certificat-de-scolarite.pdf"
 image << "app/assets/images/doctest/RIB.pdf"
 image << "app/assets/images/doctest/facture_directenergy_HG.pdf"
+image << "app/assets/images/doctest/carte-identite.jpeg"
+image << "app/assets/images/doctest/passeport.jpg"
 
-#ajouter master array
-#ajouter images
+
+p "Attributing tags to documents"
+
+master_array = macro_cat|type_of_doc|fournisseurs
 
 10.times do |i|
   random = image.sample
@@ -109,7 +113,7 @@ image << "app/assets/images/doctest/facture_directenergy_HG.pdf"
   5.times do
   d1 = Doctag.new
   d1.document = mydoc
-  d1.tag = Tag.find_by_name(macro_cat.sample)
+  d1.tag = Tag.find_by_name(master_array.sample)
   d1.save
   end
 end
