@@ -3,29 +3,26 @@
 <div class="document-dowload">
   <div class="container">
     <div class="row">
+
       <div class="col-xs-9 text-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-            <h2 class=" h2-form text-center">Choose your file to upload</h2>
-              <div class="form-input">
-               <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true}  do |f| %>
-                <%= hidden_field_tag(:user_id, @user.id) %>
-                <%= f.input :name, label: false,  as: :hidden %>
-                <div class="docform">
-                  <%= f.input :photo, label: false, as: :hidden %>
-                </div>
-                <%= f.input :photo_cache, as: :hidden %>
-                <%= f.submit 'Add this document', class: "hidden btn btn-primary btnadd" %>
-              <% end %>
-              </div>
-            </div>
+        <h2 class=" h2-form text-center">Drop your files here ! </h2>
+        <div class="form-input">
+          <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= f.input :name, label: false,  as: :hidden %>
+          <div class="docform">
+            <%= f.input :photo, label: false, as: :hidden %>
           </div>
+          <%= f.input :photo_cache, as: :hidden %>
+            <%= f.submit 'Add this document', class: "hidden btn btn-primary btnadd" %>
+          <% end %>
         </div>
       </div>
-      <div class="col-xs-3">
-        <%= render 'batch_tags_section' %>
-      </div>
+
+    <div class="col-xs-3">
+      <%= render 'batch_tags_section' %>
     </div>
   </div>
 </div>
+</div>
+

@@ -1,18 +1,16 @@
 
 <div class="add-tags">
-  <p  style="font-weight: bolder">Ajouter des tags</p>
+  <p  style="font-weight: bolder">Ajouter des tags à l'ensemble des documents</p>
   <ul class="list-inline">
     <% @other_tags.each do |t| %>
       <i class="tag listenbatchtag text-center"><%= t.name_clean %></i>
     <% end %>
   </ul>
 </div>
+<div>
+  <%= form_tag batch_update_documents_path, method: :patch, class: "batch-update-form" do  %>
+    <%= hidden_field_tag :tag_names, nil, class: "batch_tags" %>
+    <%= submit_tag 'save', id:"btnsavedocs", class: "btn btn-primary btnadd", disabled: true %>
+  <% end  %>
+</div>
 
-
-
-
-<%= form_tag batch_update_documents_path, method: :patch, class: "batch-update-form" do  %>
-  <%= hidden_field_tag :tag_names, nil, class: "batch_tags" %>
-  <%= submit_tag 'save', class: "btn btn-primary btnadd" %>
-
-<% end  %>

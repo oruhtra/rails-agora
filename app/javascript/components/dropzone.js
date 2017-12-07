@@ -4,10 +4,14 @@ import 'dropzone/dist/dropzone.css';
 function newdropzone() {
   Dropzone.autoDiscover = false;
   // const myDropzone = new Dropzone("#doc-dropzone");
-  const myDropzone = new Dropzone("#doc-dropzone" );
+  const myDropzone = new Dropzone("#doc-dropzone", {
+    dictDefaultMessage: "Here... " }
+    );
+
   myDropzone.on("success", function(file, response) {
     addinput_in_form(response);
-
+    console.log("ok");
+    document.getElementById("btnsavedocs").disabled = false;
     });
 
 }
@@ -20,4 +24,6 @@ function addinput_in_form(response) {
   form.insertAdjacentHTML("afterbegin", html);
 }
 
-export { newdropzone };
+if (document.getElementById("doc-dropzone")) {
+  newdropzone();
+}
