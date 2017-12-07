@@ -1,8 +1,8 @@
 import "bootstrap";
-
 import { listentag } from "../components/tag";
 import { listenbatchtag } from "../components/batch_tag";
 import { newdropzone } from "../components/dropzone";
 import { createMasonryGrid } from "./masonry";
-newdropzone();
+import { showSelectButtonOnHover } from "../components/select_button_hover";
 
+newdropzone();
