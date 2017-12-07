@@ -67,7 +67,7 @@ class DocumentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to document_path(@document) }
         format.json do
-          document_hash = {}
+          document_hash = {id: @document.id}
           render json: document_hash
         end
       end
@@ -77,8 +77,23 @@ class DocumentsController < ApplicationController
   end
 
   def batch_update
-
-
+    docs = current_user.documents.where(id: params[:document_ids])
+    if docs.any?
+      tagnames = params[:tag_names].split(" ")
+      tags = Tag.where(name: tagnames)
+      docs.each do |doc|
+        tags.each do |mytag|
+          doc.tags << mytag
+        end
+      end
+      authorize docs.first
+      redirect_to documents_path
+    else
+      @document = Document.new
+      authorize @document
+      @other_tags = policy_scope(Tag).all
+      render :new
+    end
   end
 
   def update

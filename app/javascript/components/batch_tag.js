@@ -17,11 +17,8 @@ function listenbatchtag() {
   // adding click listener to each tag
   tags.forEach(tag => tag.addEventListener("click", (event) => {
     event.preventDefault();
-
     tag.classList.add("tag-s");
-
     const selectedtags = generateParameters();
-    console.log(selectedtags);
     const allTagsName = selectedtags.join(" ");
     console.log(allTagsName);
     // submit the form with all the tag names including the latest

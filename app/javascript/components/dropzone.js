@@ -2,30 +2,22 @@ import Dropzone from 'dropzone';
 import 'dropzone/dist/dropzone.css';
 
 function newdropzone() {
+  Dropzone.autoDiscover = false;
   // const myDropzone = new Dropzone("#doc-dropzone");
   const myDropzone = new Dropzone("#doc-dropzone" );
+  myDropzone.on("success", function(file, response) {
+    addinput_in_form(response);
 
-  // Dropzone.uploadMultiple.myDropzone = true;
+    });
 
 }
 
+function addinput_in_form(response) {
+  const doc_id = response.id;
+  const form = document.querySelector(".batch-update-form");
+  const html = `<input name="document_ids[]" type="hidden" value=${doc_id} />`;
+  console.log(html);
+  form.insertAdjacentHTML("afterbegin", html);
+}
+
 export { newdropzone };
-
-
-
-// var myDropzone = new Dropzone(document.getElementById('dropzone-area'), {
-//   uploadMultiple: false,
-//   acceptedFiles:'.jpg,.png,.jpeg,.gif',
-//   parallelUploads: 6,
-//   url: 'https://api.cloudinary.com/v1_1/cloud9/image/upload'
-// });
-
-
-// myDropzone.on('sending', function (file, xhr, formData) {
-//   formData.append('api_key', 123456789123456);
-//   formData.append('timestamp', Date.now() / 1000 | 0);
-//   formData.append('upload_preset', 'presetname');
-// });
-// myDropzone.on('success', function (file, response) {
-//   console.log('Success! Cloudinary public ID is', response.public_id);
-// });

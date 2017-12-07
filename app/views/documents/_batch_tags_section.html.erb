@@ -11,7 +11,7 @@
 
 
 
-<%= form_tag batch_update_documents_path, method: :patch do  %>
+<%= form_tag batch_update_documents_path, method: :patch, class: "batch-update-form" do  %>
   <%= hidden_field_tag :tag_names, nil, class: "batch_tags" %>
   <%= submit_tag 'save', class: "btn btn-primary btnadd" %>
 

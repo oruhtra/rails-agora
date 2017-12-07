@@ -14,6 +14,10 @@ class DocumentPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+  def batch_update?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.where(user: user)
