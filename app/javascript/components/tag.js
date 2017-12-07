@@ -1,16 +1,5 @@
 const urlstring = window.location.href;
 
-// get selected tags from query in params
-// function getParameterByName(name, url) {
-//     if (!url) url = window.location.href;
-//     name = name.replace(/[\[\]]/g, "\\$&");
-//     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-//         results = regex.exec(url);
-//     if (!results) return null;
-//     if (!results[2]) return '';
-//     return decodeURIComponent(results[2].replace(/\+/g, " "));
-// }
-
 function generateParameters() {
   const selectedtags = [];
   document.querySelectorAll(".tag-s").forEach(tag => {
@@ -18,15 +7,6 @@ function generateParameters() {
   });
   return selectedtags;
 }
-
-// adding class "tag-s" to all selected tags
-// function showSelectedTag() {
-//   selectedtags.split(" ").forEach(function(tag) {
-//     if (document.getElementById(tag) !== null) {
-//         document.getElementById(tag).classList.add("tag-s");
-//     }
-//   });
-// }
 
 // Ajout de tagName si non inclut ou suppression tagname si inclut
 function updateTagsArray(tagArray, tagName) {
@@ -55,9 +35,5 @@ function listentag() {
     document.querySelector(".searchtag form").submit();
   }));
 }
-
-// if (selectedtags !== null) {
-//     showSelectedTag();
-// }
 
 listentag();
