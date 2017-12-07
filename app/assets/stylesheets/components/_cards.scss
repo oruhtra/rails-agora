@@ -1,3 +1,7 @@
+.card {
+  position: relative;
+}
+
 .card-image:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   opacity: 0.8;
@@ -22,16 +26,17 @@
 
 
 #selectionbox {
-  width: 5px;
-  padding: 5px;
+  padding: 8px;
   border-radius: 50%;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
   border: 1.5px solid #A7B0BD;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #selectionbox:hover {
-  padding: 5px;
   border-radius: 50%;
   background: #5391F7;
   transition: background 0.3s ease;
@@ -39,7 +44,6 @@
 }
 
 #selectionbox:active {
-  padding: 5px;
   border-radius: 50%;
   transition: background 0.3s ease;
   background: #493DF5;

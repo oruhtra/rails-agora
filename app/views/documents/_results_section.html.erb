@@ -1,6 +1,6 @@
 <div id="masonry-container" class="clearfix">
 <% @documents_unselected.each do |document| %>
-  <div class= "box">
+  <div class= "box card">
     <%= link_to document_path(document) do %>
       <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
     <% end %>
