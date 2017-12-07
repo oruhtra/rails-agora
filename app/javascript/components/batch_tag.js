@@ -10,7 +10,6 @@ function generateParameters() {
 }
 
 
-
 function listenbatchtag() {
 
   const tags = document.querySelectorAll(".listenbatchtag");
@@ -20,7 +19,6 @@ function listenbatchtag() {
     tag.classList.toggle("tag-s");
     const selectedtags = generateParameters();
     const allTagsName = selectedtags.join(" ");
-    console.log(allTagsName);
     // submit the form with all the tag names including the latest
     document.querySelector(".batch_tags").value = allTagsName;
 
