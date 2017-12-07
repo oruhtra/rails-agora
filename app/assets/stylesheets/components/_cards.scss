@@ -1,29 +1,13 @@
-.master-card {
-  background-color: transparent;
-  height: 150px;
-  width: 120px;
-  border-radius: 8px;
-  margin: 40px;
-  padding: 3px;
-  overflow-wrap: break-word;
+.card {
+  position: relative;
 }
 
-.master-card:hover {
-  opacity: 1;
-  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;
-}
-
-.card-image {
-  height: 100%;
-  width: 100%;
-  background-size: contain !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 1;
+.card-image:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
 }
 
 .card-description {
-  height: 50px;
   color: $darkblue;
 }
 
@@ -40,23 +24,19 @@
   height: 28px;
 }
 
-.card-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-}
 
 #selectionbox {
-  padding: 5px;
+  padding: 8px;
   border-radius: 50%;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
   border: 1.5px solid #A7B0BD;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #selectionbox:hover {
-  padding: 5px;
   border-radius: 50%;
   background: #5391F7;
   transition: background 0.3s ease;
@@ -64,7 +44,6 @@
 }
 
 #selectionbox:active {
-  padding: 5px;
   border-radius: 50%;
   transition: background 0.3s ease;
   background: #493DF5;
