@@ -1,55 +1,53 @@
-.master-card {
-  background-color: $darkblue;
-  height: 150px;
-  width: 120px;
-  border-radius: 8px;
-  margin: 20px;
-  padding: 3px;
+.card {
+  position: relative;
 }
 
-.card-image {
-  height: 100%;
-  width: 100%;
-  background-size: cover !important;
-  background-position: center;
-  opacity: 1;
+.card-image:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
 }
 
 .card-description {
-  position: relative;
-  // width: 90%;
-  // height: 35px;
-  // position: absolute;
-  // bottom: 10px;
-  // border-bottom-left-radius: 5px;
-  // border-bottom-right-radius: 5px;
-  // background-color: transparent;
+  color: $darkblue;
 }
 
 .card-description h5 {
   font-size: 12px;
-  color: $darkblue;
-  line-height: 2px;
 }
 
 .card-description p {
   font-size: 12px;
-  color: $darkblue;
-  line-height: 2px;
+  margin: 0px;
 }
 
-.master-card:hover {
-  opacity: 1;
-  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;
-  // border-style: solid;
-  // border-width: 5px;
-  // border-color: rgba(79, 93, 117, 1);
+.card-title {
+  height: 28px;
 }
+
 
 #selectionbox {
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+  border: 1.5px solid #A7B0BD;
   position: absolute;
-  left: 0px;
-  top: 7px;
-  color: darkblue;
-  margin: 3px;
+  top: 10px;
+  right: 10px;
 }
+
+#selectionbox:hover {
+  border-radius: 50%;
+  background: #5391F7;
+  transition: background 0.3s ease;
+  border: 2px solid #59C6F9;
+}
+
+#selectionbox:active {
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  background: #493DF5;
+}
+
+
+

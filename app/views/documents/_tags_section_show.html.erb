@@ -21,7 +21,7 @@
 </div>
 <div class="add-tags">
   <p  style="font-weight: bolder">Ajouter des tags</p>
-  <ul class="list-inline">
+  <ul class="list-inline other-tags">
     <% @other_tags.each do |t| %>
       <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
         <i class="tag text-center"><%= t.name_clean %></i>

@@ -20,6 +20,11 @@
   padding-top: 20px;
 }
 
+.other-tags {
+  overflow: scroll;
+  max-height: 300px;
+}
+
 .title .form-control {
   background-color: transparent;
   border: transparent;
