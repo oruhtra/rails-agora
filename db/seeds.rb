@@ -39,7 +39,7 @@ macro_cat = [
 ]
 
 macro_cat.each do |tag|
-  Tag.create(name: tag)
+  Tag.create(name: tag.downcase)
 end
 
 p "- creating type of doc tags"
@@ -75,7 +75,7 @@ type_of_doc = [
 ]
 
 type_of_doc.each do |tag|
-  Tag.create(name: tag)
+  Tag.create(name: tag.downcase)
 end
 
 p "- creating fournisseur tags"
@@ -86,7 +86,7 @@ fournisseurs = [
 ]
 
 fournisseurs.each do |tag|
-  Tag.create(name: tag)
+  Tag.create(name: tag.downcase)
 end
 
 p "Creating documents"
@@ -103,7 +103,7 @@ p "Attributing tags to documents"
 
 master_array = macro_cat|type_of_doc|fournisseurs
 
-10.times do |i|
+30.times do |i|
   random = image.sample
   mydoc = Document.new(name: random)
   mydoc.remote_photo_url = random
