@@ -1,7 +1,13 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 30 %>
+  <% if user_signed_in? %>
+    <%= link_to documents_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png", height: 30 %>
+    <% end %>
+  <% else %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png", height: 30 %>
+    <% end %>
   <% end %>
 
   <!-- Right Navigation -->

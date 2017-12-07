@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <%= simple_form_for(@document) do |f| %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <h2 class=" h2-form text-center">Choose your file to upload</h2>
+      <div class="form-input">
+       <%= simple_form_for(@document) do |f| %>
         <%= hidden_field_tag(:user_id, @user.id) %>
         <%= f.input :name, label: false,  as: :hidden %>
         <div class="docform">
-        <%= f.input :photo, label: false %>
+          <%= f.input :photo, label: false %>
         </div>
         <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit 'Add this document', class:"btn btn-primary btnadd" %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

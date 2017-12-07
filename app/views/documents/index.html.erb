@@ -7,8 +7,14 @@
       <div class="results_section">
         <%= render 'results_section' %>
       </div>
+      <!-- link to add a new document -->
+      <%= link_to new_document_path do %>
+        <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
+      <% end %>
     </div>
+
   <% else %>
+
     <div class="main-section-medium">
       <div class="search_section">
         <%= render 'search_section' %>
@@ -16,16 +22,16 @@
       <div class="results_section">
         <%= render 'results_section' %>
       </div>
+      <%= link_to new_document_path do %>
+        <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
+      <% end %>
     </div>
     <div class="selection_section text-center">
       <%= render 'selection_section' %>
     </div>
+      <!-- link to add a new document -->
   <% end %>
 
-  <!-- link to add a new document -->
-  <%= link_to new_document_path do %>
-    <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
-  <% end %>
 </div>
 
 
