@@ -53,24 +53,32 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
-
     authorize @document
+    @other_tags = policy_scope(Tag).all
   end
 
   def create
-    @document = Document.new
+    @document = Document.new(document_params)
     @document.user = @user
-
     authorize @document
-
-    @document.update(document_params)
-    @document.name = "test"
-    # @document.name = correctDocumentName(params["document"]["photo"].original_filename)
+    @document.photo = params[:file]
+    @document.name = correctDocumentName(params["file"].original_filename)
     if @document.save
-      redirect_to document_path(@document)
+      respond_to do |format|
+        format.html { redirect_to document_path(@document) }
+        format.json do
+          document_hash = {}
+          render json: document_hash
+        end
+      end
     else
       render :new
     end
+  end
+
+  def batch_update
+
+
   end
 
   def update

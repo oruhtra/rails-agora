@@ -16,7 +16,6 @@ function generateParameters() {
   document.querySelectorAll(".tag-s").forEach(tag => {
     selectedtags.push(tag.text);
   });
-  console.log(selectedtags);
   return selectedtags;
 }
 
