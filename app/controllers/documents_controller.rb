@@ -64,7 +64,8 @@ class DocumentsController < ApplicationController
     authorize @document
 
     @document.update(document_params)
-    @document.name = correctDocumentName(params["document"]["photo"].original_filename)
+    @document.name = "test"
+    # @document.name = correctDocumentName(params["document"]["photo"].original_filename)
     if @document.save
       redirect_to document_path(@document)
     else
