@@ -48,6 +48,27 @@
 }
 
 #selectionbox {
-  color: darkblue;
+  padding: 5px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.3s ease;
+  border: 1.5px solid #493DF5;
 }
+
+#selectionbox:hover {
+  padding: 5px;
+  border-radius: 50%;
+  background: #5391F7;
+  transition: background 0.3s ease;
+  border: 2px solid #59C6F9;
+}
+
+#selectionbox:active {
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  background: #493DF5;
+}
+
+
 
