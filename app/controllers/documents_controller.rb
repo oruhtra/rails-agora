@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
     @other_tags = policy_scope(Tag).all
   end
 
-  def create
+  def create #documents are save as soon as they are put in the dropzone without tags
     @document = Document.new(document_params)
     @document.user = @user
     authorize @document
@@ -76,7 +76,7 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def batch_update
+  def batch_update #adding tags to all documents of the dropzone
     docs = current_user.documents.where(id: params[:document_ids])
     if docs.any?
       tagnames = params[:tag_names].split(" ")
@@ -108,6 +108,13 @@ class DocumentsController < ApplicationController
 
     @document.destroy
     redirect_to documents_path
+  end
+
+  def download
+    @document = Document.find(params[:id])
+    authorize @document
+    file = open(@document.photo.url)
+    send_file(file)
   end
 
 

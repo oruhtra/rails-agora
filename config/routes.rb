@@ -6,8 +6,14 @@ Rails.application.routes.draw do
     collection do
       patch :batch_update  # route pour batch_update
     end
+
+    member do
+      get :download #route to download
+    end
+
     resources :doctags, only: [:create, :destroy]
   end
 
   resources :tags, only: :create
+
 end
