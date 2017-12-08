@@ -1,65 +1,52 @@
-
-.flex {
-  display: flex;
-  justify-content: space-around;
-}
-
-.master-card {
-  background-color: $darkblue;
-  height: 150px;
-  width: 120px;
-  border-radius: 8px;
-  margin: 15px;
-  position: relative;
-  padding: 3px;
-
-}
-
 .card {
-  border-radius: 6px;
-  height: 150px;
-  width: 120px;
-  background-size: cover !important;
-  background-position: center;
-  border-style: solid;
-  border-width: 0.6px;
-  border-color: $blue;
-  filter: blur(2px);
+  position: relative;
+}
+
+.card-image:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
 }
 
 .card-description {
-  // width: 90%;
-  // height: 35px;
-  // position: absolute;
-  // bottom: 10px;
-  // border-bottom-left-radius: 5px;
-  // border-bottom-right-radius: 5px;
-  // background-color: transparent;
+  color: $darkblue;
 }
 
 .card-description h5 {
   font-size: 12px;
-  color: $darkblue;
-  line-height: 1px;
 }
 
 .card-description p {
-  font-size: 10px;
-  color: $darkblue;
-  line-height: 1px;
+  font-size: 12px;
+  margin: 0px;
 }
 
-.card:hover {
-  filter: none;
-  transition: .1s ease-in-out;
-  opacity: 1;
-  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;
-  // border-style: solid;
-  // border-width: 5px;
-  // border-color: rgba(79, 93, 117, 1);
+.card-title {
+  height: 28px;
 }
 
-#selectionbox {
-  color: $darkblue;
-  margin: 2px;
+.selectionbox {
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+  border: 1.5px solid #A7B0BD;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
+
+.selectionbox:hover {
+  border-radius: 50%;
+  background: #5391F7;
+  transition: background 0.3s ease;
+  border: 2px solid #59C6F9;
+}
+
+.selectionbox:active {
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  background: #493DF5;
+}
+
+
+

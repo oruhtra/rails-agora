@@ -6,12 +6,18 @@ class DoctagsController < ApplicationController
     @doctag = Doctag.new
     @doctag.document = @document
     @doctag.tag = Tag.find(params[:tag])
+
+    authorize @doctag
+
     @doctag.save
     redirect_to document_path(@document)
   end
 
   def destroy
     @document = @doctag.document
+
+    authorize @doctag
+
     @doctag.destroy
     redirect_to document_path(@document)
   end

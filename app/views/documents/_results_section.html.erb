@@ -1,23 +1,25 @@
-<div class="feed">
+<div id="masonry-container" class="clearfix">
   <% @documents_unselected.each do |document| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+    <div class= "box card" id="<%= document.id %>">
       <%= link_to document_path(document) do %>
-        <div class= "master-card">
-          <div class="card-image" style="background-image: url('<%= cl_image_path document.photo, format: :jpg %>');">
-          </div>
-        <% end %>
-          <div class="card-description">
-            <div style="text-align: left;">
-              <h5><%= document.name.split("/").last.capitalize %></h5>
-              <p><%=document.updated_at.strftime("%Y-%m") %></p>
-            </div>
-            <div style="text-align: right;">
-              <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
-              <i id="selectionbox" class="fa fa-square-o" aria-hidden="true"></i>
-            </div>
-              <% end %>
-          </div>
+        <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
+      <% end %>
+      <div class="card-description">
+        <div class="card-title">
+          <% if document.name[27] %>
+            <h5><%= document.name[0..26] %>...</h5>
+          <% else %>
+            <h5><%= document.name %></h5>
+          <% end %>
         </div>
+        <div class="card-info">
+          <p><%=document.updated_at.strftime("%Y-%m") %></p>
+          <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
+          <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
+

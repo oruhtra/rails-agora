@@ -3,11 +3,23 @@
  opacity: 0.7;
  color: $darkblue;
 }
-
+.addbutton:hover {
+  opacity: 1;
+}
 .corner {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 20px;
+  right: 45%;
+}
+
+.h2-form {
+  font-size: 26px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.form-input {
+  margin: 20px;
+  padding: 20px;
 }
 
 .btnadd {
@@ -18,10 +30,9 @@
 
 .docform {
   padding: 40px;
-  width: 100%;
   text-align: center;
-
 }
+
 .docform #document_photo {
   font-size: 18px;
 }

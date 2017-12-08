@@ -18,6 +18,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'cloudinary'
+gem "pundit"
+gem 'masonry-rails'
 
 group :development, :test do
   gem 'pry-byebug'
