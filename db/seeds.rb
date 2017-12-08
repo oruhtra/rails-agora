@@ -14,7 +14,7 @@ p "Creating tag table"
 
 p "- creating macro cat tags"
 #Macro-cat
-macro_cat = [
+macro_cat_up = [
   "Documents personnels",
   "Banque",
   "Assurance",
@@ -37,14 +37,16 @@ macro_cat = [
   "Téléphonie",
   "Santé"
 ]
+macro_cat = macro_cat_up.map { |e| e.downcase.gsub(/\s/, "_") }
+
 
 macro_cat.each do |tag|
-  Tag.create(name: tag.downcase)
+  Tag.create(name: tag)
 end
 
 p "- creating type of doc tags"
 #Type of document
-type_of_doc = [
+type_of_doc_up = [
 "Carte d'identité",
 "Passeport",
 "Permis de conduire",
@@ -74,48 +76,23 @@ type_of_doc = [
 "Inscription",
 ]
 
+type_of_doc = type_of_doc_up.map { |e| e.downcase.gsub(/\s/, "_") }
+
 type_of_doc.each do |tag|
-  Tag.create(name: tag.downcase)
+  Tag.create(name: tag)
 end
 
 p "- creating fournisseur tags"
 #Fournisseur
-fournisseurs = [
+fournisseurs_up = [
 "BNP",
 "Société Générale",
 ]
 
+fournisseurs = fournisseurs_up.map { |e| e.downcase.gsub(/\s/, "_") }
+
 fournisseurs.each do |tag|
-  Tag.create(name: tag.downcase)
-end
-
-p "Creating documents"
-
-image =[]
-image << "app/assets/images/doctest/Certificat-de-scolarite.pdf"
-image << "app/assets/images/doctest/RIB.pdf"
-image << "app/assets/images/doctest/facture_directenergy_HG.pdf"
-image << "app/assets/images/doctest/carte-identite.jpeg"
-image << "app/assets/images/doctest/passeport.jpg"
-
-
-p "Attributing tags to documents"
-
-master_array = macro_cat|type_of_doc|fournisseurs
-
-30.times do |i|
-  random = image.sample
-  mydoc = Document.new(name: random)
-  mydoc.remote_photo_url = random
-  mydoc.user = myuser
-  mydoc.save
-
-  5.times do
-  d1 = Doctag.new
-  d1.document = mydoc
-  d1.tag = Tag.find_by_name(master_array.sample)
-  d1.save
-  end
+  Tag.create(name: tag)
 end
 
 
