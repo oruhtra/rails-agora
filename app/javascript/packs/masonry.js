@@ -3,7 +3,7 @@ function createMasonryGrid() {
   var msnry = new Masonry( elem, {
     // options
     itemSelector: '.box',
-    columnWidth: 80
+    columnWidth: 50
   });
 }
 
