@@ -18,7 +18,9 @@
 <div class="action-bar-selection">
   <ul class="list-inline">
 <!--       <i class="fa fa-download fa-2x action-style" aria-hidden="true" ></i> -->
-    <i class="fa fa-times fa-2x action-style" aria-hidden="true" ></i>
+    <%= link_to unselect_docs_documents_path do %>
+      <i class="fa fa-times fa-2x action-style" aria-hidden="true" ></i>
+    <% end %>
     <i class="fa fa-trash-o fa-2x " aria-hidden="true" ></i>
   </ul>
 </div>
