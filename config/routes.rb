@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :documents do
     collection do
       patch :batch_update  # route pour batch_update
+      get :unselect_docs
     end
-
     member do
       get :download #route to download
     end

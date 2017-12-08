@@ -117,7 +117,11 @@ class DocumentsController < ApplicationController
     send_file(file)
   end
 
-
+  def unselect_docs
+    @documents_selected = policy_scope(Document).user_documents_selected
+    @documents_selected.update(selected: false)
+    redirect_to documents_path
+  end
   private
 
   def set_user

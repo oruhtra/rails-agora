@@ -16,4 +16,7 @@ class Document < ApplicationRecord
     Document.all.select{ |d| tags_array & d.tags == tags_array }
   end
 
+  def self.user_documents_selected
+    Document.where(selected: true)
+  end
 end

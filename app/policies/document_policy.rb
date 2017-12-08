@@ -21,6 +21,9 @@ class DocumentPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def selected_doc?
+    true
+  end
 
   class Scope < Scope
     def resolve
