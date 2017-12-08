@@ -48,6 +48,12 @@
   font-size: 20px;
   text-decoration: none;
   box-shadow: none;
+  color: white;
+}
+
+.title .form-control:hover {
+  border-color: transparent;
+  box-shadow: 0 5px 0px 0 rgba(45, 49, 66, 0.1), 0 3px 0 0 rgba(45, 49, 66, 0.4);
 }
 
 .title .form-control:focus {
