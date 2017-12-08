@@ -2,9 +2,14 @@
   position: relative;
 }
 
+.card-image {
+  border-radius: 3px;
+  border: 2px solid white;
+}
+
 .card-image:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  opacity: 0.8;
+  margin: 0 -1px 0px 0px;
 }
 
 .card-description {
@@ -13,11 +18,13 @@
 
 .card-description h5 {
   font-size: 12px;
+  color: white;
 }
 
 .card-description p {
   font-size: 12px;
   margin: 0px;
+  color: white;
 }
 
 .card-title {
