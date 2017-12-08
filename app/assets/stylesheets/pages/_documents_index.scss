@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.result-section {
+  overflow: scroll;
+  height: 80vh;
+}
+
 .tags-bar{
   display: flex;
   align-items: center;
