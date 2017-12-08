@@ -3,20 +3,26 @@
   padding: 8px 15px;
   text-align: center;
   border-radius: 4px;
-  background-color: $lightblue;
-  color: white;
+  background-color: white;
+  color: #6BCC93;
   margin: 5px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
+  box-shadow: 0 0 0 1px #6BCC93 inset;
+}
+
+.tag:hover{
+  background-color: #6BCC93;
+  color: white;
 }
 
 .tag-s {
-  background-color: $darkblue;
+  background-color: #6BCC93;
   color: white;
+  box-shadow: 0 0 0 1px #6BCC93 inset;
 }
 
 .tag-s:hover {
-  color: white;
   opacity: 0.8
 }
 
@@ -37,6 +43,7 @@
   text-decoration: none;
   box-shadow: none;
 }
+
 .title .form-control:focus {
   border-color: transparent;
   box-shadow: 0 5px 0px 0 rgba(45, 49, 66, 0.1), 0 3px 0 0 rgba(45, 49, 66, 0.4);
