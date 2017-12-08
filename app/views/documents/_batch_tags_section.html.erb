@@ -4,7 +4,7 @@
   <div class ="new-other-tags" >
     <ul class="list-inline">
       <% @other_tags.each do |t| %>
-        <i class="tag listenbatchtag text-center"><%= t.name_clean %></i>
+        <i class="tag listenbatchtag text-center" id =<%= t.name %>><%= t.name_clean %></i>
       <% end %>
     </ul>
   </div>
