@@ -10,8 +10,10 @@
         </div>
         <div class="action-bar-show">
           <ul class="list-inline">
-            <i class="fa fa-share fa-2x action-style" aria-hidden="true" ></i>
-            <i class="fa fa-times fa-2x action-style" aria-hidden="true" ></i>
+              <%= link_to download_document_path(@document) do %>
+                <i class="fa fa-download fa-2x action-style" aria-hidden="true" ></i>
+               <% end %>
+            <!-- <i class="fa fa-times fa-2x action-style" aria-hidden="true" ></i> -->
             <%= link_to document_path(@document), method: :delete, :data => {:confirm => 'Are you sure?'} do %>
               <i class="fa fa-trash-o fa-2x action-style" aria-hidden="true"></i>
             <% end %>

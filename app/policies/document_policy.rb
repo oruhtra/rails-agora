@@ -17,6 +17,10 @@ class DocumentPolicy < ApplicationPolicy
   def batch_update?
     true
   end
+  def download?
+    record.user == user
+  end
+
 
   class Scope < Scope
     def resolve
