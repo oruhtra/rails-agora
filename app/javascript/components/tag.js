@@ -3,7 +3,7 @@ const urlstring = window.location.href;
 function generateParameters() {
   const selectedtags = [];
   document.querySelectorAll(".tag-s").forEach(tag => {
-    selectedtags.push(tag.text);
+    selectedtags.push(tag.id);
   });
   return selectedtags;
 }
