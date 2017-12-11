@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <% @services.each do |service| %>
+      <div class="col-xs-4">
+        <div class="service-form">
+          <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+          <%= hidden_field_tag :service_id, service.id %>
+          <%= submit_tag "Ajouter un compte #{service.name}", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -16,9 +16,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: :create
 
-  resources :services, only: [:new, :create] do
-    resources :user_services, only: [:create]
-  end
+  resources :user_services, only: [:new, :create]
 
 
 end
