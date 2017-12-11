@@ -21,11 +21,11 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <div id="site-content">
     <% if params[:controller] != "pages" && params[:action] != "home" %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <div id="site-content">
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
