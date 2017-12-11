@@ -1,14 +1,20 @@
+
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <% if user_signed_in? %>
-    <%= link_to documents_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo.png", height: 30 %>
+
+  <div class="navbar-wagon-left" >
+    <!-- Logo -->
+    <% if user_signed_in? %>
+      <%= link_to documents_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "logo.png", height: 30 %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "logo.png", height: 30 %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo.png", height: 30 %>
-    <% end %>
-  <% end %>
+
+    <%= yield :navbar %>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">

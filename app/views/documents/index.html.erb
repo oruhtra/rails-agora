@@ -1,9 +1,24 @@
+<% content_for :navbar do %>
+   <!-- search form  -->
+    <div class="search-bar">
+      <%= form_tag(documents_path, method: :get) do %>
+        <%= hidden_field_tag :query, @user_selected_tagnames%>
+        <%= text_field_tag :search_tag, params[:search_tag],
+          class: "form-control border-round",
+          placeholder: "Essayez 'Banque'"
+        %>
+      <% end %>
+    </div>
+<% end %>
+
 <div class="index-wrapper">
   <% if @documents_selected.empty? %>
     <div class="main-section-large">
-      <div class="search_section">
-        <%= render 'search_section' %>
-      </div>
+      <% if @user_selected_tags.any? %>
+        <div class="search_section">
+          <%= render 'search_section' %>
+        </div>
+      <% end %>
       <div class="results_section">
         <%= render 'results_section' %>
       </div>
@@ -16,9 +31,11 @@
   <% else %>
 
     <div class="main-section-medium">
-      <div class="search_section">
-        <%= render 'search_section' %>
-      </div>
+      <% if @user_selected_tags.any? %>
+        <div class="search_section">
+          <%= render 'search_section' %>
+        </div>
+      <% end %>
       <div class="results_section">
         <%= render 'results_section' %>
       </div>

@@ -1,12 +1,3 @@
-<div class="search-bar">
-  <%= form_tag(documents_path, method: :get) do %>
-    <%= hidden_field_tag :query, @user_selected_tagnames%>
-    <%= text_field_tag :search_tag, params[:search_tag],
-      class: "form-control border-round",
-      placeholder: "Essayez 'Banque'"
-    %>
-  <% end %>
-</div>
 
 <div class="tags-bar">
   <!-- affichage selected tags -->
