@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'zip'
-
 class DocumentsController < ApplicationController
   before_action :set_user
   before_action :set_document, only: [:show, :edit, :update, :destroy]
