@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'zip'
+require 'mail'
 
 class DocumentsController < ApplicationController
   before_action :set_user
@@ -130,16 +129,13 @@ class DocumentsController < ApplicationController
   def downloadzip
     @documents_selected = policy_scope(Document).user_documents_selected
     docs_public_ids = @documents_selected.map { |doc| doc.photo.file.public_id }
-    docs_names = @documents_selected.map { |doc| doc.name }
     url = Cloudinary::Utils.download_zip_url(
     :public_ids => docs_public_ids,
     :use_original_filename => true,
     :resource_type => 'image')
     zip = open(url)
     send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}" )
-
   end
-
 
   private
 
