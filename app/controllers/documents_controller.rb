@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'zip'
+
 class DocumentsController < ApplicationController
   before_action :set_user
   before_action :set_document, only: [:show, :edit, :update, :destroy]
@@ -63,6 +66,7 @@ class DocumentsController < ApplicationController
     authorize @document
     @document.photo = params[:file]
     @document.name = correctDocumentName(params["file"].original_filename)
+
     if @document.save
       respond_to do |format|
         format.html { redirect_to document_path(@document) }
@@ -114,7 +118,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     authorize @document
     file = open(@document.photo.url)
-    send_file(file)
+    send_file(file, :filename => "#{@document.name}")
   end
 
   def unselect_docs
@@ -122,6 +126,21 @@ class DocumentsController < ApplicationController
     @documents_selected.update(selected: false)
     redirect_to documents_path
   end
+
+  def downloadzip
+    @documents_selected = policy_scope(Document).user_documents_selected
+    docs_public_ids = @documents_selected.map { |doc| doc.photo.file.public_id }
+    docs_names = @documents_selected.map { |doc| doc.name }
+    url = Cloudinary::Utils.download_zip_url(
+    :public_ids => docs_public_ids,
+    :use_original_filename => true,
+    :resource_type => 'image')
+    zip = open(url)
+    send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}" )
+
+  end
+
+
   private
 
   def set_user

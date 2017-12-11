@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       patch :batch_update  # route pour batch_update
       get :unselect_docs
+      get :downloadzip
     end
     member do
       get :download #route to download
