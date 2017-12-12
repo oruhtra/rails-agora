@@ -37,7 +37,7 @@ class UserServicesController < ApplicationController
       @user.budgea_token = get_permanent_token(params[:access_token])
       @user.save
       @user_service.save
-      redirect_to edit_user_registration_path(@user)
+      redirect_to documents_path
     end
 
 
