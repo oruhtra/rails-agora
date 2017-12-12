@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :documents, dependent: :destroy
   has_many :tags, through: :documents
+  has_many :services, through: :user_services, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
   def tags
