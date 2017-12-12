@@ -21,7 +21,9 @@ function submitCredentialsBudgea() {
     const login = document.getElementById('login').value;
     const password = document.getElementById('password').value;
     const provider_id = parseInt(document.getElementById('provider_id').value, 10);
+    const service_id = parseInt(document.getElementById('service_id').value, 10);
     const auth_token = sessionStorage.getItem("AuthToken");
+
 
     fetch("https://agora.biapi.pro/2.0/users/me/connections", {
       method: "POST",
@@ -33,11 +35,25 @@ function submitCredentialsBudgea() {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log(data);
-      sessionStorage.Response = data;
+        sendCredentialsToServer(data);
     })
   });
 }
+
+function sendCredentialsToServer(data) {
+  const form = document.querySelector('form')
+   if (data.code){
+    document.querySelector('#error_message').value = data.code;
+   } else {
+    document.querySelector('#access_token').value = data.access_token;
+    document.querySelector('#id_user').value = data.id_user;
+    document.querySelector('#id_connection').value = data.id_connection;
+    document.querySelector('#service_id').value = service_id;
+   };
+
+   form.submit();
+}
+
 
 if (document.querySelectorAll('.service-form')) {
   fetchTempToken();

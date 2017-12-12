@@ -5,11 +5,13 @@
 .card-image {
   border-radius: 5px;
   border: 2px solid white;
+  opacity: 0.9;
 }
 
 .card-image:hover {
   box-shadow: 0 0 10px white;
   margin: 0 -3px 0px 0px;
+  opacity: 1;
 }
 
 .card-description {
@@ -32,7 +34,7 @@
 }
 
 .selectionbox {
-  padding: 10px;
+  padding: 7px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
@@ -44,15 +46,16 @@
 
 .selectionbox:hover {
   border-radius: 50%;
-  background: #5391F7;
+  background: #6BCC93;
   transition: background 0.3s ease;
-  border: 2px solid #59C6F9;
+  border: 2px solid #235530;
 }
 
 .selectionbox:active {
   border-radius: 50%;
   transition: background 0.3s ease;
-  background: #493DF5;
+  background: #235530;
+  border: 2px solid #6BCC93;
 }
 
 

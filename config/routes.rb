@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       patch :batch_update  # route pour batch_update
       get :unselect_docs
+      get :downloadzip
     end
     member do
       get :download #route to download
@@ -17,6 +18,5 @@ Rails.application.routes.draw do
   resources :tags, only: :create
 
   resources :user_services, only: [:new, :create]
-
 
 end
