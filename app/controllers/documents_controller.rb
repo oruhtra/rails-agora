@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
 
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
-    @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name}
+    @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name_clean}
 
     #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
 
@@ -55,7 +55,8 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
-    @other_tags = policy_scope(Tag).all
+    @other_tags = policy_scope(Tag).all.sort_by{ |t| t.name }
+    @tag = Tag.new
   end
 
   def create #documents are save as soon as they are put in the dropzone without tags

@@ -1,10 +1,13 @@
 
 <div class="add-tags">
-  <h3>Ajouter des tags à l'ensemble de vos documents</h3>
+  <h3>Ajouter des tags existants à l'ensemble de vos documents</h3>
+  <div id="search_add_tag">
+    <%= collection_select :search_tag, nil, @other_tags, :name, :name, {prompt: true}, {class: "select2_new border-round"} %>
+  </div>
   <div class ="new-other-tags" >
     <ul class="list-inline">
       <% @other_tags.each do |t| %>
-        <i class="tag listenbatchtag text-center" id =<%= t.name %>><%= t.name_clean %></i>
+        <i class="tag listenbatchtag hidden text-center" id =<%= t.name %>><%= t.name_clean %></i>
       <% end %>
     </ul>
   </div>

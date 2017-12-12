@@ -26,6 +26,7 @@ function listentag() {
   //  get tags to listen to
   const tags = document.querySelectorAll(".listentag");
   // adding click listener to each tag
+
   tags.forEach(tag => tag.addEventListener("click", (event) => {
     event.preventDefault();
     // get the name of the tag & add to existing tag array
@@ -34,6 +35,7 @@ function listentag() {
     document.querySelector(".searchtag #query").value = allTagsName;
     document.querySelector(".searchtag form").submit();
   }));
+
 }
 
 listentag();
