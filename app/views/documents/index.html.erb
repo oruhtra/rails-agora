@@ -1,15 +1,13 @@
 <!-- this part is in the navbar  -->
 <% content_for :navbar do %>
    <!-- search form  -->
-
-    <%= form_tag(documents_path, method: :get) do %>
+    <%= form_tag(documents_path, method: :get, id:"submittag") do %>
       <div class="search-bar">
         <%= hidden_field_tag :query, @user_selected_tagnames%>
         <span class="fa fa-search"></span>
-        <%= collection_select :search_tag, params[:search_tag], @user_tags, :id, :name %>
+        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name, {prompt: true}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
       </div>
     <% end %>
-
 
 <% end %>
 

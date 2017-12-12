@@ -20,7 +20,6 @@ gem 'devise'
 gem 'cloudinary'
 gem "pundit"
 gem 'masonry-rails'
-gem 'select2_rails'
 
 group :development, :test do
   gem 'pry-byebug'
