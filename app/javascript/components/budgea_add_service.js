@@ -1,7 +1,5 @@
-const serviceArray = document.querySelectorAll('.service-form')
-
 function fetchTempToken() {
-
+  const serviceArray = document.querySelectorAll('.service-form')
   serviceArray.forEach(service => {
     service.addEventListener('click', (event) => {
       fetch("https://agora.biapi.pro/2.0/auth/init",
@@ -14,14 +12,9 @@ function fetchTempToken() {
       });
     });
   });
-
 }
 
-
-
-
 function submitCredentialsBudgea() {
-
   const submitCredentials = document.getElementById("send-credentials");
 
   submitCredentials.addEventListener('click', (event) => {
@@ -41,8 +34,11 @@ function submitCredentialsBudgea() {
     .then(response => response.json())
     .then((data) => {
       console.log(data);
+      sessionStorage.Response = data;
     })
   });
 }
 
-fetchTempToken();
+if (document.querySelectorAll('.service-form')) {
+  fetchTempToken();
+}

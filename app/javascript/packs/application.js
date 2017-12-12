@@ -4,5 +4,5 @@ import { listenbatchtag } from "../components/batch_tag";
 import { newdropzone } from "../components/dropzone";
 import { createMasonryGrid } from "./masonry";
 import { showSelectButtonOnHover } from "../components/select_button_hover";
-import { fetchTempToken } from "../components/get_temporary_budgea_token";
-import { submitCredentialsBudgea } from "../components/get_temporary_budgea_token";
+import { fetchTempToken } from "../components/budgea_add_service";
+import { submitCredentialsBudgea } from "../components/budgea_add_service";
