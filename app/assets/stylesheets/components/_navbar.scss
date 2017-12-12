@@ -86,7 +86,7 @@ input[type=text].header-search-input {
     background-color: hsla(0,0%,150%,.2);
     border-radius: 3px;
     border: none;
-    color: hsla(0,0%,100%,.5);
+    color: white !important;
     float: left;
     font-size: 18px;
     height: 35px;
@@ -121,4 +121,9 @@ input[type=text].header-search-input {
     top: 10px;
     right: 10px;
     cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #FFFFFF;
+  opacity: 0.8;
 }
