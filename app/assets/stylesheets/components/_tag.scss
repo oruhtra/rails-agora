@@ -66,3 +66,7 @@
   overflow: scroll;
   max-height: 60vh;
 }
+
+.select2-selection__choice {
+  display: none !important;
+}
