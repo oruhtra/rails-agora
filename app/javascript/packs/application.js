@@ -4,3 +4,4 @@ import { listenbatchtag } from "../components/batch_tag";
 import { newdropzone } from "../components/dropzone";
 import { createMasonryGrid } from "./masonry";
 import { showSelectButtonOnHover } from "../components/select_button_hover";
+import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
