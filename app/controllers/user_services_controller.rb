@@ -34,7 +34,11 @@ class UserServicesController < ApplicationController
       @user_service.user_id = @user.id
       @user_service.service_id = params[:service_id]
       @user_service.connection_id = params[:id_connection]
-      @user.budgea_token = get_permanent_token(params[:access_token])
+
+      if !@user.budgea_token
+        @user.budgea_token = get_permanent_token(params[:access_token])
+      end
+
       @user.save
       @user_service.save
       redirect_to documents_path
