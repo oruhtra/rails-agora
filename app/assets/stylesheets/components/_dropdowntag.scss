@@ -1,0 +1,29 @@
+.select2-container--default .select2-selection--multiple {
+  background-color: transparent !important ;
+  color: white;
+}
+
+// otherwise there is an other imput
+.select2-selection__choice:first-child {
+  display: none !important ;
+}
+
+.select2-results__options {
+    background-color: transparent !important ;
+    color: #6BCC93;
+}
+#select2-dropdowntag-results .select2-results__options {
+   background-color: transparent !important ;
+   color: #6BCC93;
+}
+
+.select2-results__option.select2-results__option--highlighted {
+     color: #6BCC93 !important;
+     background-color: grey !important;
+}
+.border-round {
+  border-radius: 5px;
+  background-color: #EFEFEF ;
+  color: #757575;
+}
+

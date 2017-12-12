@@ -5,7 +5,8 @@
         <%= link_to document_path(document) do %>
           <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
         <% end %>
-        <div class="hover-card" style='background-color: <%= ['#39CCCC', '#3D9970', '#2ECC40', '#AAAAAA'].sample %>'>
+         <%= link_to document_path(document) do %>
+         <div class="hover-card" style='background-color: <%= ['#39CCCC', '#3D9970', '#2ECC40', '#AAAAAA'].sample %>'>
           <div class="card-description">
             <div class="card-title">
               <% if document.name[27] %>
@@ -13,16 +14,16 @@
               <% else %>
                 <h5><%= document.name %></h5>
               <% end %>
-            </div>
-            <div class="card-info">
               <p><%=document.updated_at.strftime("%Y-%m") %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+            <div class="card-info">
               <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
               <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
               <% end %>
             </div>
-          </div>
-
-        </div>
       </div>
     <% end %>
   </div>
