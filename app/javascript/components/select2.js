@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'select2';
+import 'select2/dist/css/select2.css';
 
 // use in index documents page to search for a tag/////
 $('.select2').select2({
@@ -24,10 +25,17 @@ $('.select2_new').select2({
 // add tag-s on
 $('.select2_new').on('select2:select', function (e) {
   document.getElementById(e.params.data.text).classList.toggle("tag-s");
+  document.getElementById(e.params.data.text).classList.toggle("hidden");
+  const tags = document.querySelectorAll(".listenbatchtag");
+  const selectedtags = generateParameters();
+  const allTagsName = selectedtags.join(" ");
+  document.querySelector(".batch_tags").value = allTagsName;
 });
 
-
-
- ////////////////////////////////////////////
-
-import 'select2/dist/css/select2.css';
+function generateParameters() {
+  const selectedtags = [];
+  document.querySelectorAll(".tag-s").forEach(tag => {
+    selectedtags.push(tag.id);
+  });
+  return selectedtags;
+}
