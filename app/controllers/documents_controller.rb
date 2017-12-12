@@ -55,7 +55,8 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
-    @other_tags = policy_scope(Tag).all
+    @other_tags = policy_scope(Tag).all.sort_by{ |t| t.name }
+    @tag = Tag.new
   end
 
   def create #documents are save as soon as they are put in the dropzone without tags
