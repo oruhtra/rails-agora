@@ -43,7 +43,7 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      redirect_to documents_path
+      redirect_to scrap_documents_documents_path
     end
 
 

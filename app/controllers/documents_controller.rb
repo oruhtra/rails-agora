@@ -142,7 +142,10 @@ class DocumentsController < ApplicationController
     url = "https://agora.biapi.pro/2.0/users/me/documents/"
     headers = { "Authorization": "Bearer #{current_user.budgea_token}" }
     budgea_response = JSON.parse(RestClient.get(url, headers))
+    @document = Document.new
+    authorize @document
 
+    binding.pry
     # Iterate over all user documents from his accounts
     budgea_response["documents"].each do |document|
       #check if documents has already been downloaded and if it has an image
@@ -150,13 +153,11 @@ class DocumentsController < ApplicationController
         #download file directly in cloudinary
         cl_response = Cloudinary::Uploader.upload(document["url"], headers: {"Authorization": "Bearer: #{current_user.budgea_token}"})
         #create doc and pass attributes
-        @document = Document.new
         @document.remote_photo_url = cl_response["secure_url"]
         @document.name = document["name"] + " " + document["issuer"]
         @document.user_id = current_user.id
         @document.budgea_doc_id = document["id_file"]
 
-        authorize @document
 
         @document.save
         #delete first file from cloudinary, doing remote_photo_url duplicates the file so the first one needs to be destroyed
