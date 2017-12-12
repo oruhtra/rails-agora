@@ -1,0 +1,9 @@
+var serviceContainer = document.getElementById('service_container');
+
+<% if !@service %>
+  serviceContainer.innerHTML = "<%= j render 'select_service_form' %>";
+<% elsif @provider %>
+  serviceContainer.innerHTML = "<%= j render 'login_wait_form' %>";
+<% else %>
+  serviceContainer.innerHTML = "<%= j render 'get_service_credentials_form' %>";
+<% end %>
