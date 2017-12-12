@@ -25,6 +25,10 @@ class DocumentPolicy < ApplicationPolicy
     true
   end
 
+  def scrap_documents?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.where(user: user)

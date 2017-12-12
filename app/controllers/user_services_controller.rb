@@ -3,6 +3,7 @@ class UserServicesController < ApplicationController
     @user_service = UserService.new
     @services = Service.all
 
+
     if params[:service_id].present? && Service.find(params[:service_id])
       @service = Service.find(params[:service_id])
     end
@@ -37,6 +38,7 @@ class UserServicesController < ApplicationController
 
       if !@user.budgea_token
         @user.budgea_token = get_permanent_token(params[:access_token])
+        @user.budgea_id = params[:id_user]
       end
 
       @user.save

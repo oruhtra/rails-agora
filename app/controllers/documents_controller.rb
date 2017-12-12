@@ -136,6 +136,22 @@ class DocumentsController < ApplicationController
     send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}" )
   end
 
+  def scrap_documents
+    url = "https://agora.biapi.pro/2.0/users/me/documents/"
+    headers = { "Authorization": "Bearer #{current_user.budgea_token}" }
+    response = RestClient.get(url, headers)
+    a = JSON.parse(response)
+    @document = Document.new
+    authorize @document
+    cl_response = Cloudinary::Uploader.upload(a["documents"][2]["url"], headers: {"Authorization": "Bearer: #{current_user.budgea_token}"})
+    @document.remote_photo_url = cl_response["secure_url"]
+    @document.name = a["documents"][2]["name"]
+    @document.user_id = current_user.id
+    @document.save
+    Cloudinary::Uploader.destroy(cl_response["public_id"])
+    redirect_to documents_path
+  end
+
   private
 
   def set_user
