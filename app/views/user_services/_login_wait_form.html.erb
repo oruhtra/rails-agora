@@ -1,0 +1,9 @@
+<h1 style:"color: white">Votre requête est en cours de traitement</h1>
+
+<%= form_tag(user_services_path, method: :post) do %>
+<%= hidden_field_tag :error_message %>
+<%= hidden_field_tag :access_token %>
+<%= hidden_field_tag :id_user %>
+<%= hidden_field_tag :id_connection %>
+<%= hidden_field_tag :service_id %>
+<% end %>

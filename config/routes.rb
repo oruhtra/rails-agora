@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: :create
+
+  resources :user_services, only: [:new, :create]
+
 end
