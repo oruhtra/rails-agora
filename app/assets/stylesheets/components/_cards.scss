@@ -4,8 +4,14 @@
 
 .card-image {
   border-radius: 5px;
-  border: 2px solid white;
-  opacity: 0.9;
+  box-shadow: 0 0 3px black;
+  opacity: 1;
+}
+
+.card-hover {
+  box-shadow: 0 0 10px white;
+  margin: 0 -3px 0px 0px;
+  opacity: 1;
 }
 
 .card-image:hover {
@@ -15,18 +21,17 @@
 }
 
 .card-description {
-  color: $darkblue;
-}
-
-.card-description h5 {
-  font-size: 12px;
+  padding-top: 60px;
+  padding-left: 20px;
   color: white;
+}
+.card-description h5 {
+  font-size: 15px;
 }
 
 .card-description p {
   font-size: 12px;
-  margin: 0px;
-  color: white;
+  opacity: 0.8;
 }
 
 .card-title {
@@ -34,7 +39,7 @@
 }
 
 .selectionbox {
-  padding: 7px;
+  padding: 7px !important;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
@@ -58,5 +63,20 @@
   border: 2px solid #6BCC93;
 }
 
+.hover-card {
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+  &:hover {
+    opacity: 0.9;
+
+  }
+}
 
 
