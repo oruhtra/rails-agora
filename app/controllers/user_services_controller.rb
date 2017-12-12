@@ -12,7 +12,7 @@ class UserServicesController < ApplicationController
     end
 
     if params[:error_message].present?
-      raise
+      @error_message = params[:error_message]
     end
 
     respond_to do |format|
@@ -25,12 +25,19 @@ class UserServicesController < ApplicationController
 
   def create
     @user_service = UserService.new
+    @user = current_user
     authorize @user_service
 
     if params[:error_message].present?
       redirect_to new_user_service_path({:error_message => params[:error_message]})
     else
-      @
+      @user_service.user_id = @user.id
+      @user_service.service_id = params[:service_id]
+      @user_service.connection_id = params[:id_connection]
+      @user.budgea_token = get_permanent_token(params[:access_token])
+      @user.save
+      @user_service.save
+      redirect_to edit_user_registration_path(@user)
     end
 
 
@@ -38,7 +45,11 @@ class UserServicesController < ApplicationController
 
   private
 
-  def user_service_params
-    params.require(:user_service).permit(:service_id, :connection_id)
+  def get_permanent_token(auth_token)
+    url = "https://agora.biapi.pro/2.0/auth/token/access"
+    payload = { "client_id": ENV['BUDGEA_CLIENT_ID'], "client_secret": ENV['BUDGEA_CLIENT_SECRET'], "code": auth_token }
+    headers = { "Content-Type": "application/json" }
+    response = RestClient.post(url, payload, headers)
+    return JSON.parse(response.body)["access_token"]
   end
 end

@@ -1,3 +1,6 @@
+<% if @error_message %>
+  <%= @error_message %>
+<% end %>
 <div class="container">
   <div class="row">
     <% @services.each do |service| %>
@@ -12,3 +15,6 @@
     <% end %>
   </div>
 </div>
+<% if current_user.budgea_token %>
+  <p id="budgea_token", class="hidden"><%= current_user.budgea_token %></p>
+<% end %>

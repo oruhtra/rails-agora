@@ -222,7 +222,6 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
-  mail
   masonry-rails
   pg
   pry-byebug
@@ -231,6 +230,7 @@ DEPENDENCIES
   pundit
   rails (= 5.1.4)
   redis
+  rest-client
   sass-rails
   simple_form
   spring

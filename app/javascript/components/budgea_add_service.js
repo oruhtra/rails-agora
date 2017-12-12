@@ -1,17 +1,26 @@
-function fetchTempToken() {
+function budgeaHandshake() {
   const serviceArray = document.querySelectorAll('.service-form')
   serviceArray.forEach(service => {
     service.addEventListener('click', (event) => {
-      fetch("https://agora.biapi.pro/2.0/auth/init",
-      { method: "POST" })
-      .then(response => response.json())
-      .then((data) => {
-        const authToken = data.auth_token;
-        sessionStorage.AuthToken = authToken;
-        submitCredentialsBudgea();
-      });
+      if (document.getElementById('budgea_token')) {
+        sessionStorage.AuthToken = document.getElementById('budgea_token').innerText;
+        setTimeout(submitCredentialsBudgea, 2000);
+      } else {
+        fetchTempToken();
+        setTimeout(submitCredentialsBudgea, 2000);
+      }
     });
   });
+}
+
+function fetchTempToken() {
+  fetch("https://agora.biapi.pro/2.0/auth/init",
+  { method: "POST" })
+  .then(response => response.json())
+  .then((data) => {
+    const authToken = data.auth_token;
+    sessionStorage.AuthToken = authToken;
+  })
 }
 
 function submitCredentialsBudgea() {
@@ -24,7 +33,6 @@ function submitCredentialsBudgea() {
     const service_id = parseInt(document.getElementById('service_id').value, 10);
     const auth_token = sessionStorage.getItem("AuthToken");
 
-
     fetch("https://agora.biapi.pro/2.0/users/me/connections", {
       method: "POST",
       headers: {
@@ -35,20 +43,21 @@ function submitCredentialsBudgea() {
     })
     .then(response => response.json())
     .then((data) => {
-        sendCredentialsToServer(data);
+        sendCredentialsToServer(data, service_id);
     })
   });
 }
 
-function sendCredentialsToServer(data) {
+function sendCredentialsToServer(data, service_id) {
   const form = document.querySelector('form')
+  console.log(data);
    if (data.code){
     document.querySelector('#error_message').value = data.code;
    } else {
-    document.querySelector('#access_token').value = data.access_token;
     document.querySelector('#id_user').value = data.id_user;
-    document.querySelector('#id_connection').value = data.id_connection;
+    document.querySelector('#id_connection').value = data.id;
     document.querySelector('#service_id').value = service_id;
+    document.querySelector('#access_token').value = sessionStorage.getItem("AuthToken");
    };
 
    form.submit();
@@ -56,5 +65,5 @@ function sendCredentialsToServer(data) {
 
 
 if (document.querySelectorAll('.service-form')) {
-  fetchTempToken();
+  budgeaHandshake();
 }
