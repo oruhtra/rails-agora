@@ -17,10 +17,19 @@
         </div>
       </div>
 
-    <div class="col-xs-5">
-      <%= render 'batch_tags_section' %>
-    </div>
+    <!-- selected a tag with search bar  -->
+    <div class="col-xs-5 text-center">
+      <%= form_tag(documents_path, method: :get, id:"submittag") do %>
+        <div class="search-bar">
+          <%= hidden_field_tag :query, @user_selected_tagnames%>
+          <span class="fa fa-search"></span>
+          <%= collection_select :search_tag, nil, @other_tags, :name, :name, {prompt: true}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
+        </div>
+      <% end %>
+    <!-- tags section -->
+    <%= render 'batch_tags_section' %>
   </div>
+</div>
 </div>
 </div>
 
