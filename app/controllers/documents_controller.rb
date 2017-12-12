@@ -145,7 +145,7 @@ class DocumentsController < ApplicationController
     # Iterate over all user documents from his accounts
     budgea_response["documents"].each do |document|
       #check if documents has already been downloaded and if it has an image
-      if !document["url"].nil? && Document.where(budgea_doc_id: document["id_file"])
+      if !document["url"].nil? && Document.where(budgea_doc_id: document["id_file"]).empty?
         #download file directly in cloudinary
         cl_response = Cloudinary::Uploader.upload(document["url"], headers: {"Authorization": "Bearer: #{current_user.budgea_token}"})
         #create doc and pass attributes
