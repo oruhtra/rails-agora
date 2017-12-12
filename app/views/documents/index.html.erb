@@ -1,14 +1,12 @@
 <% content_for :navbar do %>
    <!-- search form  -->
-    <div class="search-bar">
-      <%= form_tag(documents_path, method: :get) do %>
+    <%= form_tag(documents_path, method: :get) do %>
+      <div class="search-bar">
         <%= hidden_field_tag :query, @user_selected_tagnames%>
-        <%= text_field_tag :search_tag, params[:search_tag],
-          class: "form-control border-round",
-          placeholder: "Essayez 'Banque'"
-        %>
-      <% end %>
-    </div>
+        <span class="fa fa-search"></span>
+        <%= text_field_tag :search_tag, params[:search_tag], class: "border-round header-search-input", placeholder: "'Banque'"%>
+      </div>
+    <% end %>
 <% end %>
 
 <div class="index-wrapper">
