@@ -1,7 +1,7 @@
 .addbutton {
  font-size: 50px;
  opacity: 0.7;
- color: white;
+ color: $mygreen;
 }
 .addbutton:hover {
   opacity: 1;
@@ -27,9 +27,15 @@
   height: 60px !important;
   width: 100% !important;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 30px;
+  background-color: $mydarkgreen;
+  color: $light-gray;
+  border-color:$mydarkgreen;
 }
-
+.btnadd:hover {
+  font-size: 24px !important;
+  color: $very-light-gray;
+}
 .docform {
   padding: 40px;
   text-align: center;

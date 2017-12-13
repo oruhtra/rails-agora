@@ -44,7 +44,7 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
-  border: 1.5px solid #A7B0BD;
+  border: 1.5px solid $light-gray;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -52,16 +52,16 @@
 
 .selectionbox:hover {
   border-radius: 50%;
-  background: #6BCC93;
+  background: $light-gray;
   transition: background 0.3s ease;
-  border: 2px solid #235530;
+  border: 2px solid $mydarkgreen;
 }
 
 .selectionbox:active {
   border-radius: 50%;
   transition: background 0.3s ease;
-  background: #235530;
-  border: 2px solid #6BCC93;
+  background: $mydarkgreen;
+  border: 2px solid $mylightgreen;
 }
 
 .hover-card {
