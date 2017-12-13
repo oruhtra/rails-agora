@@ -2,7 +2,7 @@ class UserServicesController < ApplicationController
   def new
     @user_service = UserService.new
     @services = Service.all
-
+    @services_user = current_user.services
 
     if params[:service_id].present? && Service.find(params[:service_id])
       @service = Service.find(params[:service_id])

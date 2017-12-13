@@ -1,3 +1,16 @@
+.wrapper-ajout-service h1 {
+  margin-bottom: 40px;
+  color: $very-light-gray;
+  font-size: 28px;
+}
+.wrapper-ajout-service h2 {
+  margin-bottom: 30px;
+  color: $mydarkgreen;
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
@@ -48,3 +61,13 @@
   width: 25%;
   margin: 20px;
 }
+
+/////// services not connected
+.service-not-connected {
+  opacity: 0.8;
+}
+.service-not-connected:hover {
+  opacity: 1;
+}
+
+
