@@ -13,7 +13,6 @@
 
 
 
-
 <div class="index-wrapper">
   <% if @documents_selected.empty? %>
     <div class="main-section-large">
@@ -21,10 +20,18 @@
         <div class="search_section">
           <%= render 'search_section' %>
         </div>
+
+        <div class="results_section results_section_small">
+          <%= render 'results_section' %>
+        </div>
+
+      <% else %>
+
+        <div class="results_section results_section_large">
+          <%= render 'results_section' %>
+        </div>
+
       <% end %>
-      <div class="results_section">
-        <%= render 'results_section' %>
-      </div>
       <!-- link to add a new document -->
       <%= link_to new_document_path do %>
         <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
@@ -34,18 +41,28 @@
   <% else %>
 
     <div class="main-section-medium">
+
       <% if @user_selected_tags.any? %>
         <div class="search_section">
           <%= render 'search_section' %>
         </div>
-      <% end %>
-      <div class="results_section">
+
+        <div class="results_section results_section_small">
+          <%= render 'results_section' %>
+        </div>
+      <% else %>
+       <div class="results_section results_section_large">
         <%= render 'results_section' %>
       </div>
+      <% end %>
+
+
       <%= link_to new_document_path do %>
         <i class="fa fa-plus-circle addbutton corner" aria-hidden="true"></i>
       <% end %>
+
     </div>
+
     <div class="selection_section text-center">
       <%= render 'selection_section' %>
     </div>
