@@ -5,7 +5,7 @@ function newdropzone() {
   Dropzone.autoDiscover = false;
   // const myDropzone = new Dropzone("#doc-dropzone");
   const myDropzone = new Dropzone("#doc-dropzone", {
-    dictDefaultMessage: "Here... "
+    dictDefaultMessage: "ici "
     });
 
   myDropzone.on("success", function(file, response) {

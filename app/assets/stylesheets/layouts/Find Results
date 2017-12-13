@@ -1,0 +1,26 @@
+Searching 18026 files for "site-content"
+
+/Users/vivienaudoux/code/vivienaudoux/rails-agora/app/assets/stylesheets/layouts/_site_content.scss:
+    1: #site-content {
+    2  height: 100vh;
+    3  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('/bamboo.jpg');
+
+/Users/vivienaudoux/code/vivienaudoux/rails-agora/app/views/layouts/application.html.erb:
+   23    </head>
+   24    <body>
+   25:     <div id="site-content">
+   26      <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
+   27        <%= render 'shared/navbar' %>
+
+2 matches across 2 files
+
+
+Searching 18026 files for "Déposez vos documents içi !"
+
+/Users/vivienaudoux/code/vivienaudoux/rails-agora/app/views/documents/new.html.erb:
+    4
+    5        <div class="col-xs-7 text-center">
+    6:         <h2 class=" h2-form text-center">Déposez vos documents ici ! </h2>
+    7          <div class="form-input">
+    8            <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
+
