@@ -1,11 +1,17 @@
 #masonry-container {
   margin: 0 auto;
   margin-top: 25px;
+  min-width: 50vh;
 }
 
-.masonry-style {
-  background: #F7F9FA;
-  opacity: 0.9;
-  border-radius: 10px;
-  padding: 20px;
+// .masonry-style {
+//   background: #F7F9FA;
+//   opacity: 0.9;
+//   border-radius: 10px;
+//   padding: 20px;
+// }
+
+.box {
+  background-color: transparent !important;
+  position: relative;
 }
