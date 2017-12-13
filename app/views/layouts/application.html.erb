@@ -23,7 +23,7 @@
   </head>
   <body>
     <div id="site-content">
-    <% if params[:controller] != "pages" && params[:action] != "home" %>
+    <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
