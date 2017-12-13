@@ -21,6 +21,8 @@ gem 'cloudinary'
 gem "pundit"
 gem 'masonry-rails'
 gem 'rest-client'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development, :test do
   gem 'pry-byebug'
