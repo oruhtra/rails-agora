@@ -1,8 +1,9 @@
-p "Destroy users, tags, documents"
+p "Destroy users, tags, documents and services"
 User.destroy_all
 Document.destroy_all
 Tag.destroy_all
 Doctag.destroy_all
+Service.destroy_all
 
 p "Creating the current_user"
 
@@ -95,5 +96,32 @@ fournisseurs.each do |tag|
   Tag.create(name: tag)
 end
 
+p "creating services to connect"
 
+my_service = Service.new(name: "Ameli", budgea_id: 50)
+my_service.logo = "https://d350tqmxm801hs.cloudfront.net/production/ameli-forum/images/logo-am.png?1497865829"
+my_service.save
 
+my_service = Service.new(name: "CAF", budgea_id: 73)
+my_service.logo = "https://www.caf.fr/maintenance/images/new_logo.jpg"
+my_service.save
+
+my_service = Service.new(name: "Pôle Emploi", budgea_id: 100)
+my_service.logo= "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cd/Logo_P%C3%B4le_Emploi.png/922px-Logo_P%C3%B4le_Emploi.png"
+my_service.save
+
+my_service = Service.new(name: "SFR", budgea_id: 96)
+my_service.logo = "http://www.sfr.com/sites/default/files/sfr.jpg"
+my_service.save
+
+my_service = Service.new(name: "Bouygues Telecom", budgea_id: 98)
+my_service.logo = "http://www.mega-bonnes-affaires.com/wp-content/uploads/2015/11/logo-bouygues-telecom.jpg"
+my_service.save
+
+my_service = Service.new(name: "EDF", budgea_id: 52)
+my_service.logo = "http://tous-logos.com/wp-content/uploads/2017/08/Logo-EDF.png"
+my_service.save
+
+my_service = Service.new(name: "AXA", budgea_id: 131)
+my_service.logo = "http://logok.org/wp-content/uploads/2014/09/AXA_logo.png"
+my_service.save
