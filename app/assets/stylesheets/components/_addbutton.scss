@@ -52,9 +52,14 @@
   margin-top: 30px;
   background-color: $mydarkgreen;
   color: $light-gray;
-  border-color:$mydarkgreen;
+  border-color: $mydarkgreen;
+  border-radius: 3px;
+}
+.btnadd:active {
+  outline: none !important;
 }
 .btnadd:hover {
+  background-color: $mydarkgreen;
   font-size: 24px !important;
   color: $very-light-gray;
 }

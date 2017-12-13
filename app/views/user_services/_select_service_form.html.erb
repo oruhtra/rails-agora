@@ -1,21 +1,31 @@
 <% if @error_message %>
   <%= @error_message %>
 <% end %>
-<div class="container">
-  <div class="row">
-    <% @services.each do |service| %>
-      <div class="col-xs-4">
-        <%= cl_image_tag service.logo, height: 100, width: 100 %>
-        <div class="service-form">
-          <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-          <%= hidden_field_tag :service_id, service.id %>
-          <%= submit_tag "Ajouter un compte #{service.name}", class: "btn btn-success" %>
-          <% end %>
-        </div>
+
+<div class="wrapper-ajout-service">
+<h1 class="text-center" style="color: white">Connectez vos espaces clients</h1>
+<div class="results_section results_section_small">
+
+    <div class="container">
+      <div class="row">
+        <% @services.each do |service| %>
+          <div class="col-xs-3">
+            <div class="service-card">
+              <div class="service-form">
+                <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+                <%= hidden_field_tag :service_id, service.id %>
+                <%= image_submit_tag service.logo, class: "service-logo" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+
 </div>
+
+
 <% if current_user.budgea_token %>
   <p id="budgea_token", class="hidden"><%= current_user.budgea_token %></p>
 <% end %>

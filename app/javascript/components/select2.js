@@ -24,8 +24,8 @@ $('.select2_new').select2({
 
 // add tag-s on
 $('.select2_new').on('select2:select', function (e) {
-  document.getElementById(e.params.data.text).classList.toggle("tag-s");
-  document.getElementById(e.params.data.text).classList.toggle("hidden");
+  document.getElementById(e.params.data.text.replace(/\s/, "_")).classList.toggle("tag-s");
+  document.getElementById(e.params.data.text.replace(/\s/, "_")).classList.toggle("hidden");
   const tags = document.querySelectorAll(".listenbatchtag");
   const selectedtags = generateParameters();
   const allTagsName = selectedtags.join(" ");

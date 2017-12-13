@@ -27,20 +27,19 @@
 
 .results_section {
   overflow: scroll;
-  background: #F7F9FA;
-  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 20px;
 }
 
 .results_section_small {
   margin-top: 0px;
-  max-height: 80vh;
+  height: 80vh;
 }
 
 .results_section_large {
   margin-top: 17px;
-  max-height: 88vh;
+  height: 88vh;
 }
 
 .tags-bar{

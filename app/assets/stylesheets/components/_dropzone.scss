@@ -1,7 +1,10 @@
 #doc-dropzone {
-  background-color: hsla(0,0%,150%,.2) !important;
+  // background-color: hsla(0,0%,150%,.2) !important;
+  background-color: $very-light-gray;
+  opacity: 0.2;
   border-radius: 3px;
   border: none;
-  height: 350px;
-  color: white;
+  height: 40vw;
+  width: 40vw;
+  color: black;
 }
