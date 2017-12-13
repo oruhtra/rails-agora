@@ -9,5 +9,5 @@ function createMasonryGrid() {
 }
 
 if (document.getElementById('masonry-container')) {
-  createMasonryGrid();
+  window.setTimeout(createMasonryGrid, 50)
 }
