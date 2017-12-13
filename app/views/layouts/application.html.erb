@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Agora - Your personal hub for your administrative life </title>
-    <meta name="description" content="<%= meta_description %>">
+    <meta name="description" content="<%= meta_description %>" />
 
 
         <!-- Facebook Open Graph data -->
@@ -21,12 +21,13 @@
     <%= favicon_link_tag %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
+
+
   <body>
     <div id="site-content">
-    <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
-      <%= render 'shared/navbar' %>
-    <% end %>
-    <%= render 'shared/flashes' %>
+      <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
+        <%= render 'shared/navbar' %>
+      <% end %>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
