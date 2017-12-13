@@ -24,12 +24,15 @@
 
 
   <body>
-    <div id="site-content">
-      <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
+    <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
+      <div id="site-content">
         <%= render 'shared/navbar' %>
-      <% end %>
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
-    </div>
+    <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
