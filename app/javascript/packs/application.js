@@ -11,3 +11,4 @@ import '../components/select2';
 
 // appelle des functions
 listenbatchtag();
+
