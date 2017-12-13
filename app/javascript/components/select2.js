@@ -39,3 +39,9 @@ function generateParameters() {
   });
   return selectedtags;
 }
+
+
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});

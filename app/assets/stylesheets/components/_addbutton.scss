@@ -1,16 +1,38 @@
+.header-user {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
 .addbutton {
  font-size: 50px;
  opacity: 0.7;
  color: $mygreen;
 }
+.ref {
+  color: white;
+  margin-right: 20px;
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.ref:hover {
+  opacity: 1;
+}
+
+.addbutton2 {
+ font-size: 20px;
+ color: white;
+ opacity: 0.7;
+}
+
+.addbutton2:hover {
+  opacity: 1;
+}
+
 .addbutton:hover {
   opacity: 1;
 }
-.corner {
-  position: fixed;
-  bottom: 10px;
-  right: 50%;
-}
+
 
 .h2-form {
   color: white;
@@ -49,3 +71,26 @@
 .docform #document_photo {
   font-size: 18px;
 }
+
+.button2 {
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  display: block;
+  max-width: 180px;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 6px 20px;
+}
+
+
+.button2:hover {
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+}
+
+

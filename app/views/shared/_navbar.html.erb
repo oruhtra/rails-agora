@@ -16,10 +16,20 @@
     <%= yield :navbar %>
   </div>
 
-  <%#= link_to 'Ajouter un service', new_user_service_path, style: "color:white;" %>
+  <%= link_to new_document_path do %>
+    <i class="fa fa-plus-circle addbutton" aria-hidden="true"></i>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">
+
+      <%= link_to scrap_documents_documents_path do %>
+        <i class="fa fa-refresh ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents"></i>
+      <% end %>
+
+      <%= link_to new_user_service_path do %>
+        <i class="fa fa-plug addbutton2" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un service"></i>
+      <% end %>
 
     <% if user_signed_in? %>
       <!-- Avatar with dropdown menu -->
