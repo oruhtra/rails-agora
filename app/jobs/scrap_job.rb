@@ -14,13 +14,14 @@ class ScrapJob < ApplicationJob
     url = "https://agora.biapi.pro/2.0/users/me/documents/"
     headers = { "Authorization": "Bearer #{user.budgea_token}" }
     budgea_response = JSON.parse(RestClient.get(url, headers))
-    @document = Document.new
 
     # Iterate over all user documents from his accounts
     budgea_response["documents"].each do |document|
       #check if documents has already been downloaded and if it has an image
       if !document["url"].nil? && Document.where(budgea_doc_id: document["id_file"]).empty?
         #download file directly in cloudinary
+        @document = Document.new
+
         cl_response = Cloudinary::Uploader.upload(document["url"], headers: {"Authorization": "Bearer: #{user.budgea_token}"})
         #create doc and pass attributes
         @document.remote_photo_url = cl_response["secure_url"]
