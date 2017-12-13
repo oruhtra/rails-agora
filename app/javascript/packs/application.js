@@ -8,7 +8,5 @@ import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
 import { budgeaHandshake } from "../components/budgea_add_service";
 import '../components/select2';
 
-
 // appelle des functions
 listenbatchtag();
-
