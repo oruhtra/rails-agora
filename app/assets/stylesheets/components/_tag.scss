@@ -3,28 +3,29 @@
   padding: 8px 15px;
   text-align: center;
   border-radius: 4px;
-  background-color: white;
-  color: #6BCC93;
+  background-color: $light-gray;
+  color: $mydarkgreen;
   margin: 5px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
-  box-shadow: 0 0 0 1px #6BCC93 inset;
+  box-shadow: 0 0 0 1px $mygreen inset;
 }
 
 .tag:hover{
-  background-color: #6BCC93;
-  color: white;
+  opacity: 0.9;
+  color: $mydarkgreen;
   cursor: pointer;
 }
 
 .tag-s {
-  background-color: #6BCC93;
-  color: white;
-  box-shadow: 0 0 0 1px #6BCC93 inset;
+  background-color: $mygreen;
+  color: $very-light-gray;
+  box-shadow: 0 0 0 1px $mydarkgreen inset;
 }
 
 .tag-s:hover {
-  opacity: 0.8
+  opacity: 0.8;
+  color: $very-light-gray;
 }
 
 .existing-tags {

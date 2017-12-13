@@ -9,21 +9,31 @@
 }
 
 .select2-results__options {
-    background-color: transparent !important ;
-    color: #6BCC93;
+  background-color: transparent !important ;
+  color: $mygreen;
 }
 #select2-dropdowntag-results .select2-results__options {
-   background-color: transparent !important ;
-   color: #6BCC93;
+  background-color: transparent !important ;
+  color: $mygreen;
 }
 
+// selected item
 .select2-results__option.select2-results__option--highlighted {
-     color: #6BCC93 !important;
-     background-color: grey !important;
+  color: $mygreen !important;
+  background-color: $light-gray !important;
 }
+
 .border-round {
   border-radius: 5px;
-  background-color: #EFEFEF ;
-  color: #757575;
+  background-color: $light-gray ;
+  color: $light-gray;
+  border-color: $light-gray;
 }
 
+.select2-results {
+  background-color: $very-light-gray;
+}
+
+.select2-selection {
+  border-color: $light-gray !important;
+}
