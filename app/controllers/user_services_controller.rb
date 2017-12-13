@@ -43,7 +43,8 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      redirect_to scrap_documents_documents_path
+      ScrapJob.perform_later(current_user.id)
+      redirect_to documents_path
     end
 
 
