@@ -145,7 +145,6 @@ class DocumentsController < ApplicationController
     @document = Document.new
     authorize @document
 
-    binding.pry
     # Iterate over all user documents from his accounts
     budgea_response["documents"].each do |document|
       #check if documents has already been downloaded and if it has an image
