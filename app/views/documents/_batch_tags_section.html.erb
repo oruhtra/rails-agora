@@ -2,7 +2,7 @@
 <div class="add-tags">
   <h3>Ajoutez des tags existants à l'ensemble de vos documents</h3>
   <div id="search_add_tag">
-    <%= collection_select :search_tag, nil, @other_tags, :name, :name, {prompt: true}, {class: "select2_new border-round"} %>
+    <%= collection_select :search_tag, nil, @other_tags, :name, :name_clean, {prompt: true}, {class: "select2_new border-round"} %>
   </div>
   <div class ="new-other-tags" >
     <ul class="list-inline">

@@ -5,7 +5,7 @@
       <div class="search-bar">
         <%= hidden_field_tag :query, @user_selected_tagnames%>
         <span class="fa fa-search"></span>
-        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name, {prompt: true}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
+        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name_clean, {prompt: true}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
       </div>
     <% end %>
 
