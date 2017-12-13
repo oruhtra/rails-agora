@@ -1,4 +1,16 @@
-<h1 style:"color: white">Votre requête est en cours de traitement</h1>
+<h4 class="text-center", style="color: white; margin-bottom: 100px">Connection à votre espace client en cours</h4>
+<div class="loader-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div id="loader">
+          <div id="shadow"></div>
+          <div id="box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= form_tag(user_services_path, method: :post) do %>
 <%= hidden_field_tag :error_message %>
