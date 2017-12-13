@@ -5,7 +5,7 @@
   <div class="row">
     <% @services.each do |service| %>
       <div class="col-xs-4">
-        <%= cl_image_tag service.logo, height: 100, width: 100 %>
+        <%= cl_image_tag(service.logo height: 100, width: 100) %>
         <div class="service-form">
           <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
           <%= hidden_field_tag :service_id, service.id %>
