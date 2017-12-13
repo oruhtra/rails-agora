@@ -9,8 +9,8 @@
   <% if @doctags.empty? %>
     <p style="color: white;">No tags selected yet</p>
   <% else %>
+    <p style="font-weight: bolder; color: white;">Tags existants</p>
     <div class="existing-tags">
-      <p style="font-weight: bolder; color: white;">Tags existants</p>
       <% @doctags.each do |t| %>
         <%= link_to document_doctag_path(@document, t), method: :delete do %>
         <div class="tag tag-s text-center"><%= t.tag.name_clean %></div>
