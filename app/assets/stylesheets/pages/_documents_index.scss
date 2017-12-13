@@ -8,29 +8,39 @@
 .main-section-large {
   width: 100%;
   position: relative;
+  padding: 0px 20px;
 }
 
 .main-section-medium {
   width: 80%;
   position: relative;
-  border-top-right-radius: 10px;
+  // padding: 0px 10px;
+  // border-top-right-radius: 10px;
 }
 
 .search_section {
-  margin: 5px 20px;
+  margin-bottom: 20px;
   max-height: 7vh;
   display: flex;
   align-items: center;
 }
 
-.result-section {
+.results_section {
   overflow: scroll;
-  max-height: 83vh;
   background: #F7F9FA;
   opacity: 0.9;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px;
+}
+
+.results_section_small {
+  margin-top: 0px;
+  max-height: 80vh;
+}
+
+.results_section_large {
+  margin-top: 17px;
+  max-height: 88vh;
 }
 
 .tags-bar{
