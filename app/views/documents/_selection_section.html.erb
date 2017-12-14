@@ -6,7 +6,7 @@
           <%= cl_image_tag doc.photo, class: "document-thumbnail", "format" => 'jpg' %>
           <div class="unselect">
             <%= link_to document_path(doc, document: {selected: false}), method: :patch do %>
-              <i class="fa fa-times button" aria-hidden="true" style="margin: 10px"></i>
+              <i class="fa fa-times button" aria-hidden="true"></i>
             <% end %>
           </div>
         </li>
