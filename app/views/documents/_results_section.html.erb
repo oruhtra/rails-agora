@@ -1,10 +1,18 @@
 <!-- <div class="result-section"> -->
+<% if @numnewdoc > 0  %>
+  <p><%= @numnewdoc %> nouveaux documents depuis votre dernière connexion.</p>
+<% end %>
   <div id="masonry-container" class="clearfix masonry-style">
     <% @documents_unselected.each do |document| %>
       <div class= "box card" id="<%= document.id %>">
         <%= link_to document_path(document) do %>
-          <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
+          <% if document.updated_at > @lastconnexion %>
+            <%= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>
+          <% else %>
+            <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
+          <% end %>
         <% end %>
+
          <%= link_to document_path(document) do %>
          <div class="hover-card" style='background-color: <%= ['#fed136'].sample %>'>
           <div class="card-description">

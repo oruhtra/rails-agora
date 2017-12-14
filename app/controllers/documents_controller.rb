@@ -24,6 +24,8 @@ class DocumentsController < ApplicationController
 
     # get all tagged document based on selected tags (unselected)
     @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
+    # sort them by date updates_at, last on the top
+    @documents_unselected.sort_by { |doc| doc.updated_at }.reverse!
 
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
@@ -44,6 +46,8 @@ class DocumentsController < ApplicationController
 
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
+    @lastconnexion = (Time.now() - (36000*1))
+    @numnewdoc = (@documents_unselected + @documents_selected).count {|doc| doc.updated_at > @lastconnexion }
   end
 
   def show
