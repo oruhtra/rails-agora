@@ -16,30 +16,21 @@
 <div class="index-wrapper">
   <% if @documents_selected.empty? %>
     <div class="main-section-large">
-      <% if @user_selected_tags.any? %>
-        <div class="search_section">
-          <%= render 'search_section' %>
-        </div>
 
-        <div class="results_section results_section_small">
-          <%= render 'results_section' %>
-        </div>
+      <div class="search_section">
+        <%= render 'search_section' %>
+      </div>
 
-      <% else %>
+      <div class="results_section results_section_small">
+        <%= render 'results_section' %>
+      </div>
 
-        <div class="results_section results_section_large">
-          <%= render 'results_section' %>
-        </div>
-
-      <% end %>
-      <!-- link to add a new document -->
-
+    </div>
 
   <% else %>
 
     <div class="main-section-medium">
 
-      <% if @user_selected_tags.any? %>
         <div class="search_section">
           <%= render 'search_section' %>
         </div>
@@ -47,12 +38,6 @@
         <div class="results_section results_section_small">
           <%= render 'results_section' %>
         </div>
-      <% else %>
-       <div class="results_section results_section_large">
-        <%= render 'results_section' %>
-      </div>
-      <% end %>
-
 
     </div>
 

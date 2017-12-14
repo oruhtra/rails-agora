@@ -9,6 +9,7 @@ class TagsController < ApplicationController
     # check if tag already exist by searching by tag.name instead of tag.id, if it doesn't exist create it
     if Tag.tag_from_tagnames([@tag_name]).first.nil?
       @tag.name = @tag_name
+      @tag.category = "user_specific"
       @tag.save
     else
       @tag = Tag.tag_from_tagnames([@tag_name]).first
