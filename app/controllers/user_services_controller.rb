@@ -48,7 +48,6 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      ScrapJob.perform_later(current_user.id)
       flash[:notice] = "Successfully login"
       redirect_to documents_path
     end

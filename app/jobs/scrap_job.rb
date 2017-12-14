@@ -45,6 +45,8 @@ class ScrapJob < ApplicationJob
         #delete first file from cloudinary, doing remote_photo_url duplicates the file so the first one needs to be destroyed
         Cloudinary::Uploader.destroy(cl_response["public_id"])
 
+        document = Document.find(document.id)
+        document.update(ratio: document.get_image_ratio)
         # get document date to date format
         document_date = d["date"].to_date
         # get document service
@@ -56,7 +58,10 @@ class ScrapJob < ApplicationJob
         check_and_add_tag_to_document(document, supplier.macro_category, "macro_category")
         check_and_add_tag_to_document(document, d["name"], "doc_type")
         check_and_add_tag_to_document(document, supplier.name, "supplier")
-        check_and_add_tag_to_document(document, document_date.strftime("%b%Y"), "date")
+        check_and_add_tag_to_document(document, document_date.strftime("%b %Y"), "date")
+
+        # add ratio
+
         puts "DOC ADDED"
         puts "================================"
       end

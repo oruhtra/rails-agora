@@ -67,14 +67,15 @@ class DocumentsController < ApplicationController
     @tag = Tag.new
   end
 
-  def create #documents are save as soon as they are put in the dropzone without tags
+  def create #documents are saved as soon as they are put in the dropzone without tags
     @document = Document.new(document_params)
     @document.user = @user
     authorize @document
     @document.photo = params[:file]
     @document.name = correctDocumentName(params["file"].original_filename)
-
     if @document.save
+      @document = Document.find(@document.id)
+      @document.update(ratio: @document.get_image_ratio)
       respond_to do |format|
         format.html { redirect_to document_path(@document) }
         format.json do
@@ -142,7 +143,7 @@ class DocumentsController < ApplicationController
     :use_original_filename => true,
     :resource_type => 'image')
     zip = open(url)
-    send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}" )
+    send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}.zip" )
   end
 
 
