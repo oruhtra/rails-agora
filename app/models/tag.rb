@@ -3,6 +3,7 @@ class Tag < ApplicationRecord
   has_many :documents, through: :doctags
 
   validates :name, presence: true, uniqueness: true
+  validates :category, presence: true, inclusion: { in: %w(macro_category doc_type supplier user_specific date)}
 
   # get all remaining tags of documents selected from a firest array of tags
   def self.remaining_tags(tags_array)
