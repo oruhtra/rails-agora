@@ -99,7 +99,7 @@ end
 p "creating services to connect"
 
 my_service = Service.new(name: "Ameli", budgea_id: 50)
-my_service.logo = "https://d350tqmxm801hs.cloudfront.net/production/ameli-forum/images/logo-am.png?1497865829"
+my_service.logo = "https://www.ordissinaute.fr/sites/default/files/styles/full_new_main/public/field/image/vignette_ameli.jpg?itok=ITl14XyK"
 my_service.save
 
 my_service = Service.new(name: "CAF", budgea_id: 73)

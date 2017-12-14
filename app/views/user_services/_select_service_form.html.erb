@@ -9,10 +9,7 @@
           <div class="col-xs-3">
             <div class="service-card">
               <div class="service-form">
-                  <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                  <%= hidden_field_tag :service_id, service.id %>
-                  <%= image_submit_tag service.logo, class: "service-logo" %>
-                  <% end %>
+                <%= image_tag service.logo, class: "service-logo" %>
               </div>
             </div>
           </div>
@@ -23,11 +20,11 @@
         <% (@services - @services_user).each do |service| %>
           <div class="col-xs-3">
             <div class="service-card">
-                <div class="service-form service-not-connected">
-                      <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                      <%= hidden_field_tag :service_id, service.id %>
-                      <%= image_submit_tag service.logo, class: "service-logo" %>
-                      <% end %>
+              <div class="service-form service-not-connected">
+                <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+                <%= hidden_field_tag :service_id, service.id %>
+                <%= image_submit_tag service.logo, class: "service-logo" %>
+                <% end %>
               </div>
             </div>
           </div>
