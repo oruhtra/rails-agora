@@ -6,15 +6,15 @@
     <% @documents_unselected.each do |document| %>
       <div class= "box card" id="<%= document.id %>">
         <%= link_to document_path(document) do %>
-          <% if document.updated_at > @lastconnexion %>
-            <%= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>
-          <% else %>
+          <%# if document.updated_at > @lastconnexion %>
+            <%#= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>
+          <%# else %>
             <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
-          <% end %>
+          <%# end %>
         <% end %>
 
-         <%= link_to document_path(document) do %>
-         <div class="hover-card" style='background-color: <%= ['#fed136'].sample %>'>
+        <%= link_to document_path(document) do %>
+        <div class="hover-card" style='background-color: <%= ['#fed136'].sample %>'>
           <div class="card-description">
             <div class="card-title">
               <% if document.name[27] %>
