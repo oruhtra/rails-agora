@@ -102,13 +102,13 @@ my_service = Service.new(name: "Ameli", budgea_id: 50, macro_category: "sécurit
 my_service.logo = "http://is3.mzstatic.com/image/thumb/Purple127/v4/64/e1/92/64e1921c-3afe-7d95-5598-8b9e70a7e94d/source/1200x630bb.jpg"
 my_service.save
 
-# my_service = Service.new(name: "CAF", budgea_id: 73)
-# my_service.logo = "https://www.caf.fr/maintenance/images/new_logo.jpg"
-# my_service.save
+my_service = Service.new(name: "CAF", budgea_id: 73, macro_category: "logement")
+my_service.logo = "https://www.caf.fr/maintenance/images/new_logo.jpg"
+my_service.save
 
-# my_service = Service.new(name: "Pôle Emploi", budgea_id: 100)
-# my_service.logo= "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cd/Logo_P%C3%B4le_Emploi.png/922px-Logo_P%C3%B4le_Emploi.png"
-# my_service.save
+my_service = Service.new(name: "Pôle Emploi", budgea_id: 100, macro_category: "emploi")
+my_service.logo= "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cd/Logo_P%C3%B4le_Emploi.png/922px-Logo_P%C3%B4le_Emploi.png"
+my_service.save
 
 my_service = Service.new(name: "Dropbox", budgea_id: 580, macro_category: "internet")
 my_service.logo = "https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-windows@2x.png"
@@ -118,9 +118,9 @@ my_service = Service.new(name: "Red by SFR", budgea_id: 96, macro_category: "té
 my_service.logo = "http://www.sfr.com/sites/default/files/sfr.jpg"
 my_service.save
 
-# my_service = Service.new(name: "Bouygues Telecom", budgea_id: 98)
-# my_service.logo = "http://www.mega-bonnes-affaires.com/wp-content/uploads/2015/11/logo-bouygues-telecom.jpg"
-# my_service.save
+my_service = Service.new(name: "Bouygues Telecom", budgea_id: 98, macro_category: "téléphonie")
+my_service.logo = "http://www.mega-bonnes-affaires.com/wp-content/uploads/2015/11/logo-bouygues-telecom.jpg"
+my_service.save
 
 my_service = Service.new(name: "Orange", budgea_id: 56, macro_category: "téléphonie")
 my_service.logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1024px-Orange_logo.svg.png"
