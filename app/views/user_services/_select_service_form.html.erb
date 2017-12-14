@@ -1,37 +1,32 @@
-<% if @error_message %>
-  <%= @error_message %>
-<% end %>
-
 <div class="wrapper-ajout-service">
 <h1 class="text-center" >Connectez vos espaces clients</h1>
   <div class="results_section results_section_small">
 
     <div class="container">
+      <% if !current_user.services.empty? %>
       <div class="row">
         <h2>Vos services déjà connectés</h2>
         <% @services_user.each do |service| %>
           <div class="col-xs-3">
             <div class="service-card">
               <div class="service-form">
-                  <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                  <%= hidden_field_tag :service_id, service.id %>
-                  <%= image_submit_tag service.logo, class: "service-logo" %>
-                  <% end %>
+                <%= image_tag service.logo, class: "service-logo" %>
               </div>
             </div>
           </div>
         <% end %>
       </div>
+     <% end %>
       <div class="row">
         <h2>Connectez de nouveaux services</h2>
         <% (@services - @services_user).each do |service| %>
           <div class="col-xs-3">
             <div class="service-card">
-                <div class="service-form service-not-connected">
-                      <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                      <%= hidden_field_tag :service_id, service.id %>
-                      <%= image_submit_tag service.logo, class: "service-logo" %>
-                      <% end %>
+              <div class="service-form service-not-connected">
+                <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+                <%= hidden_field_tag :service_id, service.id %>
+                <%= image_submit_tag service.logo, class: "service-logo" %>
+                <% end %>
               </div>
             </div>
           </div>

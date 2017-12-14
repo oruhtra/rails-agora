@@ -1,6 +1,15 @@
 // Define variables for your color scheme
 
-// For example:
+// 6 couleurs du site
+$primary: #fed136 !default;
+$textcolor: black;
+$buttoncolor: #fed136;
+$tagcolor1: #fed136;
+$tagcolor2: white;
+$mybeige: white;
+$myresultsection: #F4F4F4;  // Background color
+
+// Landing page colors
 $red: #EE5F5B;
 $blue: rgba(79, 93, 117, 1);
 $yellow: #FDB631;
@@ -10,6 +19,20 @@ $gray: #000000;
 $light-gray: #F4F4F4;
 $very-light-gray: #fafaf8;
 
+// Override bootstrap color (template):
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+// Useless mais au cas où...:
 $lightblue: rgba(191, 192, 192, 1);
 $darkblue: rgba(45, 49, 66, 1);
 $lightred: rgba(239, 131, 84, 1);

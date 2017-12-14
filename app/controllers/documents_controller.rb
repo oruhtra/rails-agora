@@ -35,6 +35,8 @@ class DocumentsController < ApplicationController
 
     if !@user_selected_tags.empty?
       @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
+    else
+      @user_tags = @user_tags.select!{ |t| t.category == "macro_category" }
     end
 
     # select tags true for all remaining documents (OUT FOR NOW)
