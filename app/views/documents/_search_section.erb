@@ -7,9 +7,20 @@
     <% end %>
   <% end %>
   <!-- affichage the others tags -->
-  <% @user_tags.each do |tag| %>
-     <a href="" class="tag listentag" id="<%=tag.name%>"><%= tag.name_clean %></a>
+  <% if !@user_tags.nil? %>
+    <% @user_tags.each do |tag| %>
+       <a href="" class="tag listentag" id="<%=tag.name%>"><%= tag.name_clean %></a>
+    <% end %>
   <% end %>
+
+  <% if !@user_selected_tags.first.nil? %>
+    <div class="clear-tags">
+      <%= link_to documents_path do %>
+        <i class="fa fa-times button" aria-hidden="true" style="margin: 10px"></i>
+      <% end %>
+    </div>
+  <% end %>
+
 
   <div class="searchtag">
     <%= form_tag documents_path, method: :get do %>
@@ -22,11 +33,6 @@
   </div>
 </div>
 
-<div class="clear-tags">
-  <%= link_to documents_path do %>
-    <i class="fa fa-times button" aria-hidden="true" style="margin: 10px"></i>
-  <% end %>
-</div>
 
 
 
