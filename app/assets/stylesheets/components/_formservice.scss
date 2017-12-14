@@ -1,11 +1,11 @@
 .wrapper-ajout-service h1 {
   margin-bottom: 40px;
-  color: $very-light-gray;
+  color: $textcolor;
   font-size: 28px;
 }
 .wrapper-ajout-service h2 {
   margin-bottom: 30px;
-  color: $mydarkgreen;
+  color: $textcolor;
   font-size: 20px;
   margin: 10px;
   text-align: center;
@@ -16,15 +16,15 @@
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
-    background: $light-gray;
+    background: $white;
 }
 .form-style-6 h1{
-    background: $mygreen;
+    background: $primary;
     padding: 20px 0;
     font-size: 140%;
     font-weight: 300;
     text-align: center;
-    color: #fff;
+    color: white;
     margin: -16px -16px 16px -16px;
 }
 
@@ -36,8 +36,8 @@
     width: 100%;
     padding: 3%;
     margin-top: 20px;
-    background: $mygreen;
-    border-bottom: 2px solid $mydarkgreen;
+    background: $primary;
+    border-bottom: 2px solid $primary;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
@@ -45,7 +45,7 @@
 }
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover{
-    background: $mydarkgreen;
+    background: $primary;
 }
 
 .input {
@@ -53,7 +53,7 @@
 }
 
 .input p {
-  color: $mygreen;
+  color: $textcolor;
 }
 
 .form-picture {

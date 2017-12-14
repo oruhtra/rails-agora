@@ -1,9 +1,9 @@
 #doc-dropzone {
   // background-color: hsla(0,0%,150%,.2) !important;
-  background-color: $very-light-gray;
-  opacity: 0.2;
-  border-radius: 3px;
-  border: none;
+  background-color: $white;
+  border: solid 2px $primary;
+  opacity: 0.6;
+  border-radius: 10px;
   height: 40vw;
   width: 40vw;
   color: black;

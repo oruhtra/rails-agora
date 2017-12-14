@@ -1,6 +1,6 @@
 .select2-container--default .select2-selection--multiple {
   background-color: transparent !important ;
-  color: white;
+  color: $primary;
 }
 
 // otherwise there is an other imput
@@ -10,30 +10,30 @@
 
 .select2-results__options {
   background-color: transparent !important ;
-  color: $mygreen;
+  color: $primary;
 }
 #select2-dropdowntag-results .select2-results__options {
   background-color: transparent !important ;
-  color: $mygreen;
+  color: $textcolor;
 }
 
 // selected item
 .select2-results__option.select2-results__option--highlighted {
-  color: $mygreen !important;
-  background-color: $light-gray !important;
+  color: $tagcolor2 !important;
+  background-color: $tagcolor1 !important;
 }
 
 .border-round {
   border-radius: 5px;
-  background-color: $light-gray ;
-  color: $light-gray;
-  border-color: $light-gray;
+  background-color: white;
+  color: $primary;
+  border-color: $primary;
 }
 
 .select2-results {
-  background-color: $very-light-gray;
+  background-color: white;
 }
 
 .select2-selection {
-  border-color: $light-gray !important;
+  border-color: $primary !important;
 }

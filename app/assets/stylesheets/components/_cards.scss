@@ -4,7 +4,7 @@
 
 .card-image {
   border-radius: 5px;
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px $textcolor;
   opacity: 1;
 }
 
@@ -54,14 +54,14 @@
   border-radius: 50%;
   background: $light-gray;
   transition: background 0.3s ease;
-  border: 2px solid $mydarkgreen;
+  border: 2px solid $primary;
 }
 
 .selectionbox:active {
   border-radius: 50%;
   transition: background 0.3s ease;
-  background: $mydarkgreen;
-  border: 2px solid $mylightgreen;
+  background: $primary;
+  border: 2px solid $primary;
 }
 
 .hover-card {
