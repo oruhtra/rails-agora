@@ -47,11 +47,15 @@ class ScrapJob < ApplicationJob
 
         # get document date to date format
         document_date = d["date"].to_date
+        # get document service
+        supplier = Service.where(name: d["issuer"]).first
+
         puts "adding tags"
         puts "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
         #add tags to the document
+        check_and_add_tag_to_document(document, supplier.macro_category, "macro_category")
         check_and_add_tag_to_document(document, d["name"], "doc_type")
-        check_and_add_tag_to_document(document, d["issuer"], "supplier")
+        check_and_add_tag_to_document(document, supplier.name, "supplier")
         check_and_add_tag_to_document(document, document_date.strftime("%b%Y"), "date")
         puts "DOC ADDED"
         puts "================================"
