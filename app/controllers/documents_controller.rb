@@ -46,7 +46,7 @@ class DocumentsController < ApplicationController
 
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
-    @lastconnexion = (Time.now() - (36000*1))
+    @lastconnexion = (Time.now() - (600*1))
     @numnewdoc = (@documents_unselected + @documents_selected).count {|doc| doc.updated_at > @lastconnexion }
   end
 
