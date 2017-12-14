@@ -26,6 +26,7 @@
 }
 
 .results_section {
+  position: relative;
   overflow: scroll;
   background: $myresultsection;
   border-radius: 5px;
