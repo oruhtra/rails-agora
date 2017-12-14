@@ -98,9 +98,9 @@ end
 
 # p "creating services to connect"
 
-# my_service = Service.new(name: "Ameli", budgea_id: 50)
-# my_service.logo = "https://d350tqmxm801hs.cloudfront.net/production/ameli-forum/images/logo-am.png?1497865829"
-# my_service.save
+my_service = Service.new(name: "Ameli", budgea_id: 50)
+my_service.logo = "http://is3.mzstatic.com/image/thumb/Purple127/v4/64/e1/92/64e1921c-3afe-7d95-5598-8b9e70a7e94d/source/1200x630bb.jpg"
+my_service.save
 
 # my_service = Service.new(name: "CAF", budgea_id: 73)
 # my_service.logo = "https://www.caf.fr/maintenance/images/new_logo.jpg"
@@ -110,18 +110,39 @@ end
 # my_service.logo= "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cd/Logo_P%C3%B4le_Emploi.png/922px-Logo_P%C3%B4le_Emploi.png"
 # my_service.save
 
-# my_service = Service.new(name: "SFR", budgea_id: 96)
-# my_service.logo = "http://www.sfr.com/sites/default/files/sfr.jpg"
-# my_service.save
+my_service = Service.new(name: "Dropbox", budgea_id: 580)
+my_service.logo = "https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-windows@2x.png"
+my_service.save
+
+my_service = Service.new(name: "SFR", budgea_id: 96)
+my_service.logo = "http://www.sfr.com/sites/default/files/sfr.jpg"
+my_service.save
 
 # my_service = Service.new(name: "Bouygues Telecom", budgea_id: 98)
 # my_service.logo = "http://www.mega-bonnes-affaires.com/wp-content/uploads/2015/11/logo-bouygues-telecom.jpg"
 # my_service.save
 
-# my_service = Service.new(name: "EDF", budgea_id: 52)
-# my_service.logo = "http://tous-logos.com/wp-content/uploads/2017/08/Logo-EDF.png"
-# my_service.save
+my_service = Service.new(name: "Orange", budgea_id: 56)
+my_service.logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1024px-Orange_logo.svg.png"
+my_service.save
 
-# my_service = Service.new(name: "AXA", budgea_id: 131)
-# my_service.logo = "http://logok.org/wp-content/uploads/2014/09/AXA_logo.png"
-# my_service.save
+my_service = Service.new(name: "Free Mobile", budgea_id: 49)
+my_service.logo = "http://www.ariase.com/fr/news/media/logo-free-intro.jpg"
+my_service.save
+
+my_service = Service.new(name: "AXA", budgea_id: 131)
+my_service.logo = "https://www.axa.fr/etc/designs/axa/axa-fr-desktop/clientlib_publish/img/logo/logo-axa-new.svg"
+my_service.save
+
+my_service = Service.new(name: "Direct Energie", budgea_id: "350")
+my_service.logo = "https://selectra.info/sites/default/files/field/image/direct-energie-xl.png"
+my_service.save
+
+my_service = Service.new(name: "Maïf", budgea_id: 103)
+my_service.logo = "https://www.maif.fr/content/imagesReseaux/logo-maif.svg"
+my_service.save
+
+my_service = Service.new(name: "La Poste", budgea_id: 334)
+my_service.logo = "https://upload.wikimedia.org/wikipedia/fr/2/2a/Logo-laposte.png"
+my_service.save
+
