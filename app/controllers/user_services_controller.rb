@@ -35,7 +35,7 @@ class UserServicesController < ApplicationController
       else
         flash[:alert] = "Echec de la connexion"
       end
-      redirect_to new_user_service_path({:error_message => params[:error_message]})
+      redirect_to new_user_service_path
     else
       @user_service.user_id = @user.id
       @user_service.service_id = params[:service_id]
@@ -52,8 +52,19 @@ class UserServicesController < ApplicationController
       flash[:notice] = "Successfully login"
       redirect_to documents_path
     end
+  end
 
+  def destroy
+    @user_service = UserService.find(params[:id])
+    authorize @user_service
+    url = "https://agora.biapi.pro/2.0/users/#{current_user.budgea_id}/connections/#{@user_service.connection_id}"
+    headers = { "Authorization": "Bearer #{current_user.budgea_token}" }
 
+    RestClient.delete(url, headers)
+
+    @user_service.destroy
+
+    redirect_to new_user_service_path
   end
 
   private

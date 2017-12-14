@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: :create
 
-  resources :user_services, only: [:new, :create]
+  resources :user_services, only: [:new, :create, :destroy]
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
