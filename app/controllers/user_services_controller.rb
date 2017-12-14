@@ -30,6 +30,11 @@ class UserServicesController < ApplicationController
     authorize @user_service
 
     if params[:error_message].present?
+      if params[:error_message] = "wrongpass"
+        flash[:alert] = "Mauvaise combinaison Email/password"
+      else
+        flash[:alert] = "Echec de la connexion"
+      end
       redirect_to new_user_service_path({:error_message => params[:error_message]})
     else
       @user_service.user_id = @user.id
@@ -44,6 +49,7 @@ class UserServicesController < ApplicationController
       @user.save
       @user_service.save
       ScrapJob.perform_later(current_user.id)
+      flash[:notice] = "Successfully login"
       redirect_to documents_path
     end
 

@@ -26,6 +26,7 @@
   <body>
     <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
       <div id="site-content">
+        <%= render 'shared/flashes' %>
         <%= render 'shared/navbar' %>
         <%= yield %>
       </div>
