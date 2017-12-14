@@ -1,5 +1,5 @@
 p "Destroy users, tags, documents and services"
-# User.destroy_all
+User.destroy_all
 Document.destroy_all
 Tag.destroy_all
 Doctag.destroy_all
@@ -8,8 +8,8 @@ Service.destroy_all
 
 p "Creating the current_user"
 
-myuser = User.new(email: "test@mail.com",  password: "123456" )
-myuser.remote_photo_url = "http://www.annonceschatons.fr/wp-content/uploads/2017/07/il_existe_d__sormais_un_parfum_qui_sent_la_fourrure_de_chaton_28.jpeg_north_1200x_white.jpg"
+myuser = User.new(email: "arthur.reboul@gmail.com",  password: "123456" )
+myuser.remote_photo_url = "https://media-exp1.licdn.com/mpr/mpr/shrink_100_100/p/3/000/22a/280/2401593.jpg"
 myuser.save
 
 p "Creating tag table"
