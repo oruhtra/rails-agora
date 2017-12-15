@@ -5,12 +5,11 @@
       <div class="search-bar">
         <%= hidden_field_tag :query, @user_selected_tagnames%>
         <span class="fa fa-search"></span>
-        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name_clean, {prompt: true}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
+        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name_clean, {include_blank: ''}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
       </div>
     <% end %>
 
 <% end %>
-
 
 
 <div class="index-wrapper">
@@ -18,32 +17,54 @@
     <div class="main-section-large">
 
       <div class="search_section">
+        <div class="fade-out-left fade-out-left-white"></div>
         <%= render 'search_section' %>
+        <div class="fade-out-right fade-out-right-white"></div>
       </div>
 
-      <div class="results_section results_section_small">
-        <%= render 'results_section' %>
-      </div>
-
-    </div>
-
-  <% else %>
-
-    <div class="main-section-medium">
-
-        <div class="search_section">
-          <%= render 'search_section' %>
-        </div>
-
+      <div class="result-section-wrapper">
+        <div class="fade-out-top fade-out-top-grey"></div>
         <div class="results_section results_section_small">
           <%= render 'results_section' %>
         </div>
+        <div class="fade-out-bottom fade-out-bottom-grey"></div>
+      </div>
+
+  <% else %>
+
+    <div class="main-section-large">
+
+      <div class="search_section">
+        <div class="fade-out-left fade-out-left-white"></div>
+        <%= render 'search_section' %>
+        <div class="fade-out-right fade-out-right-white"></div>
+      </div>
+
+      <div class="flex">
+
+        <div class="main-section-medium">
+          <div class="result-section-wrapper">
+            <div class="fade-out-top fade-out-top-grey"></div>
+            <div class="results_section results_section_small">
+              <%= render 'results_section' %>
+            </div>
+            <div class="fade-out-bottom fade-out-bottom-grey"></div>
+          </div>
+        </div>
+
+        <div class="selection_section text-center">
+          <div class="selection-section-wrapper">
+            <div class="fade-out-top fade-out-top-white"></div>
+            <%= render 'selection_section' %>
+            <div class="fade-out-bottom fade-out-bottom-white"></div>
+          </div>
+          <%= render 'action-bar-selection' %>
+        </div>
+
+      </div>
 
     </div>
 
-    <div class="selection_section text-center">
-      <%= render 'selection_section' %>
-    </div>
       <!-- link to add a new document -->
   <% end %>
 

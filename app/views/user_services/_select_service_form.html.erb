@@ -3,18 +3,27 @@
   <div class="results_section results_section_small">
 
     <div class="container">
+      <% if !current_user.services.empty? %>
       <div class="row">
         <h2>Vos services déjà connectés</h2>
         <% @services_user.each do |service| %>
+
           <div class="col-xs-3">
-            <div class="service-card">
-              <div class="service-form">
-                <%= image_tag service.logo, class: "service-logo" %>
+            <div class="service-bloc">
+              <div class="service-card">
+                <div class="service-form">
+                  <%= image_tag service.logo, class: "service-logo" %>
+                </div>
               </div>
+                <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
+                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                <% end %>
             </div>
           </div>
+
         <% end %>
       </div>
+     <% end %>
       <div class="row">
         <h2>Connectez de nouveaux services</h2>
         <% (@services - @services_user).each do |service| %>

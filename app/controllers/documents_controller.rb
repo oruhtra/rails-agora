@@ -24,6 +24,8 @@ class DocumentsController < ApplicationController
 
     # get all tagged document based on selected tags (unselected)
     @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
+    # sort them by date updates_at, last on the top
+    @documents_unselected.sort_by!{ |doc| doc.id }.reverse!
 
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
@@ -44,6 +46,10 @@ class DocumentsController < ApplicationController
 
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
+
+    # GET NUMBERS OF DOCS SINCE LAST CONNECTION
+    # @lastconnexion = (Time.now() - (600*1))
+    # @numnewdoc = (@documents_unselected + @documents_selected).count {|doc| doc.updated_at > @lastconnexion }
   end
 
   def show
@@ -61,14 +67,15 @@ class DocumentsController < ApplicationController
     @tag = Tag.new
   end
 
-  def create #documents are save as soon as they are put in the dropzone without tags
+  def create #documents are saved as soon as they are put in the dropzone without tags
     @document = Document.new(document_params)
     @document.user = @user
     authorize @document
     @document.photo = params[:file]
     @document.name = correctDocumentName(params["file"].original_filename)
-
     if @document.save
+      @document = Document.find(@document.id)
+      @document.update(ratio: @document.get_image_ratio)
       respond_to do |format|
         format.html { redirect_to document_path(@document) }
         format.json do
@@ -136,7 +143,7 @@ class DocumentsController < ApplicationController
     :use_original_filename => true,
     :resource_type => 'image')
     zip = open(url)
-    send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}" )
+    send_file(zip, :filename => "Agora_#{Time.now.strftime("%Y%e%m_%l%M")}.zip" )
   end
 
 

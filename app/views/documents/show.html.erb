@@ -1,12 +1,16 @@
 <div class="document-show">
   <div class="container">
     <div class="row">
-      <div class="col-xs-9 text-center">
-        <div class="document-container-show">
-           <%= link_to documents_path, class: "bouton-back-home" do %>
-            <i class="fa fa-times button fa-2x action-style" aria-hidden="true" ></i>
-          <% end %>
-          <%= cl_image_tag @document.photo, class: "large-document",  format: :jpg, density: 300 %>
+      <div class="col-xs-9 text-center relative-position">
+        <div class="document-wrapper-show">
+          <div class="fade-out-top fade-out-top-white"></div>
+          <div class="document-container-show">
+             <%= link_to documents_path, class: "bouton-back-home" do %>
+              <i class="fa fa-times button fa-2x action-style" aria-hidden="true" ></i>
+            <% end %>
+            <%= cl_image_tag @document.photo, class: "large-document",  format: :jpg %>
+          </div>
+          <div class="fade-out-bottom fade-out-bottom-white"></div>
         </div>
         <div class="action-bar-show">
           <ul class="list-inline">

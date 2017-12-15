@@ -7,6 +7,10 @@
   }
 }
 
+.service-bloc {
+  // position: relative;
+}
+
 .service-card {
   padding: 15px;
   display: flex;
@@ -30,3 +34,12 @@
   // height: 100px;
 }
 
+.service-trash {
+  // position: absolute;
+  // right: 50%;
+  // bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
