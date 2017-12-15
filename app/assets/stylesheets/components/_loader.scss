@@ -10,7 +10,7 @@
 #box {
   width: 80px;
   height: 80px;
-  background: #fff;
+  background: $primary;
   animation: animate .5s linear infinite;
   position: relative;
   top: 0;
@@ -26,20 +26,4 @@
   }
   75% { transform: translateY(9px) rotate(67.5deg); }
   100% { transform: translateY(0) rotate(90deg); }
-}
-#shadow {
-  width: 100px;
-  height: 5px;
-  background: #000;
-  opacity: 0.1;
-  position: absolute;
-  top: 59px;
-  left: 0;
-  border-radius: 50%;
-  animation: shadow .5s linear infinite;
-}
-@keyframes shadow {
-  50% {
-    transform: scale(1.2,1);
-  }
 }

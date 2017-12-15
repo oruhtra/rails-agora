@@ -9,7 +9,7 @@
           <%# if document.updated_at > @lastconnexion %>
             <%#= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>
           <%# else %>
-            <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", "format" => 'jpg' %>
+            <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
           <%# end %>
         <% end %>
 
