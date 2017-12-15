@@ -3,7 +3,9 @@
   text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,3 +22,44 @@
   opacity: 0.6;
   margin-bottom: 30px;
 }
+
+.home-text-typed{
+  height: 100px;
+  margin-bottom: 40px;
+}
+
+
+.titlehome {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.60);
+  text-align: left;
+  font-weight: lighter;
+}
+
+.banner-button {
+  color: white;
+  font-size: 20px;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 0px 0px 5px inset;
+  -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  display: block;
+  max-width: auto;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+
+.banner-button:hover {
+  color: $buttoncolor;
+  font-weight: bolder;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 80px 0px 2px inset;
+}
+
+
+
+
+
+
