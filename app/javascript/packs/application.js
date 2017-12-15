@@ -1,5 +1,6 @@
 import "bootstrap";
 import { listentag } from "../components/tag";
+import { loadDynamicBannerText } from '../components/banner';
 import { spinButton } from "../components/spin_button";
 import { listenbatchtag } from "../components/batch_tag";
 import { newdropzone } from "../components/dropzone";
@@ -11,5 +12,3 @@ import '../components/select2';
 
 // appelle des functions
 listenbatchtag();
-
-
