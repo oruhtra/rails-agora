@@ -1,10 +1,16 @@
 .document-show {
   padding-top: 10px;
 }
+
+.document-wrapper-show {
+  position: relative;
+}
+
+
 .document-container-show {
   height: 80vh;
   overflow: scroll;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .title {
@@ -23,5 +29,5 @@
 .bouton-back-home{
   position: absolute;
   right: 30px;
-  top: 0;
+  top: 10px;
 }
