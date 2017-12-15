@@ -1,0 +1,73 @@
+.fade-out-top {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  border-radius: 3px;
+}
+
+.fade-out-bottom {
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3%;
+  border-radius: 3px;
+}
+
+.fade-out-left {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+  border-left: 5px solid white;
+  border-radius: 3px;
+}
+
+.fade-out-right {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+  border-right: 5px solid white;
+  border-radius: 3px;
+}
+
+.fade-out-top-grey {
+  background: linear-gradient(to bottom, $myresultsection, rgba(244, 244, 244, 0));
+  border-top: 5px solid $myresultsection;
+}
+
+.fade-out-bottom-grey {
+  background: linear-gradient(to top, $myresultsection, rgba(244, 244, 244, 0));
+  border-bottom: 5px solid $myresultsection;
+}
+
+.fade-out-top-white {
+  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+  border-top: 5px solid white;
+}
+
+.fade-out-bottom-white {
+  background: linear-gradient(to top, white, rgba(255, 255, 255, 0));
+  border-bottom: 5px solid white;
+}
+
+.fade-out-left-white {
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+  border-left: 5px solid white;
+}
+
+.fade-out-right-white {
+  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+  border-right: 5px solid white;
+}

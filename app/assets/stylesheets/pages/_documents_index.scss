@@ -19,13 +19,20 @@
 }
 
 .search_section {
+  position: relative;
   margin-bottom: 20px;
+  margin-right: 15px;
   max-height: 7vh;
   display: flex;
   align-items: center;
 }
 
+.result-section-wrapper {
+  position: relative;
+}
+
 .results_section {
+  position: relative;
   overflow: scroll;
   background: $myresultsection;
   border-radius: 5px;
@@ -43,7 +50,9 @@
 }
 
 .tags-bar{
-  margin-top: 20px;
+  // margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   align-items: center;
   max-width: 100%;
