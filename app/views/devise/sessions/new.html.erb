@@ -1,4 +1,4 @@
-<div class="form" style="background-image: linear-gradient(-225deg, rgba(0,50,80,0.6) 0%, rgba(0,20,40,0.6) 50%), url('/fond-home.jpg');">
+<div class="form" style="background-image: linear-gradient(-225deg, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%)">
 
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -6,8 +6,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4">
-        <h2 class="text-center">Log in</h2>
-        <div class="form-inputs">
+        <h2 class="text-center" style="color:white;">Log in</h2>
+        <div class="form-inputs" style="color:white;">
           <%= f.input :email, required: false, autofocus: true %>
           <%= f.input :password, required: false %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
