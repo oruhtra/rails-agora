@@ -1,6 +1,6 @@
 import "bootstrap";
-import { listentag } from "../components/tag";
 import { loadDynamicBannerText } from '../components/banner';
+import { listentag } from "../components/tag";
 import { spinButton } from "../components/spin_button";
 import { listenbatchtag } from "../components/batch_tag";
 import { newdropzone } from "../components/dropzone";
