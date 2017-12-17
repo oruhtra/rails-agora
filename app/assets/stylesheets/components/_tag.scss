@@ -1,3 +1,8 @@
+.tag-link {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
 .tag {
   float: left;
   padding: 8px 15px;
@@ -5,7 +10,6 @@
   border-radius: 4px;
   background-color: $tagcolor2;
   color: $tagcolor1;
-  margin: 5px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   box-shadow: 0 0 0 1px $tagcolor1 inset;

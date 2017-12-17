@@ -1,0 +1,3 @@
+var tagsBar = document.getElementById('tags-bar');
+
+tagsBar.innerHTML = "<%= j render 'search_section', user_selected_tags: @user_selected_tags, user_tags: @user_tags %>";

@@ -1,28 +1,43 @@
+
 function createMasonryGrid() {
-  var elem = document.getElementById('masonry-container');
-  var msnry = new Masonry( elem, {
+  var grid = document.getElementById('masonry-container');
+  var msnry = new Masonry( grid, {
     // options
     itemSelector: '.box',
     columnWidth: 40,
     isFitWidth: true
   });
 
-  tagsListen(msnry);
+  tagsListen(msnry, grid);
 }
 
-function tagsListen(msnry){
-  const tags = document.querySelectorAll(".listentag");
+function tagsListen(msnry, grid){
+  let selectedTags = [];
+  const tagsBar = document.getElementById("tags-bar");
   const cards = document.querySelectorAll(".box");
-  tags.forEach(tag => tag.addEventListener("click", (event) => {
-      event.preventDefault();
-      const tagId = event.currentTarget.id;
-      const tagClass = event.currentTarget.className.split(' ');
-      filterMasonry(cards, tagId, tagClass, msnry);
-    }));
+
+  tagsBar.addEventListener("click", (event) => {
+
+    if(event.target && event.target.nodeName == "I") {
+    // List item found!  Output the ID!
+      const tagId = event.target.id;
+      if (!selectedTags.includes(tagId)) {
+        selectedTags.push(tagId);
+        console.log(selectedTags);
+        removeCards(cards, tagId, msnry);
+      } else {
+        selectedTags = selectedTags.filter(tag => tag !== tagId);
+        console.log(selectedTags);
+        addCards(cards, tagId, msnry, grid, selectedTags);
+      }
+    }
+
+  });
+
 }
 
-function filterMasonry(cards, tagId, tagClass, msnry) {
-  if (!tagClass.includes("tag-s")) {
+function removeCards(cards, tagId, msnry) {
+
         cards.forEach(card => {
           const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
 
@@ -31,24 +46,30 @@ function filterMasonry(cards, tagId, tagClass, msnry) {
             msnry.layout();
           }
         });
-      } else {
-
-        // cards.forEach(card => {
-        //   // msnry.reloadItems();
-        //   const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
-
-        //   if (!cardTags.includes(tagId)){
-        //     msnry.addItems(card);
-        //   }
-        // });
-      }
 }
 
+function addCards(cards, tagId, msnry, grid, selectedTags) {
+        var fragment = document.createDocumentFragment();
+        var elems = [];
+        cards.forEach(card => {
+          const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
+          if (!cardTags.includes(tagId) && arrayContainsArray (cardTags, selectedTags)){
+            fragment.appendChild(card);
+            elems.push(card);
+          }
+        });
+        // append elements to container
+        grid.appendChild(fragment);
+        // add and lay out newly appended elements
+        msnry.appended(elems);
+        msnry.layout();
+}
 
-
-
-
-
+function arrayContainsArray(superset, subset) {
+  return subset.every(function (value) {
+    return (superset.indexOf(value) >= 0);
+  });
+}
 
 
 if (document.getElementById('masonry-container')) {

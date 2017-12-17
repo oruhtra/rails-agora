@@ -13,7 +13,7 @@
     <div class="existing-tags">
       <% @doctags.each do |t| %>
         <%= link_to document_doctag_path(@document, t), method: :delete do %>
-        <div class="tag tag-s text-center"><%= t.tag.name_clean %></div>
+        <div class="tag tag-link tag-s text-center"><%= t.tag.name_clean %></div>
         <% end %>
       <% end %>
     </div>
@@ -21,13 +21,13 @@
 </div>
 <div class="add-tags">
   <p >Ajouter des tags</p>
-  <ul class="list-inline other-tags">
+  <div class="other-tags">
     <% @other_tags.each do |t| %>
       <%= link_to document_doctags_path(@document, tag: t), method: :post do %>
-        <i class="tag text-center"><%= t.name_clean %></i>
+        <div class="tag tag-link text-center"><%= t.name_clean %></div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
     <%= simple_form_for(@tag) do |f| %>
       <%= hidden_field_tag :document_id, @document.id %>
       <%= f.input :name, label: false, placeholder: "Créez un tag"%>

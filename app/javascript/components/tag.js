@@ -1,7 +1,3 @@
-
-
-// const urlstring = window.location.href;
-
 // function generateParameters() {
 //   const selectedtags = [];
 //   document.querySelectorAll(".tag-s").forEach(tag => {
