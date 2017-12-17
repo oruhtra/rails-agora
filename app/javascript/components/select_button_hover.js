@@ -16,6 +16,4 @@ function showSelectButtonOnHover() {
   });
 }
 
-if (document.querySelectorAll('.card')) {
-  showSelectButtonOnHover()
-}
+export { showSelectButtonOnHover };

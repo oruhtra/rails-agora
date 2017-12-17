@@ -22,6 +22,4 @@ function addinput_in_form(response) {
   form.insertAdjacentHTML("afterbegin", html);
 }
 
-if (document.getElementById("doc-dropzone")) {
-  newdropzone();
-}
+export { newdropzone };

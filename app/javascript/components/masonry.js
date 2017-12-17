@@ -71,7 +71,4 @@ function arrayContainsArray(superset, subset) {
   });
 }
 
-
-if (document.getElementById('masonry-container')) {
-  createMasonryGrid();
-}
+export { createMasonryGrid };

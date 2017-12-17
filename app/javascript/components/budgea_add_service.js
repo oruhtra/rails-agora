@@ -63,7 +63,4 @@ function sendCredentialsToServer(data, service_id) {
    form.submit();
 }
 
-
-if (document.querySelectorAll('.service-form')) {
-  budgeaHandshake();
-}
+export { budgeaHandshake };
