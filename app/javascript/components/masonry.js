@@ -21,13 +21,14 @@ function tagsListen(msnry, grid){
     if(event.target && event.target.nodeName == "I") {
     // List item found!  Output the ID!
       const tagId = event.target.id;
-      if (!selectedTags.includes(tagId)) {
+      if (tagId === '') {
+        restoreCards(cards, msnry, grid, selectedTags)
+        selectedTags = [];
+      } else if (!selectedTags.includes(tagId)) {
         selectedTags.push(tagId);
-        console.log(selectedTags);
         removeCards(cards, tagId, msnry);
       } else {
         selectedTags = selectedTags.filter(tag => tag !== tagId);
-        console.log(selectedTags);
         addCards(cards, tagId, msnry, grid, selectedTags);
       }
     }
@@ -37,33 +38,50 @@ function tagsListen(msnry, grid){
 }
 
 function removeCards(cards, tagId, msnry) {
+  cards.forEach(card => {
+    const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
 
-        cards.forEach(card => {
-          const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
-
-          if (!cardTags.includes(tagId)){
-            msnry.remove(card);
-            msnry.layout();
-          }
-        });
+    if (!cardTags.includes(tagId)){
+      msnry.remove(card);
+      msnry.layout();
+    }
+  });
 }
 
 function addCards(cards, tagId, msnry, grid, selectedTags) {
-        var fragment = document.createDocumentFragment();
-        var elems = [];
-        cards.forEach(card => {
-          const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
-          if (!cardTags.includes(tagId) && arrayContainsArray (cardTags, selectedTags)){
-            fragment.appendChild(card);
-            elems.push(card);
-          }
-        });
-        // append elements to container
-        grid.appendChild(fragment);
-        // add and lay out newly appended elements
-        msnry.appended(elems);
-        msnry.layout();
+  var fragment = document.createDocumentFragment();
+  var elems = [];
+  cards.forEach(card => {
+    const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
+    if (!cardTags.includes(tagId) && arrayContainsArray (cardTags, selectedTags)){
+      fragment.appendChild(card);
+      elems.push(card);
+    }
+  });
+  // append elements to container
+  grid.appendChild(fragment);
+  // add and lay out newly appended elements
+  msnry.appended(elems);
+  msnry.layout();
 }
+
+function restoreCards(cards, msnry, grid, selectedTags) {
+  var fragment = document.createDocumentFragment();
+  var elems = [];
+  cards.forEach(card => {
+    const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
+    if (!arrayContainsArray (cardTags, selectedTags)){
+      fragment.appendChild(card);
+      elems.push(card);
+    }
+  });
+  // append elements to container
+  grid.appendChild(fragment);
+  // add and lay out newly appended elements
+  msnry.appended(elems);
+  msnry.layout();
+}
+
 
 function arrayContainsArray(superset, subset) {
   return subset.every(function (value) {
