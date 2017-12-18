@@ -96,8 +96,17 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def add_tags
+    @documents = current_user.documents.where(id: params[:document_ids]).order(:id)
+    @tags = policy_scope(Tag).all
+    @tag = Tag.new
+
+    @document = Document.new
+    @document.user = current_user
+    authorize @document
+  end
+
   def batch_update #adding tags to all documents of the dropzone
-    raise
     docs = current_user.documents.where(id: params[:document_ids])
     if docs.any?
       tagnames = params[:tag_names].split(" ")
@@ -134,6 +143,7 @@ class DocumentsController < ApplicationController
   def download
     @document = Document.find(params[:id])
     authorize @document
+
     file = open(@document.photo.url)
     send_file(file, :filename => "#{@document.name}")
   end
@@ -158,6 +168,7 @@ class DocumentsController < ApplicationController
 
   def scrap_documents
     @document = Document.new
+    @document.user = current_user
     authorize @document
     ScrapJob.perform_later(current_user.id)
     redirect_to documents_path

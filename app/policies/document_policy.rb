@@ -26,7 +26,11 @@ class DocumentPolicy < ApplicationPolicy
   end
 
   def scrap_documents?
-    true
+    record.user == user
+  end
+
+  def add_tags?
+    record.user == user
   end
 
   class Scope < Scope

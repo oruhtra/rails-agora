@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xs-7 text-center">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
         <h2 class=" h2-form text-center">Déposez vos documents ici ! </h2>
         <div class="form-input">
           <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
@@ -15,11 +15,16 @@
             <%= f.submit 'Add this document', class: "hidden btn btn-primary btnadd" %>
           <% end %>
         </div>
-      </div>
+        <div class="flex-around">
 
-      <div class="col-xs-5 text-center">
-        <%= render 'batch_tags_section' %>
-       </div>
+          <div>
+            <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+              <%= submit_tag 'Ajouter des tags', id:"btnsavedocs", class: "btnadd banner-button", disabled: true %>
+            <% end  %>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
