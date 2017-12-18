@@ -97,6 +97,7 @@ class DocumentsController < ApplicationController
   end
 
   def batch_update #adding tags to all documents of the dropzone
+    raise
     docs = current_user.documents.where(id: params[:document_ids])
     if docs.any?
       tagnames = params[:tag_names].split(" ")
