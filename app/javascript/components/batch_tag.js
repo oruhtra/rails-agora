@@ -23,5 +23,5 @@ function listenbatchtag() {
   }));
 }
 
-export {listenbatchtag} ;
+export { listenbatchtag };
 

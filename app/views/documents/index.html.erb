@@ -1,13 +1,9 @@
 <!-- this part is in the navbar  -->
 <% content_for :navbar do %>
    <!-- search form  -->
-    <%= form_tag(documents_path, method: :get, id:"submittag") do %>
-      <div class="search-bar">
-        <%= hidden_field_tag :query, @user_selected_tagnames%>
-        <span class="fa fa-search"></span>
-        <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name_clean, {include_blank: ''}, {id: "dropdowntag", class: "select2 border-round header-search-input"} %>
-      </div>
-    <% end %>
+  <div class="search-bar-wrapper">
+    <%= render 'search_bar_index' %>
+  </div>
 
 <% end %>
 
@@ -18,7 +14,9 @@
 
       <div class="search_section">
         <div class="fade-out-left fade-out-left-white"></div>
-        <%= render 'search_section' %>
+          <div id="tags-bar">
+            <%= render 'search_section' %>
+          </div>
         <div class="fade-out-right fade-out-right-white"></div>
       </div>
 
@@ -36,7 +34,9 @@
 
       <div class="search_section">
         <div class="fade-out-left fade-out-left-white"></div>
-        <%= render 'search_section' %>
+          <div id="tags-bar">
+            <%= render 'search_section' %>
+          </div>
         <div class="fade-out-right fade-out-right-white"></div>
       </div>
 

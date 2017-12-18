@@ -8,6 +8,4 @@ function loadDynamicBannerText() {
   });
 }
 
-if (document.getElementById('banner-typed-text')){
-  loadDynamicBannerText();
-}
+export { loadDynamicBannerText };

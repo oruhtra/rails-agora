@@ -22,6 +22,4 @@ function keepHoverCardWhenHoverButton() {
     });
   }
 
-if (document.querySelectorAll('.selectionbox')) {
-  keepHoverCardWhenHoverButton()
-}
+export { keepHoverCardWhenHoverButton };
