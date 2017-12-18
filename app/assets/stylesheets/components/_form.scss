@@ -6,3 +6,25 @@
   align-items: center;
   justify-content: center;
 }
+
+.h2-form {
+  color: $textcolor;
+  font-size: 26px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.form-input {
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.docform {
+  padding: 40px;
+  text-align: center;
+}
+
+.docform #document_photo {
+  font-size: 18px;
+}

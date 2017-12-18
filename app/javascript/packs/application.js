@@ -7,7 +7,8 @@ import { createMasonryGrid } from "../components/masonry";
 import { showSelectButtonOnHover } from "../components/select_button_hover";
 import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
 import { budgeaHandshake } from "../components/budgea_add_service";
-import '../components/select2';
+import '../components/search_tag_from_select2';
+import '../components/add_tag_from_select2';
 
 // call functions
 if (document.querySelectorAll(".listenbatchtag")){
@@ -33,11 +34,6 @@ if (document.querySelectorAll('.selectionbox')) {
 if (document.getElementById('masonry-container')) {
   createMasonryGrid();
 }
-
-
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
 
 if (document.querySelectorAll('.card')) {
   showSelectButtonOnHover()

@@ -40,7 +40,7 @@
 
 .add-tags {
   clear: both;
-  padding-top: 20px;
+  // padding-top: 20px;
 }
 
 .add-tags h3{
@@ -50,7 +50,8 @@
 }
 .other-tags {
   overflow: scroll;
-  max-height: 200px;
+  height: 300px;
+  padding: 10px 0;
 }
 .title {
   color: $textcolor ;
@@ -97,4 +98,8 @@
 .add-tags p {
     color: $textcolor;
     font-weight: bolder;
+}
+
+.create-tag-form{
+  margin-top: 10px;
 }

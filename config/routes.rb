@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :documents do
     collection do
-      patch :batch_update  # route pour batch_update
       get :unselect_docs
       get :downloadzip
       get :scrap_documents
+      get :add_tags
+      patch :batch_update  # route pour batch_update
     end
     member do
       get :download #route to download

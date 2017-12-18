@@ -10,7 +10,7 @@ class DoctagsController < ApplicationController
     authorize @doctag
 
     @doctag.save
-    redirect_to document_path(@document)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -19,7 +19,7 @@ class DoctagsController < ApplicationController
     authorize @doctag
 
     @doctag.destroy
-    redirect_to document_path(@document)
+    redirect_back(fallback_location: root_path)
   end
 
   private

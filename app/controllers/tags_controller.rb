@@ -21,6 +21,6 @@ class TagsController < ApplicationController
       @doctag.tag = @tag
       @doctag.save
     end
-    redirect_to document_path(@document)
+        redirect_back(fallback_location: root_path)
   end
 end

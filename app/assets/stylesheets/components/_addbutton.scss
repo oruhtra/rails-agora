@@ -26,18 +26,6 @@
   opacity: 1;
 }
 
-
-.h2-form {
-  color: $textcolor;
-  font-size: 26px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-.form-input {
-  margin: 20px;
-  padding: 20px;
-}
-
 .btnadd {
   height: 60px !important;
   width: 100% !important;
@@ -53,17 +41,10 @@
 }
 .btnadd:hover {
   background-color: $buttoncolor;
-  font-size: 24px !important;
   color: white;
-}
-.docform {
-  padding: 40px;
-  text-align: center;
+  box-shadow: 0 0 10px $myresultsection;
 }
 
-.docform #document_photo {
-  font-size: 18px;
-}
 
 .button2 {
   color: $buttoncolor;

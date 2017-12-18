@@ -1,3 +1,7 @@
+body {
+  background-color: $mybeige;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -13,4 +17,13 @@ a {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.breakword{
+  word-break: break-all;
 }
