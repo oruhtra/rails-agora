@@ -112,8 +112,8 @@ class DocumentsController < ApplicationController
       tagnames = params[:tag_names].split(" ")
       tags = Tag.where(name: tagnames)
       docs.each do |doc|
-        tags.each do |mytag|
-          doc.tags << mytag
+        tags.each do |tag|
+          doc.tags << tag
         end
       end
       authorize docs.first
