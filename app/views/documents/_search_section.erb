@@ -3,7 +3,7 @@
 
   <% @user_selected_tags.each do |tag| %>
     <%#= link_to documents_path(query: @user_selected_tagnames.gsub(tag.name, '')), method: :get, remote: true, class: "tag-link" do %>
-      <i class="tag listentag tag-s" id="<%= tag.name %>"><%= tag.name_clean %></i>
+      <i class="tag tag-link listentag tag-s" id="<%= tag.name %>"><%= tag.name_clean %></i>
     <%# end %>
   <% end %>
 
@@ -11,7 +11,7 @@
   <% if !@user_tags.nil? %>
     <% @user_tags.each do |tag| %>
       <%#= link_to documents_path(query: @user_selected_tagnames + ' ' + tag.name), method: :get, remote: true, class: "tag-link" do %>
-        <i class="tag listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
+        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
       <%# end %>
     <% end %>
   <% end %>
@@ -27,7 +27,7 @@
   <% if !@user_tags.nil? %>
     <% @user_tags.each do |tag| %>
       <%#= link_to documents_path(query: tag.name), method: :get, remote: true, class: "tag-link" do %>
-        <i class="tag listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
+        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
       <%# end %>
     <% end %>
   <% end %>
