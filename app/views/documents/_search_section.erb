@@ -1,36 +1,17 @@
-<!-- affichage selected tags -->
-<% if !@user_selected_tags.first.nil? %>
-
-  <% @user_selected_tags.each do |tag| %>
-    <%#= link_to documents_path(query: @user_selected_tagnames.gsub(tag.name, '')), method: :get, remote: true, class: "tag-link" do %>
-      <i class="tag tag-link listentag tag-s" id="<%= tag.name %>"><%= tag.name_clean %></i>
+<% if !@user_tags.nil? %>
+  <div id="tags-bar">
+  <% @user_tags.each do |tag| %>
+    <%#= link_to documents_path(query: tag.name), method: :get, remote: true, class: "tag-link" do %>
+      <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
     <%# end %>
   <% end %>
+</div>
 
-  <!-- affichage the others tags -->
-  <% if !@user_tags.nil? %>
-    <% @user_tags.each do |tag| %>
-      <%#= link_to documents_path(query: @user_selected_tagnames + ' ' + tag.name), method: :get, remote: true, class: "tag-link" do %>
-        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
-      <%# end %>
+  <div class="clear-tags hidden">
+    <%= link_to documents_path, method: :get do %>
+      <span class="fa fa-times button" aria-hidden="true" style="margin: 10px"></span>
     <% end %>
-  <% end %>
-
-  <div class="clear-tags">
-    <%#= link_to documents_path(query: ''), method: :get, remote: true do %>
-      <i class="fa fa-times button" aria-hidden="true" style="margin: 10px"></i>
-    <%# end %>
   </div>
-
-<% else %>
-
-  <% if !@user_tags.nil? %>
-    <% @user_tags.each do |tag| %>
-      <%#= link_to documents_path(query: tag.name), method: :get, remote: true, class: "tag-link" do %>
-        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
-      <%# end %>
-    <% end %>
-  <% end %>
 
 <% end %>
 

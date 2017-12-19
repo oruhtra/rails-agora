@@ -27,18 +27,12 @@ function createMasonryGrid() {
       if(event.target && event.target.nodeName == "I") {
       // List item found!
         const tagId = event.target.id;
-        if (tagId === '') {
-
-          restoreCards();
-          selectedTags.length = 0 ;
-          restoreTags();
-          clearSelect2Search();
-
-        } else if (!selectedTags.includes(tagId)) {
+        if (!selectedTags.includes(tagId)) {
 
           selectedTags.push(tagId);
           removeCardsAndChangeTags(tagId);
           clearSelect2Search();
+          showClearAll()
 
         } else {
 
@@ -46,6 +40,7 @@ function createMasonryGrid() {
 
           if (typeof selectedTags[0] === 'undefined') {
             restoreTags()
+            hideClearAll()
           }
 
           addCardsAndChangeTags(tagId);
@@ -66,6 +61,7 @@ function createMasonryGrid() {
       restoreTags();
       selectedTags.push(tagId);
       removeCardsAndChangeTags(tagId);
+      showClearAll()
     });
   }
 
@@ -197,6 +193,19 @@ function createMasonryGrid() {
     tagsBar.appendChild(fragment);
   }
 
+  function hideClearAll() {
+    const clearTags = document.querySelector(".clear-tags");
+    if (!clearTags.classList.contains("hidden")) {
+      clearTags.classList.add("hidden");
+    }
+  }
+
+  function showClearAll() {
+    const clearTags = document.querySelector(".clear-tags");
+    if (clearTags.classList.contains("hidden")) {
+      clearTags.classList.remove("hidden");
+    }
+  }
 
   function arrayContainsArray(superset, subset) {
     return subset.every(function (value) {
