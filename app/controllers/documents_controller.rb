@@ -110,7 +110,7 @@ class DocumentsController < ApplicationController
     @documents = current_user.documents.where(id: params[:document_ids])
     if @documents.any?
 
-      authorize documents.first
+      authorize @documents.first
 
       tagname = params[:tagname]
       tag = Tag.tag_from_tagnames([tagname])[0]
@@ -124,10 +124,12 @@ class DocumentsController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html { redirect_back(fallback_location: root_path) }
+    #   format.json do
+    #     render json: document_hash
+    #   end
+    # end
   end
 
   def batch_create_tag
