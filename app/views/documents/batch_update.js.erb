@@ -1,0 +1,7 @@
+const cards = document.querySelectorAll('.cards');
+
+cards.forEach(card => {
+  const currentTags = card.querySelector('.current-tags');
+  const cardId = card.id;
+  currentTags.innerHTML = "<%= j render 'search_section', d: @documents.find(cardId) %>";
+});

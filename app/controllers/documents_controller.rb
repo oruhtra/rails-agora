@@ -107,22 +107,63 @@ class DocumentsController < ApplicationController
   end
 
   def batch_update #adding tags to all documents of the dropzone
-    docs = current_user.documents.where(id: params[:document_ids])
-    if docs.any?
-      tagnames = params[:tag_names].split(" ")
-      tags = Tag.where(name: tagnames)
-      docs.each do |doc|
-        tags.each do |tag|
-          doc.tags << tag
+    @documents = current_user.documents.where(id: params[:document_ids])
+    if @documents.any?
+
+      authorize documents.first
+
+      tagname = params[:tagname]
+      tag = Tag.tag_from_tagnames([tagname])[0]
+      @documents.each do |d|
+        unless d.tags.include?(tag)
+          doctag = Doctag.new
+          doctag.document = d
+          doctag.tag = tag
+          doctag.save;
         end
       end
-      authorize docs.first
-      redirect_to documents_path
+    end
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
+  end
+
+  def batch_create_tag
+    @documents = current_user.documents.where(id: params[:document_ids])
+    if documents.any?
+      @tag = Tag.new
+
+      authorize documents.first
+
+      @tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
+
+      if Tag.tag_from_tagnames([@tag_name]).first.nil?
+        @tag.name = @tag_name
+        @tag.category = "user_specific"
+        @tag.save
+      else
+        @tag = Tag.tag_from_tagnames([@tag_name]).first
+      end
+
+      @documents.each do |d|
+        unless d.tags.include?(@tag)
+          doctag = Doctag.new
+          doctag.document = d
+          doctag.tag = @tag
+          doctag.save;
+        end
+      end
     else
-      @document = Document.new
-      authorize @document
-      @other_tags = policy_scope(Tag).all
-      render :new
+      document = Document.new
+      document.user = current_user
+      authorize document
+    end
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
     end
   end
 

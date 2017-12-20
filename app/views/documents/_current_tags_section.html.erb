@@ -1,0 +1,9 @@
+<% if !document.doctags.empty? %>
+  <div class="existing-tags">
+    <% document.doctags.each do |t| %>
+      <%= link_to document_doctag_path(document, t), method: :delete do %>
+        <div class="tag tag-link text-center tag-small"><%= t.tag.name_clean %></div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

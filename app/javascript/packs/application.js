@@ -9,6 +9,7 @@ import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
 import { budgeaHandshake } from "../components/budgea_add_service";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
+import { addTagsToMultipleDocuments } from "../components/add_tags_to_multiple_documents";
 
 // call functions
 if (document.querySelectorAll(".listenbatchtag")){
@@ -35,6 +36,8 @@ if (document.getElementById('masonry-container')) {
   createMasonryGrid();
 }
 
-if (document.querySelectorAll('.card')) {
+if (document.getElementById('masonry-container')) {
   showSelectButtonOnHover()
 }
+
+addTagsToMultipleDocuments();

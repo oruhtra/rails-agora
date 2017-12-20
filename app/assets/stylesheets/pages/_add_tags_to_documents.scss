@@ -1,17 +1,16 @@
 .new-documents-wrapper {
-  margin: 15px;
   padding: 15px;
   border-radius: 3px;
-  background-color: $myresultsection;
+  // background-color: $myresultsection;
   overflow: scroll;
 }
 
 .tags-bloc {
-  width: 30%;
+  min-width: 20%;
 }
 
 .tags-container {
-  max-height: 30vh;
+  // max-height: 30vh;
   padding: 10px 0;
   overflow: scroll;
 }
@@ -19,4 +18,3 @@
 .add-tags-title {
   margin: 0 0 20px 0;
 }
-

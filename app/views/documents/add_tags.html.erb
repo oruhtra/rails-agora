@@ -1,93 +1,112 @@
 <!-- this part is in the navbar  -->
 <h3 class="text-center add-tags-title">Ajoutez des tags à vos documents</h3>
 
-<div class="new-documents-wrapper flex-around">
-  <% @documents.each do |d| %>
+<div class="position-relative margin-left-md margin-right-md">
+  <div class="fade-out-left fade-out-left-grey"></div>
+  <div class="fade-out-right fade-out-right-grey"></div>
+  <div class="new-documents-wrapper flex align-items-center">
+    <% @documents.each do |document| %>
 
-    <div class= "card" style="width: 200px; height: <%= d.ratio ? 200 * d.ratio : 280 %>px">
-      <%= cl_image_tag d.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
-      <div class="hover-card" style='background-color: <%= ['#fed136'].sample %>'>
-        <div class="card-description">
-          <div class="card-title">
-            <h5><%=d.name%></h5>
+      <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
+        <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
+        <div class="hover-card" id="<%= document.id %>">
+          <div class="card-description">
+            <div class="card-title">
+              <% if document.name[20] %>
+                <h5 class="breakword"><%= document.name[0..26] %>...</h5>
+              <% else %>
+                <h5 class="breakword"><%= document.name %></h5>
+              <% end %>
+            </div>
+            <div class="current-tags">
+              <%= render 'current_tags_section', document: document %>
+            </div>
           </div>
-          <div class="current-tags">
-            <% if !d.doctags.empty? %>
-              <div class="existing-tags">
-                <% d.doctags.each do |t| %>
-                  <div class="tag tag-link text-center"><%= t.tag.name_clean %></div>
-                <% end %>
-              </div>
-            <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="add-tags">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="tags-bloc">
+          <p class="text-center">Catégorie</p>
+          <div class="position-relative">
+            <div class="fade-out-top fade-out-top-white"></div>
+            <div class="tags-container">
+              <% (@tags.where(category: "macro_category")).each do |t| %>
+                <i class="tag tag-link text-center" id="<%= t.name %>"><%= t.name_clean %></i>
+              <% end %>
+            </div>
+            <div class="fade-out-bottom fade-out-bottom-white"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <div class="tags-bloc">
+          <p class="text-center">Type de document</p>
+          <div class="position-relative">
+            <div class="fade-out-top fade-out-top-white"></div>
+            <div class="tags-container">
+              <% (@tags.where(category: "doc_type")).each do |t| %>
+                <i class="tag tag-link text-center" id="<%= t.name %>"><%= t.name_clean %></i>
+              <% end %>
+            </div>
+            <div class="fade-out-bottom fade-out-bottom-white"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <div class="tags-bloc">
+          <p class="text-center">Etablissement</p>
+          <div class="position-relative">
+            <div class="fade-out-top fade-out-top-white"></div>
+            <div class="tags-container">
+              <% (@tags.where(category: "supplier")).each do |t| %>
+                <i class="tag tag-link text-center" id="<%= t.name %>"><%= t.name_clean %></i>
+              <% end %>
+            </div>
+            <div class="fade-out-bottom fade-out-bottom-white"></div>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="add-tags">
-
-        <div class="flex">
-
-          <div class="tags-bloc">
-            <p class="text-center">Catégorie</p>
-            <div class="position-relative">
-              <div class="fade-out-top fade-out-top-white"></div>
-              <div class="tags-container">
-                <% (@tags.where(category: "macro_category")).each do |t| %>
-                  <div class="tag tag-link text-center"><%= t.name_clean %></div>
-                <% end %>
-              </div>
-              <div class="fade-out-bottom fade-out-bottom-white"></div>
-            </div>
-          </div>
-
-          <div class="tags-bloc">
-            <p class="text-center">Type de document</p>
-            <div class="position-relative">
-              <div class="fade-out-top fade-out-top-white"></div>
-              <div class="tags-container">
-                <% (@tags.where(category: "doc_type")).each do |t| %>
-                  <div class="tag tag-link text-center"><%= t.name_clean %></div>
-                <% end %>
-              </div>
-              <div class="fade-out-bottom fade-out-bottom-white"></div>
-            </div>
-          </div>
-
-          <div class="tags-bloc">
-            <p class="text-center">Etablissement</p>
-            <div class="position-relative">
-              <div class="fade-out-top fade-out-top-white"></div>
-              <div class="tags-container">
-                <% (@tags.where(category: "supplier")).each do |t| %>
-                  <div class="tag tag-link text-center"><%= t.name_clean %></div>
-                <% end %>
-              </div>
-              <div class="fade-out-bottom fade-out-bottom-white"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="create-tag-form">
-          <%= simple_form_for(@tag) do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <%= simple_form_for @tag, url: batch_create_tag_documents_path, method: :post do |f| %>
             <%= f.input :name, label: false, placeholder: "Créer un tag"%>
             <%= f.submit class:"hidden"%>
           <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <div class="add-tags-controls">
+            <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center btn-small"  %>
+          </div>
         </div>
+      </div>
+    </div>
 
       </div>
     </div>
   </div>
 </div>
 
-<div class="post-tags-form hidden">
-  <%= form_tag(batch_update_documents_path, method: :patch) do %>
+<div class="hidden">
+  <%= form_tag(batch_update_documents_path, method: :patch, id:"post-tags-form", remote: true) do %>
   <%= hidden_field_tag :tagname %>
   <% end %>
 </div>
