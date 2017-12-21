@@ -40,4 +40,6 @@ if (document.getElementById('masonry-container')) {
   showSelectButtonOnHover()
 }
 
-addTagsToMultipleDocuments();
+if (document.getElementById('submit-batch-tag')) {
+  addTagsToMultipleDocuments();
+}

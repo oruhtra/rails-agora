@@ -75,11 +75,11 @@ function createMasonryGrid() {
       const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
       if (!cardTags.includes(tagId)){
         msnry.remove(card);
-        msnry.layout();
       } else if (arrayContainsArray (cardTags, selectedTags)){
         remainingCards.appendChild(card.cloneNode(true));
       }
     });
+    msnry.layout();
     displayTags(remainingCards);
   }
 
@@ -91,19 +91,19 @@ function createMasonryGrid() {
       const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
 
       if (!cardTags.includes(tagId) && arrayContainsArray (cardTags, selectedTags)){
-        fragment.appendChild(card);
-        elems.push(card);
+        // fragment.appendChild(card);
+        // elems.push(card);
+        // append elements to container
+        grid.appendChild(card);
+        // add and lay out newly appended elements
+        msnry.appended(card);
+        msnry.layout();
       }
 
       if (arrayContainsArray (cardTags, selectedTags)) {
         remainingCards.appendChild(card.cloneNode(true));
       }
     });
-    // append elements to container
-    grid.appendChild(fragment);
-    // add and lay out newly appended elements
-    msnry.appended(elems);
-    msnry.layout();
     displayTags(remainingCards);
   }
 
