@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :services, through: :user_services
   mount_uploader :photo, PhotoUploader
 
+  after_create :send_welcome_email
+
   def tags
     self.documents.map {|d| d.tags}.flatten.uniq
   end
@@ -17,4 +19,11 @@ class User < ApplicationRecord
   def tagsname
     self.tags.map { |t| t.name }.flatten.uniq
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
+
 end
