@@ -82,9 +82,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3">
-          <%= simple_form_for @tag, url: batch_create_tag_documents_path, method: :post do |f| %>
+          <%= simple_form_for @tag, url: batch_update_documents_path, remote: true do |f| %>
             <%= f.input :name, label: false, placeholder: "Créer un tag"%>
-            <%= f.submit class:"hidden"%>
+            <% @documents.each do |document| %>
+              <%= hidden_field_tag "documents_all_ids[]", document.id %>
+            <% end %>
+            <%= f.submit nil, class: "btnadd banner-button text-center"%>
           <% end %>
       </div>
     </div>
@@ -94,7 +97,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
           <div class="add-tags-controls">
-            <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center btn-small"  %>
+            <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center"  %>
           </div>
         </div>
       </div>
@@ -105,9 +108,13 @@
   </div>
 </div>
 
-<div class="hidden">
-  <%= form_tag(batch_update_documents_path, method: :patch, id:"post-tags-form") do %>
-  <%= hidden_field_tag :tagname %>
+<div class= "hidden">
+  <%= form_tag(batch_update_documents_path, id:"post-tags-form", remote: true) do %>
+  <%= text_field_tag :tagname %>
+  <% @documents.each do |document| %>
+    <%= hidden_field_tag "documents_all_ids[]", document.id %>
+  <% end %>
+  <%= submit_tag nil, id: "submit-batch-tag"%>
   <% end %>
 </div>
 

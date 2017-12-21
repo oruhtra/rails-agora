@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :downloadzip
       get :scrap_documents
       get :add_tags
-      patch :batch_update  # route pour batch_update
+      post :batch_update  # route pour batch_update
       post :batch_create_tag
     end
     member do
