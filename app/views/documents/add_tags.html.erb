@@ -4,7 +4,12 @@
 <div class="position-relative margin-left-md margin-right-md">
   <div class="fade-out-left fade-out-left-grey"></div>
   <div class="fade-out-right fade-out-right-grey"></div>
-  <div class="new-documents-wrapper flex align-items-center">
+
+  <% if @documents.length < 4 %>
+    <div class="new-documents-wrapper flex-around align-items-center">
+  <% else %>
+    <div class="new-documents-wrapper flex align-items-center">
+  <% end %>
     <% @documents.each do |document| %>
 
       <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
