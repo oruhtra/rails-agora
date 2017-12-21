@@ -1,12 +1,20 @@
-.add-tag-row {
-  padding: 20px 0;
-  border-bottom: 1px solid $primary;
+.new-documents-wrapper {
+  padding: 15px;
+  border-radius: 3px;
+  // background-color: $myresultsection;
+  overflow: scroll;
 }
-.add-tag-row:last-child {
-  border-bottom: none;
+
+.tags-bloc {
+  min-width: 20%;
 }
 
 .tags-container {
-  width: 30%;
-  min-height: 40vh;
+  // max-height: 30vh;
+  padding: 10px 0;
+  overflow: scroll;
+}
+
+.add-tags-title {
+  margin: 0 0 20px 0;
 }

@@ -22,20 +22,17 @@
 }
 
 .card-description {
-  padding: 20px;
+  padding: 10px;
   color: white;
 }
 .card-description h5 {
   font-size: 15px;
+  margin: 0px;
 }
 
 .card-description p {
   font-size: 12px;
   opacity: 0.8;
-}
-
-.card-title {
-  // height: 28px;
 }
 
 .selectionbox {
@@ -75,8 +72,10 @@
   opacity: 0;
   border-radius: 5px;
   transition: all 0.5s ease;
+  background-color: $primarytransparent;
   &:hover {
-    opacity: 0.9;
+    opacity: 1;
+    cursor: pointer;
   }
 }
 

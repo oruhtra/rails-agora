@@ -24,6 +24,29 @@ a {
   justify-content: space-around;
 }
 
-.breakword{
+.align-items-center {
+  align-items: center;
+}
+
+.breakword {
   word-break: break-all;
+}
+.scroll {
+  overflow: scroll;
+}
+
+.margin-left-md {
+  margin-left: 10px;
+}
+
+.margin-right-md {
+  margin-right: 10px;
+}
+
+.float-left {
+  float: left;
+}
+
+.opacity-full {
+  opacity: 1;
 }

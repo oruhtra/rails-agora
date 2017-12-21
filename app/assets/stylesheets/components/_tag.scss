@@ -13,6 +13,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   box-shadow: 0 0 0 1px $tagcolor1 inset;
+  border: 1px solid $tagcolor1;
 }
 
 .tag:hover{
@@ -20,6 +21,12 @@
   background-color: $tagcolor1;
   color: $tagcolor2;
   cursor: pointer;
+  border: 1px solid $tagcolor2;
+}
+
+.tag-small {
+  font-size: 15px;
+  padding: 4px 8px;
 }
 
 .tag-s {
@@ -98,10 +105,6 @@
 .add-tags p {
     color: $textcolor;
     font-weight: bolder;
-}
-
-.create-tag-form{
-  margin-top: 10px;
 }
 
 .clear-tags {
