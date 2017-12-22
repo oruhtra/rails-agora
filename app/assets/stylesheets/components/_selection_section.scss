@@ -1,11 +1,10 @@
-.selection_section {
-  width: 30vh;
-  height: 80vh;
-  padding: 10px;
+.selection-section-wrapper {
   position: relative;
 }
 
-.selection-section-wrapper {
+.selection_section {
+  height: 80vh;
+  padding: 10px 20px;
   position: relative;
 }
 
@@ -13,12 +12,12 @@
   padding-top: 15px;
   overflow: scroll;
   max-height: 70vh;
+  padding: 10px 10px;
 }
 
 .selected-document {
   margin-bottom: 20px;
-  display: flex;
-  justify-content: space-around;
+  width: 150px;
 }
 
 .action-bar-selection {

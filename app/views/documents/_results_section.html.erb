@@ -27,11 +27,11 @@
           </div>
         </div>
         <% end %>
-            <div class="card-info">
-              <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
-              <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
-              <% end %>
-            </div>
+        <div class="card-info">
+          <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
+          <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

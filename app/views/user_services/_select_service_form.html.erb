@@ -1,46 +1,50 @@
 <div class="wrapper-ajout-service">
-<h1 class="text-center" >Connectez vos espaces clients</h1>
-  <div class="results_section results_section_small">
+<h1 class="text-center title-primary">Connectez vos espaces clients</h1>
+  <div class="flex">
 
-    <div class="container">
-      <% if !current_user.services.empty? %>
-      <div class="row">
-        <h2>Vos services déjà connectés</h2>
+    <% if !current_user.services.empty? %>
+
+      <div class="existing-services results_section results_section_small">
+        <h2>Vos services</h2>
         <% @services_user.each do |service| %>
 
-          <div class="col-xs-3">
             <div class="service-bloc">
               <div class="service-card">
                 <div class="service-form">
                   <%= image_tag service.logo, class: "service-logo" %>
                 </div>
-              </div>
                 <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
-                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                <% end %>
-            </div>
-          </div>
-
-        <% end %>
-      </div>
-     <% end %>
-      <div class="row">
-        <h2>Connectez de nouveaux services</h2>
-        <% (@services - @services_user).each do |service| %>
-          <div class="col-xs-3">
-            <div class="service-card">
-              <div class="service-form service-not-connected">
-                <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                <%= hidden_field_tag :service_id, service.id %>
-                <%= image_submit_tag service.logo, class: "service-logo" %>
+                  <p>Déconnecter</p>
                 <% end %>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+      </div>
+
+    <% end %>
+
+    <div class="results_section results_section_small">
+      <div class="container width-100">
+        <div class="row">
+          <h2>Connectez de nouveaux services</h2>
+          <% (@services - @services_user).each do |service| %>
+            <div class="col-xs-4">
+              <div class="service-card">
+                <div class="service-form service-not-connected">
+                  <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+                  <%= hidden_field_tag :service_id, service.id %>
+                  <%= image_submit_tag service.logo, class: "service-logo" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
+
   </div>
+
 </div>
 
 

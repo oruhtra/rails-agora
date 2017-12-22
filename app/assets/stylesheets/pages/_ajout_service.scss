@@ -1,10 +1,10 @@
 .wrapper-ajout-service {
-  overflow: scroll;
   padding: 0 40px;
+}
 
-  h1{
-    margin-top: 0px;
-  }
+.existing-services {
+  width: 30%;
+  margin-right: 10px;
 }
 
 .service-bloc {
@@ -12,25 +12,26 @@
 }
 
 .service-card {
-  padding: 15px;
   display: flex;
+  padding: 15px;
   justify-content: space-around;
   align-items: center;
 }
 
 .service-form {
+  padding: 5px;
   width: 120px;
   height: 120px;
-  border-radius: 12px;
+  border-radius: 10px 0 10px 0;
   background: white;
 }
 
 
 .service-logo {
   border-radius: 12px;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
-  background: white;
+  // background: white;
   // height: 100px;
 }
 

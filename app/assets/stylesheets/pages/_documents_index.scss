@@ -9,11 +9,13 @@
   width: 100%;
   position: relative;
   padding: 0px 20px;
+  flex-grow: 1;
 }
 
 .main-section-medium {
   width: 80%;
   position: relative;
+  flex-grow: 1;
   // padding: 0px 10px;
   // border-top-right-radius: 10px;
 }
@@ -34,7 +36,7 @@
 
 .results_section {
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
   background: $myresultsection;
   border-radius: 5px;
   padding: 20px;
