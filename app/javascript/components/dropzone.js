@@ -1,11 +1,22 @@
 import Dropzone from 'dropzone';
 import 'dropzone/dist/dropzone.css';
 
+function launchDropZone() {
+  window.addEventListener("dragenter", function(e) {
+      document.querySelector(".form-full-body").classList.remove('hidden');
+  });
+  newdropzone();
+}
+
+
+
+
 function newdropzone() {
   Dropzone.autoDiscover = false;
-  // const myDropzone = new Dropzone("#doc-dropzone");
   const myDropzone = new Dropzone("#doc-dropzone", {
-    dictDefaultMessage: "ici "
+    dictDefaultMessage: "",
+    previewsContainer: "#previews",
+    clickable: "#clickable"
     });
 
   myDropzone.on("success", function(file, response) {
@@ -15,6 +26,12 @@ function newdropzone() {
 
 }
 
+// new Dropzone(document.body, { // Make the whole body a dropzone
+//     url: "/upload/url", // Set the url
+//     previewsContainer: "#previews", // Define the container to display the previews
+//     clickable: "#clickable" // Define the element that should be used as click trigger to select files.
+//   });
+
 function addinput_in_form(response) {
   const doc_id = response.id;
   const form = document.querySelector(".batch-update-form");
@@ -22,4 +39,4 @@ function addinput_in_form(response) {
   form.insertAdjacentHTML("afterbegin", html);
 }
 
-export { newdropzone };
+export { launchDropZone };

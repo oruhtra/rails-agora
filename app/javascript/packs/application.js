@@ -2,7 +2,7 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { listentag } from "../components/tag";
 import { listenbatchtag } from "../components/batch_tag";
-import { newdropzone } from "../components/dropzone";
+import { launchDropZone } from "../components/dropzone";
 import { createMasonryGrid } from "../components/masonry";
 import { showSelectButtonOnHover } from "../components/select_button_hover";
 import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
@@ -25,7 +25,7 @@ if (document.querySelectorAll('.service-form')) {
 }
 
 if (document.getElementById("doc-dropzone")) {
-  newdropzone();
+  launchDropZone();
 }
 
 if (document.querySelectorAll('.selectionbox')) {

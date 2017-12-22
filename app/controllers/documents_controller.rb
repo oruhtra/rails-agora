@@ -47,6 +47,8 @@ class DocumentsController < ApplicationController
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
 
+    @document = Document.new
+
     # respond with js when a tag is clicked
 
     respond_to do |format|
