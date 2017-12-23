@@ -87,7 +87,7 @@ class DocumentsController < ApplicationController
       @document = Document.find(@document.id)
       @document.update(ratio: @document.get_image_ratio)
       respond_to do |format|
-        format.html { render }
+        format.html  { redirect_back(fallback_location: root_path) }
         format.json do
           document_hash = {id: @document.id}
           render json: document_hash
