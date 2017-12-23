@@ -28,7 +28,7 @@
         <div class="row">
           <h2>Connectez de nouveaux services</h2>
           <% (@services - @services_user).each do |service| %>
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-md-4">
               <div class="service-card">
                 <div class="service-form service-not-connected">
                   <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
