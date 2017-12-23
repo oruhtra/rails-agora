@@ -85,7 +85,13 @@
 
 <div id="previews" class="hidden"></div>
 
+<div class="hidden">
+  <%= form_tag(load_new_elements_documents_path, id:"load_new_elements_form", remote: true) do  %>
+    <%= submit_tag nil, id: "load_new_elements"%>
+  <% end  %>
+</div>
 
-
+<div class="reload-masonry-grid">
+</div>
 
 

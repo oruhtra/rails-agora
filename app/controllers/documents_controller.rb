@@ -133,6 +133,16 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def load_new_elements
+    @documents_new = current_user.documents.where(id: params[:document_ids]).order(:id)
+    @documents_unselected = policy_scope(Document).where(selected: false) - @documents_new
+    # binding.pry
+    authorize @documents_unselected.first
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: root_path) }
+    end
+  end
   # def batch_create_tag
   #   @documents = current_user.documents.where(id: params[:document_ids])
   #   if documents.any?

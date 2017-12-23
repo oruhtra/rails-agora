@@ -1,0 +1,8 @@
+if (typeof(resultsSection) === 'undefined') {
+  var resultsSection = document.querySelector('.results_section');
+  var reloadMasonryGrid = document.querySelector('.reload-masonry-grid');
+}
+
+
+resultsSection.innerHTML = "<%= j render 'results_section', documents_unselected: @documents_unselected %>";
+reloadMasonryGrid.click();

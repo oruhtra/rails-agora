@@ -4,7 +4,7 @@ import { listentag } from "../components/tag";
 import { listenbatchtag } from "../components/batch_tag";
 import { launchDropZone } from "../components/dropzone";
 import { createMasonryGrid } from "../components/masonry";
-import { showSelectButtonOnHover } from "../components/select_button_hover";
+import { selectButton } from "../components/select_button_hover";
 import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
 import { budgeaHandshake } from "../components/budgea_add_service";
 import '../components/search_tag_from_select2';
@@ -28,16 +28,16 @@ if (document.getElementById("doc-dropzone")) {
   launchDropZone();
 }
 
+if (document.getElementById('masonry-container')) {
+  selectButton()
+}
+
 if (document.querySelectorAll('.selectionbox')) {
   keepHoverCardWhenHoverButton()
 }
 
 if (document.getElementById('masonry-container')) {
   createMasonryGrid();
-}
-
-if (document.getElementById('masonry-container')) {
-  showSelectButtonOnHover()
 }
 
 if (document.getElementById('submit-batch-tag')) {

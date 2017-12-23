@@ -27,19 +27,19 @@ function newdropzone() {
     }
     addinput_in_form(response);
     document.getElementById("btnsavedocs").classList.remove('hidden');
+    document.getElementById("load_new_elements").click();
     });
 
 }
 
 function addinput_in_form(response) {
   const doc_id = response.id;
-  const form = document.querySelector(".batch-update-form");
   const html = `<input name="document_ids[]" type="hidden" value=${doc_id} />`;
-  form.insertAdjacentHTML("afterbegin", html);
+  const formTag = document.querySelector(".batch-update-form");
+  const formNewElements = document.getElementById("load_new_elements_form");
+  formTag.insertAdjacentHTML("afterbegin", html);
+  formNewElements.insertAdjacentHTML("afterbegin", html);
 }
 
-function loadNewElements() {
-
-}
 
 export { launchDropZone };

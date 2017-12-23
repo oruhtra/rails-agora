@@ -1,19 +1,32 @@
-function showSelectButtonOnHover() {
-  const cardArray = document.querySelectorAll('.card');
-  cardArray.forEach(card => {
-    card.addEventListener("mouseenter", (event) => {
-      const idComplete = event.currentTarget.id;
-      const id = idComplete.match(/(\S*)@/)[1];
-      const select_button = document.getElementById(`button-${id}`);
-      select_button.classList.toggle("hidden");
+function selectButton() {
+
+  function showSelectButtonOnHover() {
+    const cardArray = document.querySelectorAll('.card');
+    cardArray.forEach(card => {
+      card.addEventListener("mouseenter", (event) => {
+        const idComplete = event.currentTarget.id;
+        const id = idComplete.match(/(\S*)@/)[1];
+        const select_button = document.getElementById(`button-${id}`);
+        select_button.classList.toggle("hidden");
+      });
+      card.addEventListener("mouseleave", (event) => {
+        const idComplete = event.currentTarget.id;
+        const id = idComplete.match(/(\S*)@/)[1];
+        const select_button = document.getElementById(`button-${id}`);
+        select_button.classList.toggle("hidden");
+      });
     });
-    card.addEventListener("mouseleave", (event) => {
-      const idComplete = event.currentTarget.id;
-      const id = idComplete.match(/(\S*)@/)[1];
-      const select_button = document.getElementById(`button-${id}`);
-      select_button.classList.toggle("hidden");
+  }
+
+  function reloadSelectButtonAfterFileUpload() {
+    document.querySelector('.reload-masonry-grid').addEventListener('click', (e) => {
+      showSelectButtonOnHover();
     });
-  });
+  }
+
+  showSelectButtonOnHover();
+  reloadSelectButtonAfterFileUpload();
+
 }
 
-export { showSelectButtonOnHover };
+export { selectButton };
