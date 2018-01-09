@@ -1,10 +1,8 @@
-#doc-dropzone {
-  // background-color: hsla(0,0%,150%,.2) !important;
-  background-color: $white;
-  border: solid 2px $primary;
-  opacity: 0.6;
-  border-radius: 10px;
-  height: 30vw;
-  width: 100vw;
-  color: black;
+.dropzone {
+  border: none !important;
+  background-color: transparent !important;
+  z-index: 9999999999;
+  color: transparent;
+  height: 100%;
+  width: 100%;
 }

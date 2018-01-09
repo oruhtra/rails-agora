@@ -4,7 +4,7 @@ class TagPolicy < ApplicationPolicy
   end
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user_id: [nil, user.id])
     end
   end
 end

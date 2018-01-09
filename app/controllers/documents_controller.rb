@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
 
   def index
     @user_selected_tags = []
-    @tag_class_verified = policy_scope(Tag)
+    @tag_class_verified = policy_scope(Tag).all
 
     # get selected tags and get all unselected documents tagged from query
     if params[:query].present?
@@ -32,11 +32,11 @@ class DocumentsController < ApplicationController
     @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name_clean}
 
     #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
-
     if !@user_selected_tags.empty?
       @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
     else
-      @user_tags = @user_tags.select!{ |t| t.category == "macro_category" }
+      # show only macro-cat tags and user_specific tags
+      @user_tags.select!{ |t| t.category == "macro_category" || t.category == "user_specific" }
     end
 
     # select tags true for all remaining documents (OUT FOR NOW)
@@ -46,6 +46,8 @@ class DocumentsController < ApplicationController
 
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
+
+    @document = Document.new
 
     # respond with js when a tag is clicked
 
@@ -68,13 +70,6 @@ class DocumentsController < ApplicationController
     @tag = Tag.new
   end
 
-  def new
-    @document = Document.new
-    authorize @document
-    @other_tags = policy_scope(Tag).all.sort_by{ |t| t.name }
-    @tag = Tag.new
-  end
-
   def create #documents are saved as soon as they are put in the dropzone without tags
     @document = Document.new(document_params)
     @document.user = @user
@@ -85,7 +80,7 @@ class DocumentsController < ApplicationController
       @document = Document.find(@document.id)
       @document.update(ratio: @document.get_image_ratio)
       respond_to do |format|
-        format.html { render }
+        format.html  { redirect_back(fallback_location: root_path) }
         format.json do
           document_hash = {id: @document.id}
           render json: document_hash
@@ -125,6 +120,17 @@ class DocumentsController < ApplicationController
 
     authorize @documents.first
 
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: root_path) }
+    end
+  end
+
+  def load_new_elements
+    @documents_new = current_user.documents.where(id: params[:document_ids]).order(:id)
+    @documents_unselected = policy_scope(Document).where(selected: false) - @documents_new
+    # binding.pry
+    authorize @documents_unselected.first
     respond_to do |format|
       format.js
       format.html { redirect_back(fallback_location: root_path) }
@@ -235,6 +241,8 @@ class DocumentsController < ApplicationController
     if Tag.tag_from_tagnames([tag_name]).first.nil?
       tag.name = tag_name
       tag.category = "user_specific"
+      tag.user_id = current_user.id
+      tag.personnal = true
       tag.save
     else
       tag = Tag.tag_from_tagnames([tag_name]).first

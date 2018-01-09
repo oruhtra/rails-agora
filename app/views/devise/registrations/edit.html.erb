@@ -1,4 +1,4 @@
-<div class="form" style="background-image: linear-gradient(-225deg, rgba(0,50,80,0.6) 0%, rgba(0,20,40,0.6) 50%), url('/fond-home.jpg');">
+<div class="form" style="background-image: linear-gradient(-225deg, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%)">
   <div class="form">
     <div class="container">
       <div class="row">
@@ -9,7 +9,7 @@
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= f.error_notification %>
 
-            <div class="form-inputs">
+            <div class="form-inputs" style="color:white;">
               <%= f.input :photo, required: false, autofocus: false %>
               <%= f.input :email, required: true, autofocus: false %>
 
@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-actions text-center">
-              <%= f.button :submit, "Update" %>
+              <%= f.button :submit, "Update", class:"btnadd banner-button" %>
             </div>
           <% end %>
 

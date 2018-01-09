@@ -5,7 +5,14 @@
     <%= render 'search_bar_index' %>
   </div>
 
+  <div>
+    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+      <%= submit_tag 'Taggez vos nouveaux documents', id:"btnsavedocs", class:"button2  hidden"%>
+    <% end  %>
+  </div>
+
 <% end %>
+
 
 
 <div class="index-wrapper">
@@ -66,8 +73,24 @@
 
 </div>
 
+<div class="form-full-body hidden">
 
+  <h2 class="text-center" style="color:white;">Déposez vos fichiers où vous voulez !</h2>
+  <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
+  <%= hidden_field_tag(:user_id, @user.id) %>
+  <%= f.input :name, label: false,  as: :hidden %>
+  <%= f.input :photo, label: false, as: :hidden %>
+  <% end %>
+</div>
 
+<div id="previews" class="hidden"></div>
 
+<div class="hidden">
+  <%= form_tag(load_new_elements_documents_path, id:"load_new_elements_form", remote: true) do  %>
+    <%= submit_tag nil, id: "load_new_elements"%>
+  <% end  %>
+</div>
 
+<div class="reload-masonry-grid">
+</div>
 

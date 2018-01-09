@@ -17,9 +17,23 @@ function createMasonryGrid() {
     isFitWidth: true
   });
 
+  reloadGridAfterFileUpload();
   tagsListen();
   searchListen ();
 
+
+  function reloadGridAfterFileUpload() {
+      document.querySelector('.reload-masonry-grid').addEventListener('click', (e) => {
+      cards = document.querySelectorAll(".box");
+      grid = document.getElementById('masonry-container');
+      msnry = new Masonry( grid, {
+        // options
+        itemSelector: '.box',
+        columnWidth: 40,
+        isFitWidth: true
+      });
+    })
+  };
 
   function tagsListen(){
     tagsBar.addEventListener("click", (event) => {

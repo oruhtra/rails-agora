@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :add_tags
       post :batch_update  # route pour batch_update
       post :batch_create_tag
+      post :load_new_elements
     end
     member do
       get :download #route to download

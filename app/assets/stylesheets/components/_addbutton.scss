@@ -47,8 +47,8 @@
 
 
 .button2 {
-  color: $buttoncolor;
-  box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  color: white;
+  // box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
   -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -58,13 +58,15 @@
   max-width: auto;
   text-decoration: none;
   border-radius: 4px;
-  padding: 6px 20px;
+  padding: 2px 30px;
+  background-color: $primary;
+  border-color: $primary;
 }
 
 
 .button2:hover {
-  color: $buttoncolor;
-  box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+  box-shadow: 0 0 4px rgba(30, 22, 54, 0.7);
+  padding: 2px 40px;
 }
 
 

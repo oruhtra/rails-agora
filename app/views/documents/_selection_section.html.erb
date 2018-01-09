@@ -1,18 +1,36 @@
 <div class="selection-content">
-  <ul class="list-unstyled selected-documents-content">
-    <% @documents_selected.each do |doc| %>
-      <%= link_to document_path(doc) do %>
-        <li class="selected-document">
-          <%= cl_image_tag doc.photo, class: "document-thumbnail", "format" => 'jpg' %>
-          <div class="unselect">
-            <%= link_to document_path(doc, document: {selected: false}), method: :patch do %>
-              <i class="fa fa-times button" aria-hidden="true"></i>
-            <% end %>
+  <div class="selected-documents-content">
+    <% @documents_selected.each do |document| %>
+      <%= link_to document_path(document) do %>
+        <div class="card selected-document" id="<%= "#{document.id}@" %>">
+          <%= cl_image_tag document.photo, class: "document-thumbnail card-image", width:"150", "format" => 'jpg' %>
+<!--           <div class="unselect"> -->
+        <%= link_to document_path(document) do %>
+          <div class="hover-card">
+            <div class="card-description">
+              <div class="card-title">
+                <% if document.name[27] %>
+                  <h5><%= document.name[0..26] %>...</h5>
+                <% else %>
+                  <h5><%= document.name %></h5>
+                <% end %>
+                <p><%=document.updated_at.strftime("%Y-%m") %></p>
+              </div>
+            </div>
           </div>
-        </li>
+          <% end %>
+
+            <div class="card-info">
+              <%= link_to document_path(document, document: {selected: false}), method: :patch do %>
+                <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
+  <!--               <i class="fa fa-times button" aria-hidden="true"></i> -->
+              <% end %>
+            </div>
+          <!-- </div> -->
+        </div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>
 
 

@@ -5,7 +5,7 @@ class Tag < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :category, presence: true, inclusion: { in: %w(macro_category doc_type supplier user_specific date)}
 
-  # get all remaining tags of documents selected from a firest array of tags
+  # get all remaining tags of documents selected from a first array of tags
   def self.remaining_tags(tags_array)
     documents = Document.user_documents_tagged(tags_array)
     documents.map { |d| d.tags }.flatten.uniq - tags_array
@@ -30,4 +30,5 @@ class Tag < ApplicationRecord
   def name_clean
     self.name.gsub(/_/, " ")
   end
+
 end
