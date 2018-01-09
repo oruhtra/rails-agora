@@ -1,9 +1,9 @@
 p "Destroy users, tags, documents and services"
-# User.destroy_all
+User.destroy_all
 Document.destroy_all
 Tag.destroy_all
-# Doctag.destroy_all
-# UserService.destroy_all
+Doctag.destroy_all
+UserService.destroy_all
 # Service.destroy_all
 
 # p "Creating the current_user"
