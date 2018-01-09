@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
 
   def index
     @user_selected_tags = []
-    @tag_class_verified = policy_scope(Tag)
+    @tag_class_verified = policy_scope(Tag).all
 
     # get selected tags and get all unselected documents tagged from query
     if params[:query].present?
@@ -32,11 +32,11 @@ class DocumentsController < ApplicationController
     @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name_clean}
 
     #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
-
     if !@user_selected_tags.empty?
       @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
     else
-      @user_tags = @user_tags.select!{ |t| t.category == "macro_category" }
+      # show only macro-cat tags and user_specific tags
+      @user_tags.select!{ |t| t.category == "macro_category" || t.category == "user_specific" }
     end
 
     # select tags true for all remaining documents (OUT FOR NOW)
@@ -67,13 +67,6 @@ class DocumentsController < ApplicationController
 
     @doctags = @document.doctags
     @other_tags = policy_scope(Tag).all - @document.tags
-    @tag = Tag.new
-  end
-
-  def new
-    @document = Document.new
-    authorize @document
-    @other_tags = policy_scope(Tag).all.sort_by{ |t| t.name }
     @tag = Tag.new
   end
 
@@ -143,6 +136,7 @@ class DocumentsController < ApplicationController
       format.html { redirect_back(fallback_location: root_path) }
     end
   end
+
   # def batch_create_tag
   #   @documents = current_user.documents.where(id: params[:document_ids])
   #   if documents.any?
@@ -247,6 +241,8 @@ class DocumentsController < ApplicationController
     if Tag.tag_from_tagnames([tag_name]).first.nil?
       tag.name = tag_name
       tag.category = "user_specific"
+      tag.user_id = current_user.id
+      tag.personnal = true
       tag.save
     else
       tag = Tag.tag_from_tagnames([tag_name]).first

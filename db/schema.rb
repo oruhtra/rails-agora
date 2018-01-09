@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222150536) do
+ActiveRecord::Schema.define(version: 20180109120619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20171222150536) do
     t.datetime "updated_at", null: false
     t.boolean "personnal", default: false
     t.string "category"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "user_services", force: :cascade do |t|
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20171222150536) do
   add_foreign_key "doctags", "documents"
   add_foreign_key "doctags", "tags"
   add_foreign_key "documents", "users"
+  add_foreign_key "tags", "users"
   add_foreign_key "user_services", "services"
   add_foreign_key "user_services", "users"
 end

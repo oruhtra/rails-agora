@@ -21,6 +21,21 @@ function newdropzone() {
     clickable: "#clickable"
     });
 
+  // code found on internet to prevent issues with SAFARI and IE browsers
+  myDropzone.handleFiles = function(files) {
+    var _this5 = this;
+    var files_array = [];
+
+    for (var i = 0; i < files.length; i++) {
+      files_array.push(files[i]);
+    }
+
+    return files_array.map(function(file) {
+      return _this5.addFile(file);
+    });
+  };
+  //
+
   myDropzone.on("success", function(file, response) {
     if (!document.querySelector('.form-full-body').classList.contains('hidden')) {
       document.querySelector('.form-full-body').classList.add('hidden');
