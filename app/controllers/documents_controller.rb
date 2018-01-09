@@ -76,6 +76,7 @@ class DocumentsController < ApplicationController
     authorize @document
     @document.photo = params[:file]
     @document.name = correctDocumentName(params["file"].original_filename)
+    @document.source = "user_added"
     if @document.save
       @document = Document.find(@document.id)
       @document.update(ratio: @document.get_image_ratio)
@@ -99,7 +100,7 @@ class DocumentsController < ApplicationController
   end
 
 
-  def batch_update #adding tags to all documents of the dropzone
+  def batch_update #adding tags to all documents
     @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
     if params[:document_to_tag_ids].present? && params[:tag].present?
       @documents = current_user.documents.where(id: params[:document_to_tag_ids])
@@ -129,8 +130,9 @@ class DocumentsController < ApplicationController
   def load_new_elements
     @documents_new = current_user.documents.where(id: params[:document_ids]).order(:id)
     @documents_unselected = policy_scope(Document).where(selected: false) - @documents_new
-    # binding.pry
-    authorize @documents_unselected.first
+
+    authorize @documents_new.first
+
     respond_to do |format|
       format.js
       format.html { redirect_back(fallback_location: root_path) }
@@ -255,6 +257,7 @@ class DocumentsController < ApplicationController
       doctag = Doctag.new
       doctag.document = document
       doctag.tag = tag
+      doctag.source = "user_added"
       doctag.save
     end
   end

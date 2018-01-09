@@ -39,6 +39,7 @@ class ScrapJob < ApplicationJob
         document.name = d["name"] + " " + d["issuer"]
         document.user_id = user.id
         document.budgea_doc_id = d["id_file"]
+        document.source = "supplier_scrapped"
 
         puts "saving document"
         document.save

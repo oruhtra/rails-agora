@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109120619) do
+ActiveRecord::Schema.define(version: 20180109133453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180109120619) do
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source", default: "automatic"
     t.index ["document_id"], name: "index_doctags_on_document_id"
     t.index ["tag_id"], name: "index_doctags_on_tag_id"
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180109120619) do
     t.string "photo"
     t.integer "budgea_doc_id"
     t.float "ratio"
+    t.string "source"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 

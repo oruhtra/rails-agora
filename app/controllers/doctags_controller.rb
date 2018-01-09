@@ -6,6 +6,7 @@ class DoctagsController < ApplicationController
     @doctag = Doctag.new
     @doctag.document = @document
     @doctag.tag = Tag.find(params[:tag])
+    @doctag.source = "user_added"
 
     authorize @doctag
 

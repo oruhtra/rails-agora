@@ -80,7 +80,7 @@ type_of_doc_up = [
 type_of_doc = type_of_doc_up.map { |e| e.downcase.gsub(/\s/, "_") }
 
 type_of_doc.each do |tag|
-  Tag.create(name: tag, category: "type_of_doc")
+  Tag.create(name: tag, category: "doc_type")
 end
 
 p "- creating fournisseur tags"

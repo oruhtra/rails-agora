@@ -3,6 +3,8 @@ class Document < ApplicationRecord
   has_many :doctags, dependent: :destroy
   has_many :tags, through: :doctags
 
+  validates :source, presence: true, inclusion: { in: %w(user_added email_sent supplier_scrapped email_scrapped)}
+
   mount_uploader :photo, PhotoUploader
 
   # get an array of tags name
