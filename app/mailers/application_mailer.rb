@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'your-eamil@mail.com'
+  default from: 'contact@agora-app.tech'
   layout 'mailer'
 end
