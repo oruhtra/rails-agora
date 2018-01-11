@@ -30,13 +30,21 @@ class UserServicesController < ApplicationController
     authorize @user_service
 
     if params[:error_message].present?
-      if params[:error_message] = "wrongpass"
-        flash[:alert] = "Mauvaise combinaison Email/password"
+
+      if params[:error_message] == "wrongpass"
+        flash[:alert] = "Mauvaise combinaison login / password"
+      elsif params[:error_message] == "websiteUnavailable"
+        flash[:alert] = "Site internet non disponible"
+      elsif params[:error_message] == "actionNeeded"
+        flash[:alert] = "Connexion impossible - une action est necessaire sur le site"
       else
         flash[:alert] = "Echec de la connexion"
       end
+
       redirect_to new_user_service_path
+
     else
+
       @user_service.user_id = @user.id
       @user_service.service_id = params[:service_id]
       @user_service.connection_id = params[:id_connection]
@@ -48,8 +56,9 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      flash[:notice] = "Successfully login"
+      flash[:notice] = "Connexion réussie"
       redirect_to documents_path
+
     end
   end
 

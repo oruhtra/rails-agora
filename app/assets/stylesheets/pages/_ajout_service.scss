@@ -19,11 +19,15 @@
 }
 
 .service-form {
+  position: relative;
   padding: 5px;
   width: 120px;
   height: 120px;
   border-radius: 10px 0 10px 0;
   background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
@@ -43,4 +47,15 @@
   justify-content: space-around;
   align-items: center;
 
+}
+
+.service-submit-tag {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
 }
