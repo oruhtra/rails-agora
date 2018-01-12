@@ -1,17 +1,10 @@
 <!-- <div class="result-section"> -->
-<%# if @numnewdoc > 0  %>
-  <!-- <p><%= @numnewdoc %> nouveaux documents depuis votre dernière connexion.</p> -->
-<%# end %>
   <div id="masonry-container" class="clearfix masonry-style">
     <% if @documents_new %>
       <% @documents_new.each do |document| %>
         <div class= "box card" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
           <%= link_to document_path(document) do %>
-            <%# if document.updated_at > @lastconnexion %>
-              <%#= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>
-            <%# else %>
-              <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
-            <%# end %>
+            <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
           <% end %>
 
           <%= link_to document_path(document) do %>

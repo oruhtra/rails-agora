@@ -18,7 +18,7 @@ class ScrapJob < ApplicationJob
 
     p budgea_response
 
-    budgea_doc_id_array = Document.where(user_id: user.id).map{ |d| d.budgea_doc_id}.uniq!
+    budgea_doc_id_array = Document.where(user_id: user.id).map{ |d| d.budgea_doc_id}.flatten.uniq!
 
     if budgea_doc_id_array.nil?
       budgea_doc_id_array = []
@@ -30,8 +30,9 @@ class ScrapJob < ApplicationJob
 
     budgea_response["documents"].each do |d|
       #check if documents has already been downloaded and if it has an image
+
       if !d["url"].nil?
-        if !budgea_doc_id_array.include?(d["id_file"])
+        if !budgea_doc_id_array.include?(d["timestamp"])
           begin
             #download file directly in cloudinary
             puts "getting CL response"
@@ -43,7 +44,7 @@ class ScrapJob < ApplicationJob
             document.remote_photo_url = cl_response["secure_url"]
             document.name = d["name"] + " " + d["issuer"]
             document.user_id = user.id
-            document.budgea_doc_id = d["id_file"]
+            document.budgea_doc_id = d["timestamp"]
             document.source = "supplier_scrapped"
 
             puts "saving document"
@@ -61,7 +62,7 @@ class ScrapJob < ApplicationJob
             if !d["date"].nil?
               document_date = d["date"].to_date
               puts document_date
-              check_and_add_tag_to_document(document, document_date.strftime("%b %Y"), "date")
+              check_and_add_tag_to_document(document, document_date.strftime("%b %Y"))
             end
 
             puts "adding supplier"
@@ -71,17 +72,19 @@ class ScrapJob < ApplicationJob
             supplier = Service.where(budgea_name: d["issuer"].downcase).first
             puts supplier
             if !supplier.nil?
-              check_and_add_tag_to_document(document, supplier.macro_category, "macro_category")
-              check_and_add_tag_to_document(document, supplier.name, "supplier")
+              check_and_add_tag_to_document(document, supplier.macro_category)
+              check_and_add_tag_to_document(document, supplier.name)
             end
 
             puts "adding doc_type"
             puts "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
 
-            check_and_add_tag_to_document(document, d["name"], "doc_type")
+            check_and_add_tag_to_document(document, d["name"])
 
             puts "DOC ADDED"
             puts "================================"
+
+            budgea_doc_id_array << d["timestamp"]
           rescue
             puts "exception encoutered"
           end
@@ -90,26 +93,23 @@ class ScrapJob < ApplicationJob
     end
   end
 
-  def check_and_add_tag_to_document(document, tag_name, tag_category)
+  def check_and_add_tag_to_document(document, tag_name)
     puts "adding one tag"
-    tag = Tag.new
     # get tag_name and replace " " by _ and downcase
-    tag_name = tag_name.downcase.gsub(/\s/, "_")
-    puts "searching if tag exist"
-    # check if tag already exist by searching by tag.name instead of tag.id, if it doesn't exist create it
-    if Tag.tag_from_tagnames([tag_name]).first.nil?
-      tag.name = tag_name
-      tag.category = tag_category
-      tag.save
-    else
-      tag = Tag.tag_from_tagnames([tag_name]).first
-    end
-    # check if document doesn't already include the tag, if it doesn't create a new doctag
-    if !document.tags.include?(tag)
-      doctag = Doctag.new
-      doctag.document = document
-      doctag.tag = tag
-      doctag.save
+    tag_name.downcase!
+    puts "tags that match"
+    # searching all tags that match part of the name and creat
+    if !Tag.tag_from_match_in_name(tag_name).first.nil?
+      Tag.tag_from_match_in_name(tag_name).each do |t|
+        # check if document doesn't already include the tag, if it doesn't create a new doctag
+        puts "creating doctags"
+        if !document.tags.include?(t)
+          doctag = Doctag.new
+          doctag.document = document
+          doctag.tag = t
+          doctag.save
+        end
+      end
     end
   end
 

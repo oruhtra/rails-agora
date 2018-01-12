@@ -1,14 +1,16 @@
-<!-- this part is in the navbar  -->
-<h3 class="text-center add-tags-title">Ajoutez des tags à vos documents</h3>
+<% content_for :navbar do %>
+  <h4 class="text-center add-tags-title" style= "position: absolute;left: 50%;transform: translateX(-50%);">Ajoutez des tags à vos documents</h4>
+<% end %>
+
+
 
 <div class="position-relative margin-left-md margin-right-md">
+  <% if @documents.length < 4 %>
+  <div class="new-documents-wrapper flex-around align-items-center">
+  <% else %>
   <div class="fade-out-left fade-out-left-grey"></div>
   <div class="fade-out-right fade-out-right-grey"></div>
-
-  <% if @documents.length < 4 %>
-    <div class="new-documents-wrapper flex-around align-items-center">
-  <% else %>
-    <div class="new-documents-wrapper flex align-items-center">
+  <div class="new-documents-wrapper flex align-items-center">
   <% end %>
     <% @documents.each do |document| %>
 
@@ -43,7 +45,6 @@
           <div class="tags-bloc">
             <p class= "tag-container-title" id="tags-container-title-user_specific">Vos tags</p>
             <div class="position-relative">
-              <div class="fade-out-top fade-out-top-white"></div>
               <div class="tags-container">
                 <% (@tags.where(category: "user_specific")).each do |t| %>
                   <div class="tag-categories">
@@ -51,7 +52,6 @@
                   </div>
                 <% end %>
               </div>
-              <div class="fade-out-bottom fade-out-bottom-white"></div>
             </div>
           </div>
         </div>
@@ -61,7 +61,6 @@
         <div class="tags-bloc">
           <p class= "tag-container-title" id="tags-container-title-macro_category">Catégorie</p>
           <div class="position-relative">
-            <div class="fade-out-top fade-out-top-white"></div>
             <div class="tags-container">
               <% (@tags.where(category: "macro_category")).each do |t| %>
               <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
@@ -69,16 +68,14 @@
               </div>
               <% end %>
             </div>
-            <div class="fade-out-bottom fade-out-bottom-white"></div>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12">
-        <div class="tags-bloc">
-          <p class= "tag-container-title hidden" id="tags-container-title-doc_type">Type de document</p>
+        <div class="tags-bloc hidden" id="tags-container-title-doc_type">
+          <p class= "tag-container-title" >Type de document</p>
           <div class="position-relative">
-            <div class="fade-out-top fade-out-top-white"></div>
             <div class="tags-container">
               <% (@tags.where(category: "doc_type")).each do |t| %>
                 <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
@@ -86,16 +83,14 @@
                 </div>
               <% end %>
             </div>
-            <div class="fade-out-bottom fade-out-bottom-white"></div>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12 col-md-6">
-        <div class="tags-bloc">
-          <p class= "tag-container-title hidden" id="tags-container-title-supplier">Etablissement</p>
+        <div class="tags-bloc hidden" id="tags-container-title-supplier">
+          <p class= "tag-container-title">Etablissement</p>
           <div class="position-relative">
-            <div class="fade-out-top fade-out-top-white"></div>
             <div class="tags-container">
               <% (@tags.where(category: "supplier")).each do |t| %>
                 <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
@@ -103,10 +98,10 @@
                 </div>
               <% end %>
             </div>
-            <div class="fade-out-bottom fade-out-bottom-white"></div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -114,10 +109,11 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-sm-5 col-md-4">
+          <p>Créer un nouveau Tag</p>
             <%= simple_form_for @tag, url: batch_update_documents_path, remote: true do |f| %>
 
               <div class="flex">
-                <%= f.input :name, label: false, placeholder: "Créer un tag"%>
+                <%= f.input :name, label: false, placeholder: "Nom du tag"%>
                 <% @documents.each do |document| %>
                   <%= hidden_field_tag "documents_all_ids[]", document.id %>
                 <% end %>
@@ -131,19 +127,17 @@
   </div>
 
   <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3">
-          <div class="add-tags-controls">
-            <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center"  %>
-          </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="add-tags-controls">
+          <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center"  %>
         </div>
       </div>
     </div>
-
-      </div>
-    </div>
   </div>
+
 </div>
+
 
 <div class= "hidden">
   <%= form_tag(batch_update_documents_path, id:"post-tags-form", remote: true) do %>

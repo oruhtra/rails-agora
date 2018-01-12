@@ -19,7 +19,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">
 
-        <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
+      <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
 
       <%= link_to scrap_documents_documents_path do %>
         <i class="fa fa-refresh ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents"></i>
@@ -43,7 +43,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to edit_user_registration_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Edit profile") %>
               <% end %>
             </li>
             <li>
@@ -51,6 +51,56 @@
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
             </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+  </div>
+
+  <!-- on small screen only -->
+  <div class="navbar-wagon-right visible-xs">
+
+
+    <% if user_signed_in? %>
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <i class="fa fa-bars ref avatar dropdown-toggle" id: "navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
+          <li class="dz-message" id="clickable">
+            <a href="#">
+              <i class="fa fa-plus"></i> Ajouter un document
+            </a>
+          </li>
+
+          <li>
+            <%= link_to scrap_documents_documents_path do %>
+              <i class="fa fa-refresh"></i> Récupérer mes documents
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_user_service_path do %>
+              <i class="fa fa-plug"></i> Ajouter un service
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-user"></i> Editer mon profil
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i> Se déconnecter
+            <% end %>
+          </li>
+
           </ul>
         </div>
       </div>

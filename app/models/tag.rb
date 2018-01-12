@@ -16,9 +16,14 @@ class Tag < ApplicationRecord
     tagsname_array.map { |n| Tag.where(name: n).first }
   end
 
-   # get tags from tagnames
+   # get tagnames from tags
   def self.tagnames_from_tags(tags_array)
     tags_array.map { |t| t.name }
+  end
+
+  # get tags that match a part of a name
+  def self.tag_from_match_in_name(string)
+    tags = Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) }
   end
 
   # calc tag occurrence
