@@ -244,7 +244,6 @@ class DocumentsController < ApplicationController
       tag.name = tag_name
       tag.category = "user_specific"
       tag.user_id = current_user.id
-      tag.personnal = true
       tag.save
     else
       tag = Tag.tag_from_tagnames([tag_name]).first

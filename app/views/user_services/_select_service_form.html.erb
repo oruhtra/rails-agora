@@ -2,30 +2,31 @@
 <h1 class="text-center title-primary">Connectez vos espaces clients</h1>
   <div class="flex">
 
-    <% if !current_user.services.empty? %>
-
-      <div class="existing-services results_section results_section_small">
-        <h2>Vos services</h2>
-        <% @services_user.each do |service| %>
-
-            <div class="service-bloc">
-              <div class="service-card">
-                <div class="service-form">
-                  <%= cl_image_tag service.logo, class: "service-logo" %>
-                </div>
-                <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
-                  <p>Déconnecter</p>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-      </div>
-
-    <% end %>
-
     <div class="results_section results_section_small">
       <div class="container width-100">
         <div class="row">
+
+          <% if !current_user.services.empty? %>
+              <h2>Vos services connectés</h2>
+              <% @services_user.each do |service| %>
+                <div class="col-xs-12 col-md-4">
+                  <div class="service-card">
+                    <div>
+                      <div class="service-form">
+                        <%= cl_image_tag service.logo, class: "service-logo" %>
+                      </div>
+                      <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
+                        <p>Déconnecter</p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+
+        <div class="row">
+
           <h2>Connectez de nouveaux services</h2>
           <% (@services - @services_user).each do |service| %>
             <div class="col-xs-12 col-md-4">

@@ -27,6 +27,23 @@
 .tag-small {
   font-size: 15px;
   padding: 4px 8px;
+  float: left;
+  text-align: center;
+  border-radius: 4px;
+  background-color: $tagcolor2;
+  color: $tagcolor1;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px $tagcolor1 inset;
+  border: 1px solid $tagcolor1;
+}
+
+.tag-small-action:hover{
+  opacity: 0.9;
+  background-color: $tagcolor1;
+  color: $tagcolor2;
+  cursor: pointer;
+  border: 1px solid $tagcolor2;
 }
 
 .tag-s {
@@ -109,4 +126,8 @@
 
 .clear-tags {
   z-index: 200;
+}
+
+.tag-container-title {
+  margin: 0;
 }

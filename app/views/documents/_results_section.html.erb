@@ -59,8 +59,19 @@
               <% end %>
               <p><%=document.updated_at.strftime("%Y-%m") %></p>
             </div>
+
+            <% if !document.doctags.empty? %>
+              <div class="existing-tags">
+                <% document.doctags.each do |t| %>
+                    <div class="text-center tag-small" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
+                <% end %>
+              </div>
+            <% end %>
+
           </div>
+
         </div>
+
         <% end %>
         <div class="card-info">
           <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
