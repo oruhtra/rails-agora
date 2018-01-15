@@ -27,6 +27,9 @@ class DocumentsController < ApplicationController
     # sort them by date updates_at, last on the top
     @documents_unselected.sort_by!{ |doc| doc.id }.reverse!
 
+    # get all untagged_documents
+    @documents_untagged = policy_scope(Document).select{ |d| d.tags.empty? }
+
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
     @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name_clean}
