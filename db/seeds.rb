@@ -153,7 +153,7 @@ end
 # my_services += [
 #   {budgea_name: "Ameli", budgea_id: 50, macro_category: "sécurité_sociale", logo: "http://is3.mzstatic.com/image/thumb/Purple127/v4/64/e1/92/64e1921c-3afe-7d95-5598-8b9e70a7e94d/source/1200x630bb.jpg"},
 #   {name: "CNMSS", budgea_name: "CNMSS (releves mensuels)", budgea_id: 151, macro_category: "sécurité_sociale", logo: "http://deploiement.cnmss.fr/fileadmin/Images/_logos/logo_illustration_cnmss.jpg"},
-#   {budgea_name: "Ameli Pro", budgea_id: 51, macro_category: "sécurité_sociale", logo: "http://is3.mzstatic.com/image/thumb/Purple127/v4/64/e1/92/64e1921c-3afe-7d95-5598-8b9e70a7e94d/source/1200x630bb.jpg"}
+#   {budgea_name: "Ameli Pro", budgea_id: 51, macro_category: "sécurité_sociale", logo: "http://risquesprofessionnels2016.fr/images/logo.svg"}
 # ]
 
 # p "creating Energie"

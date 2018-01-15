@@ -57,7 +57,7 @@ class UserServicesController < ApplicationController
       @user.save
       @user_service.save
       flash[:notice] = "Connexion réussie"
-      redirect_to documents_path
+      redirect_to new_user_service_path
 
     end
   end

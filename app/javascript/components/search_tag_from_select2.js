@@ -7,6 +7,6 @@ import 'select2/dist/css/select2.css';
 $('.select2').select2({
     multiple: false,
     width: '200px',
-    placeholder: "",
+    placeholder: "Rechercher un tag",
 });
 

@@ -1,32 +1,32 @@
+<% content_for :navbar do %>
+  <h4 class="text-center add-tags-title title-primary" style= "position: absolute;left: 50%;transform: translateX(-50%);">Connectez vos espaces clients</h4>
+<% end %>
+
 <div class="wrapper-ajout-service">
-<h1 class="text-center title-primary">Connectez vos espaces clients</h1>
-  <div class="flex">
 
-    <div class="results_section results_section_small">
-              <h2>Vos services connectés</h2>
-      <div class="container width-100">
-        <div class="row">
 
-          <% if !current_user.services.empty? %>
-              <% @services_user.each do |service| %>
-                <div class="col-xs-12 col-md-4">
-                  <div class="service-card">
-                    <div>
-                      <div class="service-form">
-                        <%= cl_image_tag service.logo, class: "service-logo" %>
-                      </div>
-                      <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
-                        <p>Déconnecter</p>
-                      <% end %>
+    <div class="results_section results_section_large">
+      <% if !current_user.services.empty? %>
+        <h2>Vos services connectés</h2>
+        <div class="container width-100">
+          <div class="row">
+            <% @services_user.each do |service| %>
+              <div class="col-xs-12 col-md-4">
+                <div class="service-card">
+                  <div>
+                    <div class="service-form">
+                      <%= cl_image_tag service.logo, class: "service-logo" %>
                     </div>
+                    <%= link_to user_service_path(service.current_user_service(current_user)), method: :delete, :data => {:confirm => 'Are you sure?'}, class: "service-trash" do %>
+                      <p>Déconnecter</p>
+                    <% end %>
                   </div>
                 </div>
-              <% end %>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-
-      <h2>Connectez de nouveaux services</h2>
+      <% end %>
 
       <% Tag.where(category: "macro_category").each do |macro_category| %>
 
@@ -58,7 +58,7 @@
 
     </div>
 
-  </div>
+
 
 </div>
 
