@@ -43,7 +43,10 @@ function buildServiceCredentialsForm() {
          });
       }
     }
-    submitCredentials.classList.remove("disabled");
+    // HIDE ANIMATION
+    document.querySelector('.loader-container').classList.add('hidden');
+    // UNHIDE BUTTON
+    submitCredentials.classList.remove("hidden");
   });
 }
 
