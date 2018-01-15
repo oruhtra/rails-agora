@@ -34,16 +34,25 @@ function newdropzone() {
       return _this5.addFile(file);
     });
   };
-  //
+
+  // when a document is dropped UNHIDE the loader animation
+  document.querySelector('.dropzone').addEventListener('drop', (e) => {
+    document.querySelector('.loader-container').classList.remove('hidden');
+    document.querySelector('.dropdocs-title').classList.add('hidden');
+  })
 
   myDropzone.on("success", function(file, response) {
     if (!document.querySelector('.form-full-body').classList.contains('hidden')) {
+      document.querySelector('.dropdocs-title').classList.remove('hidden');
       document.querySelector('.form-full-body').classList.add('hidden');
+      // HIDE the loader animation once the documents are loaded
+      document.querySelector('.loader-container').classList.add('hidden');
     }
     addinput_in_form(response);
     document.getElementById("btnsavedocs").classList.remove('hidden');
     document.getElementById("load_new_elements").click();
     });
+
 
 }
 
