@@ -49,7 +49,7 @@ function newdropzone() {
       document.querySelector('.loader-container').classList.add('hidden');
     }
     addinput_in_form(response);
-    document.getElementById("btnsavedocs").classList.remove('hidden');
+    document.getElementById("add-tags-to-documents").classList.remove('hidden');
     document.getElementById("load_new_elements").click();
     });
 
@@ -58,7 +58,7 @@ function newdropzone() {
 
 function addinput_in_form(response) {
   const doc_id = response.id;
-  const html = `<input name="document_ids[]" type="hidden" value=${doc_id} />`;
+  const html = `<input type="hidden" name="document_ids[]" id="document_ids_" value=${doc_id} />`;
   const formTag = document.querySelector(".batch-update-form");
   const formNewElements = document.getElementById("load_new_elements_form");
   formTag.insertAdjacentHTML("afterbegin", html);
