@@ -3,11 +3,11 @@
   <div class="flex">
 
     <div class="results_section results_section_small">
+              <h2>Vos services connectés</h2>
       <div class="container width-100">
         <div class="row">
 
           <% if !current_user.services.empty? %>
-              <h2>Vos services connectés</h2>
               <% @services_user.each do |service| %>
                 <div class="col-xs-12 col-md-4">
                   <div class="service-card">
@@ -24,25 +24,38 @@
               <% end %>
           <% end %>
         </div>
+      </div>
 
-        <div class="row">
+      <h2>Connectez de nouveaux services</h2>
 
-          <h2>Connectez de nouveaux services</h2>
-          <% (@services - @services_user).each do |service| %>
-            <div class="col-xs-12 col-md-4">
-              <div class="service-card">
-                <div class="service-form service-not-connected">
-                  <%= cl_image_tag service.logo, class: "service-logo" %>
-                  <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
-                  <%= hidden_field_tag :service_id, service.id %>
-                  <%= submit_tag '', class: "service-submit-tag" %>
-                  <% end %>
+      <% Tag.where(category: "macro_category").each do |macro_category| %>
+
+
+        <div class="container width-100">
+          <div class="row">
+
+            <% if !(@services - @services_user).select{ |t| t.macro_category == macro_category.name}.empty? %>
+              <div class="col-xs-12 service-category-header"><h2><%= macro_category.name_clean.capitalize %></h2></div>
+            <% end %>
+
+            <% (@services - @services_user).select{ |t| t.macro_category == macro_category.name}.each do |service| %>
+              <div class="col-xs-12 col-md-4">
+                <div class="service-card">
+                  <div class="service-form service-not-connected">
+                    <%= cl_image_tag service.logo, class: "service-logo" %>
+                    <%= form_tag(new_user_service_path, method: :get, remote: true) do %>
+                    <%= hidden_field_tag :service_id, service.id %>
+                    <%= submit_tag '', class: "service-submit-tag" %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+
+          </div>
         </div>
-      </div>
+      <% end %>
+
     </div>
 
   </div>
