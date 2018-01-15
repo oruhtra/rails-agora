@@ -40,6 +40,20 @@
   <div class="container">
     <div class="row">
 
+      <div class="form-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6 col-sm-5 col-md-4">
+                <div class="position-relative">
+                  <div class="form-button text-center" id="datepicker-button">Ajouter une date</div>
+                  <input class="my-datepicker cache"></input>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <% if !@tags.where(category: "user_specific").empty? %>
         <div class="col-xs-12">
           <div class="tags-bloc">

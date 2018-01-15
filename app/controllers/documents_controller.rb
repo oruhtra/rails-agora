@@ -105,6 +105,7 @@ class DocumentsController < ApplicationController
 
   def batch_update #adding tags to all documents
     @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
+    # Adding tag that was inputed by hand by the user => first check if it exist or not, if not create it and add the doctag
     if params[:document_to_tag_ids].present? && params[:tag].present?
       @documents = current_user.documents.where(id: params[:document_to_tag_ids])
       tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
@@ -112,7 +113,7 @@ class DocumentsController < ApplicationController
       @documents.each do |d|
         create_doctag(d, @tag)
       end
-
+    # Adding the tag on which the user clicked to the documents
     elsif params[:document_to_tag_ids].present? && params[:tagname].present?
       @documents = current_user.documents.where(id: params[:document_to_tag_ids])
       tagname = params[:tagname]

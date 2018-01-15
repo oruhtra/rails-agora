@@ -13,7 +13,7 @@ class Tag < ApplicationRecord
 
   # get tags from tagnames
   def self.tag_from_tagnames(tagsname_array)
-    tagsname_array.map { |n| Tag.where(name: n).first }
+    tagsname_array.map { |n| if tag_from_date(n)? (Tag.where(name: tag_from_date(n)).first) : (Tag.where(name: n).first) }
   end
 
    # get tagnames from tags
@@ -34,6 +34,15 @@ class Tag < ApplicationRecord
   # get tag name with "_" replaced by whitespaces
   def name_clean
     self.name.gsub(/_/, " ")
+  end
+
+  # get tag from date
+  def tag_from_date(date_string)
+    if date_string.to_date
+      date_string.to_date.strftime("%b %Y")
+    else
+      false
+    end
   end
 
 end
