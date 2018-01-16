@@ -13,7 +13,7 @@ class Tag < ApplicationRecord
 
   # get tags from tagnames
   def self.tag_from_tagnames(tagsname_array)
-    tagsname_array.map { |n| Tag.where(name: n).first }
+    tagsname_array.map { |n| Tag.get_tag_from_date(n) || Tag.where(name: n).first }
   end
 
    # get tagnames from tags
@@ -23,7 +23,7 @@ class Tag < ApplicationRecord
 
   # get tags that match a part of a name
   def self.tag_from_match_in_name(string)
-    tags = Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) }
+    Tag.get_tag_from_date(string) ? ([Tag.get_tag_from_date(string)]) : (Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) })
   end
 
   # calc tag occurrence
@@ -34,6 +34,20 @@ class Tag < ApplicationRecord
   # get tag name with "_" replaced by whitespaces
   def name_clean
     self.name.gsub(/_/, " ")
+  end
+
+  # get tag from date
+  def self.get_tag_from_date(date_string)
+    begin
+      name = date_string.to_date.strftime("%b %Y").gsub(/\s/, "_")
+      if Tag.where(name: name).first
+        return Tag.where(name: name).first
+      else
+        return Tag.create(name: name, category: 'date')
+      end
+    rescue
+      false
+    end
   end
 
 end

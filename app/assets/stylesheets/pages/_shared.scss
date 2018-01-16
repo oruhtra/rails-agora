@@ -85,3 +85,20 @@ a {
 .white {
   background: white !important;
 }
+
+.cache {
+  height: 0;
+  width: 0;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+    &:focus {
+      outline: none;
+    }
+}
+
+.color-primary {
+  color: $primary;
+}

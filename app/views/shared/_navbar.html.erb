@@ -17,7 +17,7 @@
   </div>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs">
+  <div class="navbar-wagon-right hidden-sm hidden-xs">
 
       <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
 
@@ -61,14 +61,14 @@
   </div>
 
   <!-- on small screen only -->
-  <div class="navbar-wagon-right visible-xs">
+  <div class="navbar-wagon-right visible-sm visible-xs">
 
 
     <% if user_signed_in? %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <i class="fa fa-bars ref avatar dropdown-toggle" id: "navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true"></i>
+          <i class="fa fa-bars ref dropdown-toggle" id: "navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
           <li class="dz-message" id="clickable">

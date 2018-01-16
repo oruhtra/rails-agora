@@ -40,6 +40,20 @@
   <div class="container">
     <div class="row">
 
+      <div class="form-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-5">
+                <div class="position-relative">
+                  <div class="button date-button text-center" id="datepicker-button">Ajouter une date</div>
+                  <input class="my-datepicker cache"></input>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <% if !@tags.where(category: "user_specific").empty? %>
         <div class="col-xs-12">
           <div class="tags-bloc">
@@ -117,7 +131,7 @@
                 <% @documents.each do |document| %>
                   <%= hidden_field_tag "documents_all_ids[]", document.id %>
                 <% end %>
-                <%= f.submit "Créer Tag", class: "form-button text-center"%>
+                <%= f.submit "Créer Tag", class: "button form-button text-center"%>
               </div>
 
             <% end %>

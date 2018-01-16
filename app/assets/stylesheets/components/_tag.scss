@@ -13,7 +13,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   box-shadow: 0 0 0 1px $tagcolor1 inset;
-  border: 1px solid $tagcolor1;
+  border: 0px solid $tagcolor1;
 }
 
 .tag:hover{
@@ -21,7 +21,7 @@
   background-color: $tagcolor1;
   color: $tagcolor2;
   cursor: pointer;
-  border: 1px solid $tagcolor2;
+  border: 0px solid $tagcolor2;
 }
 
 .tag-small {
@@ -35,7 +35,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   box-shadow: 0 0 0 1px $tagcolor1 inset;
-  border: 1px solid $tagcolor1;
+  border: 0px solid $tagcolor1;
 }
 
 .tag-small-action:hover{
@@ -43,7 +43,7 @@
   background-color: $tagcolor1;
   color: $tagcolor2;
   cursor: pointer;
-  border: 1px solid $tagcolor2;
+  border: 0px solid $tagcolor2;
 }
 
 .tag-s {
@@ -83,7 +83,7 @@
 
 .form-control {
   color: $primary;
-  border: 1px solid $primary;
+  border: 0px solid $primary;
 }
 
 .title .form-control {
@@ -116,8 +116,8 @@
 }
 
 .current-tags p {
-    color: $textcolor;
-    font-weight: bolder;
+  color: $textcolor;
+  font-weight: bolder;
 }
 .add-tags p {
     color: $textcolor;

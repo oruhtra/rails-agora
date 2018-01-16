@@ -1,3 +1,5 @@
+import { myDatepicker } from "../components/air_datepicker";
+
 function addTagsToMultipleDocuments() {
   var cards = document.querySelectorAll('.hover-card');
   var postTagsForm = document.getElementById('post-tags-form');
@@ -38,14 +40,25 @@ function addTagsToMultipleDocuments() {
       if(event.target && event.target.nodeName == "I") {
         if (typeof selectedCards[0] !== 'undefined') {
           const tagId = event.target.id;
-          tagFormInput.value = tagId;
-          submitBatchTags.click();
+          insertTagIDInForm(tagId);
         }
       }
     });
   }
 
+  function insertTagIDInForm(tagId) {
+    tagFormInput.value = tagId;
+    submitBatchTags.click();
+  }
 
+  function addDateTag() {
+    var block = function(formattedDate, date, dp) {
+      if (typeof selectedCards[0] !== 'undefined') {
+        insertTagIDInForm(date);
+      }
+    }
+    myDatepicker(block);
+  }
 
   function revealDocTypeAndSupplierTags() {
     var tagsFromSelectedCards = [];
@@ -164,6 +177,7 @@ function addTagsToMultipleDocuments() {
     toggleTags()
   }
 
+  addDateTag();
   toggleCardToAddTags();
   addTagToForm();
   revealDocTypeAndSupplierTags();

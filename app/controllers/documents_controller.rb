@@ -104,26 +104,37 @@ class DocumentsController < ApplicationController
 
 
   def batch_update #adding tags to all documents
-    @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
-    if params[:document_to_tag_ids].present? && params[:tag].present?
-      @documents = current_user.documents.where(id: params[:document_to_tag_ids])
-      tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
-      @tag = get_tag(tag_name)
-      @documents.each do |d|
-        create_doctag(d, @tag)
-      end
 
-    elsif params[:document_to_tag_ids].present? && params[:tagname].present?
+    # getting all the documents displayed on the page => used in JS response
+    @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
+
+    authorize @documents_all.first
+
+    # adding tags to the documents selected => first check if there are any documents selected and if the user didn't send an empty name array
+    if params[:document_to_tag_ids].present?
       @documents = current_user.documents.where(id: params[:document_to_tag_ids])
-      tagname = params[:tagname]
-      tag = Tag.tag_from_tagnames([tagname])[0]
-      @documents.each do |d|
-        create_doctag(d, tag)
+      if params[:tag].present? && !params[:tag][:name] == ''
+        # Adding tag that was inputed by hand by the user => first check if it exist or not, if not create it and add the doctag
+        tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
+        # get the corresponding tag => if it doesn't exist create it
+        tag = get_tag(tag_name)
+        # create the doctags linking the documents and the tag
+        @documents.each do |d|
+          create_doctag(d, tag)
+        end
+      elsif params[:tagname].present?
+        # Adding the tag on which the user clicked to the documents
+        tag_name = params[:tagname]
+        # get the corresponding tag => if it doesn't exist create it
+        tag = get_tag(tag_name)
+        # create the doctags linking the documents and the tag
+        @documents.each do |d|
+          create_doctag(d, tag)
+        end
       end
     end
 
-    authorize @documents.first
-
+    # respond with JS => send code to replace the documents 'hover' sections to display the tags that were added
     respond_to do |format|
       format.js
       format.html { redirect_back(fallback_location: root_path) }
@@ -141,38 +152,6 @@ class DocumentsController < ApplicationController
       format.html { redirect_back(fallback_location: root_path) }
     end
   end
-
-  # def batch_create_tag
-  #   @documents = current_user.documents.where(id: params[:document_ids])
-  #   if documents.any?
-  #     @tag = Tag.new
-
-  #     authorize documents.first
-
-  #     @tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
-
-  #     if Tag.tag_from_tagnames([@tag_name]).first.nil?
-  #       @tag.name = @tag_name
-  #       @tag.category = "user_specific"
-  #       @tag.save
-  #     else
-  #       @tag = Tag.tag_from_tagnames([@tag_name]).first
-  #     end
-
-  #     @documents.each do |d|
-  #       create_doctag(d, @tag)
-  #     end
-  #   else
-  #     document = Document.new
-  #     document.user = current_user
-  #     authorize document
-  #   end
-
-  #   respond_to do |format|
-  #     format.html { redirect_back(fallback_location: root_path) }
-  #     format.js
-  #   end
-  # end
 
   def update
     authorize @document
@@ -243,7 +222,9 @@ class DocumentsController < ApplicationController
 
   def get_tag(tag_name)
     tag = Tag.new
-    if Tag.tag_from_tagnames([tag_name]).first.nil?
+    if tag_name == '' || tag_name.nil?
+      return nil
+    elsif Tag.tag_from_tagnames([tag_name]).first.nil?
       tag.name = tag_name
       tag.category = "user_specific"
       tag.user_id = current_user.id
@@ -255,7 +236,7 @@ class DocumentsController < ApplicationController
   end
 
   def create_doctag(document, tag)
-    unless document.tags.include?(tag)
+    if !document.tags.include?(tag) && !tag.nil?
       doctag = Doctag.new
       doctag.document = document
       doctag.tag = tag

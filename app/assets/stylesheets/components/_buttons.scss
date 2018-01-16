@@ -1,27 +1,32 @@
 .button {
-  color: $buttoncolor;
-  opacity: 0.8;
+  background-color: $primary;
+  color: white;
+  box-shadow: none;
+  border-radius: 5px;
+  border: none;
 }
 
-.button:hover {
-  color: $buttoncolor;
-  opacity: 1;
+.date-button {
+  padding: 5px 10px;
 }
 
 .form-button {
   margin-left: 5px;
   padding: 0 20px;
   height: 39px;
-  background-color: $primary;
-  color: white;
-  box-shadow: none;
-  border-radius: 5px;
-  border: none;
-  opacity: 0.8;
 }
 
 
-.form-button:hover {
-  opacity: 1;
+.button:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.filter-date-button {
+  color: $primary;
+  margin-left: 15px;
+}
+
+.filter-date-button:hover{
+  cursor: pointer;
 }

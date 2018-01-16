@@ -10,6 +10,7 @@ import { budgeaHandshake } from "../components/budgea_add_service";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import { addTagsToMultipleDocuments } from "../components/add_tags_to_multiple_documents";
+import { myDatepickerTest } from "../components/air_datepicker";
 
 // call functions
 if (document.querySelectorAll(".listenbatchtag")){
@@ -43,3 +44,7 @@ if (document.getElementById('masonry-container')) {
 if (document.getElementById('submit-batch-tag')) {
   addTagsToMultipleDocuments();
 }
+
+// if (document.querySelector('.my-datepicker')) {
+//   myDatepickerTest(test);
+// }
