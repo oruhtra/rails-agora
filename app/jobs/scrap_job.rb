@@ -62,7 +62,7 @@ class ScrapJob < ApplicationJob
             if !d["date"].nil?
               document_date = d["date"].to_date
               puts document_date
-              check_and_add_tag_to_document(document, document_date.strftime("%b %Y"))
+              check_and_add_tag_to_document(document, document_date)
             end
 
             puts "adding supplier"

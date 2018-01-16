@@ -5,6 +5,11 @@
     <%= render 'search_bar_index' %>
   </div>
 
+  <div class="position-relative">
+      <i class="fa fa-calendar ref filter-date-button" aria-hidden="true" id="datepicker-button" data-toggle="tooltip" data-placement="bottom" title="Filtrer par date"></i>
+      <input class="my-datepicker cache"></input>
+    </div>
+
   <div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
     <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
       <% @documents_untagged.each do |document| %>
@@ -20,14 +25,15 @@
 
 
 <div class="index-wrapper">
-  <% if @documents_selected.empty? %>
-    <div class="main-section-large">
+  <div class="main-section-large">
 
-      <div class="search_section">
-        <div class="fade-out-left fade-out-left-white"></div>
-            <%= render 'search_section' %>
-        <div class="fade-out-right fade-out-right-white"></div>
-      </div>
+    <div class="search_section">
+      <div class="fade-out-left fade-out-left-white"></div>
+          <%= render 'search_section' %>
+      <div class="fade-out-right fade-out-right-white"></div>
+    </div>
+
+    <% if @documents_selected.empty? %>
 
       <div class="result-section-wrapper">
         <div class="fade-out-top fade-out-top-grey"></div>
@@ -37,15 +43,7 @@
         <div class="fade-out-bottom fade-out-bottom-grey"></div>
       </div>
 
-  <% else %>
-
-    <div class="main-section-large">
-
-      <div class="search_section">
-        <div class="fade-out-left fade-out-left-white"></div>
-            <%= render 'search_section' %>
-        <div class="fade-out-right fade-out-right-white"></div>
-      </div>
+    <% else %>
 
       <div class="flex">
 
@@ -70,10 +68,8 @@
 
       </div>
 
-    </div>
-
-      <!-- link to add a new document -->
-  <% end %>
+    <% end %>
+  </div>
 
 </div>
 

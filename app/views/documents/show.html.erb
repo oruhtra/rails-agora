@@ -6,7 +6,7 @@
           <div class="fade-out-top fade-out-top-white"></div>
           <div class="document-container-show">
              <%= link_to documents_path, class: "bouton-back-home" do %>
-              <i class="fa fa-times button fa-2x action-style" aria-hidden="true" ></i>
+              <i class="fa fa-times color-primary fa-2x action-style" aria-hidden="true" ></i>
             <% end %>
             <%= cl_image_tag @document.photo, class: "large-document",  format: :jpg %>
           </div>
@@ -15,10 +15,10 @@
         <div class="action-bar-show">
           <ul class="list-inline">
               <%= link_to download_document_path(@document) do %>
-                <i class="fa fa-download fa-2x action-style button" aria-hidden="true" ></i>
+                <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" ></i>
                <% end %>
             <%= link_to document_path(@document), method: :delete, :data => {:confirm => 'Are you sure?'} do %>
-              <i class="fa fa-trash-o fa-2x action-style button" aria-hidden="true"></i>
+              <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true"></i>
             <% end %>
           </ul>
         </div>

@@ -1,14 +1,15 @@
 import $ from 'jquery';
 import 'select2';
 import 'select2/dist/css/select2.css';
+import { myDatepicker } from "../components/air_datepicker";
 
 function createMasonryGrid() {
-
   var grid = document.getElementById('masonry-container');
   var baseTags = document.querySelectorAll(".tag");
   var tagsBar = document.getElementById("tags-bar");
   var cards = document.querySelectorAll(".box");
   var selectedTags = [];
+  var peripheralTags = [];
 
   var msnry = new Masonry( grid, {
     // options
@@ -18,8 +19,10 @@ function createMasonryGrid() {
   });
 
   reloadGridAfterFileUpload();
-  tagsListen();
+  addTagsListener();
   searchListen ();
+  getPeripheralTags(cards);
+  filterDateTag();
 
 
   function reloadGridAfterFileUpload() {
@@ -35,35 +38,42 @@ function createMasonryGrid() {
     })
   };
 
-  function tagsListen(){
+  function addTagsListener(){
     tagsBar.addEventListener("click", (event) => {
 
       if(event.target && event.target.nodeName == "I") {
       // List item found!
         const tagId = event.target.id;
-        if (!selectedTags.includes(tagId)) {
-
-          selectedTags.push(tagId);
-          removeCardsAndChangeTags(tagId);
-          clearSelect2Search();
-          showClearAll()
-
-        } else {
-
-          selectedTags = selectedTags.filter(tag => tag !== tagId);
-
-          if (typeof selectedTags[0] === 'undefined') {
-            restoreTags()
-            hideClearAll()
-          }
-
-          addCardsAndChangeTags(tagId);
-          clearSelect2Search();
-
-        }
+        updateTagsAndCards(tagId)
       }
+
     });
 
+  }
+
+  function updateTagsAndCards(tagId) {
+    if (!selectedTags.includes(tagId)) {
+
+      selectedTags.push(tagId);
+      removeCardsAndChangeTags(tagId);
+      showClearAll();
+
+    } else {
+
+      selectedTags = selectedTags.filter(tag => tag !== tagId);
+
+      if (typeof selectedTags[0] === 'undefined') {
+        restoreTags();
+        hideClearAll();
+        getPeripheralTags(cards);
+      }
+
+      addCardsAndChangeTags(tagId);
+
+    }
+    clearSelect2Search();
+    filterDateTag();
+    console.log(peripheralTags);
   }
 
   function searchListen () {
@@ -159,14 +169,16 @@ function createMasonryGrid() {
         tagClone.classList.add("tag-s");
         fragment.appendChild(tagClone);
       });
-      // get peripheral tags
-      const peripheralTags = getPeripheralTags(remainingCardsArray);
-      // add peripheral tags next
+      // update peripheral tags
+      getPeripheralTags(remainingCardsArray);
+      // add peripheral tags next but remove DATE TAGS => tags that match the regexp \[A-Z][a-z]{2}_\d{4}\)
       peripheralTags.forEach(t => {
-        const tagClone = tag.cloneNode(true);
-        tagClone.id = t;
-        tagClone.innerHTML = t.replace(/_/gi, " ");
-        fragment.appendChild(tagClone);
+        if (!t.match(/[A-Z][a-z]{2}_\d{4}/)) {
+          const tagClone = tag.cloneNode(true);
+          tagClone.id = t;
+          tagClone.innerHTML = t.replace(/_/gi, " ");
+          fragment.appendChild(tagClone);
+        }
       });
       // replace tagsBar HTML by fragment
       tagsBar.innerHTML = "";
@@ -175,6 +187,7 @@ function createMasonryGrid() {
   }
 
   function getPeripheralTags(remainingCardsArray) {
+    peripheralTags.length = 0;
     let peripheralTagsObj = {};
     remainingCardsArray.forEach(card => {
       const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ').filter(tag => tag !== '');
@@ -187,14 +200,17 @@ function createMasonryGrid() {
       });
     });
 
-    let peripheralTags = Object.keys(peripheralTagsObj).sort(function(a, b) {
+    let peripheralTagsArray = Object.keys(peripheralTagsObj).sort(function(a, b) {
       return peripheralTagsObj[b] - peripheralTagsObj[a]
     })
 
     selectedTags.forEach(t => {
-      peripheralTags = peripheralTags.filter(tag => tag !== t);
+      peripheralTagsArray = peripheralTagsArray.filter(tag => tag !== t);
     })
 
+    peripheralTagsArray.forEach(t => {
+      peripheralTags.push(t);
+    })
     return peripheralTags
   }
 
@@ -225,6 +241,23 @@ function createMasonryGrid() {
     return subset.every(function (value) {
       return (superset.indexOf(value) >= 0);
     });
+  }
+
+  function filterDateTag() {
+    var onSelectFunction = function(formattedDate, date, dp) {
+      // No action when clearing the date picker => clearing the date picker calls this function with a date = ''
+      if (date !== '') {
+        const d = new Date(date);
+        const options = {month: "short", year: "numeric"};
+        updateTagsAndCards(d.toLocaleDateString("en-US", options).replace(/\s/gi, "_"))
+      }
+    }
+    var onRenderCellFunction = function(date, cellType) {
+      const d = new Date(date);
+      const options = {month: "short", year: "numeric"};
+      return {disabled: !peripheralTags.includes(d.toLocaleDateString("en-US", options).replace(/\s/gi, "_"))}
+    }
+    myDatepicker(onSelectFunction, onRenderCellFunction);
   }
 
 }

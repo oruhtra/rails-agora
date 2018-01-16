@@ -54,7 +54,6 @@ function addTagsToMultipleDocuments() {
   function addDateTag() {
     var block = function(formattedDate, date, dp) {
       if (typeof selectedCards[0] !== 'undefined') {
-        console.log(date);
         insertTagIDInForm(date);
       }
     }
