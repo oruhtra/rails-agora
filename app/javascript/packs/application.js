@@ -10,9 +10,6 @@ import { budgeaHandshake } from "../components/budgea_add_service";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
-import 'air-datepicker';
-import 'air-datepicker/dist/css/datepicker.css';
-import 'air-datepicker/dist/js/i18n/datepicker.fr.js';
 import { addTagsToMultipleDocuments } from "../components/add_tags_to_multiple_documents";
 
 // call functions

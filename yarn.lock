@@ -73,6 +73,12 @@ adjust-sourcemap-loader@^1.1.0:
     object-path "^0.9.2"
     regex-parser "^2.2.1"
 
+air-datepicker@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/air-datepicker/-/air-datepicker-2.2.3.tgz#9dbb6bc6bc8c9d9db380475091370dad82c2f787"
+  dependencies:
+    jquery ">=2.0.0 <4.0.0"
+
 ajv-keywords@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
@@ -2714,7 +2720,7 @@ jquery-mousewheel@~3.1.13:
   version "3.1.13"
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
 
-jquery@^3.2.1:
+"jquery@>=2.0.0 <4.0.0", jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
