@@ -68,6 +68,7 @@ function addTagsToMultipleDocuments() {
     var allTags = document.querySelectorAll('.tag-link');
 
     function getTagsFromSelectedCards() {
+      console.log('hy from getTagsFromSelectedCards');
       tagsFromSelectedCards.length = 0;
       document.querySelectorAll(".opacity-full").forEach(c => {
         const tags = c.querySelectorAll(".tag-small");
@@ -78,6 +79,7 @@ function addTagsToMultipleDocuments() {
     }
 
     function highlightSelectedTags(tag = false) {
+      console.log('hy from highlightSelectedTags');
       if (tag) {
         if (!tag.classList.contains('tag-s')) {
           tag.classList.add('tag-s');
@@ -98,6 +100,7 @@ function addTagsToMultipleDocuments() {
     }
 
     function areAllTagsHidden(tags) {
+      console.log('hy from areAllTagsHidden');
       let i = 0;
       tags.forEach(t => {
         if (t.classList.contains('hidden')) {
@@ -108,6 +111,7 @@ function addTagsToMultipleDocuments() {
     }
 
     function toggleTagsContainerTitle() {
+      console.log('hy from toggleTagsContainerTitle');
       const docTypeTitle = document.getElementById('tags-container-title-doc_type');
       const supplierTitle = document.getElementById('tags-container-title-supplier');
       if (areAllTagsHidden(docTypeTags)) {
@@ -127,6 +131,7 @@ function addTagsToMultipleDocuments() {
     }
 
     function verifyIfTagHasCategory(tagArray, cat = false) {
+      console.log('hy from verifyIfTagHasCategory');
       let i = false
       if (cat) {
         i = tagArray.includes(cat)
@@ -139,6 +144,7 @@ function addTagsToMultipleDocuments() {
     }
 
     function toggleTags() {
+      console.log('hy from toggleTags');
       cards.forEach(card => {
         card.addEventListener('click', (event) => {
           getTagsFromSelectedCards();
@@ -170,7 +176,6 @@ function addTagsToMultipleDocuments() {
             }
           });
         });
-
 
     }
 
