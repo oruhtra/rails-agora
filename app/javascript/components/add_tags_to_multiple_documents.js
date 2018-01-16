@@ -177,10 +177,10 @@ function addTagsToMultipleDocuments() {
     toggleTags()
   }
 
-  addDateTag();
   toggleCardToAddTags();
   addTagToForm();
   revealDocTypeAndSupplierTags();
+  addDateTag();
 }
 
 export { addTagsToMultipleDocuments };
