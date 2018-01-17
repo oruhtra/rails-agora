@@ -4,10 +4,12 @@ body {
 
 a:hover {
   text-decoration: none;
+  border: none;
 }
 
 a {
   text-decoration: none;
+  border: none;
 }
 
 .position-relative {
@@ -101,4 +103,10 @@ a {
 
 .color-primary {
   color: $primary;
+}
+
+.title-centered {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -8,6 +8,7 @@ import { selectButton } from "../components/select_button_hover";
 import { keepHoverCardWhenHoverButton } from "../components/keep_hover_card";
 import { budgeaHandshake } from "../components/budgea_add_service";
 import { addTagsToMultipleDocuments } from "../components/add_tags_to_multiple_documents";
+import { showModalTips, hideModalTips } from "../components/modal_tips";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
@@ -43,4 +44,9 @@ if (document.getElementById('masonry-container')) {
 
 if (document.getElementById('submit-batch-tag')) {
   addTagsToMultipleDocuments();
+}
+
+if (document.getElementById('myModal')) {
+  showModalTips();
+  hideModalTips();
 }

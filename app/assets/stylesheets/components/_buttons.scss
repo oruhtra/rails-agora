@@ -6,6 +6,11 @@
   border: none;
 }
 
+.button:hover {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
 .date-button {
   padding: 5px 10px;
 }
@@ -16,17 +21,21 @@
   height: 39px;
 }
 
-
-.button:hover {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
 .filter-date-button {
   color: $primary;
   margin-left: 15px;
 }
 
 .filter-date-button:hover{
+  cursor: pointer;
+}
+
+.close-modal-button {
+  color: $primary;
+  margin-left: 15px;
+  float: right;
+}
+
+.close-modal-button:hover{
   cursor: pointer;
 }

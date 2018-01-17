@@ -1,0 +1,25 @@
+.element-box {
+  border: 1px solid $primary;
+  border-radius: 5px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  color: #4f5d75;
+  margin: 20px 0;
+}
+
+.element-box:hover {
+  border: 1px solid $primary;
+  cursor: pointer;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.element-box-header {
+  background-color: $primary;
+  border-bottom: 1px solid $primary;
+  padding: 5px 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.element-box-body {
+  padding: 15px 10px;
+}
