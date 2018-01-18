@@ -23,7 +23,8 @@ class Tag < ApplicationRecord
 
   # get tags that match a part of a name
   def self.tag_from_match_in_name(string)
-    Tag.get_tag_from_date(string) ? ([Tag.get_tag_from_date(string)]) : (Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) })
+    string.downcase!
+    Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) }
   end
 
   # calc tag occurrence

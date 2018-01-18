@@ -1,33 +1,66 @@
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="fa fa-times close-modal-button action-style" aria-hidden="true" data-dismiss="modal"></span>
-          <h4 class="modal-title title-centered" id="myModalLabel">Connectez votre permier service !</h4>
-        </div>
-        <div class="modal-body">
-
-          <div class="modal-subtitle">
-            En connectant vos services vous profitez de toute la puissance que la plateforme a à vous offrir ! Vous n'aurez plus jamais à aller chercher vos documents vous même, à les classer et les stocker : Agora s'en occupe pour vous.
+<% if @services_user.empty? %>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="fa fa-times close-modal-button action-style" aria-hidden="true" data-dismiss="modal"></span>
+            <h4 class="modal-title title-centered" id="myModalLabel">Connectez votre permier service !</h4>
           </div>
+          <div class="modal-body">
 
-          <div class="features-wrapper">
-              <div class="row">
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">test1</div>
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">test1</div>
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">test1</div>
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">test1</div>
-              </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
-              <p class="btnadd banner-button text-center" data-dismiss="modal">J'ai compris !</p>
+            <div class="features-wrapper">
+                <div class="row">
+                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                    <div class="feature-picto text-center">
+                      <i class="fa fa-rocket fa-3x color-primary" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-title text-center">Rapide</div>
+                    <ul class="feature-description">
+                      <li>Munis de vos de vos logins il vous suffit de 30 secondes à peine pour connecter un compte à la plateforme</li>
+                      <li>En moins de 1 minute vous retrouvez tous vos documents taggés sur votre espace Agora</li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                    <div class="feature-picto text-center">
+                      <i class="fa fa-magic fa-3x color-primary" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-title text-center">Automatique</div>
+                    <ul class="feature-description">
+                      <li>Vos documents sont récupérés automatiquement sur vos espaces clients et mis à jours tous les jours</li>
+                      <li>Agora les tagge intelligemment comme par magie pour que vous les retrouviez facilement</li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                    <div class="feature-picto text-center">
+                      <i class="fa fa-lock fa-3x color-primary" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-title text-center">Sécurisé</div>
+                    <ul class="feature-description">
+                      <li>Nous travaillons avec <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> un partennaire Français de confiance pour récupérer vos documents</li>
+                      <li>Agora ne stocke jamais vos logins, c'est <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> qui les stocke dans des serveurs sécurisés et fréquemment audités</li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                    <div class="feature-picto text-center">
+                      <i class="fa fa-user-secret fa-3x color-primary" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-title text-center">Anonymisé</div>
+                    <ul class="feature-description">
+                      <li>Le stockage des données sur les serveurs <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> respecte les exigences de la CNIL</li>
+                      <li>A tout moment vous pouvez supprimer une connexion, toutes les données seront alors effacées des serveurs</li>
+                    </ul>
+                  </div>
+                </div>
             </div>
-          </div>
 
+            <div class="row">
+              <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+                <p class="btnadd banner-button text-center" data-dismiss="modal">J'ai compris !</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
+<% end %>

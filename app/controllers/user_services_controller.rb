@@ -57,6 +57,10 @@ class UserServicesController < ApplicationController
       @user.save
       @user_service.save
       flash[:notice] = "Connexion réussie"
+
+      #launch the scrapp job sending in the user_service id
+      ScrapJob.perform_later(current_user.id, @user_service)
+
       redirect_to new_user_service_path
 
     end
