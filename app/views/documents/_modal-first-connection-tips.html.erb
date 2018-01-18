@@ -19,7 +19,7 @@
 
               <% if !@documents_unselected.empty? %>
 
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                   <%= link_to new_user_service_path do %>
                     <div class="element-box tips-box">
                       <div class="element-box-header text-center">
@@ -37,7 +37,7 @@
 
               <% elsif !current_user.services.empty? %>
 
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                   <div class="element-box tips-box dz-message" id="clickable" data-dismiss="modal">
                     <div class="element-box-header text-center">
                       Ajoutez votre <u>premier document</u>
