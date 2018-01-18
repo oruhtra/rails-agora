@@ -3,6 +3,9 @@ class UserServicesController < ApplicationController
     @user_service = UserService.new
     @services = Service.all
     @services_user = current_user.services
+    # create doc instance and pass user for the dropzone and 'add document' button
+    @document = Document.new
+    @user = current_user
 
     if params[:service_id].present? && Service.find(params[:service_id])
       @service = Service.find(params[:service_id])

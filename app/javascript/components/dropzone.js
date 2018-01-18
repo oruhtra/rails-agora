@@ -48,15 +48,19 @@ function newdropzone() {
       // HIDE the loader animation once the documents are loaded
       document.querySelector('.loader-container').classList.add('hidden');
     }
-    addinput_in_form(response);
-    document.getElementById("add-tags-to-documents").classList.remove('hidden');
-    document.getElementById("load_new_elements").click();
-    });
-
+    // load the new elements and the 'add tags' button only if on the index page e.g., if it finds the batch-update form
+    if (document.querySelector(".batch-update-form")) {
+      addinput_in_form(response);
+      document.getElementById("add-tags-to-documents").classList.remove('hidden');
+      document.getElementById("load_new_elements").click();
+    }
+  });
 
 }
 
 function addinput_in_form(response) {
+  // add the documents ids in the batch-update form and send them to the controller asking for JS
+  // response that will reload the masonry grid with the new documents added
   const doc_id = response.id;
   const html = `<input type="hidden" name="document_ids[]" id="document_ids_" value=${doc_id} />`;
   const formTag = document.querySelector(".batch-update-form");
