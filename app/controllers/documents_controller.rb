@@ -104,7 +104,6 @@ class DocumentsController < ApplicationController
 
 
   def batch_update #adding tags to all documents
-
     # getting all the documents displayed on the page => used in JS response
     @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
 
@@ -113,7 +112,7 @@ class DocumentsController < ApplicationController
     # adding tags to the documents selected => first check if there are any documents selected and if the user didn't send an empty name array
     if params[:document_to_tag_ids].present?
       @documents = current_user.documents.where(id: params[:document_to_tag_ids])
-      if params[:tag].present? && !params[:tag][:name] == ''
+      if params[:tag].present? && params[:tag][:name] != ''
         # Adding tag that was inputed by hand by the user => first check if it exist or not, if not create it and add the doctag
         tag_name = params[:tag][:name].downcase.gsub(/\s/, "_")
         # get the corresponding tag => if it doesn't exist create it
