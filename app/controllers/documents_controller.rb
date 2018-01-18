@@ -52,6 +52,9 @@ class DocumentsController < ApplicationController
 
     @document = Document.new
 
+    # Pass a user_preference instance to the view for the modal
+    @user_preference = UserPreference.new
+
     # respond with js when a tag is clicked
 
     respond_to do |format|

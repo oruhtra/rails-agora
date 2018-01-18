@@ -4,92 +4,103 @@
 </button> -->
 
 <!-- HIDE modal if user has both documents and services -->
-<% unless !@documents_unselected.empty? && !current_user.services.empty?  %>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="fa fa-times close-modal-button action-style" aria-hidden="true" data-dismiss="modal"></span>
-          <h4 class="modal-title title-centered" id="myModalLabel">Bienvenue sur Agora !</h4>
-        </div>
-        <div class="modal-body">
+<% if UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.nil? || !UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.value %>
+  <% unless !@documents_unselected.empty? && !current_user.services.empty? %>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="fa fa-times close-modal-button action-style dismiss-modal" aria-hidden="true" data-dismiss="modal"></span>
+            <h4 class="modal-title title-centered" id="myModalLabel">Bienvenue sur Agora !</h4>
+          </div>
+          <div class="modal-body">
 
-            <div class="row">
+              <div class="row">
 
-              <% if !@documents_unselected.empty? %>
+                <% if !@documents_unselected.empty? %>
 
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <%= link_to new_user_service_path do %>
-                    <div class="element-box tips-box">
+                  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <%= link_to new_user_service_path do %>
+                      <div class="element-box tips-box">
+                        <div class="element-box-header text-center">
+                          Connectez votre <u>premier compte client</u>
+                        </div>
+                        <div class="element-box-body">
+                          <p>Choisissez un de vos services parmis ceux proposés, renseignez vos identifiants et Agora s'occupe de récupérer et tagger automatiquement vos documents pour vous !</p>
+                          <div class="gif-container text-center">
+                            <%= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+
+                <% elsif !current_user.services.empty? %>
+
+                  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <div class="element-box tips-box dz-message" id="clickable" data-dismiss="modal">
                       <div class="element-box-header text-center">
-                        Connectez votre <u>premier compte client</u>
+                        Ajoutez votre <u>premier document</u>
                       </div>
                       <div class="element-box-body">
-                        <p>Choisissez un de vos services parmis ceux proposés, renseignez vos identifiants et Agora s'occupe de récupérer et tagger automatiquement vos documents pour vous !</p>
+                        <p>Glissez vos documents directement sur votre tableau de bord ou cliquez sur le bouton + pour ajouter des documents, il ne reste ensuite plus qu'à les tagger !</p>
                         <div class="gif-container text-center">
-                          <%= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+                          <%= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
                         </div>
                       </div>
                     </div>
-                  <% end %>
-                </div>
-
-              <% elsif !current_user.services.empty? %>
-
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <div class="element-box tips-box dz-message" id="clickable" data-dismiss="modal">
-                    <div class="element-box-header text-center">
-                      Ajoutez votre <u>premier document</u>
-                    </div>
-                    <div class="element-box-body">
-                      <p>Glissez vos documents directement sur votre tableau de bord ou cliquez sur le bouton + pour ajouter des documents, il ne reste ensuite plus qu'à les tagger !</p>
-                      <div class="gif-container text-center">
-                        <%= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
-                      </div>
-                    </div>
                   </div>
-                </div>
 
-              <% else %>
+                <% else %>
 
-                <div class="col-xs-12 col-sm-6 col-sm-offset-0">
-                  <%= link_to new_user_service_path do %>
-                    <div class="element-box">
+                  <div class="col-xs-12 col-sm-6 col-sm-offset-0">
+                    <%= link_to new_user_service_path do %>
+                      <div class="element-box">
+                        <div class="element-box-header text-center">
+                          Connectez votre <u>premier compte client</u>
+                        </div>
+                        <div class="element-box-body">
+                          <p>Choisissez le service parmis ceux proposés, renseignez vos identifiants et Agora s'occupe de récupérer et tagger automatiquement vos documents pour vous !</p>
+                          <div class="gif-container text-center">
+                            <%= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-6 col-sm-offset-0">
+                    <div class="element-box dz-message" id="clickable" data-dismiss="modal">
                       <div class="element-box-header text-center">
-                        Connectez votre <u>premier compte client</u>
+                        Ajoutez votre <u>premier document</u>
                       </div>
                       <div class="element-box-body">
-                        <p>Choisissez le service parmis ceux proposés, renseignez vos identifiants et Agora s'occupe de récupérer et tagger automatiquement vos documents pour vous !</p>
+                        <p>Glissez vos documents directement sur votre tableau de bord ou cliquez sur le bouton + pour ajouter des documents, il ne reste plus qu'à les tagger !</p>
                         <div class="gif-container text-center">
-                          <%= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+                          <%= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
                         </div>
                       </div>
                     </div>
-                  <% end %>
-                </div>
+                  </div>
 
-                <div class="col-xs-12 col-sm-6 col-sm-offset-0">
-                  <div class="element-box dz-message" id="clickable" data-dismiss="modal">
-                    <div class="element-box-header text-center">
-                      Ajoutez votre <u>premier document</u>
-                    </div>
-                    <div class="element-box-body">
-                      <p>Glissez vos documents directement sur votre tableau de bord ou cliquez sur le bouton + pour ajouter des documents, il ne reste plus qu'à les tagger !</p>
-                      <div class="gif-container text-center">
-                        <%= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
-                      </div>
-                    </div>
+                <% end %>
+                <div class="row">
+                  <div class="col-xs-4 col-xs-offset-4 text-center">
+                    <%= simple_form_for @user_preference, remote: true do |f| %>
+                    <%= f.input :value, label: 'ne plus afficher'%>
+                    <%= f.input :setting, as: :hidden, input_html: {value: "tips_setting"}%>
+                    <%= f.button :submit, id:'set_user_preference', class:"hidden"%>
+                    <% end %>
                   </div>
                 </div>
+              </div>
 
-              <% end %>
-
-            </div>
-
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
+
 

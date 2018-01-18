@@ -1,66 +1,79 @@
-<% if @services_user.empty? %>
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="fa fa-times close-modal-button action-style" aria-hidden="true" data-dismiss="modal"></span>
-            <h4 class="modal-title title-centered" id="myModalLabel">Connectez votre permier service !</h4>
-          </div>
-          <div class="modal-body">
+<% if UserPreference.where(user_id: @user.id).where(setting: 'first_user_service_setting').first.nil? || !UserPreference.where(user_id: @user.id).where(setting: 'first_user_service_setting').first.value %>
 
-            <div class="features-wrapper">
-                <div class="row">
-                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
-                    <div class="feature-picto text-center">
-                      <i class="fa fa-rocket fa-3x color-primary" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-title text-center">Rapide</div>
-                    <ul class="feature-description">
-                      <li>Munis de vos de vos logins il vous suffit de 30 secondes à peine pour connecter un compte à la plateforme</li>
-                      <li>En moins de 1 minute vous retrouvez tous vos documents taggés sur votre espace Agora</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
-                    <div class="feature-picto text-center">
-                      <i class="fa fa-magic fa-3x color-primary" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-title text-center">Automatique</div>
-                    <ul class="feature-description">
-                      <li>Vos documents sont récupérés automatiquement sur vos espaces clients et mis à jours tous les jours</li>
-                      <li>Agora les tagge intelligemment comme par magie pour que vous les retrouviez facilement</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
-                    <div class="feature-picto text-center">
-                      <i class="fa fa-lock fa-3x color-primary" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-title text-center">Sécurisé</div>
-                    <ul class="feature-description">
-                      <li>Nous travaillons avec <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> un partennaire Français de confiance pour récupérer vos documents</li>
-                      <li>Agora ne stocke jamais vos logins, c'est <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> qui les stocke dans des serveurs sécurisés et fréquemment audités</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
-                    <div class="feature-picto text-center">
-                      <i class="fa fa-user-secret fa-3x color-primary" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-title text-center">Anonymisé</div>
-                    <ul class="feature-description">
-                      <li>Le stockage des données sur les serveurs <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> respecte les exigences de la CNIL</li>
-                      <li>A tout moment vous pouvez supprimer une connexion, toutes les données seront alors effacées des serveurs</li>
-                    </ul>
-                  </div>
-                </div>
+  <% if @services_user.empty? %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="fa fa-times close-modal-button action-style dismiss-modal" aria-hidden="true" data-dismiss="modal"></span>
+              <h4 class="modal-title title-centered" id="myModalLabel">Connectez votre permier service !</h4>
             </div>
+            <div class="modal-body">
 
-            <div class="row">
-              <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
-                <p class="btnadd banner-button text-center" data-dismiss="modal">J'ai compris !</p>
+              <div class="features-wrapper">
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                      <div class="feature-picto text-center">
+                        <i class="fa fa-rocket fa-3x color-primary" aria-hidden="true"></i>
+                      </div>
+                      <div class="feature-title text-center">Rapide</div>
+                      <ul class="feature-description">
+                        <li>Munis de vos de vos logins il vous suffit de 30 secondes à peine pour connecter un compte à la plateforme</li>
+                        <li>En moins de 1 minute vous retrouvez tous vos documents taggés sur votre espace Agora</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                      <div class="feature-picto text-center">
+                        <i class="fa fa-magic fa-3x color-primary" aria-hidden="true"></i>
+                      </div>
+                      <div class="feature-title text-center">Automatique</div>
+                      <ul class="feature-description">
+                        <li>Vos documents sont récupérés automatiquement sur vos espaces clients et mis à jours tous les jours</li>
+                        <li>Agora les tagge intelligemment comme par magie pour que vous les retrouviez facilement</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                      <div class="feature-picto text-center">
+                        <i class="fa fa-lock fa-3x color-primary" aria-hidden="true"></i>
+                      </div>
+                      <div class="feature-title text-center">Sécurisé</div>
+                      <ul class="feature-description">
+                        <li>Nous travaillons avec <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> un partennaire Français de confiance pour récupérer vos documents</li>
+                        <li>Agora ne stocke jamais vos logins, c'est <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> qui les stocke dans des serveurs sécurisés et fréquemment audités</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-3">
+                      <div class="feature-picto text-center">
+                        <i class="fa fa-user-secret fa-3x color-primary" aria-hidden="true"></i>
+                      </div>
+                      <div class="feature-title text-center">Anonymisé</div>
+                      <ul class="feature-description">
+                        <li>Le stockage des données sur les serveurs <a href="https://www.budget-insight.com/security" target="blank"><u>Budget Insight</u></a> respecte les exigences de la CNIL</li>
+                        <li>A tout moment vous pouvez supprimer une connexion, toutes les données seront alors effacées des serveurs</li>
+                      </ul>
+                    </div>
+                  </div>
               </div>
-            </div>
 
+              <div class="row">
+                <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+                  <p class="btnadd banner-button text-center dismiss-modal" data-dismiss="modal">J'ai compris !</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 text-center">
+                  <%= simple_form_for @user_preference, remote: true do |f| %>
+                  <%= f.input :value, label: 'ne plus afficher'%>
+                  <%= f.input :setting, as: :hidden, input_html: {value: "first_user_service_setting"}%>
+                  <%= f.button :submit, id:'set_user_preference', class:"hidden"%>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  <% end %>
 <% end %>

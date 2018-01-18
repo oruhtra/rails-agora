@@ -7,6 +7,9 @@ class UserServicesController < ApplicationController
     @document = Document.new
     @user = current_user
 
+    # Pass a user_preference instance to the view for the modal
+    @user_preference = UserPreference.new
+
     if params[:service_id].present? && Service.find(params[:service_id])
       @service = Service.find(params[:service_id])
     end
