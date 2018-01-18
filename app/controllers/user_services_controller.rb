@@ -32,11 +32,11 @@ class UserServicesController < ApplicationController
     if params[:error_message].present?
 
       if params[:error_message] == "wrongpass"
-        flash[:alert] = "Mauvaise combinaison login / password"
+        flash[:alert] = "Echec - Mauvaise combinaison login / password"
       elsif params[:error_message] == "websiteUnavailable"
-        flash[:alert] = "Site internet non disponible"
+        flash[:alert] = "Echec - Site internet non disponible"
       elsif params[:error_message] == "actionNeeded"
-        flash[:alert] = "Connexion impossible - une action est necessaire sur le site"
+        flash[:alert] = "Echec - Connexion impossible - une action est necessaire sur le site"
       else
         flash[:alert] = "Echec de la connexion"
       end
@@ -56,7 +56,7 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      flash[:notice] = "Connexion réussie"
+      flash[:notice] = "Connexion réussie - vos documents sont entrain d'être téléchargés"
 
       #launch the scrapp job sending in the user_service id
       ScrapJob.perform_later(current_user.id, @user_service.id)

@@ -11,6 +11,7 @@ class ScrapJob < ApplicationJob
     else
       # Scrap user documents from one service only
       user_service = UserService.find(user_service_id)
+      sleep(30)
       scrap_documents(user, user_service)
     end
   end
@@ -28,8 +29,6 @@ class ScrapJob < ApplicationJob
     url = "https://agora.biapi.pro/2.0/users/me/connections/#{user_service.connection_id}/documents/"
     headers = { "Authorization": "Bearer #{user.budgea_token}" }
     budgea_response = JSON.parse(RestClient.get(url, headers))
-
-    # budgea_doc_id_array = Document.where(user_id: user.id).map{ |d| d.budgea_doc_id}.flatten.uniq! || []
 
     puts "Iterate over all user documents from his accounts"
 
