@@ -1,13 +1,18 @@
+<% content_for :navbar do %>
+<div class="title title-centered title-primary">
+  <%= simple_form_for(@document) do |f| %>
+    <%= f.input :name, label: false %>
+    <%= f.submit class:"hidden"%>
+  <% end %>
+</div>
+<% end %>
 <div class="document-show">
   <div class="container">
     <div class="row">
-      <div class="col-xs-9 text-center relative-position">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 text-center relative-position">
         <div class="document-wrapper-show">
           <div class="fade-out-top fade-out-top-white"></div>
           <div class="document-container-show">
-             <%= link_to documents_path, class: "bouton-back-home" do %>
-              <i class="fa fa-times color-primary fa-2x action-style" aria-hidden="true" ></i>
-            <% end %>
             <%= cl_image_tag @document.photo, class: "large-document",  format: :jpg %>
           </div>
           <div class="fade-out-bottom fade-out-bottom-white"></div>
@@ -23,9 +28,9 @@
           </ul>
         </div>
       </div>
-      <div class="col-xs-3">
-        <%= render 'tags_section_show' %>
-      </div>
+      <!-- <div class="col-sm-3 hidden-xs">
+        <%#= render 'tags_section_show' %>
+      </div> -->
     </div>
   </div>
 </div>
