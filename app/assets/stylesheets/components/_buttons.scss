@@ -4,6 +4,7 @@
   box-shadow: none;
   border-radius: 5px;
   border: none;
+  transition: all 0.3s ease 0s;
 }
 
 .button:hover {
@@ -42,4 +43,9 @@
 
 .close-modal-button:hover{
   cursor: pointer;
+}
+
+.log-in-button {
+  border-radius: 5px;
+  padding: 5px 30px;
 }

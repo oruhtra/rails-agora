@@ -73,6 +73,7 @@
   border-radius: 5px;
   transition: all 0.5s ease;
   background-color: $primarytransparent;
+  transition: all 0.3s ease 0s;
   &:hover {
     opacity: 1;
     cursor: pointer;

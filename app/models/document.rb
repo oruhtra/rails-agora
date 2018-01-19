@@ -19,11 +19,11 @@ class Document < ApplicationRecord
   end
 
   # get all user documentsw with a tag
-  def self.user_documents_tagged(tags_array)
-    Document.all.select{ |d| tags_array & d.tags == tags_array }
+  def self.user_documents_tagged(tags_array, user)
+    Document.where(user: user).select{ |d| tags_array & d.tags == tags_array }
   end
 
-  def self.user_documents_selected
-    Document.where(selected: true)
+  def self.user_documents_selected(user)
+    Document.where(user: user).where(selected: true)
   end
 end

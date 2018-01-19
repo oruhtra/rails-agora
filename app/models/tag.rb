@@ -6,8 +6,8 @@ class Tag < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w(macro_category doc_type supplier user_specific date)}
 
   # get all remaining tags of documents selected from a first array of tags
-  def self.remaining_tags(tags_array)
-    documents = Document.user_documents_tagged(tags_array)
+  def self.remaining_tags(tags_array, user)
+    documents = Document.user_documents_tagged(tags_array, user)
     documents.map { |d| d.tags }.flatten.uniq - tags_array
   end
 

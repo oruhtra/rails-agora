@@ -1,6 +1,6 @@
-<div class="form" style="background-image: linear-gradient(-225deg, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%)">
-  <div class="form">
-    <div class="container">
+<div class="form banner">
+
+    <div class="login-form-container">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
 
@@ -9,7 +9,7 @@
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= f.error_notification %>
 
-            <div class="form-inputs" style="color:white;">
+            <div class="form-inputs color-text">
               <%= f.input :photo, required: false, autofocus: false %>
               <%= f.input :email, required: true, autofocus: false %>
 
@@ -32,5 +32,5 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>

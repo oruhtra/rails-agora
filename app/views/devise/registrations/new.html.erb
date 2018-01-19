@@ -1,24 +1,24 @@
-<div class="form" style="background-image: linear-gradient(-225deg, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%)">
+<div class="form banner">
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
 
-  <div class="container">
+  <div class="login-form-container">
     <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
         <h2 class="text-center" style="color:white;">Sign up</h2>
-        <div class="form-inputs" style="color:white;">
-          <%= f.input :first_name, required: true, autofocus: true %>
-          <%= f.input :last_name, required: true, autofocus: true %>
-          <%= f.input :email, required: true, autofocus: true, placeholder: "Ex: phobie@administrative.com" %>
-          <%= f.input :photo, required: false, autofocus: true %>
-          <%= f.input :password, required: true, placeholder: "6 characters minimum" %>
-          <%= f.input :password_confirmation, required: true %>
-        </div>
-        <div class="form-actions text-center">
-          <%= f.button :submit, "Sign up", class:"btnadd banner-button" %>
-        </div>
-            <% end %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs color-text font-light">
+            <%= f.input :first_name, required: true, autofocus: true, placeholder: "ex: Alan" %>
+            <%= f.input :last_name, required: true, autofocus: true, placeholder: "ex: Turing" %>
+            <%= f.input :email, required: true, autofocus: true, placeholder: "ex: phobie@administrative.com" %>
+            <%= f.input :photo, required: false, autofocus: true %>
+            <%= f.input :password, required: true, placeholder: "6 characters minimum" %>
+            <%= f.input :password_confirmation, required: true %>
+          </div>
+          <div class="form-actions text-center">
+            <%= f.button :submit, "Sign up", class:"btnadd banner-button" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

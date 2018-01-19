@@ -6,18 +6,36 @@
   </div>
 
   <div class="position-relative">
-      <i class="fa fa-calendar ref filter-date-button" aria-hidden="true" id="datepicker-button" data-toggle="tooltip" data-placement="bottom" title="Filtrer par date"></i>
+      <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true" id="datepicker-button" data-toggle="tooltip" data-placement="bottom" title="Filtrer par date"></i>
       <input class="my-datepicker cache"></input>
     </div>
 
+<!-- Button add tags change shape and position based on screen size -->
+<!-- Large screen -->
+<div class="hidden-sm hidden-xs">
   <div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
     <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
       <% @documents_untagged.each do |document| %>
         <%= hidden_field_tag "document_ids[]", document.id %>
       <% end %>
-      <%= submit_tag "Tagger vos documents sans tag", class:"button2 title-centered top-20"%>
+      <%= submit_tag "Tagger vos documents sans tag", class:"button title-centered top-20 padding-horizontal-10"%>
     <% end  %>
   </div>
+</div>
+<!-- Small screen -->
+<div class="visible-sm visible-xs">
+  <div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
+    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+      <% @documents_untagged.each do |document| %>
+        <%= hidden_field_tag "document_ids[]", document.id %>
+      <% end %>
+      <%= button_tag(type: "submit", class: "none") do %>
+        <i class="fa fa-tags font-25 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Tagger vos documents sans tag"></i>
+      <% end %>
+    <% end  %>
+  </div>
+</div>
+
 
 <% end %>
 

@@ -1,20 +1,53 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%)">
+<div class="banner">
   <div class="banner-content">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="home-title">
-            <h1>Agora</h1>
+
+
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-0">
+            <div class="home-title">
+              <h1>Agora</h1>
+            </div>
+            <div class="home-text-typed">
+              <h2 class="titlehome">On s'occupe de tout, <span id="banner-typed-text"></span></h2>
+            </div>
+
+            <!-- large screen -->
+            <div class="hidden-sm hidden-xs">
+              <%= link_to "Je me simplifie la vie !", new_user_registration_path, class: "btnadd banner-button text-center" %>
+            </div>
+
           </div>
-          <div class="home-text-typed">
-            <h2 class="titlehome">On s'occupe de tout, <span id="banner-typed-text"></span></h2>
+
+          <!-- large screen -->
+          <div class="hidden-sm hidden-xs">
+            <div class="col-xs-8">
+              <%= image_tag("/banner.png", width: '700') %>
+            </div>
           </div>
-          <%#= link_to "Log In - Sign Up", documents_path, class: "banner-button" %>
+
+          <!-- small screen -->
+          <div class="visible-sm visible-xs">
+            <div class="col-xs-8 col-xs-offset-2 banner-image-container-small">
+              <%= image_tag("/banner.png", width: '100%') %>
+            </div>
+
+            <div class="col-xs-8 col-xs-offset-2">
+              <%= link_to "Je me simplifie la vie !", new_user_registration_path, class: "btnadd banner-button text-center" %>
+            </div>
+          </div>
+
         </div>
-        <div class="col-xs-8">
-          <%= image_tag("/banner.png", width: '700') %>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+

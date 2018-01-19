@@ -1,9 +1,15 @@
 /* Main navbar */
+.navbar-wrapper {
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  top: 0; // required as well.
+  z-index: 1000;
+}
 .navbar-wagon {
-  background: transparent;
+  background: white;
   box-shadow-bottom: 0 0 0 2px #4E6CF6 inset;
   transition: all 0.3s ease;
-  padding: 10px 30px;
+  padding: 10px 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;

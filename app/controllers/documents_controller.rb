@@ -23,7 +23,7 @@ class DocumentsController < ApplicationController
     @user_selected_tags.compact!
 
     # get all tagged document based on selected tags (unselected)
-    @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags).select{|d| d.selected == false}
+    @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags, current_user).select{|d| d.selected == false}
     # sort them by date updates_at, last on the top
     @documents_unselected.sort_by!{ |doc| doc.id }.reverse!
 
@@ -31,8 +31,8 @@ class DocumentsController < ApplicationController
     @documents_untagged = policy_scope(Document).select{ |d| d.tags.empty? }
 
     # get remaining tags
-    @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.occurrence}.reverse
-    @user_tags_alphabetic =  @tag_class_verified.remaining_tags(@user_selected_tags).sort_by!{ |t| t.name_clean}
+    @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags, current_user).sort_by!{ |t| t.occurrence}.reverse
+    @user_tags_alphabetic =  @user_tags.sort_by!{ |t| t.name_clean}
 
     #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
     if !@user_selected_tags.empty?

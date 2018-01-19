@@ -2,14 +2,38 @@
   color: white;
   text-align: center;
   height: 100vh;
+  /* if you have a 60px navbar => height: calc(100vh - 60px); */
+  // height: calc(100vh - 60px);
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to right bottom, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%);
+}
+
+@media (min-width: 992px) {
+  .banner {
+    align-items: center;
+  }
+}
+
+.banner-small {
+  color: white;
+  text-align: center;
+  height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: contain !important;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
+
+.banner-content {
+  padding: 0 15px;
+}
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -21,6 +45,9 @@
   color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-bottom: 30px;
+}
+.banner-image-container-small {
+  margin-top: 20px;
 }
 
 .home-text-typed{
@@ -56,6 +83,7 @@
   color: $buttoncolor;
   font-weight: bolder;
   box-shadow: rgba(255, 255, 255, 0.8) 0 80px 0px 2px inset;
+  border-color: $primary;
 }
 
 

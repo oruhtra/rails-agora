@@ -60,6 +60,10 @@ a {
   opacity: 1;
 }
 
+.opacity-medium {
+  opacity: 0.5;
+}
+
 .width-100 {
   width: 100%;
 }
@@ -104,6 +108,9 @@ a {
 .color-primary {
   color: $primary;
 }
+.color-text {
+  color: $textcolor;
+}
 
 .title-centered {
   position: absolute;
@@ -114,3 +121,24 @@ a {
 .top-20 {
   top: 20%;
 }
+
+.padding-horizontal-10 {
+  padding: 5px 10px;
+}
+
+
+.font-25 {
+  font-size: 25px;
+}
+
+.none {
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.font-light {
+  font-weight: lighter;
+}
+
