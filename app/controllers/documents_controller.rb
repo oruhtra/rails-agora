@@ -178,7 +178,7 @@ class DocumentsController < ApplicationController
   end
 
   def unselect_docs
-    @documents_selected = policy_scope(Document).user_documents_selected
+    @documents_selected = policy_scope(Document).user_documents_selected(current_user)
     @documents_selected.update(selected: false)
     redirect_to documents_path
   end
