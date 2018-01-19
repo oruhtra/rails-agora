@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
 
     # get remaining tags
     @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags, current_user).sort_by!{ |t| t.occurrence}.reverse
-    @user_tags_alphabetic =  @user_tags.sort_by!{ |t| t.name_clean}
+    @user_tags_alphabetic =  @user_tags.sort_by{ |t| t.name_clean}
 
     #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
     if !@user_selected_tags.empty?
@@ -100,7 +100,7 @@ class DocumentsController < ApplicationController
 
   def add_tags
     @documents = current_user.documents.where(id: params[:document_ids]).order(:id)
-    @tags = policy_scope(Tag).all
+    @tags = policy_scope(Tag)
     @tag = Tag.new
     authorize @documents.first
   end

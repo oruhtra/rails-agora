@@ -85,7 +85,7 @@ class ScrapJob < ApplicationJob
             # get document service
             if !supplier.nil?
               begin
-                check_and_add_tag_to_document(document, supplier.macro_category)
+                check_and_add_tag_to_document(document, supplier.macro_category.gsub(/_/, " "))
                 check_and_add_tag_to_document(document, supplier.name_clean)
               rescue
                 puts "could not find supplier"

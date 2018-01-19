@@ -1,16 +1,10 @@
-p "Destroy users, tags, documents and services"
+p "Destroy tags, documents"
 Doctag.destroy_all
 Document.destroy_all
-UserService.destroy_all
+# UserService.destroy_all
 Tag.destroy_all
-Service.destroy_all
-# User.destroy_all
+# Service.destroy_all
 
-# p "Creating the current_user"
-
-# myuser = User.new(email: "arthur.reboul@gmail.com",  password: "123456" )
-# myuser.remote_photo_url = "https://media-exp1.licdn.com/mpr/mpr/shrink_100_100/p/3/000/22a/280/2401593.jpg"
-# myuser.save
 
 p "- creating macro cat tags"
 #Macro-cat
@@ -64,8 +58,9 @@ type_of_doc_up = [
 {name:"Quittance de loyer", macro_category:["Logement"]},
 {name:"Facture", macro_category:["Banque","Assurance","Mutuelle","Sécurité Sociale","Impôts","Etudes","Logement","Emploi","Transport","Véhicule","Gaz","Electricité","Retraite","Téléphonie","Santé","Biens personnels"]},
 {name:"Echéancier", macro_category:["Banque","Assurance","Mutuelle","Impôts","Gaz","Electricité","Téléphonie"]},
-{name:"Avis d'imposition", macro_category:["Impôts"]},
-{name:"Déclaration d'impôts", macro_category:["Impôts"]},
+{name:"Avis", macro_category:["Impôts"]},
+{name:"Déclaration", macro_category:["Impôts"]},
+{name:"Taxe d'habitation", macro_category:["Impôts", "Logement"]},
 {name:"Garantie", macro_category:["Banque","Assurance","Mutuelle","Sécurité Sociale","Impôts","Logement","Voyage","Emploi","Véhicule","Téléphonie","Biens personnels"]},
 {name:"Fiche de paye", macro_category:["Emploi"]},
 {name:"Diplôme", macro_category:["Etudes","Sports"]},
@@ -181,34 +176,58 @@ my_services += [
   {name: "La Poste", budgea_id: 334, macro_category: "poste", logo: 'https://upload.wikimedia.org/wikipedia/fr/2/2a/Logo-laposte.png'}
 ]
 
-p "persisiting all services"
+# p "persisiting all services"
 
-i = 1
-my_services.each do |s|
-  s[:name] = s[:name].downcase.gsub(/\s/, "_")
+# i = 1
+# my_services.each do |s|
+#   s[:name] = s[:name].downcase.gsub(/\s/, "_")
 
-  # s[:budgea_name] = s[:budgea_name].downcase
-  # if s[:name].nil?
-  #   s[:name] = s[:budgea_name].titleize
-  # end
+#   # s[:budgea_name] = s[:budgea_name].downcase
+#   # if s[:name].nil?
+#   #   s[:name] = s[:budgea_name].titleize
+#   # end
 
-  my_service = Service.new(s)
-  cl_response = Cloudinary::Uploader.upload(s[:logo])
-  my_service.remote_logo_url = cl_response["secure_url"]
-  my_service.save
-  Cloudinary::Uploader.destroy(cl_response["public_id"])
-  p "#{i} added"
-  i += 1
-end
+#   my_service = Service.new(s)
+#   cl_response = Cloudinary::Uploader.upload(s[:logo])
+#   my_service.remote_logo_url = cl_response["secure_url"]
+#   my_service.save
+#   Cloudinary::Uploader.destroy(cl_response["public_id"])
+#   p "#{i} added"
+#   i += 1
+# end
 
 p "creating fournisseur tags"
 #Fournisseur
-fournisseurs_up = my_services.map { |s| s[:name] }
 
-fournisseurs = fournisseurs_up.map { |e| e.downcase.gsub(/\s/, "_") }
-
-fournisseurs.each do |tag|
-  Tag.create(name: tag, category: "supplier")
+my_services.each do |s|
+  Tag.create(name: s[:name].downcase.gsub(/\s/, "_"), category: "supplier", macro_category:s[:macro_category].downcase.gsub(/\s/, "_"))
 end
 
+p 'creating other suppliers'
+
+other_suppliers = [
+{name:'BNP', macro_category:'Banque,Assurance'},
+{name:'Société Générale', macro_category:'Banque,Assurance'},
+{name:'Banque Populaire', macro_category:'Banque,Assurance'},
+{name:'LCL', macro_category:'Banque,Assurance'},
+{name:'Crédit Lyonnais', macro_category:'Banque,Assurance'},
+{name:'CIC', macro_category:'Banque,Assurance'},
+{name:'Caisse d\'Epargne', macro_category:'Banque,Assurance'},
+{name:'BforBanque', macro_category:'Banque,Assurance'},
+{name:'Crédit mutuel', macro_category:'Banque,Assurance'},
+{name:'Crédit Agricole', macro_category:'Banque,Assurance'},
+{name:'Boursorama', macro_category:'Banque,Assurance'},
+{name:'HSBC', macro_category:'Banque,Assurance'},
+{name:'Fortuneo', macro_category:'Banque'},
+{name:'Hello bank!', macro_category:'Banque'},
+{name:'ING Directe', macro_category:'Banque,Assurance'},
+{name:'Banque Postale', macro_category:'Banque,Assurance'},
+{name:'N26', macro_category:'Banque'},
+{name:'Revolut', macro_category:'Banque'},
+]
+
+
+other_suppliers.each do |s|
+  Tag.create(name: s[:name].downcase.gsub(/\s/, "_"), category: "supplier", macro_category:s[:macro_category].downcase.gsub(/\s/, "_"))
+end
 

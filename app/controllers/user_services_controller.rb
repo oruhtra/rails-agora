@@ -62,7 +62,7 @@ class UserServicesController < ApplicationController
 
       @user.save
       @user_service.save
-      flash[:notice] = "Connexion réussie - vos documents sont entrain d'être téléchargés"
+      flash[:notice] = "Connexion réussie - vos documents sont en train d'être téléchargés"
 
       #launch the scrapp job sending in the user_service id
       ScrapJob.perform_later(current_user.id, @user_service.id)

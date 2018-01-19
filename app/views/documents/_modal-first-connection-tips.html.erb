@@ -21,7 +21,7 @@
                 <% if !@documents_unselected.empty? %>
 
                   <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <%= link_to new_user_service_path do %>
+                    <%= link_to new_user_service_path, {class: 'none'} do %>
                       <div class="element-box tips-box">
                         <div class="element-box-header text-center">
                           Connectez votre <u>premier compte client</u>
@@ -55,7 +55,7 @@
                 <% else %>
 
                   <div class="col-xs-12 col-sm-6 col-sm-offset-0">
-                    <%= link_to new_user_service_path do %>
+                    <%= link_to new_user_service_path, {class: 'none'} do %>
                       <div class="element-box">
                         <div class="element-box-header text-center">
                           Connectez votre <u>premier compte client</u>

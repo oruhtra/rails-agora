@@ -60,7 +60,7 @@
             <p class= "tag-container-title" id="tags-container-title-user_specific">Vos tags</p>
             <div class="position-relative">
               <div class="tags-container">
-                <% (@tags.where(category: "user_specific")).each do |t| %>
+                <% (@tags.where(category: "user_specific").sort_by{ |t| t.name_clean}).each do |t| %>
                   <div class="tag-categories">
                     <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
                   </div>
@@ -76,7 +76,7 @@
           <p class= "tag-container-title" id="tags-container-title-macro_category">Catégorie</p>
           <div class="position-relative">
             <div class="tags-container">
-              <% (@tags.where(category: "macro_category")).each do |t| %>
+              <% (@tags.where(category: "macro_category").sort_by{ |t| t.name_clean}).each do |t| %>
               <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
                 <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
               </div>
@@ -91,7 +91,7 @@
           <p class= "tag-container-title" >Type de document</p>
           <div class="position-relative">
             <div class="tags-container">
-              <% (@tags.where(category: "doc_type")).each do |t| %>
+              <% (@tags.where(category: "doc_type").sort_by{ |t| t.name_clean}).each do |t| %>
                 <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
                   <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
                 </div>
@@ -101,12 +101,12 @@
         </div>
       </div>
 
-      <div class="col-xs-12 col-md-6">
+      <div class="col-xs-12">
         <div class="tags-bloc hidden" id="tags-container-title-supplier">
           <p class= "tag-container-title">Etablissement</p>
           <div class="position-relative">
             <div class="tags-container">
-              <% (@tags.where(category: "supplier")).each do |t| %>
+              <% (@tags.where(category: "supplier").sort_by{ |t| t.name_clean}).each do |t| %>
                 <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
                   <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
                 </div>
