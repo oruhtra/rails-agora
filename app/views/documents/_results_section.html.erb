@@ -44,7 +44,7 @@
         <%= link_to document_path(document) do %>
         <div class="hover-card">
           <div class="card-description">
-            <div class="card-title">
+            <div class="card-title breakword">
               <% if document.name[27] %>
                 <h5><%= document.name[0..26] %>...</h5>
               <% else %>
@@ -54,7 +54,7 @@
             </div>
 
             <% if !document.doctags.empty? %>
-              <div class="existing-tags">
+              <div class="existing-tags hidden-xs">
                 <% document.doctags.each do |t| %>
                     <div class="text-center tag-small" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
                 <% end %>
