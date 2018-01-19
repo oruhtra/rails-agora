@@ -15,7 +15,7 @@
         <div class="container width-100">
           <div class="row">
             <% @services_user.each do |service| %>
-              <div class="col-xs-12 col-md-4">
+              <div class="col-xs-6 col-md-4">
                 <div class="service-card">
                   <div>
                     <div class="service-form">
@@ -43,7 +43,7 @@
             <% end %>
 
             <% (@services - @services_user).select{ |t| t.macro_category == macro_category.name}.each do |service| %>
-              <div class="col-xs-12 col-md-4">
+              <div class="col-xs-6 col-md-4">
                 <div class="service-card">
                   <div class="service-form service-not-connected">
                     <%= cl_image_tag service.logo, class: "service-logo" %>

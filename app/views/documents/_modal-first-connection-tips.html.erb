@@ -86,7 +86,7 @@
 
                 <% end %>
                 <div class="row">
-                  <div class="col-xs-4 col-xs-offset-4 text-center">
+                  <div class="col-xs-8 col-xs-offset-2 text-center">
                     <%= simple_form_for @user_preference, remote: true do |f| %>
                     <%= f.input :value, label: 'ne plus afficher'%>
                     <%= f.input :setting, as: :hidden, input_html: {value: "tips_setting"}%>

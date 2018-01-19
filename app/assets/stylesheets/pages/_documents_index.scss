@@ -8,7 +8,6 @@
 .main-section-large {
   width: 100%;
   position: relative;
-  padding: 0px 20px;
   flex-grow: 1;
 }
 
@@ -21,12 +20,19 @@
 }
 
 .search_section {
-  position: relative;
-  margin-bottom: 10px;
-  margin-right: 20px;
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  top: 0; // required as well.
+  z-index: 100;
+  // Navbar height is 60px;
+  top: 60px;
+  background-color: white;
+  padding-bottom: 10px;
+  padding-right: 20px;
   padding-left: 5px;
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .result-section-wrapper {
@@ -35,25 +41,21 @@
 
 .results_section {
   position: relative;
-  overflow-y: scroll;
   background: $myresultsection;
-  border-radius: 5px;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .results_section_extra_small {
   margin-top: 17px;
-  height: 60vh;
 }
 
 .results_section_small {
   margin-top: 0px;
-  height: 80vh;
 }
 
 .results_section_large {
   margin-top: 17px;
-  height: 88vh;
 }
 
 #tags-bar{

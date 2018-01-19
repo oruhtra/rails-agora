@@ -5,7 +5,11 @@
 .selection_section {
   height: 80vh;
   padding: 10px 20px;
-  position: relative;
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  z-index: 100;
+  // Navbar height is 60px and search bar 56px;
+  top: 116px;
 }
 
 .selection-content {
