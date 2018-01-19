@@ -2,6 +2,18 @@
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .card {
+    width: 100px;
+  }
+}
+
+@media (min-width: 600px) {
+  .card {
+    width: 200px;
+  }
+}
+
 .card-image {
   border-radius: 5px;
   box-shadow: 0 0 3px $textcolor;

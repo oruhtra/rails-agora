@@ -2,7 +2,7 @@
   <div id="masonry-container" class="clearfix masonry-style">
     <% if @documents_new %>
       <% @documents_new.each do |document| %>
-        <div class= "box card" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
+        <div class= "box card" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
           <%= link_to document_path(document) do %>
             <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
           <% end %>
@@ -32,7 +32,7 @@
     <% end %>
 
     <% @documents_unselected.each do |document| %>
-      <div class= "box card" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
+      <div class= "box card" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
         <%= link_to document_path(document) do %>
           <%# if document.updated_at > @lastconnexion %>
             <%#= cl_image_tag document.photo, class: " document-thumbnail-large card-image newdoc", "format" => 'jpg' %>

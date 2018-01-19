@@ -14,7 +14,7 @@ function createMasonryGrid() {
   var msnry = new Masonry( grid, {
     // options
     itemSelector: '.box',
-    columnWidth: 40,
+    columnWidth: 30,
     isFitWidth: true
   });
 
