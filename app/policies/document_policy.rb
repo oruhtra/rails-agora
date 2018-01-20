@@ -17,6 +17,9 @@ class DocumentPolicy < ApplicationPolicy
   def batch_update?
     record.user == user
   end
+  def delete_batch?
+    record.user == user
+  end
   def batch_create_tag?
     record.user == user
   end

@@ -1,25 +1,15 @@
 function keepHoverCardWhenHoverButton() {
-  const buttonArray = document.querySelectorAll('.selectionbox');
-  buttonArray.forEach(button => {
-    button.addEventListener("mouseenter", (event) => {
-      const select = document.querySelectorAll('.card-image');
-      select.forEach(image => {
-      if (image.parentElement.parentElement == button.parentElement.parentElement.parentElement.parentElement) {
-      image.classList.toggle("card-hover");
-      }
-      });
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.querySelector('.selectionbox').addEventListener("mouseover", (e) => {
+      console.log('enter');
+      card.querySelector('.hover-card').classList.add('opacity-full');
     });
+    card.querySelector('.selectionbox').addEventListener("mouseout", (e) => {
+      setTimeout(function() {card.querySelector('.hover-card').classList.remove('opacity-full')}, 100);
+
     });
-    buttonArray.forEach(button => {
-    button.addEventListener("mouseleave", (event) => {
-      const select = document.querySelectorAll('.card-image');
-      select.forEach(image => {
-      if (image.parentElement.parentElement == button.parentElement.parentElement.parentElement.parentElement) {
-      image.classList.toggle("card-hover");
-      }
-      });
-    });
-    });
-  }
+  });
+}
 
 export { keepHoverCardWhenHoverButton };

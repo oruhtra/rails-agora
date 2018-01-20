@@ -6,6 +6,19 @@
   <% end %>
 </div>
 <% end %>
+<div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 text-center">
+  <div class="current-tags">
+    <% unless @doctags.empty? %>
+      <div class="existing-tags flex-around">
+        <% @doctags.each do |t| %>
+          <%= link_to document_doctag_path(@document, t), method: :delete do %>
+          <div class="tag tag-link tag-s text-center" data-toggle="tooltip" data-placement="bottom" title="Supprimer le tag"><%= t.tag.name_clean %></div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <div class="document-show">
   <div class="container">
     <div class="row">
@@ -17,18 +30,26 @@
           </div>
           <div class="fade-out-bottom fade-out-bottom-white"></div>
         </div>
-        <div class="action-bar-show">
-          <ul class="list-inline">
+        <div class="action-bar-show flex-around">
+          <div class="actions-container flex-around">
               <%= link_to download_document_path(@document) do %>
-                <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" ></i>
+                <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Télécharger le document"></i>
                <% end %>
             <%= link_to document_path(@document), method: :delete, :data => {:confirm => 'Are you sure?'} do %>
-              <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true"></i>
+              <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Supprimer le document"></i>
             <% end %>
-          </ul>
+
+              <%= form_tag add_tags_documents_path, method: :get, class: "show-add-tags-action" do  %>
+                <%= hidden_field_tag "document_ids[]", @document.id %>
+                <%= button_tag(type: "submit", class: "none") do %>
+                  <i class="fa fa-tags fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                <% end %>
+              <% end  %>
+
+          </div>
         </div>
       </div>
-      <!-- <div class="col-sm-3 hidden-xs">
+<!--       <div class="col-sm-3">
         <%#= render 'tags_section_show' %>
       </div> -->
     </div>

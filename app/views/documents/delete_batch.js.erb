@@ -1,0 +1,20 @@
+var nodeArray = [];
+
+<% @documents_all.each do |d| %>
+  nodeArray.push("<%= j render 'current_tags_section', document: d %>");
+<% end %>
+
+var cards = document.querySelectorAll('.card')
+
+if (typeof(i) === 'undefined') {
+  var i = 0;
+} else {
+  i = 0;
+}
+
+
+cards.forEach(card => {
+  const currentTags = card.querySelector('.current-tags');
+  currentTags.innerHTML = nodeArray[i];
+  i += 1;
+})

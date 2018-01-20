@@ -7,13 +7,15 @@ function selectButton() {
         const idComplete = event.currentTarget.id;
         const id = idComplete.match(/(\S*)@/)[1];
         const select_button = document.getElementById(`button-${id}`);
-        select_button.classList.toggle("hidden");
+        select_button.classList.remove("hidden");
       });
       card.addEventListener("mouseleave", (event) => {
         const idComplete = event.currentTarget.id;
         const id = idComplete.match(/(\S*)@/)[1];
         const select_button = document.getElementById(`button-${id}`);
-        select_button.classList.toggle("hidden");
+        if (!select_button.classList.contains("hidden")) {
+          select_button.classList.add("hidden");
+        }
       });
     });
   }

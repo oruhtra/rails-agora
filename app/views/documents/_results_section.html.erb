@@ -20,11 +20,19 @@
                 <p><%=document.updated_at.strftime("%Y-%m") %></p>
               </div>
             </div>
+
+            <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
+              <%= hidden_field_tag "document_ids[]", document.id %>
+              <%= button_tag(type: "submit", class: "none") do %>
+                <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+              <% end %>
+            <% end  %>
+
           </div>
           <% end %>
           <div class="card-info">
             <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
-            <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
+            <p id="button-<%= document.id %>" class="selectionbox hidden" data-toggle="tooltip" data-placement="bottom" title="Epingler le document"></p>
             <% end %>
           </div>
         </div>
@@ -53,14 +61,26 @@
               <p><%=document.updated_at.strftime("%Y-%m") %></p>
             </div>
 
-            <% if !document.doctags.empty? %>
-              <div class="existing-tags hidden-xs">
+            <div class="existing-tags hidden-xs">
+              <% if !document.doctags.empty? %>
                 <% document.doctags.each do |t| %>
-                    <div class="text-center tag-small" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
+                    <div class="text-center tag-small tag-white" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
                 <% end %>
-              </div>
-            <% end %>
-
+                <%= form_tag add_tags_documents_path, method: :get do  %>
+                  <%= hidden_field_tag "document_ids[]", document.id %>
+                  <%= button_tag(type: "submit", class: "none") do %>
+                    <i class="fa fa-plus fa-2x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                  <% end %>
+                <% end  %>
+              <% else %>
+                <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
+                  <%= hidden_field_tag "document_ids[]", document.id %>
+                  <%= button_tag(type: "submit", class: "none") do %>
+                    <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                  <% end %>
+                <% end  %>
+              <% end %>
+            </div>
           </div>
 
         </div>
@@ -68,7 +88,7 @@
         <% end %>
         <div class="card-info">
           <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
-          <p id="button-<%= document.id %>" class="selectionbox hidden"></p>
+          <p id="button-<%= document.id %>" class="selectionbox hidden" data-toggle="tooltip" data-placement="bottom" title="Epingler le document"></p>
           <% end %>
         </div>
       </div>

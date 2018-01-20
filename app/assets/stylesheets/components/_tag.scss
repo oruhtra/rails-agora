@@ -34,11 +34,20 @@
   float: left;
   text-align: center;
   border-radius: 4px;
-  background-color: $tagcolor2;
-  color: $tagcolor1;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   box-shadow: 0 0 0 1px $tagcolor1 inset;
+}
+
+.tag-primary {
+  background-color: $primary;
+  color: white;
+  border: 1px solid white;
+}
+
+.tag-white {
+  background-color: white;
+  color: $primary;
   border: 0px solid $tagcolor1;
 }
 

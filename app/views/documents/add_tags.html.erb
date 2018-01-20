@@ -16,9 +16,9 @@
 
       <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
         <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
-        <div class="hover-card" id="<%= document.id %>">
+        <div class="hover-card-add-tags" id="<%= document.id %>">
           <div class="card-description">
-            <div class="card-title">
+            <div class="card-title color-text">
               <% if document.name[20] %>
                 <h5 class="breakword"><%= document.name[0..26] %>...</h5>
               <% else %>
@@ -155,11 +155,21 @@
 
 <div class= "hidden">
   <%= form_tag(batch_update_documents_path, id:"post-tags-form", remote: true) do %>
-  <%= text_field_tag :tagname %>
+  <%= text_field_tag :add_tagname %>
   <% @documents.each do |document| %>
     <%= hidden_field_tag "documents_all_ids[]", document.id %>
   <% end %>
   <%= submit_tag nil, id: "submit-batch-tag"%>
+  <% end %>
+</div>
+
+<div class= "hidden">
+  <%= form_tag(delete_batch_documents_path, id:"delete-tags-form", remote: true, method: :delete) do %>
+  <%= text_field_tag :delete_tagname %>
+  <% @documents.each do |document| %>
+    <%= hidden_field_tag "documents_all_ids[]", document.id %>
+  <% end %>
+  <%= submit_tag nil, id: "delete-batch-tag"%>
   <% end %>
 </div>
 

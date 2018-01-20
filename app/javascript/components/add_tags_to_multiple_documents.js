@@ -1,13 +1,23 @@
 import { myDatepicker } from "../components/air_datepicker";
 
 function addTagsToMultipleDocuments() {
-  var cards = document.querySelectorAll('.hover-card');
+  var cards = document.querySelectorAll('.hover-card-add-tags');
   var postTagsForm = document.getElementById('post-tags-form');
+  var deleteTagsForm = document.getElementById('delete-tags-form');
   var submitBatchTags = document.getElementById('submit-batch-tag');
-  var tagFormInput = document.getElementById('tagname');
+  var deleteBatchTags = document.getElementById('delete-batch-tag');
+  var addTagFormInput = document.getElementById('add_tagname');
+  var deleteTagFormInput = document.getElementById('delete_tagname');
   var tagsWrapper = document.querySelector('.add-tags');
   var tagCreateForm = document.getElementById('new_tag');
   var selectedCards = [];
+  var tagsFromSelectedCards = [];
+
+  function selectCardIfOnlyOne() {
+    if (cards.length == 0) {
+      card.first.click();
+    }
+  }
 
   function toggleCardToAddTags() {
     cards.forEach(card => {
@@ -19,6 +29,7 @@ function addTagsToMultipleDocuments() {
 
             const html = `<input name="document_to_tag_ids[]" class = "hidden" id="form-${docId}" value=${docId} />`;
             postTagsForm.insertAdjacentHTML("afterbegin", html);
+            deleteTagsForm.insertAdjacentHTML("afterbegin", html);
             tagCreateForm.insertAdjacentHTML("afterbegin", html);
 
             card.classList.add('opacity-full');
@@ -40,46 +51,68 @@ function addTagsToMultipleDocuments() {
       if(event.target && event.target.nodeName == "I") {
         if (typeof selectedCards[0] !== 'undefined') {
           const tagId = event.target.id;
-          insertTagIDInForm(tagId);
+          if (getSelectedTagsOccurence(tagId) == selectedCards.length && tagsFromSelectedCards.includes(tagId)) {
+            insertTagIDInDeleteForm(tagId);
+          } else {
+            insertTagIDInAddForm(tagId);
+          }
         }
       }
     });
   }
 
-  function insertTagIDInForm(tagId) {
-    tagFormInput.value = tagId;
+  function insertTagIDInAddForm(tagId) {
+    addTagFormInput.value = tagId;
     submitBatchTags.click();
+  }
+
+  function insertTagIDInDeleteForm(tagId) {
+    deleteTagFormInput.value = tagId;
+    deleteBatchTags.click();
   }
 
   function addDateTag() {
     var block = function(formattedDate, date, dp) {
       if (typeof selectedCards[0] !== 'undefined') {
-        insertTagIDInForm(date);
+        insertTagIDInAddForm(date);
       }
     }
     myDatepicker(block);
   }
 
+  function getTagsFromSelectedCards() {
+    tagsFromSelectedCards.length = 0;
+    document.querySelectorAll(".opacity-full").forEach(c => {
+      const tags = c.querySelectorAll(".tag-small");
+      tags.forEach(t => {
+        tagsFromSelectedCards.push(t.id);
+      });
+    });
+  }
+
+  function getSelectedTagsOccurence(tagId) {
+    getTagsFromSelectedCards()
+    let nbOcc = 0;
+    for (var i = 0; i < tagsFromSelectedCards.length; i++) {
+      if (tagsFromSelectedCards[i] == tagId) {
+        nbOcc++;
+      }
+    }
+    return nbOcc;
+  }
+
   function revealDocTypeAndSupplierTags() {
-    var tagsFromSelectedCards = [];
     var macroCategoryTags = document.querySelectorAll(".macro_category");
     var docTypeTags = document.querySelectorAll(".doc_type");
     var supplierTags = document.querySelectorAll(".supplier");
     var allTags = document.querySelectorAll('.tag-link');
 
-    function getTagsFromSelectedCards() {
-      tagsFromSelectedCards.length = 0;
-      document.querySelectorAll(".opacity-full").forEach(c => {
-        const tags = c.querySelectorAll(".tag-small");
-        tags.forEach(t => {
-          tagsFromSelectedCards.push(t.id);
-        });
-      });
-    }
-
     function highlightSelectedTags(tag = false) {
       if (tag) {
-        if (!tag.classList.contains('tag-s')) {
+        const tagId = tag.id;
+        if (getSelectedTagsOccurence(tagId) == selectedCards.length && tagsFromSelectedCards.includes(tagId)) {
+          tag.classList.remove('tag-s');
+        } else if (!tag.classList.contains('tag-s')) {
           tag.classList.add('tag-s');
         }
       } else {
@@ -200,6 +233,7 @@ function addTagsToMultipleDocuments() {
   addTagToForm();
   revealDocTypeAndSupplierTags();
   addDateTag();
+  selectCardIfOnlyOne();
 }
 
 export { addTagsToMultipleDocuments };

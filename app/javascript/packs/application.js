@@ -37,7 +37,7 @@ if (document.getElementById('masonry-container')) {
   selectButton()
 }
 
-if (document.querySelectorAll('.selectionbox')) {
+if (document.getElementById('masonry-container')) {
   keepHoverCardWhenHoverButton()
 }
 

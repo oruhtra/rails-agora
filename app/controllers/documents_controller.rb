@@ -124,14 +124,43 @@ class DocumentsController < ApplicationController
         @documents.each do |d|
           create_doctag(d, tag)
         end
-      elsif params[:tagname].present?
+      elsif params[:add_tagname].present?
         # Adding the tag on which the user clicked to the documents
-        tag_name = params[:tagname]
+        tag_name = params[:add_tagname]
         # get the corresponding tag => if it doesn't exist create it
         tag = get_tag(tag_name)
         # create the doctags linking the documents and the tag
         @documents.each do |d|
           create_doctag(d, tag)
+        end
+      end
+    end
+
+    # respond with JS => send code to replace the documents 'hover' sections to display the tags that were added
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: root_path) }
+    end
+  end
+
+
+  def delete_batch #adding tags to all documents
+    # getting all the documents displayed on the page => used in JS response
+    @documents_all = current_user.documents.where(id: params[:documents_all_ids]).order(:id)
+
+    authorize @documents_all.first
+
+    # adding tags to the documents selected => first check if there are any documents selected and if the user didn't send an empty name array
+    if params[:document_to_tag_ids].present?
+      @documents = current_user.documents.where(id: params[:document_to_tag_ids])
+      if params[:delete_tagname].present?
+        # Adding the tag on which the user clicked to the documents
+        tag_name = params[:delete_tagname]
+        # get the corresponding tag => if it doesn't exist create it
+        tag = get_tag(tag_name)
+        # create the doctags linking the documents and the tag
+        @documents.each do |d|
+          destroy_doctag(d, tag)
         end
       end
     end
@@ -184,7 +213,7 @@ class DocumentsController < ApplicationController
   end
 
   def downloadzip
-    @documents_selected = policy_scope(Document).user_documents_selected
+    @documents_selected = policy_scope(Document).user_documents_selected(current_user)
     docs_public_ids = @documents_selected.map { |doc| doc.photo.file.public_id }
     url = Cloudinary::Utils.download_zip_url(
     :public_ids => docs_public_ids,
@@ -244,6 +273,13 @@ class DocumentsController < ApplicationController
       doctag.tag = tag
       doctag.source = "user_added"
       doctag.save
+    end
+  end
+
+  def destroy_doctag(document, tag)
+    if document.tags.include?(tag)
+      doctag = Doctag.where(tag: tag, document: document).first
+      doctag.destroy
     end
   end
 
