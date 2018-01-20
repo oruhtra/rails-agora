@@ -31,3 +31,11 @@
   right: -10px;
   top: 10px;
 }
+
+.document-show-title {
+  width: 400px;
+  border-radius: 0;
+  &:focus {
+    box-shadow: none !important;
+  }
+}
