@@ -10,11 +10,18 @@ function createMasonryGrid() {
   var cards = document.querySelectorAll(".box");
   var selectedTags = [];
   var peripheralTags = [];
+  var screenSize = $(window).width();
+
+  if (screenSize < 600) {
+    var masonryColumnWidth = 10;
+  } else {
+    var masonryColumnWidth = 40
+  }
 
   var msnry = new Masonry( grid, {
     // options
     itemSelector: '.box',
-    columnWidth: 30,
+    columnWidth: masonryColumnWidth,
     isFitWidth: true
   });
 
