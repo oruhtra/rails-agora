@@ -14,8 +14,8 @@ function addTagsToMultipleDocuments() {
   var tagsFromSelectedCards = [];
 
   function selectCardIfOnlyOne() {
-    if (cards.length == 0) {
-      card.first.click();
+    if (cards.length == 1) {
+      cards.item(0).click();
     }
   }
 
@@ -51,7 +51,8 @@ function addTagsToMultipleDocuments() {
       if(event.target && event.target.nodeName == "I") {
         if (typeof selectedCards[0] !== 'undefined') {
           const tagId = event.target.id;
-          if (getSelectedTagsOccurence(tagId) == selectedCards.length && tagsFromSelectedCards.includes(tagId)) {
+          getTagsFromSelectedCards();
+          if (getSelectedTagsOccurence(tagId) == selectedCards.length) {
             insertTagIDInDeleteForm(tagId);
           } else {
             insertTagIDInAddForm(tagId);
@@ -91,7 +92,6 @@ function addTagsToMultipleDocuments() {
   }
 
   function getSelectedTagsOccurence(tagId) {
-    getTagsFromSelectedCards()
     let nbOcc = 0;
     for (var i = 0; i < tagsFromSelectedCards.length; i++) {
       if (tagsFromSelectedCards[i] == tagId) {
@@ -109,22 +109,31 @@ function addTagsToMultipleDocuments() {
 
     function highlightSelectedTags(tag = false) {
       if (tag) {
+        getTagsFromSelectedCards();
         const tagId = tag.id;
-        if (getSelectedTagsOccurence(tagId) == selectedCards.length && tagsFromSelectedCards.includes(tagId)) {
+        tag.classList.remove('tag-s-half');
+        if (getSelectedTagsOccurence(tagId) == selectedCards.length) {
           tag.classList.remove('tag-s');
         } else if (!tag.classList.contains('tag-s')) {
           tag.classList.add('tag-s');
         }
       } else {
         allTags.forEach(t => {
+          getTagsFromSelectedCards();
           if (tagsFromSelectedCards.includes(t.id)) {
             if (!t.classList.contains('tag-s')) {
               t.classList.add('tag-s');
             }
-          } else {
-            if (t.classList.contains('tag-s')) {
-              t.classList.remove('tag-s');
+            if (getSelectedTagsOccurence(t.id) < selectedCards.length) {
+              if (!t.classList.contains('tag-s-half')) {
+                t.classList.add('tag-s-half');
+              }
+            } else {
+              t.classList.remove('tag-s-half');
             }
+          } else {
+            t.classList.remove('tag-s');
+            t.classList.remove('tag-s-half');
           }
         });
       }
@@ -202,10 +211,39 @@ function addTagsToMultipleDocuments() {
       });
 
 
-        allTags.forEach(tag => {
-          tag.addEventListener('click', (event) => {
-            if (selectedCards.length > 0) {
+      allTags.forEach(tag => {
+        tag.addEventListener('click', (event) => {
+          if (selectedCards.length > 0) {
+            getTagsFromSelectedCards();
+            const nbOcc = getSelectedTagsOccurence(tag.id)
+            if (nbOcc == selectedCards.length) {
+              for (var i = 0 ; i < nbOcc; i++) {
+                if (tagsFromSelectedCards.indexOf(tag.id) > -1) {
+                  tagsFromSelectedCards.splice(tagsFromSelectedCards.indexOf(tag.id), 1);
+                }
+              }
+              docTypeTags.forEach(t => {
+                if (!t.classList.contains("hidden")) {
+                  t.classList.add("hidden");
+                  tagsFromSelectedCards.forEach(selectedTag => {
+                    if (verifyIfTagHasCategory(t.parentElement.id.split(','), selectedTag)){
+                      t.classList.remove("hidden");
+                    }
+                  })
+                }
+              });
 
+              supplierTags.forEach(t => {
+                if (!t.classList.contains("hidden")) {
+                  t.classList.add("hidden");
+                  tagsFromSelectedCards.forEach(selectedTag => {
+                    if (verifyIfTagHasCategory(t.parentElement.id.split(','), selectedTag)){
+                      t.classList.remove("hidden");
+                    }
+                  })
+                }
+              });
+            } else {
               docTypeTags.forEach(t => {
                 if (verifyIfTagHasCategory(t.parentElement.id.split(','), tag.id)){
                   t.classList.remove("hidden");
@@ -213,17 +251,17 @@ function addTagsToMultipleDocuments() {
               });
 
               supplierTags.forEach(t => {
-                if (verifyIfTagHasCategory(t.parentElement.id.split(','), tag.id)){
-                  t.classList.remove("hidden");
-                }
+                  if (verifyIfTagHasCategory(t.parentElement.id.split(','), tag.id)){
+                    t.classList.remove("hidden");
+                  }
               });
-
-              highlightSelectedTags(tag);
-              toggleTagsContainerTitle()
             }
-          });
-        });
 
+            highlightSelectedTags(tag);
+            toggleTagsContainerTitle()
+          }
+        });
+      });
     }
 
     toggleTags()

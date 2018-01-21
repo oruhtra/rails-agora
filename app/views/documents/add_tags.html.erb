@@ -2,36 +2,40 @@
   <h4 class="text-center add-tags-title title-primary title-centered">Ajoutez des tags à vos documents</h4>
 <% end %>
 
+<div class="modal-wrapper">
+  <%= render 'modal-add-tags-select-a-tag' %>
+</div>
 
+<div class="document-to-tag-wrapper">
+  <div class="position-relative margin-left-md margin-right-md">
+    <% if @documents.length < 4 %>
+    <div class="new-documents-wrapper flex-around align-items-center">
+    <% else %>
+    <div class="fade-out-left fade-out-left-grey"></div>
+    <div class="fade-out-right fade-out-right-grey"></div>
+    <div class="new-documents-wrapper flex align-items-center">
+    <% end %>
+      <% @documents.each do |document| %>
 
-<div class="position-relative margin-left-md margin-right-md">
-  <% if @documents.length < 4 %>
-  <div class="new-documents-wrapper flex-around align-items-center">
-  <% else %>
-  <div class="fade-out-left fade-out-left-grey"></div>
-  <div class="fade-out-right fade-out-right-grey"></div>
-  <div class="new-documents-wrapper flex align-items-center">
-  <% end %>
-    <% @documents.each do |document| %>
-
-      <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
-        <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
-        <div class="hover-card-add-tags" id="<%= document.id %>">
-          <div class="card-description">
-            <div class="card-title color-text">
-              <% if document.name[20] %>
-                <h5 class="breakword"><%= document.name[0..26] %>...</h5>
-              <% else %>
-                <h5 class="breakword"><%= document.name %></h5>
-              <% end %>
-            </div>
-            <div class="current-tags">
-              <%= render 'current_tags_section', document: document %>
+        <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
+          <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
+          <div class="hover-card-add-tags" id="<%= document.id %>">
+            <div class="card-description">
+              <div class="card-title color-text">
+                <% if document.name[20] %>
+                  <h5 class="breakword"><%= document.name[0..26] %>...</h5>
+                <% else %>
+                  <h5 class="breakword"><%= document.name %></h5>
+                <% end %>
+              </div>
+              <div class="current-tags">
+                <%= render 'current_tags_section', document: document %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -114,6 +114,7 @@
   border-radius: 5px;
   transition: all 0.3s ease;
   border: 5px solid $primary;
+  background-color: rgba(255, 255, 255, 0.5);
   &:hover {
     opacity: 1;
     cursor: pointer;

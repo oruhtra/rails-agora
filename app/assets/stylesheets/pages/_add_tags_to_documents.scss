@@ -1,9 +1,16 @@
+.document-to-tag-wrapper {
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  top: 0; // required as well.
+  z-index: 100;
+  // Navbar height is 60px;
+  top: 60px;
+}
 .new-documents-wrapper {
   padding: 15px;
   border-radius: 3px;
   background-color: $myresultsection;
   overflow: scroll;
-  margin-bottom: 20px;
 }
 
 .tags-bloc {

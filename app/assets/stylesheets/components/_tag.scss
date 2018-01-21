@@ -56,7 +56,6 @@
   background-color: $tagcolor1;
   color: $tagcolor2;
   cursor: pointer;
-  border: 0px solid $tagcolor2;
 }
 
 .tag-small:active {
@@ -66,12 +65,19 @@
 .tag-s {
   background-color: $tagcolor1;
   color: $tagcolor2;
-  box-shadow: 0 0 0 1px $tagcolor2 inset;
 }
 
 .tag-s:hover {
   opacity: 0.8;
-  color: $very-light-gray;
+}
+
+.tag-s-half {
+  background-image: linear-gradient(to right bottom, $primary 50%, rgb(255, 255, 255) 50%);
+  color: $textcolor;
+}
+
+.tag-s-half:hover {
+  color: $textcolor;
 }
 
 .existing-tags {
