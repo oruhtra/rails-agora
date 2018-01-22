@@ -34,14 +34,39 @@ function createMasonryGrid() {
 
   function reloadGridAfterFileUpload() {
       document.querySelector('.reload-masonry-grid').addEventListener('click', (e) => {
-      cards = document.querySelectorAll(".box");
-      grid = document.getElementById('masonry-container');
-      msnry = new Masonry( grid, {
-        // options
-        itemSelector: '.box',
-        columnWidth: masonryColumnWidth,
-        isFitWidth: true
-      });
+        document.querySelectorAll('.document-new').forEach(card => {
+          // When multiple docs are dropped at the same time the function is called multiple times
+          // and the same documents are sent several times (ex. if 3 docs dropped : 1st call only 1st doc, then 2nd call 1st and 2nd doc etc.)
+          // hence the need to make sure that elements are added only once to the grid
+          // First we get all the element already added to the grid (those on which we added the class doc-new-prepended)
+          const newCards = document.querySelectorAll('.document-new-prepended');
+          const newCardsIds = [];
+          // get all their Ids and store them in newCardsIds
+          newCards.forEach(newCard =>{
+            newCardsIds.push(newCard.id.match(/(\S*)@(.+)/)[1]);
+          })
+          // for each card sent by the server through AJAX check wether it has already been added to the grid
+          // by checking its "id" vs the array of added Ids
+          if (!newCardsIds.includes(card.id.match(/(\S*)@(.+)/)[1])) {
+            // if document has not been added, duplicate it, delete it, and add the duplicate to the grid
+            // and then to the masonry grid, and remove the hidden + document-new classes and add a document-new-prepended
+             // to track it for the next iteration
+            const c = card.cloneNode(true);
+            card.remove();
+            c.classList.remove('hidden');
+            c.classList.remove('document-new');
+            c.classList.add('document-new-prepended');
+            // prepend the newly loaded card in the grid
+            grid.prepend(c);
+            // add and lay out newly appended elements
+            msnry.prepended(c);
+            msnry.layout();
+          } else {
+            // if document has already been added then just remove it
+            card.remove();
+          }
+
+        });
     })
   };
 
@@ -122,8 +147,6 @@ function createMasonryGrid() {
       const cardTags = card.id.match(/(\S*)@(.+)/)[2].split(' ');
 
       if (!cardTags.includes(tagId) && arrayContainsArray (cardTags, selectedTags)){
-        // fragment.appendChild(card);
-        // elems.push(card);
         // append elements to container
         grid.appendChild(card);
         // add and lay out newly appended elements

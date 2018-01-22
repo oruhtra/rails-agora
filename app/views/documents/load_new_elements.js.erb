@@ -1,8 +1,8 @@
 if (typeof(resultsSection) === 'undefined') {
-  var resultsSection = document.querySelector('.results_section');
+  var newDocSection = document.querySelector('.documents_new_wrapper');
   var reloadMasonryGrid = document.querySelector('.reload-masonry-grid');
 }
 
 
-resultsSection.innerHTML = "<%= j render 'results_section', documents_unselected: @documents_unselected %>";
-reloadMasonryGrid.click();
+newDocSection.innerHTML = "<%= j render 'results_section_documents_new'%>";
+setTimeout(function(){reloadMasonryGrid.click();}, 800);

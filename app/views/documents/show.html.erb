@@ -33,16 +33,16 @@
         <div class="action-bar-show flex-around">
           <div class="actions-container flex-around">
               <%= link_to download_document_path(@document) do %>
-                <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Télécharger le document"></i>
+                <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Télécharger le document"></i>
                <% end %>
             <%= link_to document_path(@document), method: :delete, :data => {:confirm => 'Are you sure?'} do %>
-              <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Supprimer le document"></i>
+              <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Supprimer le document"></i>
             <% end %>
 
               <%= form_tag add_tags_documents_path, method: :get, class: "show-add-tags-action" do  %>
                 <%= hidden_field_tag "document_ids[]", @document.id %>
                 <%= button_tag(type: "submit", class: "none") do %>
-                  <i class="fa fa-tags fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                  <i class="fa fa-tags fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Ajouter des tags"></i>
                 <% end %>
               <% end  %>
 
@@ -55,4 +55,29 @@
     </div>
   </div>
 </div>
+
+<!-- Section for the dropzone to work on this page - it enables the 'add document' button in the navbar by allowing the JS to run -->
+<div class="form-full-body hidden">
+  <h2 class="text-center dropdocs-title" style="color:white;">Déposez vos fichiers où vous voulez !</h2>
+  <%= simple_form_for @document_new, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
+  <%= hidden_field_tag(:user_id, @user.id) %>
+  <%= f.input :name, label: false,  as: :hidden %>
+  <%= f.input :photo, label: false, as: :hidden %>
+  <% end %>
+</div>
+
+<div class="loader-container hidden page-center front-element">
+  <h3 class="text-center", style="color: white; margin-bottom: 100px">Ajout des documents en cours</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div id="loader">
+          <div id="box" class="white"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="previews" class="hidden"></div>
 
