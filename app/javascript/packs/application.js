@@ -35,15 +35,15 @@ if (document.getElementById("doc-dropzone")) {
 }
 
 if (document.getElementById('masonry-container')) {
-  selectButton()
+  selectButton();
 }
 
 if (document.getElementById('masonry-container')) {
-  keepHoverCardWhenHoverButton()
+  keepHoverCardWhenHoverButton();
 }
 
 if (document.getElementById('masonry-container')) {
-  createMasonryGrid();
+  setTimeout(function(){createMasonryGrid();}, 500);
 }
 
 if (document.getElementById('submit-batch-tag')) {
