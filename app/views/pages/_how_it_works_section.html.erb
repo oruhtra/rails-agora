@@ -1,0 +1,120 @@
+<div class="features-wrapper">
+  <div class="how-it-works-title text-center">
+    <h2 class="color-white">Comment ça marche</h2>
+  </div>
+
+
+
+
+
+
+  <div class="how-it-works-content">
+
+    <!-- LARGE SCREEN -->
+    <div class="flex-around align-items-center margin-bottom-lg hidden-xs">
+      <div class="how-it-works-feature">
+        <h5 class="color-primary"><i class="fa fa-plug ref"></i>Connecter un <u>compte client</u></h5>
+        <p>Pour connecter un compte client il vous suffit de :</p>
+        <ul>
+          <li>Choisir un service chez qui vous avez un compte parmis ceux proposés</li>
+          <li>Renseigner vos identifiants dans le formulaire généré</li>
+          <li>Prendre une bière et attendre qu'Agora se connecte et récupère les documents</li>
+        </ul>
+      </div>
+      <%= image_tag '/Img/connexion_service_1.gif', class: "gif-small"%>
+    </div>
+
+    <div class="flex-around align-items-center hidden-xs">
+      <%= image_tag '/Img/ajout_document_1.gif', class: "gif-small"%>
+      <div class="how-it-works-feature">
+        <h5 class="color-primary"><i class="fa fa-plus ref"></i>Ajouter des <u>documents manuellement</u></h5>
+        <p>Pour ajouter des documents manuellement il vous suffit de :</p>
+        <ul>
+          <li>Sélectionner les documents sur votre ordinateur</li>
+          <li>Les faire glisser n'importe où sur votre espace Agora</li>
+          <li>Vous réjouir d'avoir ajouté des documents sur la plateforme</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SMALL SCREEN -->
+    <div class="flex-around margin-bottom-lg visible-xs">
+      <div>
+        <div class="flex-around">
+          <div class="how-it-works-feature">
+            <h5 class="color-primary"><i class="fa fa-plug ref"></i>Connecter un <u>compte client</u></h5>
+            <p>Pour connecter un compte client il vous suffit de :</p>
+            <ul>
+              <li>Choisir un service chez qui vous avez un compte parmis ceux proposés</li>
+              <li>Renseigner vos identifiants dans le formulaire généré</li>
+              <li>Prendre une bière et attendre qu'Agora se connecte et récupère les documents</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-around margin-bottom-lg visible-xs">
+      <div>
+        <div class="flex-around">
+          <div class="how-it-works-feature">
+            <h5 class="color-primary"><i class="fa fa-plus ref"></i>Ajouter des <u>documents manuellement</u></h5>
+            <p>Pour ajouter des documents manuellement il vous suffit de :</p>
+            <ul>
+              <li>Sélectionner les documents sur votre ordinateur</li>
+              <li>Les faire glisser n'importe où sur votre espace Agora</li>
+              <li>Vous réjouir d'avoir ajouté des documents sur la plateforme</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALLWAYS -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <%= link_to "Ok je me simplifie la vie !", new_user_registration_path, class: "btnadd banner-button text-center" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-0">
+      <h5>Connecter un <u>compte client</u></h5>
+      <p>Pour connecter un compte client il vous suffit de :</p>
+      <ul>
+        <li>Choisir un service chez qui vous avez un compte parmis ceux proposés</li>
+        <li>Renseigner vos identifiants dans le formulaire généré</li>
+        <li>Prendre une bière et attendre qu'Agora se connecte et récupère les documents</li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-0">
+      <div class="gif-container text-center">
+        <%#= image_tag '/Img/connexion_service_1.gif', class: "gif-medium"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-0">
+      <h5>Ajouter des <u>documents manuellement</u></h5>
+      <p>Pour ajouter des documents manuellement il vous suffit de :</p>
+      <ul>
+        <li>Sélectionner les documents sur votre ordinateur</li>
+        <li>Les faire glisser n'importe où sur votre espace Agora</li>
+        <li>Vous réjouir d'avoir ajouté des documents sur la plateforme</li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-0">
+      <div class="gif-container text-center">
+        <%#= image_tag '/Img/ajout_document_1.gif', class: "gif-medium"%>
+      </div>
+    </div>
+  </div> -->
+</div>
