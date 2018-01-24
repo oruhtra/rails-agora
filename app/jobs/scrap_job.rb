@@ -30,6 +30,7 @@ class ScrapJob < ApplicationJob
     headers = { "Authorization": "Bearer #{user.budgea_token}" }
     budgea_response = JSON.parse(RestClient.get(url, headers))
 
+    p budgea_response
     puts "Iterate over all user documents from his accounts"
 
     budgea_response["documents"].each do |d|
@@ -42,7 +43,7 @@ class ScrapJob < ApplicationJob
           #download file directly in cloudinary
           puts "getting CL response"
           begin
-            cl_response = Cloudinary::Uploader.upload(d["url"], headers: {"Authorization": "Bearer: #{user.budgea_token}"})
+            cl_response = Cloudinary::Uploader.upload(d["url"], headers: {"Authorization": "Bearer: #{user.budgea_token}"}, :phash => true)
           rescue
             puts "could not download document"
             cl_response = nil
@@ -73,7 +74,7 @@ class ScrapJob < ApplicationJob
               begin
                 document_date = d["date"].to_date
                 puts document_date
-                check_and_add_tag_to_document(document, document_date, true)
+                document.check_and_add_tag_to_document(document_date, true)
               rescue
                 puts "could not find date"
               end
@@ -85,8 +86,8 @@ class ScrapJob < ApplicationJob
             # get document service
             if !supplier.nil?
               begin
-                check_and_add_tag_to_document(document, supplier.macro_category.gsub(/_/, " "))
-                check_and_add_tag_to_document(document, supplier.name_clean)
+                document.check_and_add_tag_to_document(supplier.macro_category.gsub(/_/, " "))
+                document.check_and_add_tag_to_document(supplier.name_clean)
               rescue
                 puts "could not find supplier"
               end
@@ -96,7 +97,7 @@ class ScrapJob < ApplicationJob
             puts "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
 
             begin
-            check_and_add_tag_to_document(document, d["name"])
+            document.check_and_add_tag_to_document(d["name"])
             rescue
               puts "could not find name"
             end
@@ -108,41 +109,6 @@ class ScrapJob < ApplicationJob
         end
       end
     end
-  end
-
-  def check_and_add_tag_to_document(document, tag_name, date_boolean = false)
-    puts "adding one tag"
-    if date_boolean
-      puts "add a date"
-      t = Tag.get_tag_from_date(tag_name)
-      if t
-        # check if document doesn't already include the tag, if it doesn't create a new doctag
-        puts "creating date doctag"
-        if !document.tags.include?(t)
-          doctag = Doctag.new
-          doctag.document = document
-          doctag.tag = t
-          doctag.save
-        end
-      end
-    else
-      puts "tags that match"
-      tag_name.downcase!
-      # searching all tags that match part of the name and creat
-      if !Tag.tag_from_match_in_name(tag_name).first.nil?
-        Tag.tag_from_match_in_name(tag_name).each do |t|
-          # check if document doesn't already include the tag, if it doesn't create a new doctag
-          puts "creating doctags"
-          if !document.tags.include?(t)
-            doctag = Doctag.new
-            doctag.document = document
-            doctag.tag = t
-            doctag.save
-          end
-        end
-      end
-    end
-
   end
 
 end

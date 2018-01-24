@@ -31,4 +31,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  mount_griddler
+
 end

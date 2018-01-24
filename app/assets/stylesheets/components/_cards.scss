@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  width: 200px;
 }
 
 @media (max-width: 600px) {
@@ -8,16 +9,16 @@
   }
 }
 
-@media (min-width: 600px) {
-  .card {
-    width: 200px;
-  }
-}
-
 .card-image {
   border-radius: 5px;
   box-shadow: 0 0 3px $textcolor;
   opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .card-image {
+    border-radius: 2px;
+  }
 }
 
 .card-hover {

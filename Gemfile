@@ -24,6 +24,9 @@ gem 'rest-client'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'postmark-rails'
+# to parse inbound emails from postmark
+gem 'griddler'
+gem 'griddler-postmark'
 
 group :development, :test do
   gem 'letter_opener'
