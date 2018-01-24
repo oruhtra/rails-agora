@@ -12,13 +12,23 @@
       <%= link_to document_path(document) do %>
       <div class="hover-card">
         <div class="card-description">
-          <div class="card-title breakword">
+          <!-- Large screen -->
+          <div class="card-title breakword hidden-xs">
             <% if document.name[27] %>
               <h5><%= document.name[0..26] %>...</h5>
             <% else %>
               <h5><%= document.name %></h5>
             <% end %>
             <p><%=document.updated_at.strftime("%Y-%m") %></p>
+          </div>
+
+          <!-- Small screen -->
+          <div class="card-title breakword visible-xs">
+            <% if document.name[10] %>
+              <h5><%= document.name[0..10] %>...</h5>
+            <% else %>
+              <h5><%= document.name %></h5>
+            <% end %>
           </div>
 
           <div class="existing-tags hidden-xs">

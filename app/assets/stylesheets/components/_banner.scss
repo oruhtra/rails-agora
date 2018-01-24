@@ -1,15 +1,10 @@
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
   /* if you have a 60px navbar => height: calc(100vh - 60px); */
-  // height: calc(100vh - 60px);
-  background-size: contain !important;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(to right bottom, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%);
 }
 
 @media (min-width: 992px) {
@@ -21,7 +16,7 @@
 .banner-small {
   color: white;
   text-align: center;
-  height: 100vh;
+  height: calc(100vh - 60px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: contain !important;
   background-repeat: no-repeat;
@@ -77,6 +72,7 @@
   border-radius: 4px;
   padding: 15px 20px;
   min-width: 220px;
+  margin-bottom: 10px;
 }
 
 

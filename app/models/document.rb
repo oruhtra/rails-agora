@@ -26,4 +26,43 @@ class Document < ApplicationRecord
   def self.user_documents_selected(user)
     Document.where(user: user).where(selected: true)
   end
+
+  def check_and_add_tag_to_document(tag_name, date_boolean = false)
+    if date_boolean
+      t = Tag.get_tag_from_date(tag_name)
+      if t
+        # check if document doesn't already include the tag, if it doesn't create a new doctag
+        if !self.tags.include?(t)
+          doctag = Doctag.new
+          doctag.document = self
+          doctag.tag = t
+          doctag.save
+        end
+      end
+    else
+      tag_name.downcase!
+      # searching all tags that match part of the name and creat
+      if !Tag.tag_from_match_in_name(tag_name).first.nil?
+        Tag.tag_from_match_in_name(tag_name).each do |t|
+          # check if document doesn't already include the tag, if it doesn't create a new doctag
+          if !self.tags.include?(t)
+            doctag = Doctag.new
+            doctag.document = self
+            doctag.tag = t
+            doctag.save
+          end
+        end
+      end
+    end
+  end
+
+  def add_one_tag_to_document(tag)
+    if !self.tags.include?(tag)
+      doctag = Doctag.new
+      doctag.document = self
+      doctag.tag = tag
+      doctag.save
+    end
+  end
+
 end

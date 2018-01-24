@@ -18,6 +18,12 @@
 }
 
 .current-tags {
+  display: inline-block;
+}
+
+.current-tags p {
+  color: $textcolor;
+  font-weight: bolder;
 }
 
 .add-title {

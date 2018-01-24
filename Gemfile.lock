@@ -79,6 +79,12 @@ GEM
       sass (>= 3.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    griddler (1.4.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-postmark (1.0.0)
+      griddler
+    htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.9.1)
@@ -244,6 +250,8 @@ DEPENDENCIES
   devise
   figaro
   font-awesome-sass
+  griddler
+  griddler-postmark
   jbuilder (~> 2.0)
   letter_opener
   listen (~> 3.0.5)
