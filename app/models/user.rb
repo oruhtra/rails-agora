@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  after_create :send_welcome_email
+  after_create :send_welcome_email, :create_user_seed
 
   def tags
     self.documents.map {|d| d.tags}.flatten.uniq
@@ -26,6 +26,10 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
+  end
+
+  def create_user_seed
+    UserSeedJob.perform_now(self)
   end
 
 end

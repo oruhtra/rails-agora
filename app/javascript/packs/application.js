@@ -15,6 +15,7 @@ import { loadDocuments } from "../components/load_documents";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
+import '../components/show_tooltips';
 
 
 
@@ -45,7 +46,7 @@ if (document.getElementById('masonry-container')) {
 
 if (document.getElementById('masonry-container')) {
   setTimeout(function(){loadDocuments();}, 1500);
-  createMasonryGrid();
+  setTimeout(function(){createMasonryGrid();}, 1500);
 }
 
 if (document.getElementById('submit-batch-tag')) {

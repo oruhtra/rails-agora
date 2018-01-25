@@ -28,8 +28,8 @@ class Tag < ApplicationRecord
   end
 
   # calc tag occurrence
-  def occurrence
-    self.doctags.length
+  def occurrence(user)
+    self.documents.where(user: user).length
   end
 
   # get tag name with "_" replaced by whitespaces

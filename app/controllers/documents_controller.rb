@@ -3,69 +3,36 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user_selected_tags = []
+    # store the tag policy scope in a variable
+    @user_tags = []
+    @user_tags_alphabetic = []
     @tag_class_verified = policy_scope(Tag).all
-
-    # get selected tags and get all unselected documents tagged from query
-    if params[:query].present?
-      @user_selected_tags = @tag_class_verified.tag_from_tagnames(params[:query].downcase.split(" "))
-    end
-
-    # get search tag and add it to the selected tags
-    if !params[:search_tag].nil?
-      search_tag_array = @tag_class_verified.tag_from_tagnames(params[:search_tag].join.downcase.split(" "))
-      search_tag_array.each do |t|
-        @user_selected_tags << t unless t.nil? || @user_selected_tags.include?(t)
-      end
-    end
-
-    #remove all nil in the @userselectedtags
-    @user_selected_tags.compact!
-
-    # get all tagged document based on selected tags (unselected)
-    @documents_unselected = policy_scope(Document).user_documents_tagged(@user_selected_tags, current_user).select{|d| d.selected == false}
-    # sort them by date updates_at, last on the top
-    @documents_unselected.sort_by!{ |doc| doc.id }.reverse!
-
-    # get all untagged_documents
-    @documents_untagged = policy_scope(Document).select{ |d| d.tags.empty? }
-
-    # get remaining tags
-    @user_tags = @tag_class_verified.remaining_tags(@user_selected_tags, current_user).sort_by!{ |t| t.occurrence}.reverse
-    @user_tags_alphabetic =  @user_tags.sort_by{ |t| t.name_clean}
-
-    #get selected tags names array (for the view => the search bar hidden field needs it to keep track of the query params)
-    if !@user_selected_tags.empty?
-      @user_selected_tagnames = @tag_class_verified.tagnames_from_tags(@user_selected_tags).join(" ")
-    else
-      # show only macro-cat tags and user_specific tags
-      @user_tags.select!{ |t| t.category == "macro_category" || t.category == "user_specific" }
-    end
-
-    # select tags true for all remaining documents (OUT FOR NOW)
-    # true_for_all_tags = @user_tags.select{ |t| t.occurrence == @documents_unselected.length}
-    # @user_tags.reject!{ |t| t.occurrence == @documents_unselected.length}
-    # @user_selected_tags = @user_selected_tags + true_for_all_tags
-
     # get selected documents (to display on the right)
     @documents_selected = policy_scope(Document).where(selected: true)
-
+    # get all tagged document based on selected tags (unselected), sorted by date updates_at, last on the top
+    @documents_unselected = policy_scope(Document).where(selected: false).sort_by{ |doc| doc.id }.reverse!
+    # check wether or not the user added any documents on it's own and pass it to the view for the modal first_tips
+    if policy_scope(Document).where(prototype: false).empty?
+      @any_user_docs = false
+    else
+      @any_user_docs = true
+    end
+    # get user prototypes document to easily delete them
+    @user_prototypes = policy_scope(Document).where(prototype: true)
+    # get all untagged_documents and pass it to the view to see wether or not it should display the 'add tags button in the navbar'
+    @documents_untagged = policy_scope(Document).select{ |d| d.tags.empty? }
+    # get all user tags
+    @user_tags = @documents_unselected.map { |d| d.tags }.flatten.uniq
+    # get the user Macro-category and User-specific tags of all user's document displayed on the page and order them by occurrence
+    if !@user_tags.empty?
+      @user_tags_alphabetic =  @user_tags.sort_by{ |t| t.name_clean}
+      @user_tags.select!{ |t| t.category == "macro_category" || t.category == "user_specific" }.sort_by!{ |t| t.occurrence(@user)}.reverse!
+    end
+    # pass an array of tags sorted alphabetically to the search bar (used un select2)
+    # pass in a new instance of document to the view for the dropzone
     @document = Document.new
-
     # Pass a user_preference instance to the view for the modal
     @user_preference = UserPreference.new
-
-    # respond with js when a tag is clicked
-
-    respond_to do |format|
-      format.html { render 'index' }
-      format.js
-    end
-
-
-    # GET NUMBERS OF DOCS SINCE LAST CONNECTION
-    # @lastconnexion = (Time.now() - (600*1))
-    # @numnewdoc = (@documents_unselected + @documents_selected).count {|doc| doc.updated_at > @lastconnexion }
   end
 
   def show
@@ -197,6 +164,13 @@ class DocumentsController < ApplicationController
     authorize @document
 
     @document.destroy
+    redirect_to documents_path
+  end
+
+  def destroy_prototypes
+    documents = policy_scope(Document).where(prototype: true)
+    authorize documents.first
+    documents.destroy_all
     redirect_to documents_path
   end
 

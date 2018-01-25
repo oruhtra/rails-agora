@@ -14,6 +14,9 @@ class DocumentPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+  def destroy_prototypes?
+    record.user == user
+  end
   def batch_update?
     record.user == user
   end

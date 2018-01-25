@@ -20,6 +20,12 @@
     <div class="navbar-wagon-right hidden-sm hidden-xs">
       <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
 
+        <% if params[:controller] == "documents" && params[:action] == "index" && !@user_prototypes.empty? %>
+          <%= link_to destroy_prototypes_documents_path, method: :delete do %>
+            <i class="fa fa-trash ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Supprimer les documents spécimens uniquement"></i>
+          <% end %>
+        <% end %>
+
         <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
 
         <%= link_to scrap_documents_documents_path do %>
@@ -72,6 +78,14 @@
           <div class="dropdown">
             <i class="fa fa-bars color-primary font-35 dropdown-toggle" id: "navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true"></i>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
+            <% if params[:controller] == "documents" && params[:action] == "index" && !@user_prototypes.empty? %>
+              <li>
+                <%= link_to destroy_prototypes_documents_path, method: :delete do %>
+                  <i class="fa fa-trash"></i> Supprimer les documents spécimens uniquement
+                <% end %>
+              </li>
+            <% end %>
 
             <li class="dz-message" id="clickable">
               <a href="#">

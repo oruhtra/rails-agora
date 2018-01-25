@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :add_tags
       post :batch_update  # route pour batch_update
       delete :delete_batch  # route pour batch_update
+      delete :destroy_prototypes
       post :batch_create_tag
       post :load_new_elements
     end

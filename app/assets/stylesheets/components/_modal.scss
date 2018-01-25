@@ -10,9 +10,16 @@
 .modal-header {
   border-bottom: none;
   color: $primary;
+  padding-bottom: 0;
 }
 
 .modal-subtitle {
+  padding: 0 20px;
+  margin-bottom: 15px;
+}
+
+.modal-subtitle-large {
+  font-size: 20px;
   padding: 0 20px;
   margin-bottom: 15px;
 }

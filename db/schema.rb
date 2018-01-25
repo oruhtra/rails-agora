@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118165622) do
+ActiveRecord::Schema.define(version: 20180125124122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180118165622) do
     t.float "ratio"
     t.string "source"
     t.string "budgea_doc_id"
+    t.boolean "prototype", default: false
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 

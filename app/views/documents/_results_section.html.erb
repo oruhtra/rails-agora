@@ -14,6 +14,9 @@
         <div class="card-description">
           <!-- Large screen -->
           <div class="card-title breakword hidden-xs">
+            <% if document.prototype %>
+              <h4>Specimen</h4>
+            <% end %>
             <% if document.name[27] %>
               <h5><%= document.name[0..26] %>...</h5>
             <% else %>
@@ -65,7 +68,7 @@
   <% end %>
 </div>
 
-<div class="loader-container-doc-load page-center front-element">
+<div class="loader-container-doc-load page-center">
   <h3 class="text-center", style="margin-bottom: 100px">Récupération des documents</h3>
   <div class="container">
     <div class="row">

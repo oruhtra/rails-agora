@@ -1,9 +1,9 @@
 class Document < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :doctags, dependent: :destroy
   has_many :tags, through: :doctags
 
-  validates :source, presence: true, inclusion: { in: %w(user_added email_sent supplier_scrapped email_scrapped)}
+  validates :source, presence: true, inclusion: { in: %w(user_added email_sent supplier_scrapped email_scrapped prototype)}
 
   mount_uploader :photo, PhotoUploader
 
@@ -18,7 +18,7 @@ class Document < ApplicationRecord
     return doc_height.to_f / doc_width.to_f
   end
 
-  # get all user documentsw with a tag
+  # get all user documents with a tag
   def self.user_documents_tagged(tags_array, user)
     Document.where(user: user).select{ |d| tags_array & d.tags == tags_array }
   end

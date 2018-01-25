@@ -5,7 +5,7 @@
 
 <!-- HIDE modal if user has both documents and services -->
 <% if UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.nil? || !UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.value %>
-  <% unless !@documents_unselected.empty? && !current_user.services.empty? %>
+  <% unless @any_user_docs && !current_user.services.empty? %>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -15,13 +15,12 @@
             <h4 class="modal-title title-centered" id="myModalLabel">Bienvenue sur Agora !</h4>
           </div>
           <div class="modal-body">
-            <div class="modal-subtitle text-center">
-              Agora vous permet de centraliser tous vos documents de 2 façons différentes : <br> connecter vos comptes clients à la plateforme <u>ou</u> ajouter les documents manuellement
+            <div class="modal-subtitle-large text-center">
+              Pour votre première connexion nous vous avons ajouté des documents spécimens pour que vous puissiez jouer avec et comprendre toute la puissance d'Agora ! Vous pouvez les supprimer à tout moment en cliquant sur la poubelle dans le coin droit de l'écran.
             </div>
-
               <div class="row">
 
-                <% if !@documents_unselected.empty? %>
+                <% if @any_user_docs %>
 
                   <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                     <%= link_to new_user_service_path, {class: 'none'} do %>

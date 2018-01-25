@@ -1,9 +1,7 @@
 <% if !@user_tags.nil? %>
   <div id="tags-bar">
   <% @user_tags.each do |tag| %>
-    <%#= link_to documents_path(query: tag.name), method: :get, remote: true, class: "tag-link" do %>
       <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
-    <%# end %>
   <% end %>
 </div>
 
