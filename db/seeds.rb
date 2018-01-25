@@ -1,6 +1,6 @@
 Tag.create(name: "énergie", category: "macro_category")
 
-Tag.find_by(name: 'electricité').update(name: 'électricé')
+Tag.find_by(name: 'electricité').update(name: 'électricité')
 Tag.find_by(name: 'electroménager').update(name: 'électroménager')
 Tag.find_by(name: 'etudes').update(name: 'études')
 

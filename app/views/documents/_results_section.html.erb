@@ -1,4 +1,4 @@
-<div id="masonry-container" class="clearfix masonry-style">
+<div id="masonry-container" class="clearfix masonry-style hidden">
   <div class="documents_new_wrapper">
     <%= render 'results_section_documents_new' %>
   </div>
@@ -63,6 +63,19 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="loader-container-doc-load page-center front-element">
+  <h3 class="text-center", style="margin-bottom: 100px">Récupération des documents</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div id="loader">
+          <div id="box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

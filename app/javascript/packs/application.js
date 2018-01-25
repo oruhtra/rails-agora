@@ -11,6 +11,7 @@ import { addTagsToMultipleDocuments } from "../components/add_tags_to_multiple_d
 import { showModalTips, hideModalTips } from "../components/modal_tips";
 import { setUserPreference } from "../components/set_user_preference";
 import { showModalAddTags } from "../components/modal_add_tag";
+import { loadDocuments } from "../components/load_documents";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
@@ -43,7 +44,8 @@ if (document.getElementById('masonry-container')) {
 }
 
 if (document.getElementById('masonry-container')) {
-  setTimeout(function(){createMasonryGrid();}, 500);
+  setTimeout(function(){loadDocuments();}, 1500);
+  createMasonryGrid();
 }
 
 if (document.getElementById('submit-batch-tag')) {
