@@ -179,7 +179,8 @@ class DocumentsController < ApplicationController
     authorize @document
 
     file = open(@document.photo.url)
-    send_file(file, :filename => "#{@document.name}")
+    format = @document.photo.file.format
+    send_file(file, :filename => "#{@document.name}.#{format}")
   end
 
   def unselect_docs

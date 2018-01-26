@@ -3,6 +3,7 @@
 # Tag.find_by(name: 'electricité').update(name: 'électricité')
 # Tag.find_by(name: 'electroménager').update(name: 'électroménager')
 # Tag.find_by(name: 'etudes').update(name: 'études')
+# Tag.find_by(name: 'fiche_de_paye').update(name: 'fiche_de_paie')
 p 'destruction des prototypes'
 Document.where(prototype: true).destroy_all
 

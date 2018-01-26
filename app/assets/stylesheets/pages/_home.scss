@@ -1,7 +1,106 @@
 .home-background {
-  background-size: contain !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: linear-gradient(to right bottom, rgb(252,197,99) 60%, rgb(255, 255, 255) 50%);
-  background-attachment: fixed;
+  height: 110vh;
+  background: linear-gradient(227deg, #fed136, #fed136, #fcc563, #fcc563, #fed136, #fed136, #fcc563, #fcc563);
+  background-size: 1600% 1600%;
+
+  -webkit-animation: AnimationName 23s ease infinite;
+  -moz-animation: AnimationName 23s ease infinite;
+  animation: AnimationName 23s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+}
+
+.home-background-bottom {
+  padding: 50px 30px;
+  background: linear-gradient(227deg, #fed136, #fed136, #fcc563, #fcc563, #fed136, #fed136, #fcc563, #fcc563);
+  background-size: 1600% 1600%;
+
+  -webkit-animation: AnimationName 23s ease infinite;
+  -moz-animation: AnimationName 23s ease infinite;
+  animation: AnimationName 23s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+}
+
+#content-section {
+  margin: auto;
+  margin-top: -200px;
+}
+
+#features-section {
+  padding: 0 30px;
+}
+
+@media (min-width: 992px) {
+  #features-section {
+    padding: 0 150px;
+  }
+}
+
+
+#how-it-works-section {
+  padding: 0 10px;
+
+
+//Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+25,fed136+25,fed136+59,ffffff+59 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(-70deg, #ffffff 30%, $primary 30%, $primary 50%,#ffffff 50%,#ffffff 50.5%,$primary 50.5%,$primary 51%,#ffffff 51%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-70deg, #ffffff 30%,$primary 30%,$primary 50%,#ffffff 50%,#ffffff 50.5%,$primary 50.5%,$primary 51%,#ffffff 51%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(160deg, #ffffff 30%,$primary 30%,$primary 50%,#ffffff 50%,#ffffff 50.5%,$primary 50.5%,$primary 51%,#ffffff 51%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@media (min-width: 992px) {
+  #how-it-works-section {
+    padding: 0 30px;
+  }
+}
+
+#quote-section {
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px 30px;
+  border-radius: 2px;
+}
+
+#service-section {
+  margin: 20px;
+  margin-bottom: -20px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  padding: 15px 5px;
+}
+
+@media (min-width: 992px) {
+  #service-section {
+    padding: 15px 30px;
+  }
 }

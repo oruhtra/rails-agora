@@ -36,7 +36,7 @@ class ScrapJob < ApplicationJob
     budgea_response["documents"].each do |d|
 
       #check if documents has already been downloaded and if it has an image
-      budgea_doc_id = d["number"].to_s
+      budgea_doc_id = d["number"]
       doc = Document.where(budgea_doc_id: budgea_doc_id).first
       if !d["url"].nil?
         if !doc

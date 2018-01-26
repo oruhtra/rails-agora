@@ -12,6 +12,7 @@ import { showModalTips, hideModalTips } from "../components/modal_tips";
 import { setUserPreference } from "../components/set_user_preference";
 import { showModalAddTags } from "../components/modal_add_tag";
 import { loadDocuments } from "../components/load_documents";
+import { activateAnchorLinks } from "../components/scroll_to_anchor";
 import '../components/search_tag_from_select2';
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
@@ -64,4 +65,8 @@ if (document.getElementById('set_user_preference')) {
 
 if (document.getElementById('myModal_add_tags')) {
   showModalAddTags();
+}
+
+if (document.querySelectorAll('.link-to-anchor')) {
+  activateAnchorLinks();
 }

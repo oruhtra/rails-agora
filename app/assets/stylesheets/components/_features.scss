@@ -1,13 +1,20 @@
 .features-wrapper {
-  padding: 20px;
+  margin-bottom: 50px;
 }
 
 .features-wrapper-content {
   padding: 15px 50px;
-  border: 5px solid $primary;
+  padding-top: 50px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  margin-bottom: 80px;
+}
+
+@media (max-width: 992px) {
+  .features-wrapper-content {
+    padding: 50px 8px 15px 8px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -29,4 +36,15 @@
   font-size: 20px;
   margin-bottom: 10px;
   color: $primary;
+}
+
+.feature-description {
+  color: $textcolorlight;
+  height: 200px;
+}
+
+@media (max-width: 992px) {
+  .feature-description {
+     height: 150px;
+  }
 }
