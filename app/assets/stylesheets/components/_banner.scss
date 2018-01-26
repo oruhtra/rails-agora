@@ -73,6 +73,29 @@
   padding: 15px 20px;
   min-width: 220px;
   margin-bottom: 10px;
+
+  background: linear-gradient(227deg, #fed136, #fed136, #fcc563, #fcc563, #fed136, #fed136, #fcc563, #fcc563);
+  background-size: 1600% 1600%;
+
+  -webkit-animation: AnimationName 23s ease infinite;
+  -moz-animation: AnimationName 23s ease infinite;
+  animation: AnimationName 23s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 51%}
+      100%{background-position:0% 50%}
+  }
 }
 
 

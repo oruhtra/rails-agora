@@ -59,6 +59,14 @@ a {
   margin-bottom: 50px;
 }
 
+.margin-top-lg {
+  margin-top: 50px;
+}
+
+.margin-bottom-xlg {
+  margin-bottom: 100px;
+}
+
 .float-left {
   float: left;
 }
@@ -118,6 +126,11 @@ a {
 .color-text {
   color: $textcolor;
 }
+
+.color-text-light {
+  color: $textcolorlight;
+}
+
 .color-white {
   color: white;
 }
@@ -154,5 +167,13 @@ a {
 
 .font-light {
   font-weight: lighter;
+}
+
+.border-bottom-small {
+  margin: auto;
+  width: 50%;
+  height: 1px;
+  border-bottom: 1px solid $primarytransparent;
+  opacity: 0.5;
 }
 

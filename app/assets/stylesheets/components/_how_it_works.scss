@@ -1,20 +1,24 @@
-.how-it-works-title {
-  background-color: $primary;
-  border-radius: 5px 5px 0 0;
-  padding: 7px;
-}
-
 .how-it-works-title>h2 {
-  margin: 0;
+  color: $primary;
 }
 
 .how-it-works-content {
-  border: 2px solid $primary;
-  padding: 20px 50px;
-  background-color: white;
+  padding: 50px 10px;
+}
+
+@media (min-width: 992px) {
+  .how-it-works-content {
+    padding: 50px 50px;
+  }
 }
 
 .how-it-works-feature {
   padding: 10px;
-  max-width: 350px;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.how-it-works-feature-title {
+  margin-left: 20px;
+  font-size: 20px;
 }
