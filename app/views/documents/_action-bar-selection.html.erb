@@ -2,12 +2,16 @@
   <ul class="list-inline">
 
     <%= link_to unselect_docs_documents_path do %>
-      <i class="fa fa-times fa-2x action-style color-primary" aria-hidden="true" ></i>
+      <i class="fa fa-times fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Tout dé-sélectionner"></i>
     <% end %>
 
+  <% if !@documents_selected.where(prototype: true).empty? %>
+    <i class="fa fa-arrow-circle-o-down fa-2x action-style color-grey" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Les spécimens ne peuvent pas être téléchargés"></i>
+  <% else %>
     <%= link_to downloadzip_documents_path do %>
-      <i class="fa fa-arrow-circle-o-down fa-2x action-style color-primary" aria-hidden="true" ></i>
+      <i class="fa fa-arrow-circle-o-down fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Télécharger tous les documents au format zip"></i>
     <% end %>
+  <% end %>
 
    <!-- <i class="fa fa-trash-o fa-2x button" aria-hidden="true" ></i> -->
   </ul>
