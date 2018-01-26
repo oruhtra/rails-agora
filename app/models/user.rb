@@ -13,6 +13,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   after_create :send_welcome_email, :create_user_seed
+  before_destroy :destroy_user_specific_tags
 
   def tags
     self.documents.map {|d| d.tags}.flatten.uniq
@@ -30,6 +31,10 @@ class User < ApplicationRecord
 
   def create_user_seed
     UserSeedJob.perform_now(self)
+  end
+
+  def destroy_user_specific_tags
+    Tag.where(user_id: self.id).destroy_all
   end
 
 end
