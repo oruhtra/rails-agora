@@ -26,10 +26,12 @@
           <% end %>
         <% end %>
 
+        <i class="fa fa-envelope ref" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
+
         <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
 
         <%= link_to scrap_documents_documents_path do %>
-          <i class="fa fa-refresh ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents"></i>
+          <i class="fa fa-refresh ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents sur mes comptes clients"></i>
         <% end %>
 
         <%= link_to new_user_service_path do %>
@@ -95,7 +97,7 @@
 
             <li>
               <%= link_to scrap_documents_documents_path do %>
-                <i class="fa fa-refresh"></i> Récupérer mes documents
+                <i class="fa fa-refresh"></i> Récupérer mes documents sur mes comptes clients
               <% end %>
             </li>
 
