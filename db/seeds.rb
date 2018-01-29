@@ -11,7 +11,6 @@ Tag.all.each do |t|
     t.macro_category.gsub!(/,gaz/, '')
     t.macro_category.gsub!(/etudes/, 'études')
     t.macro_category.gsub!(/electroménager/, 'électroménager')
-    t.macro_category.gsub!(/électroménager/, ',électroménager')
     t.save
   end
 end
