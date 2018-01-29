@@ -27,7 +27,7 @@ class UserSeedJob < ApplicationJob
       {name:'attestation Pôle Emploi', tags: ['emploi', 'pôle_emploi'], date_tags: ['Feb 2018']},
       {name:'déclaration d\'impôts', tags: ['impôts', 'déclaration'], date_tags: ['Jun 2018']},
       {name:'rib', tags: ['banque', 'crédit_mutuel']},
-      {name:'attestation d\'assurance', tags: ['mma', 'assurance', 'attestation']},
+      {name:'attestation d\'assurance', tags: ['maaf', 'assurance', 'attestation']},
       {name:'attestation de sécurité sociale', tags: ['sécurité_sociale','attestation']}
     ]
 
