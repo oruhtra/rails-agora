@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { listentag } from "../components/tag";
@@ -46,8 +47,10 @@ if (document.getElementById('masonry-container')) {
 }
 
 if (document.getElementById('masonry-container')) {
-  setTimeout(function(){loadDocuments();}, 1500);
-  setTimeout(function(){createMasonryGrid();}, 1500);
+    document.addEventListener("DOMContentLoaded", (e) => {
+      loadDocuments();
+      createMasonryGrid();
+    })
 }
 
 if (document.getElementById('submit-batch-tag')) {

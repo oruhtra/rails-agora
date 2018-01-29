@@ -5,6 +5,7 @@ function launchDropZone() {
   var dropzone = document.querySelector('.form-full-body');
   window.addEventListener("dragenter", function(e) {
       dropzone.classList.remove('hidden');
+      window.scrollTo(0, 0);
   });
   dropzone.addEventListener("dragleave", function(e) {
       dropzone.classList.add('hidden');
