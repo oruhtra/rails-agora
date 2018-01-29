@@ -1,11 +1,20 @@
-# Tag.create(name: "énergie", category: "macro_category")
+Tag.create(name: "énergie", category: "macro_category")
+Tag.find_by(name: 'electricité').destroy
+Tag.find_by(name: 'gaz').destroy
+Tag.find_by(name: 'electroménager').update(name: 'électroménager')
+Tag.find_by(name: 'etudes').update(name: 'études')
+Tag.find_by(name: 'fiche_de_paye').update(name: 'fiche_de_paie')
 
-# Tag.find_by(name: 'electricité').update(name: 'électricité')
-# Tag.find_by(name: 'electroménager').update(name: 'électroménager')
-# Tag.find_by(name: 'etudes').update(name: 'études')
-# Tag.find_by(name: 'fiche_de_paye').update(name: 'fiche_de_paie')
-p 'destruction des prototypes'
-Document.where(prototype: true).destroy_all
+Tag.all.each do |t|
+  if !t.macro_category.nil?
+    t.macro_category.gsub!(/,electricité/, ',énergie')
+    t.macro_category.gsub!(/,gaz/, '')
+    t.macro_category.gsub!(/etudes/, 'études')
+    t.macro_category.gsub!(/electroménager/, 'électroménager')
+    t.macro_category.gsub!(/électroménager/, ',électroménager')
+    t.save
+  end
+end
 
 p 'création des prototypes'
 prototypes = [
@@ -38,6 +47,8 @@ prototypes.each do |doc|
   d = Document.find(d.id)
   d.update(ratio: d.get_image_ratio)
 end
+
+
 
 
 # p "Destroy tags, documents"

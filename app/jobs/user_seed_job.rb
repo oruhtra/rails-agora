@@ -15,8 +15,8 @@ class UserSeedJob < ApplicationJob
     # so that when the documents are destroyed the seed prototypes images are kept on cloudinary
     prototypes = [
       {name:'carte d\'identité', tags: ['documents_personnels','carte_d\'identité']},
-      {name:'facture edf', tags: ['électricité', 'facture', 'edf'], date_tags: ['Jan 2018']},
-      {name:'facture edf', tags: ['électricité', 'facture', 'edf'], date_tags: ['Feb 2018']},
+      {name:'facture edf', tags: ['énergie', 'facture', 'edf'], date_tags: ['Jan 2018']},
+      {name:'facture edf', tags: ['énergie', 'facture', 'edf'], date_tags: ['Feb 2018']},
       {name:'carte grise', tags: ['documents_personnels','carte_grise', 'véhicule']},
       {name:'permis de conduire', tags: ['documents_personnels','permis_de_conduire']},
       {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Feb 2018']},
