@@ -10,20 +10,18 @@ class UserSeedJob < ApplicationJob
   private
 
   def create_user_seed(user)
+    # ISSUE --- calling this method doesn't create new images on cloudinary, the files created aim at the same url as the prototypes in seed.
+    # hence the need to call update_user_prototypes_job in the end to update in async the remote_photo_url (thus duplicating the images on cl)
+    # so that when the documents are destroyed the seed prototypes images are kept on cloudinary
     prototypes = [
       {name:'carte d\'identité', tags: ['documents_personnels','carte_d\'identité']},
       {name:'facture edf', tags: ['électricité', 'facture', 'edf'], date_tags: ['Jan 2018']},
       {name:'facture edf', tags: ['électricité', 'facture', 'edf'], date_tags: ['Feb 2018']},
-      {name:'facture edf', tags: ['électricité', 'facture', 'edf'], date_tags: ['Oct 2017']},
       {name:'carte grise', tags: ['documents_personnels','carte_grise', 'véhicule']},
       {name:'permis de conduire', tags: ['documents_personnels','permis_de_conduire']},
       {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Feb 2018']},
-      {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Nov 2017']},
-      {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Dec 2017']},
       {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Jan 2017']},
       {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Feb 2018']},
-      {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Nov 2017']},
-      {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Dec 2017']},
       {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Jan 2017']},
       {name:'attestation Pôle Emploi', tags: ['emploi', 'pôle_emploi'], date_tags: ['Jan 2018']},
       {name:'attestation Pôle Emploi', tags: ['emploi', 'pôle_emploi'], date_tags: ['Feb 2018']},
@@ -49,6 +47,7 @@ class UserSeedJob < ApplicationJob
         end
       end
     end
+    UpdateUserPrototypesJob.perform_later(user)
   end
 end
 

@@ -6,7 +6,7 @@ function showModalTips() {
 
 function hideModalTips() {
   $('.tips-box').on('click', function(){
-    $('.modal.in').modal('hide')
+    $('.modal.in').modal('hide');
   });
 }
 

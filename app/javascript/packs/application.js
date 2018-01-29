@@ -49,7 +49,7 @@ if (document.getElementById('masonry-container')) {
 if (document.getElementById('masonry-container')) {
     document.addEventListener("DOMContentLoaded", (e) => {
       loadDocuments();
-      createMasonryGrid();
+      setTimeout(function(){createMasonryGrid();}, 200)
     })
 }
 
