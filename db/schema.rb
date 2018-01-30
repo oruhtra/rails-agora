@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125124122) do
+ActiveRecord::Schema.define(version: 20180130184613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,22 @@ ActiveRecord::Schema.define(version: 20180125124122) do
     t.string "macro_category"
   end
 
+  create_table "tag_categories", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "macro_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["macro_category_id"], name: "index_tag_categories_on_macro_category_id"
+    t.index ["tag_id", "macro_category_id"], name: "index_tag_categories_on_tag_id_and_macro_category_id", unique: true
+    t.index ["tag_id"], name: "index_tag_categories_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
     t.bigint "user_id"
-    t.string "macro_category"
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
@@ -103,6 +112,8 @@ ActiveRecord::Schema.define(version: 20180125124122) do
   add_foreign_key "doctags", "documents"
   add_foreign_key "doctags", "tags"
   add_foreign_key "documents", "users"
+  add_foreign_key "tag_categories", "tags"
+  add_foreign_key "tag_categories", "tags", column: "macro_category_id"
   add_foreign_key "tags", "users"
   add_foreign_key "user_preferences", "users"
   add_foreign_key "user_services", "services"

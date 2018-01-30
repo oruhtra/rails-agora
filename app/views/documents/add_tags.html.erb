@@ -65,7 +65,7 @@
             <div class="position-relative">
               <div class="tags-container">
                 <% (@tags.where(category: "user_specific").sort_by{ |t| t.name_clean}).each do |t| %>
-                  <div class="tag-categories">
+                  <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %> >
                     <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
                   </div>
                 <% end %>
@@ -81,7 +81,7 @@
           <div class="position-relative">
             <div class="tags-container">
               <% (@tags.where(category: "macro_category").sort_by{ |t| t.name_clean}).each do |t| %>
-              <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
+              <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
                 <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
               </div>
               <% end %>
@@ -96,7 +96,7 @@
           <div class="position-relative">
             <div class="tags-container">
               <% (@tags.where(category: "doc_type").sort_by{ |t| t.name_clean}).each do |t| %>
-                <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
+                <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
                   <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
                 </div>
               <% end %>
@@ -111,7 +111,7 @@
           <div class="position-relative">
             <div class="tags-container">
               <% (@tags.where(category: "supplier").sort_by{ |t| t.name_clean}).each do |t| %>
-                <div class="tag-categories" <%= "id= #{t.macro_category}" unless !t.macro_category %>>
+                <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
                   <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
                 </div>
               <% end %>
@@ -176,9 +176,3 @@
   <%= submit_tag nil, id: "delete-batch-tag"%>
   <% end %>
 </div>
-
-<!-- <div class="delete-tags-form hidden"> -->
-  <%#= form_tag(batch_delete_documents_path, method: :destroy) do %>
-  <%#= hidden_field_tag :tagname %>
-  <%# end %>
-<!-- </div> -->
