@@ -46,9 +46,18 @@
   margin-top: 15px;
 }
 
-.home-text-typed{
+.home-text-typed {
   height: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+@media (max-height: 650px) {
+  .home-text-typed {
+    margin-bottom: 0px;
+  }
+  .home-text-typed>h2 {
+    font-size: 25px !important;
+  }
 }
 
 
