@@ -48,8 +48,8 @@ if (document.getElementById('masonry-container')) {
 
 if (document.getElementById('masonry-container')) {
     document.addEventListener("DOMContentLoaded", (e) => {
-      setTimeout(function(){loadDocuments();}, 300)
-      setTimeout(function(){createMasonryGrid();}, 300)
+      setTimeout(function(){loadDocuments();}, 1000)
+      setTimeout(function(){createMasonryGrid();}, 1000)
     })
 }
 
