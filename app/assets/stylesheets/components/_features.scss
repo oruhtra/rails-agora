@@ -13,7 +13,7 @@
 
 @media (max-width: 992px) {
   .features-wrapper-content {
-    padding: 50px 8px 15px 8px;
+    padding: 50px 5px 15px 5px;
   }
 }
 
@@ -40,11 +40,5 @@
 
 .feature-description {
   color: $textcolorlight;
-  height: 200px;
-}
-
-@media (max-width: 992px) {
-  .feature-description {
-     height: 150px;
-  }
+  margin-bottom: 10px;
 }
