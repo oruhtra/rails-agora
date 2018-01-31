@@ -23,13 +23,6 @@ class ProcessEmailJob < ApplicationJob
     # for each attachment create a new document and upload it to CL
     email[:attachments].each do |d|
       document = Document.new
-      # upload file to cloudinary and store cloudinary response
-      begin
-        cl_response = Cloudinary::Uploader.upload(d[:path], :phash => true)
-      rescue
-        puts 'CL response failure'
-        cl_response = nil
-      end
       # if reponse then persist the document with the information from cloudinary
       if cl_response
         begin
@@ -67,7 +60,6 @@ class ProcessEmailJob < ApplicationJob
             # check if document name contains a tag and add it if it does
             document.check_and_add_tag_to_document(document.name)
           end
-          File.unlink(d[:path])
         end
       end
     end
