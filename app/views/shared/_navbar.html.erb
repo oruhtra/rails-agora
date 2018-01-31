@@ -26,7 +26,12 @@
           <% end %>
         <% end %>
 
-        <i class="fa fa-envelope ref" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
+        <div class="position-relative">
+          <i class="fa fa-envelope ref" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
+          <% if params[:controller] == "documents" && @user_preferences.include?('tips_setting') && !@user_preferences.include?('tips_add_by_email')%>
+            <div id="focusable-container"></div>
+          <% end %>
+        </div>
 
         <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
 

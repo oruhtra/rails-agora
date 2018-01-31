@@ -1,14 +1,12 @@
 class UserServicesController < ApplicationController
+  before_action :set_user, :set_user_preferences
+
   def new
     @user_service = UserService.new
     @services = Service.all
     @services_user = current_user.services
     # create doc instance and pass user for the dropzone and 'add document' button
     @document = Document.new
-    @user = current_user
-
-    # Pass a user_preference instance to the view for the modal
-    @user_preference = UserPreference.new
 
     if params[:service_id].present? && Service.find(params[:service_id])
       @service = Service.find(params[:service_id])
@@ -32,7 +30,6 @@ class UserServicesController < ApplicationController
 
   def create
     @user_service = UserService.new
-    @user = current_user
     authorize @user_service
 
     if params[:error_message].present?
@@ -86,6 +83,17 @@ class UserServicesController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def set_user_preferences
+    # Pass a user_preference instance to the view for the modal
+    @user_preference = UserPreference.new
+    # Pass all the current user preferences array to deceide whether or not to show the modals
+    @user_preferences = [] + UserPreference.where(user_id: @user.id).map { |p| p.setting  }
+  end
 
   def get_permanent_token(auth_token)
     url = "https://agora.biapi.pro/2.0/auth/token/access"

@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_user
+  before_action :set_user, :set_user_preferences
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -31,8 +31,6 @@ class DocumentsController < ApplicationController
     # pass an array of tags sorted alphabetically to the search bar (used un select2)
     # pass in a new instance of document to the view for the dropzone
     @document = Document.new
-    # Pass a user_preference instance to the view for the modal
-    @user_preference = UserPreference.new
   end
 
   def show
@@ -217,6 +215,13 @@ class DocumentsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:id])
+  end
+
+  def set_user_preferences
+    # Pass a user_preference instance to the view for the modal
+    @user_preference = UserPreference.new
+    # Pass all the current user preferences array to deceide whether or not to show the modals
+    @user_preferences = [] + UserPreference.where(user_id: @user.id).map { |p| p.setting  }
   end
 
   def document_params

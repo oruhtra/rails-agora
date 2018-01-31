@@ -6,9 +6,22 @@
         <h4 class="modal-title title-centered text-center" id="myModalLabel">Ajouter des documents par email</h4>
       </div>
       <div class="modal-body">
-        <div class="modal-subtitle text-center">
-          Avec Agora il vous suffit de transférer un mail contenant un document en pièce jointe pour que celui-ci soit ajouté à votre compte. Agora se charge même de le tagger directement grâce aux informations contenues dans l'email (nom du fournisseur, type de document, date etc.).<br>
-          Pour en profiter, rien de plus simple, il vous suffit de transférer vos mails à :<br> <em><strong>agora_doc@agora-app.tech</strong></em>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="modal-subtitle text-center">
+              Avec Agora il vous suffit de transférer un mail contenant un document en pièce jointe pour que celui-ci soit ajouté à votre compte. Agora se charge même de le tagger directement grâce aux informations contenues dans l'email (nom du fournisseur, type de document, date etc.).<br>
+              Pour en profiter, rien de plus simple, il vous suffit de transférer vos mails à :<br> <em><strong>agora_doc@agora-app.tech</strong></em>
+            </div>
+          </div>
+        <% if params[:controller] == "documents" %>
+        <div class="col-xs-8 col-xs-offset-2 text-center hidden" id="add_by_email_user_preference">
+          <%= simple_form_for @user_preference, remote: true do |f| %>
+          <%= f.input :value, label: 'ne plus afficher'%>
+          <%= f.input :setting, as: :hidden, input_html: {value: "tips_add_by_email"}%>
+          <%= f.button :submit, id:'set_user_preference', class:"hidden"%>
+          <% end %>
+        </div>
+        <% end %>
         </div>
       </div>
     </div>
