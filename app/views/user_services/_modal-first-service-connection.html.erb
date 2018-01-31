@@ -1,5 +1,4 @@
-<% if UserPreference.where(user_id: @user.id).where(setting: 'first_user_service_setting').first.nil? || !UserPreference.where(user_id: @user.id).where(setting: 'first_user_service_setting').first.value %>
-
+<% unless @user_preferences.include?('first_user_service_setting')%>
   <% if @services_user.empty? %>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">

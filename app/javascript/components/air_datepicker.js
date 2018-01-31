@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'air-datepicker';
 import 'air-datepicker/dist/css/datepicker.css';
 import 'air-datepicker/dist/js/i18n/datepicker.fr.js';

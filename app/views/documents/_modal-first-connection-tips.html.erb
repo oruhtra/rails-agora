@@ -4,7 +4,7 @@
 </button> -->
 
 <!-- HIDE modal if user has both documents and services -->
-<% if UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.nil? || !UserPreference.where(user_id: @user.id).where(setting: 'tips_setting').first.value %>
+<% unless @user_preferences.include?('tips_setting')%>
   <% unless @any_user_docs && !current_user.services.empty? %>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -1,5 +1,5 @@
-import $ from 'jquery';
 import "bootstrap";
+import { applySelect2OnSearch } from "../components/search_tag_from_select2";
 import { loadDynamicBannerText } from '../components/banner';
 import { listentag } from "../components/tag";
 import { listenbatchtag } from "../components/batch_tag";
@@ -14,7 +14,7 @@ import { setUserPreference } from "../components/set_user_preference";
 import { showModalAddTags } from "../components/modal_add_tag";
 import { loadDocuments } from "../components/load_documents";
 import { activateAnchorLinks } from "../components/scroll_to_anchor";
-import '../components/search_tag_from_select2';
+import { setFocusMailer } from "../components/set_focus_mailer";
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
 import '../components/show_tooltips';
@@ -22,6 +22,10 @@ import '../components/show_tooltips';
 
 
 // call functions
+if (document.querySelectorAll(".select2")){
+  applySelect2OnSearch();
+}
+
 if (document.querySelectorAll(".listenbatchtag")){
   listenbatchtag();
 }
@@ -72,4 +76,10 @@ if (document.getElementById('myModal_add_tags')) {
 
 if (document.querySelectorAll('.link-to-anchor')) {
   activateAnchorLinks();
+}
+
+if (document.getElementById('masonry-container')) {
+  if (document.getElementById('focusable-container')) {
+    setTimeout(function(){setFocusMailer();},1000);
+  }
 }

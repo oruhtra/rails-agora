@@ -17,17 +17,31 @@
     <% end %>
       <% @documents.each do |document| %>
 
-        <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="width: 200px; height: <%= document.ratio ? 200 * document.ratio : 280 %>px">
-          <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
+        <div class= "card margin-left-md margin-right-md" id="<%= document.id %>" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};">
+          <%= cl_image_tag document.photo, class: "document-thumbnail-100 card-image", :format => 'jpg' %>
           <div class="hover-card-add-tags" id="<%= document.id %>">
             <div class="card-description">
-              <div class="card-title color-text">
+              <!-- Large screen -->
+              <div class="card-title color-text hidden-xs">
                 <% if document.name[20] %>
                   <h5 class="breakword"><%= document.name[0..26] %>...</h5>
                 <% else %>
                   <h5 class="breakword"><%= document.name %></h5>
                 <% end %>
               </div>
+
+              <!-- Small screen -->
+              <div class="card-title color-text visible-xs">
+                <% if document.name[10] %>
+                  <h5><%= document.name[0..10] %>...</h5>
+                <% else %>
+                  <h5><%= document.name %></h5>
+                <% end %>
+              </div>
+
+
+
+
               <div class="current-tags">
                 <%= render 'current_tags_section', document: document %>
               </div>
