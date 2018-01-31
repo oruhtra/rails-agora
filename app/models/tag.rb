@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
   has_many :doctags
   has_many :documents, through: :doctags
+  has_many :tag_categories
+  has_many :macro_categories, through: :tag_categories
 
   validates :name, presence: true, uniqueness: true
   validates :category, presence: true, inclusion: { in: %w(macro_category doc_type supplier user_specific date)}
@@ -48,6 +50,14 @@ class Tag < ApplicationRecord
       end
     rescue
       false
+    end
+  end
+
+  def macro_categories_string
+    unless self.macro_categories.empty?
+      self.macro_categories.map { |m| m.name  }.join(',')
+    else
+      nil
     end
   end
 

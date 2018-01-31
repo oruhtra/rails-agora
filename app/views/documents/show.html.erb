@@ -12,7 +12,7 @@
       <div class="existing-tags flex-around">
         <% @doctags.each do |t| %>
           <%= link_to document_doctag_path(@document, t), method: :delete do %>
-          <div class="tag tag-link tag-s text-center" data-toggle="tooltip" data-placement="bottom" title="Supprimer le tag"><%= t.tag.name_clean %></div>
+          <div class="tag tag-link tag-s text-center" data-toggle="tooltip" data-placement="left" title="Supprimer le tag"><%= t.tag.name_clean %></div>
           <% end %>
         <% end %>
       </div>

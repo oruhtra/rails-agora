@@ -1,53 +1,68 @@
-Tag.create(name: "énergie", category: "macro_category")
-Tag.find_by(name: 'electricité').destroy
-Tag.find_by(name: 'gaz').destroy
-Tag.find_by(name: 'electroménager').update(name: 'électroménager')
-Tag.find_by(name: 'etudes').update(name: 'études')
-Tag.find_by(name: 'fiche_de_paye').update(name: 'fiche_de_paie')
-
 Tag.all.each do |t|
-  if !t.macro_category.nil?
-    t.macro_category.gsub!(/,electricité/, ',énergie')
-    t.macro_category.gsub!(/,gaz/, '')
-    t.macro_category.gsub!(/etudes/, 'études')
-    t.macro_category.gsub!(/electroménager/, 'électroménager')
-    t.save
+  if t.macro_category
+    p "#{t.name}------------------"
+    macro_cats = t.macro_category.split(',')
+    macro_cats.each do |m|
+      c = Tag.find_by(name: m)
+      if c
+        d = TagCategory.new(tag_id: t.id, macro_category_id: c.id)
+        if d.save
+          p "ADDED: #{c.name}"
+        end
+      end
+    end
   end
 end
 
-p 'création des prototypes'
-prototypes = [
-  {name:'carte d\'identité', photo:'https://www.exilphoto.com/sites/default/files/2017-07/99588.jpg'},
-  {name:'facture edf', photo:'https://www.nouvellecartegrise.fr/wp-content/uploads/2016/05/justificatif-de-domicile.jpg'},
-  {name:'carte grise', photo:'https://www.nouvellecartegrise.fr/wp-content/uploads/2016/05/nouvelle-carte-grise-specimen.jpg'},
-  {name:'permis de conduire', photo:'https://www.interieur.gouv.fr/var/miomcti/storage/images/www.interieur.gouv.fr/version-fre/actualites/l-actu-du-ministere/nouveau-permis-de-conduire-securise-le-16-septembre-2013/466172-1-fre-FR/Nouveau-permis-de-conduire-securise-le-16-septembre-2013_largeur_445.jpg'},
-  {name:'fiche de paie', photo:'http://www.ruedelapaye.com/wp-content/uploads/2017/02/exemple-fiche-de-paie-2017.jpg'},
-  {name:'facture free', photo:'http://free.fr/assistance/im/faq/assistance/Factures/1447/Facture-1447-SPECIMEN.png'},
-  {name:'attestation Pôle Emploi', photo:'http://www.aladom.fr/media/upload/pole-emploi/attestation-pole-emploi.jpg'},
-  {name:'déclaration d\'impôts', photo:'http://internationaloffice.ceasaclay.com/local/cache-vignettes/L150xH218/vignette_cerfa2042-2-2e1d1.jpg'},
-  {name:'rib', photo:'http://www.pixelistes.com/forum/gallery/nikonol-a8103/rib-iban-patrick-pichon-jpg-m577871.jpg'},
-  {name:'attestation d\'assurance', photo:'http://ericgaubiac.e-monsite.com/medias/images/attestation-rd-2.jpg?fx=r_550_550'},
-  {name:'attestation de sécurité sociale', photo:'http://www.lamodedeshommes.com/wp-content/uploads/2017/05/attestation-securite-sociale-1.jpg'}
-]
+
+#Tag.create(name: "énergie", category: "macro_category")
+#Tag.find_by(name: 'electricité').destroy
+#Tag.find_by(name: 'gaz').destroy
+#Tag.find_by(name: 'electroménager').update(name: 'électroménager')
+#Tag.find_by(name: 'etudes').update(name: 'études')
+#Tag.find_by(name: 'fiche_de_paye').update(name: 'fiche_de_paie')
+
+#Tag.all.each do |t|
+ # if !t.macro_category.nil?
+  #  t.macro_category.gsub!(/,electricité/, ',énergie')
+   # t.macro_category.gsub!(/,gaz/, '')
+    #t.macro_category.gsub!(/etudes/, 'études')
+    #t.macro_category.gsub!(/electroménager/, 'électroménager')
+    #t.save
+  #end
+#end
+
+#p 'création des prototypes'
+#prototypes = [
+ # {name:'carte d\'identité', photo:'https://www.exilphoto.com/sites/default/files/2017-07/99588.jpg'},
+  #{name:'facture edf', photo:'https://www.nouvellecartegrise.fr/wp-content/uploads/2016/05/justificatif-de-domicile.jpg'},
+  #{name:'carte grise', photo:'https://www.nouvellecartegrise.fr/wp-content/uploads/2016/05/nouvelle-carte-grise-specimen.jpg'},
+  #{name:'permis de conduire', photo:'https://www.interieur.gouv.fr/var/miomcti/storage/images/www.interieur.gouv.fr/version-fre/actualites/l-actu-du-ministere/nouveau-permis-de-conduire-securise-le-16-septembre-2013/466172-1-fre-FR/Nouveau-permis-de-conduire-securise-le-16-septembre-2013_largeur_445.jpg'},
+  #{name:'fiche de paie', photo:'http://www.ruedelapaye.com/wp-content/uploads/2017/02/exemple-fiche-de-paie-2017.jpg'},
+  #{name:'facture free', photo:'http://free.fr/assistance/im/faq/assistance/Factures/1447/Facture-1447-SPECIMEN.png'},
+  #{name:'attestation Pôle Emploi', photo:'http://www.aladom.fr/media/upload/pole-emploi/attestation-pole-emploi.jpg'},
+  #{name:'déclaration d\'impôts', photo:'http://internationaloffice.ceasaclay.com/local/cache-vignettes/L150xH218/vignette_cerfa2042-2-2e1d1.jpg'},
+  #{name:'rib', photo:'http://www.pixelistes.com/forum/gallery/nikonol-a8103/rib-iban-patrick-pichon-jpg-m577871.jpg'},
+  #{name:'attestation d\'assurance', photo:'http://ericgaubiac.e-monsite.com/medias/images/attestation-rd-2.jpg?fx=r_550_550'},
+  #{name:'attestation de sécurité sociale', photo:'http://www.lamodedeshommes.com/wp-content/uploads/2017/05/attestation-securite-sociale-1.jpg'}
+#]
 
 
-p 'persisting prototypes'
-prototypes.each do |doc|
-  cl_response = Cloudinary::Uploader.upload(doc[:photo])
-  p cl_response
-  d = Document.new
-  d.name = doc[:name]
-  d.prototype = true
-  d.source = 'prototype'
-  d.remote_photo_url = cl_response["secure_url"]
-  d.save
-  p 'prototype added'
-  Cloudinary::Uploader.destroy(cl_response["public_id"])
-  d = Document.find(d.id)
-  d.update(ratio: d.get_image_ratio)
-end
-
-
+#p 'persisting prototypes'
+#prototypes.each do |doc|
+ # cl_response = Cloudinary::Uploader.upload(doc[:photo])
+ # p cl_response
+ # d = Document.new
+ # d.name = doc[:name]
+ # d.prototype = true
+ # d.source = 'prototype'
+ # d.remote_photo_url = cl_response["secure_url"]
+ # d.save
+ # p 'prototype added'
+ # Cloudinary::Uploader.destroy(cl_response["public_id"])
+ # d = Document.find(d.id)
+ # d.update(ratio: d.get_image_ratio)
+#end
 
 
 # p "Destroy tags, documents"
