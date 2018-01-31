@@ -17,7 +17,7 @@ class EmailProcessor
           cl_response = nil
         end
         attachments += {
-          name: att.original_filename.include?('=?UTF-8?') ? "unknown#{Rack::Mime::MIME_TYPES.invert[att.content_type]}" : att.original_filename,
+          name: d.original_filename.include?('=?UTF-8?') ? "unknown#{Rack::Mime::MIME_TYPES.invert[att.content_type]}" : d.original_filename,
           cl_response: cl_reponse
         }
       end
