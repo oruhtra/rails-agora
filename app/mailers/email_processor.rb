@@ -18,7 +18,7 @@ class EmailProcessor
         end
         attachments += {
           name: d.original_filename.include?('=?UTF-8?') ? "unknown#{Rack::Mime::MIME_TYPES.invert[att.content_type]}" : d.original_filename,
-          cl_response: cl_reponse
+          cl_response: cl_response
         }
       end
       # Griddler Email to hash for Sidekiq
