@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_user, :set_user_preferences
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :show_modal, :edit, :update, :destroy]
 
   def index
     # store the tag policy scope in a variable
@@ -41,6 +41,11 @@ class DocumentsController < ApplicationController
     @tag = Tag.new
 
     @document_new = Document.new
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create #documents are saved as soon as they are put in the dropzone without tags
