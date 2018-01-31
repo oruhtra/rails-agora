@@ -23,6 +23,7 @@ class ProcessEmailJob < ApplicationJob
     # for each attachment create a new document and upload it to CL
     email[:attachments].each do |d|
       document = Document.new
+      cl_reponse = d[:cl_reponse]
       # if reponse then persist the document with the information from cloudinary
       if cl_response
         begin
