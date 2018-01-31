@@ -23,8 +23,8 @@ class ProcessEmailJob < ApplicationJob
     # for each attachment create a new document and upload it to CL
     email[:attachments].each do |d|
       document = Document.new
-      cl_response = d[:cl_reponse]
-      # if reponse then persist the document with the information from cloudinary
+      cl_response = d[:cl_response]
+      # if response then persist the document with the information from cloudinary
       if cl_response
         begin
           document.remote_photo_url = cl_response["secure_url"]
@@ -43,15 +43,15 @@ class ProcessEmailJob < ApplicationJob
                   if t.category == 'supplier'
                     begin
                       document.add_one_tag_to_document(t)
-                      t.macro_category.split(',').each do |c|
-                        document.add_one_tag_to_document(Tag.find_by(name: c))
+                      t.macro_categories.each do |c|
+                        document.add_one_tag_to_document(Tag.find_by(name: c.name))
                       end
                     end
-                  elsif !t.macro_category
+                  elsif t.macro_categories.empty?
                     begin
                       document.add_one_tag_to_document(t)
                     end
-                  elsif !t.macro_category.split(',').include?('documents_personnels')
+                  elsif !t.macro_categories_string.split(',').include?('documents_personnels')
                     begin
                       document.add_one_tag_to_document(t)
                     end

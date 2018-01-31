@@ -5,14 +5,13 @@ class EmailProcessor
 
   def process
     @user = User.find_by(email: @email.from[:email])
-
     if @user
       attachments = []
       # remove garbage collection on tempfiles so that Sidekiq can access them
       @email.attachments.each do |d|
         # upload file to cloudinary and store cloudinary response to pass it to the worker (can't pass a temp file as they are not located on the same machine at Heroku)
         begin
-          cl_response = Cloudinary::Uploader.upload(d[:path], :phash => true)
+          cl_response = Cloudinary::Uploader.upload(d.tempfile.path, :phash => true)
         rescue
           cl_response = nil
         end
