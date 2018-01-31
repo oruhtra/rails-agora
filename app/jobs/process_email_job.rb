@@ -35,6 +35,10 @@ class ProcessEmailJob < ApplicationJob
           # Cloudinary::Uploader.destroy(cl_response["public_id"])
           # if document is saved add ratio to it and add tags
           if document.save
+            #delete first file from cloudinary, doing remote_photo_url duplicates the file so the first one needs to be destroyed
+            begin
+              Cloudinary::Uploader.destroy(cl_response["public_id"])
+            end
             document = Document.find(document.id)
             document.update(ratio: document.get_image_ratio)
             # add all tags from sender email and subject
