@@ -52,9 +52,9 @@ if (document.getElementById('masonry-container')) {
 }
 
 if (document.getElementById('masonry-container')) {
-    document.addEventListener("DOMContentLoaded", (e) => {
-      setTimeout(function(){loadDocuments();}, 1000)
-      setTimeout(function(){createMasonryGrid();}, 1000)
+    window.addEventListener("load", (e) => {
+      loadDocuments();
+      createMasonryGrid();
     })
 }
 

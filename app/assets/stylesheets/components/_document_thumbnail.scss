@@ -4,10 +4,12 @@
   border-radius: 3px;
 }
 
-.document-thumbnail-large{
+.document-thumbnail-large {
   max-width: 200px;
 }
 
-.document-thumbnail-100{
-  width: 100%
+@media (max-width: 768px) {
+  .document-thumbnail-large {
+    max-width: 100px;
+  }
 }

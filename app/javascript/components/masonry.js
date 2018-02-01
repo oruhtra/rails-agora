@@ -31,7 +31,6 @@ function createMasonryGrid() {
   getPeripheralTags(cards);
   filterDateTag();
 
-
   function reloadGridAfterFileUpload() {
       document.querySelector('.reload-masonry-grid').addEventListener('click', (e) => {
         document.querySelectorAll('.document-new').forEach(card => {
@@ -50,17 +49,20 @@ function createMasonryGrid() {
           if (!newCardsIds.includes(card.id.match(/(\S*)@(.+)/)[1])) {
             // if document has not been added, duplicate it, delete it, and add the duplicate to the grid
             // and then to the masonry grid, and remove the hidden + document-new classes and add a document-new-prepended
-             // to track it for the next iteration
+            // to track it for the next iteration
             const c = card.cloneNode(true);
             card.remove();
-            c.classList.remove('hidden');
             c.classList.remove('document-new');
             c.classList.add('document-new-prepended');
             // prepend the newly loaded card in the grid
             grid.prepend(c);
-            // add and lay out newly appended elements
-            msnry.prepended(c);
-            msnry.layout();
+            // wait for the DOM to have calculated the image size before un-hidding it and adding it to the masonry grid
+            setTimeout(function(){
+              c.classList.remove('hidden');
+              // add and lay out newly appended elements
+              msnry.prepended(c);
+              msnry.layout();
+            }, 500)
           } else {
             // if document has already been added then just remove it
             card.remove();
