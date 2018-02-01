@@ -208,7 +208,7 @@ class DocumentsController < ApplicationController
     @document = Document.new
     @document.user = current_user
     authorize @document
-    ScrapJob.perform_later(current_user.id)
+    ScrapWorker.perform_async(current_user.id, 0)
     redirect_to documents_path
   end
 

@@ -1,9 +1,12 @@
-class ScrapJob < ApplicationJob
-  queue_as :default
+class ScrapWorker
+  include Sidekiq::Worker
 
-  def perform(user_id, user_service_id = nil)
+  sidekiq_options unique: :until_executed,
+                  unique_args: ->(args) { [ args[0] ] }
+
+  def perform(user_id, user_service_id)
     user = User.find(user_id)
-    if user_service_id.nil?
+    if user_service_id == 0
       # Scrap all user documents from all services
       user.user_services.each do |user_service|
         scrap_documents(user, user_service)
@@ -11,7 +14,7 @@ class ScrapJob < ApplicationJob
     else
       # Scrap user documents from one service only
       user_service = UserService.find(user_service_id)
-      sleep(30)
+      sleep(15)
       scrap_documents(user, user_service)
     end
   end
@@ -35,10 +38,11 @@ class ScrapJob < ApplicationJob
 
     budgea_response["documents"].each do |d|
 
-      #check if documents has already been downloaded and if it has an image
-      budgea_doc_id = d["number"]
-      doc = Document.where(budgea_doc_id: budgea_doc_id).first
+      # check if document has an image
       if !d["url"].nil?
+        #check if document has already been downloaded
+        budgea_doc_id = d["number"]
+        doc = Document.where(budgea_doc_id: budgea_doc_id).first
         if !doc
           #download file directly in cloudinary
           puts "getting CL response"
