@@ -16,6 +16,12 @@
   border: 0px solid $tagcolor1;
 }
 
+@media (max-width: 768px) {
+  .tag {
+    font-size: 15px;
+  }
+}
+
 .tag:hover{
   opacity: 0.9;
   background-color: $tagcolor1;

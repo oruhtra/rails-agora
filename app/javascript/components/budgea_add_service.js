@@ -38,8 +38,17 @@ function buildServiceCredentialsForm() {
       if (data.connectors[i].id == provider_id){
         const credentialsForm = document.getElementById('credentials-form');
         data.connectors[i].fields.reverse().forEach(field => {
-          const html = `<div class="input"><p>${field.label}</p><input type="${field.type}", id="${field.name}", class="credential-input-field"></div>`
-          credentialsForm.insertAdjacentHTML("afterbegin", html);
+          if (field.type == 'list') {
+            let html = `<div class="input"><p>${field.label}</p><select id="${field.name}", type="${field.type}", class="credential-input-field">`
+            field.values.forEach(li => {
+              html += `<option value="${li.value}">${li.label}</option>`
+            })
+            html += '</select></div>'
+            credentialsForm.insertAdjacentHTML("afterbegin", html);
+          } else {
+            const html = `<div class="input"><p>${field.label}</p><input type="${field.type}", id="${field.name}", class="credential-input-field"></div>`
+            credentialsForm.insertAdjacentHTML("afterbegin", html);
+          }
          });
       }
     }
@@ -61,7 +70,11 @@ function submitCredentialsBudgea() {
     const body = {"id_provider": provider_id};
 
     inputs.forEach(field => {
-      body[field.id] = field.value
+      if (field.type == 'list') {
+        body[field.id] = field.options[field.selectedIndex].value;
+      } else {
+        body[field.id] = field.value;
+      }
     })
 
     fetch("https://agora.biapi.pro/2.0/users/me/connections", {

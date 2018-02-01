@@ -2,6 +2,16 @@
   width: 80%;
 }
 
+.modal-dialog-show {
+  width: 70%;
+}
+
+@media (max-width: 768px) {
+  .modal-dialog-show {
+    width: 95%;
+  }
+}
+
 .modal-content {
   border-radius: 5px;
   border: none;
@@ -10,7 +20,18 @@
 .modal-header {
   border-bottom: none;
   color: $primary;
-  padding-bottom: 0;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  width: 70%;
+}
+
+@media (max-width: 768px) {
+  .modal-title {
+    font-size: 15px;
+    width: 70%;
+  }
 }
 
 .modal-subtitle {
@@ -30,4 +51,7 @@
 
 #myModal_add_tags {
   margin-top: 200px;
+}
+.modal-body {
+  padding-bottom: 0;
 }

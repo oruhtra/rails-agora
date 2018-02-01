@@ -3,13 +3,24 @@
   margin: 10px;
   opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .action-style {
+    font-size: 25px;
+  }
+}
 .action-style:hover {
   opacity: 1;
 }
 
 .action-bar-show {
-  margin-bottom: 15px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .action-bar-show {
+    width: 80%;
+  }
 }
 
 .show-add-tags-action {

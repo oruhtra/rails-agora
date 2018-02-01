@@ -1,0 +1,71 @@
+<div class="modal-dialog modal-dialog-show" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title text-center title-centered" id="myModalLabel">
+        <%= simple_form_for(document) do |f| %>
+          <%= f.input :name, label: false, input_html: {class: "text-center"} %>
+          <%= f.submit class:"hidden"%>
+        <% end %>
+      </h4>
+      </div>
+      <div class="modal-body">
+      <div class="text-center scroll">
+        <div class="current-tags scroll">
+          <% unless document.doctags.empty? %>
+            <div class="existing-tags flex-around">
+              <% document.doctags.each do |t| %>
+                <%= link_to document_doctag_path(document, t), method: :delete do %>
+                <div class="tag tag-link tag-s text-center" data-toggle="tooltip" data-placement="left" title="Supprimer le tag"><%= t.tag.name_clean %></div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="document-show">
+
+          <div class="row">
+            <div class="text-center relative-position">
+              <div class="document-wrapper-show">
+                <div class="fade-out-top fade-out-top-white"></div>
+                <div class="document-container-show">
+                  <%= cl_image_tag document.photo, class: "large-document",  format: :jpg %>
+                </div>
+                <div class="fade-out-bottom fade-out-bottom-white"></div>
+              </div>
+              <div class="action-bar-show flex-around">
+                <div class="actions-container flex-around">
+                    <%= link_to download_document_path(document) do %>
+                      <i class="fa fa-download fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Télécharger le document"></i>
+                     <% end %>
+                  <%= link_to document_path(document), method: :delete, :data => {:confirm => 'Are you sure?'} do %>
+                    <i class="fa fa-trash-o fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Supprimer le document"></i>
+                  <% end %>
+
+                    <%= form_tag add_tags_documents_path, method: :get, class: "show-add-tags-action" do  %>
+                      <%= hidden_field_tag "document_ids[]", document.id %>
+                      <%= button_tag(type: "submit", class: "none") do %>
+                        <i class="fa fa-tags fa-2x action-style color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Ajouter des tags"></i>
+                      <% end %>
+                    <% end  %>
+
+                </div>
+              </div>
+            </div>
+      <!--       <div class="col-sm-3">
+              <%#= render 'tags_section_show' %>
+            </div> -->
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

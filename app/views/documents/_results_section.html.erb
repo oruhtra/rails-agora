@@ -9,7 +9,7 @@
         <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
       <% end %>
 
-      <%= link_to document_path(document) do %>
+      <%#= link_to document_path(document), remote: true do %>
       <div class="hover-card">
         <div class="card-description">
           <!-- Large screen -->
@@ -55,10 +55,14 @@
             <% end %>
           </div>
         </div>
-
+        <%= form_tag document_path(document), method: :get, remote: true do  %>
+        <%= hidden_field_tag "document_id", document.id %>
+        <%= submit_tag '', id: 'submit_document_show', hidden: true %>
+        <% end %>
       </div>
+      <%# end %>
 
-      <% end %>
+
       <div class="card-info">
         <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
         <p id="button-<%= document.id %>" class="selectionbox hidden" data-toggle="tooltip" data-placement="bottom" title="Epingler le document"></p>
@@ -66,6 +70,15 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="modal-wrapper">
+  <div class="modal fade page-center" id="myModal_show_doc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-dialog-show" role="document">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="loader-container-doc-load page-center">
