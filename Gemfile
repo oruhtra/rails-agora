@@ -23,6 +23,8 @@ gem 'masonry-rails'
 gem 'rest-client'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+# gem to prevent same jobs (with same parameters) to be executed at the same time
+gem 'sidekiq-unique-jobs'
 gem 'postmark-rails'
 # to parse inbound emails from postmark
 gem 'griddler'

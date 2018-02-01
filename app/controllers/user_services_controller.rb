@@ -62,7 +62,7 @@ class UserServicesController < ApplicationController
       flash[:notice] = "Connexion réussie - vos documents sont en train d'être téléchargés"
 
       #launch the scrapp job sending in the user_service id
-      ScrapJob.perform_later(current_user.id, @user_service.id)
+      ScrapWorker.perform_async(current_user.id, @user_service.id)
 
       redirect_to new_user_service_path
 
