@@ -14,7 +14,7 @@ class ScrapWorker
     else
       # Scrap user documents from one service only
       user_service = UserService.find(user_service_id)
-      sleep(15)
+      sleep(30)
       scrap_documents(user, user_service)
     end
   end
