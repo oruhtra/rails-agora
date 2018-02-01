@@ -9,7 +9,11 @@ class ProcessEmailJob < ApplicationJob
     # create tags instance array
     tags = []
     # get email sender
-    sender = email[:body].match(/<.*@(.*)\..*>/)[1]
+    if !email[:body] == ''
+      sender = email[:body].match(/<.*@(.*)\..*>/)[1]
+    else
+      sender = ''
+    end
     begin
       # check if sender matches a tag and add the matches to tags
       tags += Tag.tag_from_match_in_name(sender)
