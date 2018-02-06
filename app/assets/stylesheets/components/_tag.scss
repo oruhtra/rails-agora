@@ -22,12 +22,14 @@
   }
 }
 
-.tag:hover{
-  opacity: 0.9;
-  background-color: $tagcolor1;
-  color: $tagcolor2;
-  cursor: pointer;
-  border: 0px solid $tagcolor2;
+@media (hover){
+  .tag:hover{
+    opacity: 0.9;
+    background-color: $tagcolor1;
+    color: $tagcolor2;
+    cursor: pointer;
+    border: 0px solid $tagcolor2;
+  }
 }
 
 .tag:active {
@@ -57,11 +59,13 @@
   border: 0px solid $tagcolor1;
 }
 
-.tag-small-action:hover{
-  opacity: 0.9;
-  background-color: $tagcolor1;
-  color: $tagcolor2;
-  cursor: pointer;
+@media (hover){
+  .tag-small-action:hover{
+    opacity: 0.9;
+    background-color: $tagcolor1;
+    color: $tagcolor2;
+    cursor: pointer;
+  }
 }
 
 .tag-small:active {
@@ -73,8 +77,10 @@
   color: $tagcolor2;
 }
 
-.tag-s:hover {
-  opacity: 0.8;
+@media (hover){
+  .tag-s:hover {
+    opacity: 0.8;
+  }
 }
 
 .tag-s-half {
@@ -82,8 +88,10 @@
   color: $textcolor;
 }
 
-.tag-s-half:hover {
-  color: $textcolor;
+@media (hover){
+  .tag-s-half:hover {
+    color: $textcolor;
+  }
 }
 
 .existing-tags {
@@ -124,11 +132,12 @@
   color: $textcolor;
 }
 
-.title .form-control:hover {
-  border-color: transparent;
-  box-shadow: 0 5px 0px 0 rgba(247, 247, 247, 0.1), 0 3px 0 0 rgba(247, 247, 247, 0.1);
+@media (hover){
+  .title .form-control:hover {
+    border-color: transparent;
+    box-shadow: 0 5px 0px 0 rgba(247, 247, 247, 0.1), 0 3px 0 0 rgba(247, 247, 247, 0.1);
+  }
 }
-
 .title .form-control:focus {
   border-color: transparent;
   box-shadow: 0 5px 0px 0 rgba(66, 111, 59, 0.1), 0 3px 0 0 rgba(247, 247, 247, 0.1);

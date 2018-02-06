@@ -23,7 +23,6 @@ class UserSeedJob < ApplicationJob
       {name:'fiche de paie', tags: ['emploi', 'fiche_de_paie'], date_tags: ['Jan 2017']},
       {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Feb 2018']},
       {name:'facture free', tags: ['facture', 'téléphonie', 'free'], date_tags: ['Jan 2017']},
-      {name:'attestation Pôle Emploi', tags: ['emploi', 'pôle_emploi'], date_tags: ['Jan 2018']},
       {name:'attestation Pôle Emploi', tags: ['emploi', 'pôle_emploi'], date_tags: ['Feb 2018']},
       {name:'déclaration d\'impôts', tags: ['impôts', 'déclaration'], date_tags: ['Jun 2018']},
       {name:'rib', tags: ['banque', 'crédit_mutuel']},
@@ -32,7 +31,7 @@ class UserSeedJob < ApplicationJob
     ]
 
     prototypes.reverse.each do |d|
-      prototype = Document.where(prototype: true).find_by(name: d[:name])
+      prototype = Document.where(prototype: true).where(user_id: nil).find_by(name: d[:name])
       document = prototype.dup
       document.user = user
       if document.save
