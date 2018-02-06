@@ -136,13 +136,13 @@
 
 @media (max-width: 600px) {
   .existing-tags {
-    height: 90px;
+    max-height: 90px;
   }
 }
 
 @media (min-width: 600px) {
   .existing-tags {
-    height: 160px;
+    max-height: 160px;
  }
 }
 
