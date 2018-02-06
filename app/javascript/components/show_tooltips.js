@@ -1,5 +1,6 @@
 import $ from 'jquery';
-
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
+if ($(window).width() > 768) {
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+}

@@ -44,12 +44,12 @@ if (document.getElementById("doc-dropzone")) {
 }
 
 if (document.getElementById('masonry-container')) {
-  selectButton();
+  if ($(window).width() > 768) {
+    selectButton();
+    keepHoverCardWhenHoverButton();
+  }
 }
 
-if (document.getElementById('masonry-container')) {
-  keepHoverCardWhenHoverButton();
-}
 
 if (document.getElementById('masonry-container')) {
     window.addEventListener("load", (e) => {

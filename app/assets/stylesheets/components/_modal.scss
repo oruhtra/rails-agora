@@ -1,15 +1,5 @@
-.modal-dialog {
-  width: 80%;
-}
-
 .modal-dialog-show {
   width: 70%;
-}
-
-@media (max-width: 768px) {
-  .modal-dialog-show {
-    width: 95%;
-  }
 }
 
 .modal-content {
@@ -25,13 +15,6 @@
 
 .modal-title {
   width: 70%;
-}
-
-@media (max-width: 768px) {
-  .modal-title {
-    font-size: 15px;
-    width: 70%;
-  }
 }
 
 .modal-subtitle {
@@ -54,4 +37,21 @@
 }
 .modal-body {
   padding-bottom: 0;
+}
+
+// MEDIA RELATED STYLES
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .modal-dialog-show {
+    width: 95%;
+  }
+
+  .modal-title {
+    font-size: 20px;
+    width: 70%;
+  }
 }
