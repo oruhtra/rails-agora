@@ -1,42 +1,43 @@
 <% if @documents_new %>
   <% @documents_new.each do |document| %>
     <div class= "box card document-new hidden" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};" id="<%= "#{document.id}@" + ' ' + document.tagsname.join(' ') %>">
-      <%= link_to document_path(document) do %>
-        <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg' %>
-      <% end %>
+      <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :width => "200px", :format => 'jpg', page: 1 %>
 
-      <%= link_to document_path(document) do %>
-        <div class="hover-card hover-card-new">
-          <div class="card-description">
-            <!-- Large screen -->
-            <div class="card-title breakword hidden-xs">
-              <% if document.name[27] %>
-                <h5><%= document.name[0..26] %>...</h5>
-              <% else %>
-                <h5><%= document.name %></h5>
-              <% end %>
-              <p><%=document.updated_at.strftime("%Y-%m") %></p>
-            </div>
-
-            <!-- Small screen -->
-            <div class="card-title breakword visible-xs">
-              <% if document.name[10] %>
-                <h5><%= document.name[0..10] %>...</h5>
-              <% else %>
-                <h5><%= document.name %></h5>
-              <% end %>
-            </div>
+      <div class="hover-card hover-card-new">
+        <div class="card-description">
+          <!-- Large screen -->
+          <div class="card-title breakword hidden-xs">
+            <% if document.name[27] %>
+              <h5><%= document.name[0..26] %>...</h5>
+            <% else %>
+              <h5><%= document.name %></h5>
+            <% end %>
+            <p><%=document.updated_at.strftime("%Y-%m") %></p>
           </div>
 
-          <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
-            <%= hidden_field_tag "document_ids[]", document.id %>
-            <%= button_tag(type: "submit", class: "none") do %>
-              <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+          <!-- Small screen -->
+          <div class="card-title breakword visible-xs">
+            <% if document.name[10] %>
+              <h5><%= document.name[0..10] %>...</h5>
+            <% else %>
+              <h5><%= document.name %></h5>
             <% end %>
-          <% end  %>
-
+          </div>
         </div>
-      <% end %>
+
+        <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
+          <%= hidden_field_tag "document_ids[]", document.id %>
+          <%= button_tag(type: "submit", class: "none") do %>
+            <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+          <% end %>
+        <% end  %>
+
+        <%= form_tag document_path(document), method: :get, remote: true do  %>
+        <%= hidden_field_tag "document_id", document.id %>
+        <%= submit_tag '', id: 'submit_document_show', hidden: true %>
+        <% end %>
+
+      </div>
       <div class="card-info">
         <%= link_to document_path(document, document: {selected: true}), method: :patch do %>
         <p id="button-<%= document.id %>" class="selectionbox hidden" data-toggle="tooltip" data-placement="bottom" title="Epingler le document"></p>

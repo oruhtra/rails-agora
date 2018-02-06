@@ -2,6 +2,7 @@ import $ from 'jquery';
 import 'select2';
 import 'select2/dist/css/select2.css';
 import { myDatepicker } from "../components/air_datepicker";
+import { showModalShowDocument } from "../components/modal_show_document";
 
 function createMasonryGrid() {
   var grid = document.getElementById('masonry-container');
@@ -30,6 +31,7 @@ function createMasonryGrid() {
   searchListen ();
   getPeripheralTags(cards);
   filterDateTag();
+  showModalShowDocument();
 
   function reloadGridAfterFileUpload() {
       document.querySelector('.reload-masonry-grid').addEventListener('click', (e) => {
@@ -69,6 +71,7 @@ function createMasonryGrid() {
           }
 
         });
+        showModalShowDocument();
     })
   };
 

@@ -1,7 +1,7 @@
 class DestroyUserPrototypesJob < ApplicationJob
   queue_as :default
 
-  def perform()
+  def perform
     t = Time.now
     User.all.each do |user|
       if (t - User.last.created_at) > 86400

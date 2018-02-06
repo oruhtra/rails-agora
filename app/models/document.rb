@@ -5,6 +5,8 @@ class Document < ApplicationRecord
 
   validates :source, presence: true, inclusion: { in: %w(user_added email_sent supplier_scrapped email_scrapped prototype)}
 
+  after_create :get_number_of_pages
+
   mount_uploader :photo, PhotoUploader
 
   # get an array of tags name
@@ -63,6 +65,12 @@ class Document < ApplicationRecord
       doctag.tag = tag
       doctag.save
     end
+  end
+
+  private
+
+  def get_number_of_pages
+    GetNumberOfPagesJob.set(wait: 15.seconds).perform_later(self)
   end
 
 end

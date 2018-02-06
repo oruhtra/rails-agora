@@ -29,7 +29,12 @@
               <div class="document-wrapper-show">
                 <div class="fade-out-top fade-out-top-white"></div>
                 <div class="document-container-show">
-                  <%= cl_image_tag document.photo, class: "large-document",  format: :jpg %>
+                  <% i = 1 %>
+                  <% document.pages ? (p = document.pages) : (p = 1) %>
+                  <% while i <= p %>
+                    <%= cl_image_tag document.photo, class: "large-document",  format: :pdf, page: i %>
+                    <% i += 1 %>
+                  <% end %>
                 </div>
                 <div class="fade-out-bottom fade-out-bottom-white"></div>
               </div>

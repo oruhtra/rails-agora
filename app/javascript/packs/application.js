@@ -15,7 +15,6 @@ import { showModalAddTags } from "../components/modal_add_tag";
 import { loadDocuments } from "../components/load_documents";
 import { activateAnchorLinks } from "../components/scroll_to_anchor";
 import { setFocusMailer } from "../components/set_focus_mailer";
-import { showModalShowDocument } from "../components/modal_show_document";
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
 import '../components/show_tooltips';
@@ -83,8 +82,4 @@ if (document.getElementById('masonry-container')) {
   if (document.getElementById('focusable-container')) {
     setTimeout(function(){setFocusMailer();},1000);
   }
-}
-
-if (document.getElementById('masonry-container')) {
-  showModalShowDocument();
 }

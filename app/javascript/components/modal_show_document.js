@@ -11,5 +11,5 @@ function showModalShowDocument() {
   })
 }
 
-
+// imported in Masonry.js
 export { showModalShowDocument }

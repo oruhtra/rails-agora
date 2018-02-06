@@ -47,7 +47,7 @@
         <div class="navbar-wagon-item">
           <div class="dropdown">
 
-            <% if !current_user.photo.public_id.nil? %>
+            <% if !current_user.photo.file.nil? %>
               <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
               <%= image_tag '/Img/user.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
