@@ -42,7 +42,7 @@
               <div class="col-xs-12 service-category-header"><h2><%= macro_category.name_clean.capitalize %></h2></div>
             <% end %>
 
-            <% (@services - @services_user).select{ |t| t.macro_category == macro_category.name}.each do |service| %>
+            <% (@services - @services_user).select{ |t| t.macro_category == macro_category.name && t.active }.each do |service| %>
               <div class="col-xs-6 col-md-4">
                 <div class="service-card">
                   <div class="service-form service-not-connected">

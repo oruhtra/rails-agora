@@ -6,6 +6,8 @@ function showModalShowDocument() {
         card.querySelector('#submit_document_show').click();
         window.scrollTo(0, 0);
         $('#myModal_show_doc').modal('show');
+        setTimeout(function () {$('[data-toggle="tooltip"]').tooltip();}, 500);
+
       }
     })
   })
