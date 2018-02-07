@@ -30,6 +30,21 @@ services.each do |s|
   end
 end
 
+t =Tag.new
+t.name = 'certificat'
+t.category = 'doc_type'
+if t.save
+  macro_category = ["Banque","Assurance","Mutuelle","Sécurité Sociale","Impôts","études","Voyage","Transport","Sports","Véhicule","énergie","Retraite","Téléphonie","Santé"]
+  macro_category.each do |m|
+    c = Tag.find_by(name: m.downcase.gsub(/\s/, "_"))
+    if c
+      d = TagCategory.new(tag_id: t.id, macro_category_id: c.id)
+      if d.save
+        p "ADDED: #{c.name}"
+      end
+    end
+  end
+end
 
 
 
