@@ -13,7 +13,7 @@ function createMasonryGrid() {
   var peripheralTags = [];
   var screenSize = $(window).width();
 
-  if (screenSize < 600) {
+  if (screenSize < 768) {
     var masonryColumnWidth = 10;
   } else {
     var masonryColumnWidth = 40

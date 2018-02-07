@@ -43,7 +43,7 @@
   position: relative;
   background: $myresultsection;
   padding: 20px 10px;
-  min-height: 100vh;
+  min-height: calc(100vh - 112px);
 }
 
 .results_section_extra_small {
