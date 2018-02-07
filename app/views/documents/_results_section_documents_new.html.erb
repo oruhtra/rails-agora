@@ -23,14 +23,28 @@
               <h5><%= document.name %></h5>
             <% end %>
           </div>
-        </div>
 
-        <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
-          <%= hidden_field_tag "document_ids[]", document.id %>
-          <%= button_tag(type: "submit", class: "none") do %>
-            <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
-          <% end %>
-        <% end  %>
+          <div class="existing-tags hidden-xs">
+            <% if !document.doctags.empty? %>
+              <% document.doctags.each do |t| %>
+                  <div class="text-center tag-small tag-white" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
+              <% end %>
+              <%= form_tag add_tags_documents_path, method: :get do  %>
+                <%= hidden_field_tag "document_ids[]", document.id %>
+                <%= button_tag(type: "submit", class: "none") do %>
+                  <i class="fa fa-plus fa-2x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                <% end %>
+              <% end  %>
+            <% else %>
+              <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
+                <%= hidden_field_tag "document_ids[]", document.id %>
+                <%= button_tag(type: "submit", class: "none") do %>
+                  <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                <% end %>
+              <% end  %>
+            <% end %>
+          </div>
+        </div>
 
         <%= form_tag document_path(document), method: :get, remote: true do  %>
         <%= hidden_field_tag "document_id", document.id %>

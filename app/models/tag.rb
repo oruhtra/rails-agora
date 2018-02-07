@@ -25,8 +25,8 @@ class Tag < ApplicationRecord
 
   # get tags that match a part of a name
   def self.tag_from_match_in_name(string)
-    string.downcase!
-    Tag.all.select { |t| string.match(/\b#{t.name_clean}\b/) }
+    s = string.downcase.gsub(/[^'\w]/, " ")
+    Tag.all.select { |t| s.match(/\b#{t.name_clean}\b/) }
   end
 
   # calc tag occurrence

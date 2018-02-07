@@ -58,6 +58,12 @@ class DocumentsController < ApplicationController
     if @document.save
       @document = Document.find(@document.id)
       @document.update(ratio: @document.get_image_ratio)
+      Tag.tag_from_match_in_name(@document.name).each do |t|
+        @document.add_one_tag_to_document(t)
+        t.macro_categories.each do |c|
+          @document.add_one_tag_to_document(Tag.find_by(name: c.name))
+        end
+      end
       respond_to do |format|
         format.html  { redirect_back(fallback_location: root_path) }
         format.json do
