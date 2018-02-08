@@ -21,46 +21,14 @@
 .navbar-wagon-brand img {
   height: 40px;
   border-radius: 7px;
-}
-
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-/* Right section */
-.navbar-wagon-left {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Basic navbar item */
-.navbar-wagon-item {
-  cursor: pointer;
-}
-
-/* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
+  margin-right: 10px;
 }
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
+  color: $textcolor;
   margin-top: 15px;
+  margin-left: 10px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }

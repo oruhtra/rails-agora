@@ -1,113 +1,49 @@
 <div class="navbar-wrapper">
   <div class="navbar-wagon">
-
-
-      <!-- Logo -->
-      <% if user_signed_in? %>
-        <%= link_to documents_path, class: "navbar-wagon-brand" do %>
-          <%= image_tag "logo.png", height: 30 %>
-        <% end %>
-      <% else %>
-        <%= link_to root_path, class: "navbar-wagon-brand" do %>
-          <%= image_tag "logo.png", height: 30 %>
-        <% end %>
+    <!-- Logo -->
+    <% if user_signed_in? %>
+      <%= link_to documents_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "logo.png", height: 30 %>
       <% end %>
-
-      <%= yield :navbar %>
-
-      <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
-
-        <div class="position-relative">
-          <i class="fa fa-envelope ref" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
-          <% if params[:controller] == "documents" && @user_preferences.include?('tips_setting') && !@user_preferences.include?('tips_add_by_email')%>
-            <div id="focusable-container"></div>
-          <% end %>
-        </div>
-
-        <i class="fa fa-plus ref dz-message" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
-
-        <%= link_to scrap_documents_documents_path do %>
-          <i class="fa fa-refresh ref" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents sur mes comptes clients"></i>
-        <% end %>
+    <% else %>
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "logo.png", height: 30 %>
       <% end %>
-
-
-    <!-- Right Navigation -->
+    <% end %>
+    <!-- yield content from the page -->
+    <%= yield :navbar %>
+    <!-- TABS to navigate in the app -->
     <div class="tabs">
-      <a class="tab active" href="#">
+      <%= link_to documents_path, class: 'tab' do %>
         <p>Documents</p>
-      </a>
+      <% end %>
       <%= link_to new_user_service_path, class: 'tab' do %>
         <p>Services</p>
       <% end %>
-      <%= link_to edit_user_registration_path, class: 'tab' do %>
-        <p>Profil</p>
-      <% end %>
-  </div>
+      <div class="dropdown tab">
+        <p class="dropdown-toggle" id="navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true">Profil</p>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
-    <div class="navbar-wagon-right hidden-sm hidden-xs">
-      <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
+        <li>
+          <%= link_to edit_user_registration_path do %>
+            <i class="fa fa-user"></i> Editer mon profil
+          <% end %>
+        </li>
 
-      <% elsif user_signed_in? %>
-        <!-- Login link (when logged out) -->
-        <%= link_to t(".sign_in", default: "Connexion"), documents_path, class: "navbar-wagon-item button log-in-button" %>
-      <% else %>
-        <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item button log-in-button" %>
-      <% end %>
-    </div>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i> Se déconnecter
+          <% end %>
+        </li>
 
-    <!-- on small screen only -->
-    <div class="navbar-wagon-right visible-sm visible-xs">
-
-
-          <% if params[:controller] != "pages" && params[:action] != "home" && user_signed_in? %>
-        <!-- Avatar with dropdown menu -->
-        <div class="navbar-wagon-item">
-          <div class="dropdown">
-            <i class="fa fa-bars color-primary font-35 dropdown-toggle" id: "navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true"></i>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-
-            <li class="dz-message" id="clickable">
-              <a href="#">
-                <i class="fa fa-plus"></i> Ajouter un document
-              </a>
-            </li>
-
-            <li>
-              <%= link_to scrap_documents_documents_path do %>
-                <i class="fa fa-refresh"></i> Récupérer mes documents sur mes comptes clients
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to new_user_service_path do %>
-                <i class="fa fa-plug"></i> Ajouter un service
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                <i class="fa fa-user"></i> Editer mon profil
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i> Se déconnecter
-              <% end %>
-            </li>
-
-            </ul>
-          </div>
-        </div>
-      <% elsif user_signed_in? %>
-        <!-- Login link (when logged out) -->
-        <%= link_to t(".sign_in", default: "Connexion"), documents_path, class: "navbar-wagon-item button log-in-button" %>
-      <% else %>
-        <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item button log-in-button" %>
+        </ul>
+      </div>
+      <% if controller == ['documents'] %>
+      <h1>hello</h1>
+      <% elsif controller == ['services'] %>
+      <% elsif controller == ['pages'] %>
       <% end %>
     </div>
-
   </div>
-
 </div>
+

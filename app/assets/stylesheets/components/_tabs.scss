@@ -1,16 +1,9 @@
 .tabs {
   display: flex;
 }
-.tabs a {
-  color: $textcolor;
-}
 
-.tabs h3 {
-  font-size: 17px;
-  font-weight: bold;
-  margin-top: 0;
-}
 .tabs p {
+  color: $textcolor;
   margin-bottom: 0;
 }
 .tab {
