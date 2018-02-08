@@ -26,6 +26,8 @@
     </div>
   </div>
 <% end %>
+<!-- Actions tools displayed on the left of the screen to allow user to add new documents, get documents from its providers and send a doc by email -->
+<%= render 'action-bar-results-section' %>
 <!-- Main container including all the documents - in results_section partial -->
 <div class="index-wrapper">
   <div class="main-section-large">
@@ -56,8 +58,6 @@
     <% end %>
   </div>
 </div>
-<!-- Actions tools displayed on the left of the screen to allow user to add new documents, get documents from its providers and send a doc by email -->
-<%= render 'action-bar-results-section' %>
 <!-- Modal that is displayed at first connection to explain how the app works -->
 <div class="modal-wrapper">
   <%= render 'modal-first-connection-tips' %>

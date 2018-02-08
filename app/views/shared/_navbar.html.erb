@@ -38,11 +38,10 @@
 
         </ul>
       </div>
-      <% if controller == ['documents'] %>
-      <h1>hello</h1>
-      <% elsif controller == ['services'] %>
-      <% elsif controller == ['pages'] %>
-      <% end %>
+      <!-- Information for the JS tab.js method to highlight the active tab -->
+      <div class="hidden" id="tab">
+        <%= params[:controller]%>
+      </div>
     </div>
   </div>
 </div>
