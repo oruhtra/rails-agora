@@ -1,15 +1,17 @@
 <% if !@user_tags.nil? %>
-  <div class="text-center" style="width: 20px;">
-    <div class="clear-tags hidden">
-      <%= link_to documents_path, method: :get do %>
-        <span class="fa fa-times color-primary" aria-hidden="true"></span>
+  <div class="search_section">
+    <div class="text-center" style="width: 10px; margin-left: 10px;">
+      <div class="clear-tags hidden">
+        <%= link_to documents_path, method: :get do %>
+          <span class="fa fa-times color-primary" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+    <div id="tags-bar">
+      <% @user_tags.each do |tag| %>
+          <i class="tag tag-link tag-shadow listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
       <% end %>
     </div>
-  </div>
-  <div id="tags-bar">
-    <% @user_tags.each do |tag| %>
-        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
-    <% end %>
   </div>
 <% end %>
 

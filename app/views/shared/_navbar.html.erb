@@ -40,6 +40,7 @@
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
         <%= image_tag "logo.png", height: 30 %>
       <% end %>
+      <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item button log-in-button" %>
     <% end %>
   </div>
 </div>
