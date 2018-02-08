@@ -45,3 +45,17 @@
   border-radius: 5px;
   padding: 5px 30px;
 }
+
+#datepicker-button {
+  margin-left: 15px;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filter-date-button:hover{
+  color: $primary;
+  margin: 5px 10px;
+}

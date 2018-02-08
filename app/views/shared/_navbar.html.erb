@@ -2,9 +2,18 @@
   <div class="navbar-wagon">
     <% if user_signed_in? %>
       <!-- Logo -->
+      <div class="flex">
       <%= link_to documents_path, class: "navbar-wagon-brand" do %>
         <%= image_tag "logo.png", height: 30 %>
       <% end %>
+      <% unless @user.documents.empty? %>
+        <div id="datepicker-button">
+          <i class="filter-date-button">Filtrer par date</i>
+          <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true"></i>
+          <input class="my-datepicker cache"></input>
+        </div>
+      <% end %>
+      </div>
       <!-- yield content from the page -->
       <%= yield :navbar %>
       <!-- TABS to navigate in the app -->

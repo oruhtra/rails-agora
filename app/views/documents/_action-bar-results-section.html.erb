@@ -1,12 +1,5 @@
 <div class="action-bar-results-section text-center">
 
-  <% unless @user.documents.empty? %>
-    <div id="datepicker-button" class="action-element">
-      <i class="fa fa-calendar font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Filtrer par date"></i>
-      <input class="my-datepicker cache"></input>
-    </div>
-  <% end %>
-
   <div class="position-relative action-element" data-toggle="tooltip" data-placement="right" title="Ajouter un document par email">
     <i class="fa fa-envelope font-35 color-primary" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
     <% if params[:controller] == "documents" && @user_preferences.include?('tips_setting') && !@user_preferences.include?('tips_add_by_email')%>
