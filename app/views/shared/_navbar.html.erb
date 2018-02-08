@@ -14,13 +14,13 @@
     <%= yield :navbar %>
     <!-- TABS to navigate in the app -->
     <div class="tabs">
-      <%= link_to documents_path, class: 'tab' do %>
+      <%= link_to documents_path, class: 'tab', id:'documents' do %>
         <p>Documents</p>
       <% end %>
-      <%= link_to new_user_service_path, class: 'tab' do %>
+      <%= link_to new_user_service_path, class: 'tab', id:'user_services' do %>
         <p>Services</p>
       <% end %>
-      <div class="dropdown tab">
+      <div class="tab dropdown" id='devise/registrations'>
         <p class="dropdown-toggle" id="navbar-wagon-menu" data-toggle= "dropdown" aria-hidden="true">Profil</p>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
@@ -38,11 +38,9 @@
 
         </ul>
       </div>
-      <!-- Information for the JS tab.js method to highlight the active tab -->
-      <div class="hidden" id="tab">
-        <%= params[:controller]%>
-      </div>
     </div>
   </div>
 </div>
+<!-- Information for the JS tab.js method to highlight the active tab -->
+<div class="hidden" id="tab_name"><%= params[:controller]%></div>
 

@@ -2,12 +2,12 @@
 
   <% unless @user.documents.empty? %>
     <div id="datepicker-button" class="action-element">
-      <i class="fa fa-calendar font-35 color-primary" aria-hidden="true"></i>
+      <i class="fa fa-calendar font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Filtrer par date"></i>
       <input class="my-datepicker cache"></input>
     </div>
   <% end %>
 
-  <div class="position-relative action-element">
+  <div class="position-relative action-element" data-toggle="tooltip" data-placement="right" title="Ajouter un document par email">
     <i class="fa fa-envelope font-35 color-primary" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
     <% if params[:controller] == "documents" && @user_preferences.include?('tips_setting') && !@user_preferences.include?('tips_add_by_email')%>
       <div id="focusable-container"></div>
@@ -15,12 +15,12 @@
   </div>
 
   <div class="action-element">
-    <i class="fa fa-plus dz-message font-35 color-primary" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter un document"></i>
+    <i class="fa fa-plus dz-message font-35 color-primary" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Ajouter un document manuellement"></i>
   </div>
 
   <div class="action-element">
     <%= link_to scrap_documents_documents_path do %>
-      <i class="fa fa-refresh font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Récupérer mes documents sur mes comptes clients"></i>
+      <i class="fa fa-refresh font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Récupérer mes documents sur mes comptes clients"></i>
     <% end %>
   </div>
 </div>

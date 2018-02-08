@@ -28,7 +28,7 @@ function createMasonryGrid() {
 
   reloadGridAfterFileUpload();
   addTagsListener();
-  searchListen ();
+  // searchListen ();
   getPeripheralTags(cards);
   filterDateTag();
   showModalShowDocument();
@@ -108,27 +108,28 @@ function createMasonryGrid() {
       addCardsAndChangeTags(tagId);
 
     }
-    clearSelect2Search();
+    // clearSelect2Search();
     filterDateTag();
     console.log(peripheralTags);
   }
 
-  function searchListen () {
-    $('.select2').on('select2:select', function (e) {
-      const data = $('#dropdowntag').select2('data');
-      const tagId = data[0]["id"];
-      restoreCards()
-      selectedTags.length = 0 ;
-      restoreTags();
-      selectedTags.push(tagId);
-      removeCardsAndChangeTags(tagId);
-      showClearAll()
-    });
-  }
+  // REMOVED BECAUSE SEARCH BAR WAS REMOVED
+  // function searchListen () {
+  //   $('.select2').on('select2:select', function (e) {
+  //     const data = $('#dropdowntag').select2('data');
+  //     const tagId = data[0]["id"];
+  //     restoreCards()
+  //     selectedTags.length = 0 ;
+  //     restoreTags();
+  //     selectedTags.push(tagId);
+  //     removeCardsAndChangeTags(tagId);
+  //     showClearAll()
+  //   });
+  // }
 
-  function clearSelect2Search() {
-    $('#dropdowntag').val(null).trigger('change');
-  }
+  // function clearSelect2Search() {
+  //   $('#dropdowntag').val(null).trigger('change');
+  // }
 
   function removeCardsAndChangeTags(tagId) {
     var remainingCards = document.createDocumentFragment();

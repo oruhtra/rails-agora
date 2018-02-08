@@ -11,28 +11,34 @@
   text-align: center;
   padding: 20px 0px;
   width: 100px;
-  border-top: 1px solid $myresultsection;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .tab:first-child {
   border-radius: 10px 0 0 0;
-  border-left: 1px solid $myresultsection;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 .tab:last-child {
   border-radius: 0 10px 0 0;
-  border-right: 1px solid $myresultsection;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 .tab.active {
   background: $myresultsection;
   color: $textcolor;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 0 $myresultsection;
 }
 
 // HOVER STYLES ON PCs
 
 @media (hover){
   .tab:hover{
-  background: $myresultsection;
-  color: $textcolor;
+    background: $myresultsection;
+    color: $textcolor;
     cursor: pointer;
+    box-shadow: 0 1px 0 $myresultsection;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
   }
 }
