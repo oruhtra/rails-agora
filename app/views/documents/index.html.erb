@@ -1,9 +1,8 @@
 <!-- this part is in the navbar  -->
 <% content_for :navbar do %>
    <!-- search form  -->
-  <div class="search-bar-wrapper hidden-xs">
     <%= render 'search_bar_index' %>
-  </div>
+    <%= render 'search_section' %>
 
 <!-- Button add tags change shape and position based on screen size -->
 <!-- Large screen -->
@@ -40,18 +39,7 @@
 <div class="index-wrapper">
   <div class="main-section-large">
 
-    <div class="search_section">
-      <div class="fade-out-left fade-out-left-white"></div>
-      <%= render 'search_section' %>
-      <div class="fade-out-right fade-out-right-white"></div>
 
-      <div class="clear-tags hidden">
-        <%= link_to documents_path, method: :get do %>
-          <span class="fa fa-times color-primary" aria-hidden="true" style="margin: 10px;"></span>
-        <% end %>
-      </div>
-
-    </div>
 
     <% if @documents_selected.empty? %>
 
