@@ -1,50 +1,50 @@
 # ADD ACTIVE / INACTIVE to services
 
-services = [
-{name: 'AXA'},
-{name: 'Amaguiz'},
-{name: 'Direct Assurances'},
-{name: 'Generali'},
-{name: 'GMF'},
-{name: 'Groupama'},
-{name: 'Macif'},
-{name: 'Matmut'},
-{name: "Mutuelle April"},
-{name: "Mutuelle Arpege"},
-{name: "Mutuelle Generale"},
-{name: "Mutuelle Gras Savoye"},
-{name: "Mutuelle Groupama"},
-{name: "Mutuelle Groupe Uneo"},
-{name: "Mutuelle LMDE"},
-{name: "Mutuelle Malakoff Médéric"},
-{name: "Mutuelle Mercer"},
-{name: "Mutuelle Vivinter"},
-{name: "CNMSS"}
-]
+# services = [
+# {name: 'AXA'},
+# {name: 'Amaguiz'},
+# {name: 'Direct Assurances'},
+# {name: 'Generali'},
+# {name: 'GMF'},
+# {name: 'Groupama'},
+# {name: 'Macif'},
+# {name: 'Matmut'},
+# {name: "Mutuelle April"},
+# {name: "Mutuelle Arpege"},
+# {name: "Mutuelle Generale"},
+# {name: "Mutuelle Gras Savoye"},
+# {name: "Mutuelle Groupama"},
+# {name: "Mutuelle Groupe Uneo"},
+# {name: "Mutuelle LMDE"},
+# {name: "Mutuelle Malakoff Médéric"},
+# {name: "Mutuelle Mercer"},
+# {name: "Mutuelle Vivinter"},
+# {name: "CNMSS"}
+# ]
 
-services.each do |s|
-  service = Service.find_by(name: s[:name].downcase.gsub(/\s/, "_"));
-  if service
-  p "#{s[:name]} found"
-  service.update(active: false)
-  end
-end
+# services.each do |s|
+#   service = Service.find_by(name: s[:name].downcase.gsub(/\s/, "_"));
+#   if service
+#   p "#{s[:name]} found"
+#   service.update(active: false)
+#   end
+# end
 
-t =Tag.new
-t.name = 'certificat'
-t.category = 'doc_type'
-if t.save
-  macro_category = ["Banque","Assurance","Mutuelle","Sécurité Sociale","Impôts","études","Voyage","Transport","Sports","Véhicule","énergie","Retraite","Téléphonie","Santé"]
-  macro_category.each do |m|
-    c = Tag.find_by(name: m.downcase.gsub(/\s/, "_"))
-    if c
-      d = TagCategory.new(tag_id: t.id, macro_category_id: c.id)
-      if d.save
-        p "ADDED: #{c.name}"
-      end
-    end
-  end
-end
+# t =Tag.new
+# t.name = 'certificat'
+# t.category = 'doc_type'
+# if t.save
+#   macro_category = ["Banque","Assurance","Mutuelle","Sécurité Sociale","Impôts","études","Voyage","Transport","Sports","Véhicule","énergie","Retraite","Téléphonie","Santé"]
+#   macro_category.each do |m|
+#     c = Tag.find_by(name: m.downcase.gsub(/\s/, "_"))
+#     if c
+#       d = TagCategory.new(tag_id: t.id, macro_category_id: c.id)
+#       if d.save
+#         p "ADDED: #{c.name}"
+#       end
+#     end
+#   end
+# end
 
 
 
