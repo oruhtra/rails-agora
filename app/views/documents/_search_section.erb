@@ -1,11 +1,18 @@
 <% if !@user_tags.nil? %>
   <div id="tags-bar">
-  <% @user_tags.each do |tag| %>
-      <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
+    <% @user_tags.each do |tag| %>
+        <i class="tag tag-link listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
+    <% end %>
+  </div>
+<% end %>
+<div class="tabs">
+  <a class="tab active" href="#">
+    <p>Documents</p>
+  </a>
+  <%= link_to new_user_service_path, class: 'tab' do %>
+    <p>Services</p>
   <% end %>
 </div>
-
-<% end %>
 
 
 
