@@ -26,13 +26,18 @@
   height: 39px;
 }
 
-.filter-date-button {
-  color: $primary;
+#datepicker-button {
   margin-left: 15px;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.filter-date-button:hover{
-  cursor: pointer;
+.filter-date-button {
+  color: $primary;
+  margin: 5px 10px;
 }
 
 .close-modal-button {

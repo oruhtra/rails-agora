@@ -1,3 +1,7 @@
-<div class="search-bar">
-  <%= collection_select :search_tag, nil, @user_tags_alphabetic, :name, :name_clean, {include_blank: ''}, {id: "dropdowntag", class: "select2"} %>
-</div>
+<% unless @user.documents.empty? %>
+  <div class="position-relative flex-around" id="datepicker-button">
+      <i class="filter-date-button">Filtrer par date</i>
+      <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true"></i>
+      <input class="my-datepicker cache"></input>
+    </div>
+<% end %>

@@ -5,13 +5,6 @@
     <%= render 'search_bar_index' %>
   </div>
 
-<% unless @user.documents.empty? %>
-  <div class="position-relative">
-      <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true" id="datepicker-button" data-toggle="tooltip" data-placement="bottom" title="Filtrer par date"></i>
-      <input class="my-datepicker cache"></input>
-    </div>
-<% end %>
-
 <!-- Button add tags change shape and position based on screen size -->
 <!-- Large screen -->
 <div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
