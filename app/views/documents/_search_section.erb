@@ -1,6 +1,6 @@
 <% if !@user_tags.nil? %>
   <div class="search_section">
-    <div class="text-center" style="width: 10px; margin-left: 10px;">
+    <div class="text-center" style="width: 10px; margin: 10px;">
       <div class="clear-tags hidden">
         <%= link_to documents_path, method: :get do %>
           <span class="fa fa-times color-primary" aria-hidden="true"></span>
@@ -12,6 +12,7 @@
           <i class="tag tag-link tag-shadow listentag" id="<%= tag.name %>"><%= tag.name_clean %></i>
       <% end %>
     </div>
+    <div class="fade-out-right fade-out-right-grey"></div>
   </div>
 <% end %>
 

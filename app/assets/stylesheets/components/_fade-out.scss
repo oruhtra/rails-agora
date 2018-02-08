@@ -25,7 +25,6 @@
   left: 0;
   width: 20px;
   height: 100%;
-  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
   border-left: 5px solid white;
   // border-radius: 3px;
 }
@@ -37,7 +36,6 @@
   right: 0;
   width: 20px;
   height: 100%;
-  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
   border-right: 5px solid white;
   // border-radius: 3px;
 }
@@ -70,4 +68,14 @@
 .fade-out-right-white {
   background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
   border-right: 5px solid white;
+}
+
+.fade-out-left-grey {
+  background: linear-gradient(to right, $myresultsection, rgba(244, 244, 244, 0));
+  border-left: 5px solid $myresultsection;
+}
+
+.fade-out-right-grey {
+  background: linear-gradient(to left, $myresultsection, rgba(244, 244, 244, 0));
+  border-right: 5px solid $myresultsection;
 }

@@ -82,6 +82,7 @@ function createMasonryGrid() {
       // List item found!
         const tagId = event.target.id;
         updateTagsAndCards(tagId)
+        tagsBar.scrollTo(0, 0);
       }
 
     });
