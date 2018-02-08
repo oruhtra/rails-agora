@@ -23,5 +23,15 @@
       <i class="fa fa-refresh font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Récupérer mes documents sur mes comptes clients"></i>
     <% end %>
   </div>
-</div>
 
+  <div class="action-element">
+    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+        <% @documents_untagged.each do |document| %>
+          <%= hidden_field_tag "document_ids[]", document.id %>
+        <% end %>
+        <%= button_tag(type: "submit", class: "none") do %>
+          <i class="fa fa-tags font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Tagger vos documents sans tag"></i>
+        <% end %>
+      <% end  %>
+  </div>
+</div>

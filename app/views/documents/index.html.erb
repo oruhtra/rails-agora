@@ -2,29 +2,6 @@
 <% content_for :navbar do %>
   <!-- search form  -->
   <%= render 'search_section' %>
-  <!-- Button add tags that is displayed when a new document is loaded or when documents have no tags - it changes shape and position based on screen size -->
-  <!-- Large screen -->
-  <div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
-    <div class="hidden-sm hidden-xs">
-      <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
-        <% @documents_untagged.each do |document| %>
-          <%= hidden_field_tag "document_ids[]", document.id %>
-        <% end %>
-        <%= submit_tag "Tagger vos documents sans tag", class:"button title-centered top-20 padding-horizontal-10"%>
-      <% end  %>
-    </div>
-  <!-- Small screen -->
-    <div class="visible-sm visible-xs">
-      <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
-        <% @documents_untagged.each do |document| %>
-          <%= hidden_field_tag "document_ids[]", document.id %>
-        <% end %>
-        <%= button_tag(type: "submit", class: "none") do %>
-          <i class="fa fa-tags font-25 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Tagger vos documents sans tag"></i>
-        <% end %>
-      <% end  %>
-    </div>
-  </div>
 <% end %>
 <!-- Actions tools displayed on the left of the screen to allow user to add new documents, get documents from its providers and send a doc by email -->
 <%= render 'action-bar-results-section' %>

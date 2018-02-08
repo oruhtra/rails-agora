@@ -1,5 +1,6 @@
 .tabs {
   display: flex;
+  height:100%;
 }
 
 .tabs p {
@@ -9,7 +10,7 @@
 .tab {
   background: white;
   text-align: center;
-  padding: 20px 0px;
+  padding: 15px 0px;
   width: 100px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -37,7 +38,6 @@
     background: $myresultsection;
     color: $textcolor;
     cursor: pointer;
-    box-shadow: 0 1px 0 $myresultsection;
     border-left: 1px solid rgba(0, 0, 0, 0.05);
     border-right: 1px solid rgba(0, 0, 0, 0.05);
   }
