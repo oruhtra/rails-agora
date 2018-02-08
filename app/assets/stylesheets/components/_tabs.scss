@@ -10,9 +10,8 @@
 .tab {
   background: white;
   text-align: center;
-  padding: 15px 0px;
-  width: 100px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: auto;
 }
 
 .tab:first-child {
@@ -30,6 +29,27 @@
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 0 $myresultsection;
 }
+
+// MEDIA SIZE RELATED STYLES
+// MEDIA RELATED STYLES
+
+@media (max-width: 768px) {
+  .tabs p {
+    font-size: 15px;
+  }
+
+  .tab {
+    padding: 0.8em 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tab {
+    width: 100px;
+    padding: 0.8em 0;
+  }
+}
+
 
 // HOVER STYLES ON PCs
 

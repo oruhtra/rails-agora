@@ -47,15 +47,25 @@
 }
 
 #datepicker-button {
-  margin-left: 15px;
-  border: 1px solid $primary;
   border-radius: 5px;
-  &:hover {
-    cursor: pointer;
+}
+
+// MEDIA SIZE RELATED STYLES
+
+@media (min-width: 992px) {
+  #datepicker-button {
+    border: 1px solid $primary;
   }
 }
 
-.filter-date-button:hover{
-  color: $primary;
-  margin: 5px 10px;
+// HOVER STYLES ON PCs
+
+@media (hover){
+  .filter-date-button:hover{
+    color: $primary;
+    margin: 5px 10px;
+  }
+  #datepicker-button:hover {
+    cursor: pointer;
+  }
 }

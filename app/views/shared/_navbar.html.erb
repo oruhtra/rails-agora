@@ -6,9 +6,9 @@
       <%= link_to documents_path, class: "navbar-wagon-brand" do %>
         <%= image_tag "logo.png", height: 30 %>
       <% end %>
-      <% unless @user.documents.empty? %>
-        <div id="datepicker-button">
-          <i class="filter-date-button">Filtrer par date</i>
+      <% unless @user.documents.empty? || !(params[:controller] == 'documents' && params[:action] == 'index')%>
+        <div id="datepicker-button" class="position-relative">
+          <i class="filter-date-button hidden-xs hidden-sm">Filtrer par date</i>
           <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true"></i>
           <input class="my-datepicker cache"></input>
         </div>
