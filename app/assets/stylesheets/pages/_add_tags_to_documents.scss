@@ -9,7 +9,7 @@
 }
 .new-documents-wrapper {
   padding: 15px;
-  height: 233px;
+  height: 33vh;
   border-radius: 3px;
   background-color: $myresultsection;
   overflow: scroll;
@@ -42,15 +42,18 @@
 }
 
 @media (max-width: 600px) {
+  .document-to-tag-wrapper {
+    top: 60px;
+  }
   .add-tags-title {
     font-size: 15px;
   }
 
   .new-documents-wrapper {
-    height: 131px;
+    height: 25vh;
   }
 
   .add-tags {
-    height: 68vh;
+    height: 60vh;
   }
 }
