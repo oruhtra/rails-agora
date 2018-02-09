@@ -4,6 +4,7 @@
 
 .tabs p {
   margin-bottom: 0;
+  color: $textcolor;
 }
 .tab {
   text-align: center;
@@ -19,7 +20,6 @@
 }
 
 // MEDIA SIZE RELATED STYLES
-// MEDIA RELATED STYLES
 
 @media (max-width: 768px) {
   .tabs p {

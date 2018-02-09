@@ -18,12 +18,12 @@
   </div>
 
   <div class="action-element">
-    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+    <%= form_tag add_tags_documents_path, method: :get, remote:true, class: "batch-update-form" do  %>
         <% @documents_untagged.each do |document| %>
           <%= hidden_field_tag "document_ids[]", document.id %>
         <% end %>
         <%= button_tag(type: "submit", class: "none") do %>
-          <i class="fa fa-tags font-35 color-white" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Tagger vos documents sans tag"></i>
+          <i class="fa fa-tags font-35 color-white" aria-hidden="true" data-toggle="modal" data-target="#myModal_add_tags_to_documents"></i>
         <% end %>
       <% end  %>
   </div>

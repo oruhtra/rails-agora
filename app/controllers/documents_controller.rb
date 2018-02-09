@@ -81,6 +81,11 @@ class DocumentsController < ApplicationController
     @tags = policy_scope(Tag)
     @tag = Tag.new
     authorize @documents.first
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
 

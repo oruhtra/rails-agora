@@ -39,17 +39,17 @@
               <% document.doctags.each do |t| %>
                   <div class="text-center tag-small tag-white" id=<%= t.tag.name %>><%= t.tag.name_clean %></div>
               <% end %>
-              <%= form_tag add_tags_documents_path, method: :get do  %>
+              <%= form_tag add_tags_documents_path, method: :get, remote:true do  %>
                 <%= hidden_field_tag "document_ids[]", document.id %>
                 <%= button_tag(type: "submit", class: "none") do %>
-                  <i class="fa fa-plus fa-2x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                  <i class="fa fa-plus fa-2x" aria-hidden="true" data-toggle="modal" data-target="#myModal_add_tags_to_documents"></i>
                 <% end %>
               <% end  %>
             <% else %>
-              <%= form_tag add_tags_documents_path, method: :get, class: 'flex-around align-items-center' do  %>
+              <%= form_tag add_tags_documents_path, method: :get, remote:true, class: 'flex-around align-items-center' do  %>
                 <%= hidden_field_tag "document_ids[]", document.id %>
                 <%= button_tag(type: "submit", class: "none") do %>
-                  <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter des tags"></i>
+                  <i class="fa fa-plus fa-3x" aria-hidden="true" data-toggle="modal" data-target="#myModal_add_tags_to_documents"></i>
                 <% end %>
               <% end  %>
             <% end %>
