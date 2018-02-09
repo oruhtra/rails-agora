@@ -33,7 +33,7 @@
                   <% document.pages ? (p = document.pages) : (p = 1) %>
                   <% if p > 1 %>
                     <% while i <= p %>
-                      <%= cl_image_tag document.photo, class: "large-document",  :format => 'pdf', page: i %>
+                      <%= cl_image_tag document.photo, class: "large-document",  :format => 'jpg', page: i %>
                       <% i += 1 %>
                     <% end %>
                   <% else %>
