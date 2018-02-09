@@ -17,7 +17,7 @@
     <% end %>
   </div>
 
-  <div class="action-element">
+  <div id="add-tags-to-documents" class="action-element <%= 'hidden' if @documents_untagged.empty? %>" data-toggle="tooltip" data-placement="right" title="Tagger mes documents sans tags">
     <%= form_tag add_tags_documents_path, method: :get, remote:true, class: "batch-update-form" do  %>
         <% @documents_untagged.each do |document| %>
           <%= hidden_field_tag "document_ids[]", document.id %>
