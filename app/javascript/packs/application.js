@@ -2,7 +2,6 @@ import "bootstrap";
 import { applySelect2OnSearch } from "../components/search_tag_from_select2";
 import { loadDynamicBannerText } from '../components/banner';
 import { listentag } from "../components/tag";
-import { listenbatchtag } from "../components/batch_tag";
 import { launchDropZone } from "../components/dropzone";
 import { createMasonryGrid } from "../components/masonry";
 import { selectButton } from "../components/select_button_hover";
@@ -29,10 +28,6 @@ if (document.getElementById('tab_name')) {
 
 if (document.querySelectorAll(".select2")){
   applySelect2OnSearch();
-}
-
-if (document.querySelectorAll(".listenbatchtag")){
-  listenbatchtag();
 }
 
 if (document.getElementById('banner-typed-text')){
