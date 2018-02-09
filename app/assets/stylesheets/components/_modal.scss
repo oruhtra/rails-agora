@@ -1,6 +1,16 @@
 .modal-dialog-show {
   width: 70%;
 }
+.modal-dialog-add-tags-to-document {
+  width: 95%;
+  &>.modal-content {
+    height: 95vh;
+  }
+}
+
+.modal-add-tags-to-documents {
+  overflow-y: hidden !important;
+}
 
 .modal-content {
   border-radius: 5px;
@@ -51,7 +61,15 @@
   }
 
   .modal-title {
-    font-size: 20px;
+    font-size: 15px;
     width: 70%;
+  }
+
+  .modal-dialog-add-tags-to-document {
+    &>.modal-content {
+      &>.modal-body {
+        padding: 0px;
+      }
+    }
   }
 }

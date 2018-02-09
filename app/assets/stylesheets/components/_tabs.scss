@@ -1,0 +1,51 @@
+.tabs {
+  display: flex;
+}
+
+.tabs p {
+  margin-bottom: 0;
+  color: $textcolorlight;
+}
+.tab {
+  text-align: center;
+  margin-top: auto;
+}
+
+.tab.active {
+
+  box-shadow: 0 2px 0 $primary;
+  & p {
+    color: $primary;
+  }
+}
+
+// MEDIA SIZE RELATED STYLES
+
+@media (max-width: 768px) {
+  .tabs p {
+    font-size: 15px;
+  }
+
+  .tab {
+    padding: 0.5em 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tab {
+    width: 100px;
+    padding: 0.5em 0;
+  }
+}
+
+
+// HOVER STYLES ON PCs
+
+@media (hover){
+  .tab:hover{
+    cursor: pointer;
+    & p {
+      color: $primary;
+    }
+  }
+}

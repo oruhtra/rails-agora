@@ -15,6 +15,7 @@ import { showModalAddTags } from "../components/modal_add_tag";
 import { loadDocuments } from "../components/load_documents";
 import { activateAnchorLinks } from "../components/scroll_to_anchor";
 import { setFocusMailer } from "../components/set_focus_mailer";
+import { showActiveTab } from "../components/active_tab";
 import '../components/add_tag_from_select2';
 import '../components/air_datepicker';
 import '../components/show_tooltips';
@@ -22,6 +23,10 @@ import '../components/show_tooltips';
 
 
 // call functions
+if (document.getElementById('tab_name')) {
+  showActiveTab();
+}
+
 if (document.querySelectorAll(".select2")){
   applySelect2OnSearch();
 }
@@ -61,6 +66,10 @@ if (document.getElementById('submit-batch-tag')) {
   addTagsToMultipleDocuments();
 }
 
+$('#launch-add_tags_to_multiple_documents_js').on('click', function(e) {
+  addTagsToMultipleDocuments();
+})
+
 if (document.getElementById('myModal')) {
   showModalTips();
   hideModalTips();
@@ -83,3 +92,5 @@ if (document.getElementById('masonry-container')) {
     setTimeout(function(){setFocusMailer();},1000);
   }
 }
+
+

@@ -7,59 +7,29 @@
 }
 .navbar-wagon {
   background: white;
-  box-shadow-bottom: 0 0 0 2px #4E6CF6 inset;
   transition: all 0.3s ease;
-  padding: 10px 15px;
+  padding: 5px 15px;
+  padding-bottom: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 60px;
 }
 
 /* Logo */
 .navbar-wagon-brand img {
   height: 40px;
   border-radius: 7px;
-}
-
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-/* Right section */
-.navbar-wagon-left {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Basic navbar item */
-.navbar-wagon-item {
-  cursor: pointer;
-}
-
-/* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
+  margin-right: 15px;
+  margin-left: 5px;
 }
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
+  color: $textcolor;
   margin-top: 15px;
+  margin-left: 10px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
@@ -97,7 +67,7 @@
   width: 100%;
   height: 1px;
   background-color: white;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 

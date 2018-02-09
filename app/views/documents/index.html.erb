@@ -1,82 +1,27 @@
 <!-- this part is in the navbar  -->
 <% content_for :navbar do %>
-   <!-- search form  -->
-  <div class="search-bar-wrapper hidden-xs">
-    <%= render 'search_bar_index' %>
-  </div>
-
-<!-- Button add tags change shape and position based on screen size -->
-<!-- Large screen -->
-<div id="add-tags-to-documents" class=<%= 'hidden' if @documents_untagged.empty? %>>
-  <div class="hidden-sm hidden-xs">
-    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
-      <% @documents_untagged.each do |document| %>
-        <%= hidden_field_tag "document_ids[]", document.id %>
-      <% end %>
-      <%= submit_tag "Tagger vos documents sans tag", class:"button title-centered top-20 padding-horizontal-10"%>
-    <% end  %>
-  </div>
-<!-- Small screen -->
-  <div class="visible-sm visible-xs">
-    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
-      <% @documents_untagged.each do |document| %>
-        <%= hidden_field_tag "document_ids[]", document.id %>
-      <% end %>
-      <%= button_tag(type: "submit", class: "none") do %>
-        <i class="fa fa-tags font-25 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Tagger vos documents sans tag"></i>
-      <% end %>
-    <% end  %>
-  </div>
-</div>
-
-
 <% end %>
-
-
-<div class="modal-wrapper">
-  <%= render 'modal-first-connection-tips' %>
-</div>
-
+<%= render 'search_section' %>
+<!-- Actions tools displayed on the left of the screen to allow user to add new documents, get documents from its providers and send a doc by email -->
+<%= render 'action-bar-results-section' %>
+<!-- Main container including all the documents - in results_section partial -->
 <div class="index-wrapper">
   <div class="main-section-large">
-
-    <div class="search_section">
-      <div class="fade-out-left fade-out-left-white"></div>
-      <%= render 'search_section' %>
-      <div class="fade-out-right fade-out-right-white"></div>
-
-      <div class="clear-tags hidden">
-        <%= link_to documents_path, method: :get do %>
-          <span class="fa fa-times color-primary" aria-hidden="true" style="margin: 10px;"></span>
-        <% end %>
-      </div>
-
-    </div>
-
     <% if @documents_selected.empty? %>
-
       <div class="result-section-wrapper">
-<!--         <div class="fade-out-top fade-out-top-grey"></div> -->
         <div class="results_section results_section_small">
           <%= render 'results_section' %>
         </div>
-        <!-- <div class="fade-out-bottom fade-out-bottom-grey"></div> -->
       </div>
-
     <% else %>
-
       <div class="flex">
-
         <div class="main-section-medium">
           <div class="result-section-wrapper">
-            <!-- <div class="fade-out-top fade-out-top-grey"></div> -->
             <div class="results_section results_section_small">
               <%= render 'results_section' %>
             </div>
-            <!-- <div class="fade-out-bottom fade-out-bottom-grey"></div> -->
           </div>
         </div>
-
         <div class="selection_section text-center">
           <div class="selection-section-wrapper">
             <div class="fade-out-top fade-out-top-white"></div>
@@ -85,14 +30,15 @@
           </div>
           <%= render 'action-bar-selection' %>
         </div>
-
       </div>
-
     <% end %>
   </div>
-
 </div>
-
+<!-- Modal that is displayed at first connection to explain how the app works -->
+<div class="modal-wrapper">
+  <%= render 'modal-first-connection-tips' %>
+</div>
+<!-- Modal to SHOW documents - located at the bottom and outside the result section so that it pops-up at the top of the page -->
 <div class="modal-wrapper">
   <div class="modal fade page-center" id="myModal_show_doc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-dialog-show" role="document">
@@ -101,7 +47,20 @@
     </div>
   </div>
 </div>
-
+<!-- Modal to ADD TAGS TO DOCUMENTS - located at the bottom and outside the result section so that it pops-up at the top of the page -->
+<div class="modal-wrapper">
+  <div class="modal fade page-center modal-add-tags-to-documents" id="myModal_add_tags_to_documents" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-add-tags-to-document" role="document">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Div that is clicked when the modal opens that relaunches the JS to add tags to multiple documents -->
+<div id="launch-add_tags_to_multiple_documents_js"></div>
+<!-- Modal to Send a document by email -->
+<%= render 'modals/add_document_by_mail_modal' %>
+<!-- Form when droping documents on the screen - appears only when a drag event is detected - see JS Dropzone.js -->
 <div class="form-full-body hidden">
   <h2 class="text-center dropdocs-title" style="color:white;">Déposez vos fichiers où vous voulez !</h2>
   <%= simple_form_for @document, html: {id:"doc-dropzone", class: "dropzone", multipart: true }  do |f| %>
@@ -110,7 +69,7 @@
   <%= f.input :photo, label: false, as: :hidden %>
   <% end %>
 </div>
-
+<!-- Loader fired with JS on drop event - see Dropzone.js -->
 <div class="loader-container hidden page-center front-element">
   <h3 class="text-center", style="color: white; margin-bottom: 100px">Ajout des documents en cours</h3>
   <div class="container">
@@ -123,15 +82,15 @@
     </div>
   </div>
 </div>
-
+<!-- Hidden previews container for Dropzone so that the previews of the loaded docs don't appear on the screen -->
 <div id="previews" class="hidden"></div>
-
+<!-- Form that is automatically sent when a successfull dropzone event is detected - see Dropzone.js - it calls in the load_new_elements action in AJAX wich sends bask the new documents and clicks on the reload-maconry-grid below -->
 <div class="hidden">
   <%= form_tag(load_new_elements_documents_path, id:"load_new_elements_form", remote: true) do  %>
     <%= submit_tag nil, id: "load_new_elements"%>
   <% end  %>
 </div>
-
+<!-- Element that is clicked by JS provided in response from load_new_elements and that fires a reload of the masonry grid to display the newly created documents -->
 <div class="reload-masonry-grid">
 </div>
 
