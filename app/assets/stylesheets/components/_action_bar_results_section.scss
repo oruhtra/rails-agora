@@ -13,9 +13,16 @@
   &>.action-element {
       margin: 0px 15px;
       opacity: 1;
+      font-size: 35px;
     }
 }
-
+// MEDIA SIZE RELATED STYLES
+.action-bar-results-section {
+  &>.action-element {
+      margin: 0px 10px;
+      font-size: 25px;
+    }
+}
 // HOVER STYLES ON PCs
 
 @media (hover){

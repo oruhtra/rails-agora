@@ -11,7 +11,6 @@
             <%= f.error_notification %>
 
             <div class="form-inputs color-text">
-              <%= f.input :photo, required: false, autofocus: false %>
               <%= f.input :email, required: true, autofocus: false %>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
