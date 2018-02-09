@@ -4,7 +4,7 @@
 
 .tabs p {
   margin-bottom: 0;
-  color: $textcolor;
+  color: $textcolorlight;
 }
 .tab {
   text-align: center;
@@ -43,7 +43,9 @@
 
 @media (hover){
   .tab:hover{
-    color: $primary;
     cursor: pointer;
+    & p {
+      color: $primary;
+    }
   }
 }
