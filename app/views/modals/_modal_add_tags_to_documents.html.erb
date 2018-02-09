@@ -141,13 +141,11 @@
 
         </div>
 
-        <div class="form-container">
-
+        <div class="form-container hidden">
             <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <p>Créer un nouveau Tag</p>
                   <%= simple_form_for @tag, url: batch_update_documents_path, remote: true do |f| %>
-
                     <div class="flex">
                       <%= f.input :name, label: false, placeholder: "Nom du tag"%>
                       <% @documents.each do |document| %>
@@ -155,11 +153,9 @@
                       <% end %>
                       <%= f.submit "Créer Tag", class: "button form-button text-center"%>
                     </div>
-
                   <% end %>
               </div>
             </div>
-
         </div>
 
 
