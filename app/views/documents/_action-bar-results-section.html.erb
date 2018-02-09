@@ -1,29 +1,29 @@
 <div class="action-bar-results-section text-center">
 
   <div class="position-relative action-element" data-toggle="tooltip" data-placement="right" title="Ajouter un document par email">
-    <i class="fa fa-envelope font-35 color-primary" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
+    <i class="fa fa-envelope color-white" id="add_by_email" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#myModalAddByMail"></i>
     <% if params[:controller] == "documents" && @user_preferences.include?('tips_setting') && !@user_preferences.include?('tips_add_by_email')%>
       <div id="focusable-container"></div>
     <% end %>
   </div>
 
   <div class="action-element">
-    <i class="fa fa-plus dz-message font-35 color-primary" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Ajouter un document manuellement"></i>
+    <i class="fa fa-plus dz-message color-white" style="cursor: pointer;" id="clickable" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Ajouter un document manuellement"></i>
   </div>
 
   <div class="action-element">
     <%= link_to scrap_documents_documents_path do %>
-      <i class="fa fa-refresh font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Récupérer mes documents sur mes comptes clients"></i>
+      <i class="fa fa-refresh color-white" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Récupérer mes documents sur mes comptes clients"></i>
     <% end %>
   </div>
 
-  <div class="action-element">
-    <%= form_tag add_tags_documents_path, method: :get, class: "batch-update-form" do  %>
+  <div id="add-tags-to-documents" class="action-element <%= 'hidden' if @documents_untagged.empty? %>" data-toggle="tooltip" data-placement="right" title="Tagger mes documents sans tags">
+    <%= form_tag add_tags_documents_path, method: :get, remote:true, class: "batch-update-form" do  %>
         <% @documents_untagged.each do |document| %>
           <%= hidden_field_tag "document_ids[]", document.id %>
         <% end %>
         <%= button_tag(type: "submit", class: "none") do %>
-          <i class="fa fa-tags font-35 color-primary" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Tagger vos documents sans tag"></i>
+          <i class="fa fa-tags color-white" aria-hidden="true" data-toggle="modal" data-target="#myModal_add_tags_to_documents"></i>
         <% end %>
       <% end  %>
   </div>

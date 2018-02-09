@@ -66,6 +66,10 @@ if (document.getElementById('submit-batch-tag')) {
   addTagsToMultipleDocuments();
 }
 
+$('#launch-add_tags_to_multiple_documents_js').on('click', function(e) {
+  addTagsToMultipleDocuments();
+})
+
 if (document.getElementById('myModal')) {
   showModalTips();
   hideModalTips();

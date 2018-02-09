@@ -1,37 +1,25 @@
 .tabs {
   display: flex;
-  height:100%;
 }
 
 .tabs p {
-  color: $textcolor;
   margin-bottom: 0;
+  color: $textcolorlight;
 }
 .tab {
-  background: white;
   text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
   margin-top: auto;
 }
 
-.tab:first-child {
-  border-radius: 10px 0 0 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.05);
-}
-.tab:last-child {
-  border-radius: 0 10px 0 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-}
 .tab.active {
-  background: $myresultsection;
-  color: $textcolor;
-  border-left: 1px solid rgba(0, 0, 0, 0.05);
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 0 $myresultsection;
+
+  box-shadow: 0 2px 0 $primary;
+  & p {
+    color: $primary;
+  }
 }
 
 // MEDIA SIZE RELATED STYLES
-// MEDIA RELATED STYLES
 
 @media (max-width: 768px) {
   .tabs p {
@@ -39,14 +27,14 @@
   }
 
   .tab {
-    padding: 0.8em 8px;
+    padding: 0.5em 8px;
   }
 }
 
 @media (min-width: 768px) {
   .tab {
     width: 100px;
-    padding: 0.8em 0;
+    padding: 0.5em 0;
   }
 }
 
@@ -55,10 +43,9 @@
 
 @media (hover){
   .tab:hover{
-    background: $myresultsection;
-    color: $textcolor;
     cursor: pointer;
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    & p {
+      color: $primary;
+    }
   }
 }

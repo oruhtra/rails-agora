@@ -2,53 +2,27 @@
   position: fixed;
   z-index: 1000;
   border-radius: 40px;
-  background-color: white;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-}
-
-// MEDIA RELATED STYLES
-
-@media (min-width: 768px) {
-  .action-bar-results-section {
-    top: 30%;
-    padding: 20px 15px;
-    margin-left: 20px;
-
-    &>.action-element {
-      margin: 20px 0px;
-      opacity: 1;
-    }
-    &>.action-element:first-child {
-      margin-top: 0;
-    }
-    &>.action-element:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .action-bar-results-section {
-    display: flex;
-    justify-content: space-around;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-
-    &>.action-element {
+  border: 1px solid $primary;
+  background-color: $primary;
+  display: flex;
+  justify-content: space-around;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  &>.action-element {
       margin: 0px 15px;
       opacity: 1;
+      font-size: 35px;
     }
-    &>.action-element:first-child {
-      margin-left: 0px;
-    }
-    &>.action-element:last-child {
-      margin-right: 0px;
-    }
-  }
 }
-
+// MEDIA SIZE RELATED STYLES
+.action-bar-results-section {
+  &>.action-element {
+      margin: 0px 10px;
+      font-size: 25px;
+    }
+}
 // HOVER STYLES ON PCs
 
 @media (hover){
@@ -57,7 +31,7 @@
   }
   .action-bar-results-section>.action-element:hover {
     cursor: pointer;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   }
 }
 

@@ -1,0 +1,202 @@
+<div class="modal-dialog modal-dialog-add-tags-to-document" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title text-center title-centered" id="myModalLabel">
+        Ajoutez des tags à vos documents
+      </h4>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-wrapper">
+        <%= render 'modal-add-tags-select-a-tag' %>
+      </div>
+
+      <div class="document-to-tag-wrapper">
+        <div class="position-relative">
+          <% if @documents.length < 4 %>
+          <div class="new-documents-wrapper flex-around align-items-center">
+          <% else %>
+          <div class="fade-out-left fade-out-left-grey"></div>
+          <div class="fade-out-right fade-out-right-grey"></div>
+          <div class="new-documents-wrapper flex align-items-center">
+          <% end %>
+            <% @documents.each do |document| %>
+
+              <div class= "card margin-left-md margin-right-md card-to-tag" id="<%= document.id %>" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};">
+                <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :format => 'jpg' %>
+                <div class="hover-card-add-tags" id="<%= document.id %>">
+                  <div class="card-description">
+                    <!-- Large screen -->
+                    <div class="card-title color-text hidden-xs">
+                      <% if document.name[20] %>
+                        <h5 class="breakword"><%= document.name[0..26] %>...</h5>
+                      <% else %>
+                        <h5 class="breakword"><%= document.name %></h5>
+                      <% end %>
+                    </div>
+
+                    <!-- Small screen -->
+                    <div class="card-title color-text visible-xs">
+                      <% if document.name[10] %>
+                        <h5><%= document.name[0..10] %>...</h5>
+                      <% else %>
+                        <h5><%= document.name %></h5>
+                      <% end %>
+                    </div>
+
+
+
+
+                    <div class="current-tags">
+                      <%= render 'current_tags_section', document: document %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-tags">
+
+
+        <div class="row">
+
+          <div class="form-container">
+
+              <div class="row">
+                <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-5">
+                    <div class="position-relative">
+                      <div class="button date-button text-center" id="datepicker-button">Ajouter une date</div>
+                      <input class="my-datepicker cache"></input>
+                    </div>
+                </div>
+              </div>
+
+          </div>
+
+
+          <% if !@tags.where(category: "user_specific").empty? %>
+            <div class="col-xs-12">
+              <div class="tags-bloc">
+                <p class= "tag-container-title" id="tags-container-title-user_specific">Vos tags</p>
+                <div class="position-relative">
+                  <div class="tags-container">
+                    <% (@tags.where(category: "user_specific").sort_by{ |t| t.name_clean}).each do |t| %>
+                      <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %> >
+                        <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="col-xs-12">
+            <div class="tags-bloc">
+              <p class= "tag-container-title" id="tags-container-title-macro_category">Catégorie</p>
+              <div class="position-relative">
+                <div class="tags-container">
+                  <% (@tags.where(category: "macro_category").sort_by{ |t| t.name_clean}).each do |t| %>
+                  <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
+                    <i class="tag tag-link text-center <%= t.category %>" id="<%= t.name %>"><%= t.name_clean %></i>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="tags-bloc hidden" id="tags-container-title-doc_type">
+              <p class= "tag-container-title" >Type de document</p>
+              <div class="position-relative">
+                <div class="tags-container">
+                  <% (@tags.where(category: "doc_type").sort_by{ |t| t.name_clean}).each do |t| %>
+                    <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
+                      <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="tags-bloc hidden" id="tags-container-title-supplier">
+              <p class= "tag-container-title">Etablissement</p>
+              <div class="position-relative">
+                <div class="tags-container">
+                  <% (@tags.where(category: "supplier").sort_by{ |t| t.name_clean}).each do |t| %>
+                    <div class="tag-categories" <%= "id= #{t.macro_categories_string}" unless !t.macro_categories_string %>>
+                      <i class="tag tag-link text-center <%= t.category %> hidden" id="<%= t.name %>"><%= t.name_clean %></i>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-container hidden">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <p>Créer un nouveau Tag</p>
+                  <%= simple_form_for @tag, url: batch_update_documents_path, remote: true do |f| %>
+                    <div class="flex">
+                      <%= f.input :name, label: false, placeholder: "Nom du tag"%>
+                      <% @documents.each do |document| %>
+                        <%= hidden_field_tag "documents_all_ids[]", document.id %>
+                      <% end %>
+                      <%= f.submit "Créer Tag", class: "button form-button text-center"%>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
+        </div>
+
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+              <div class="add-tags-controls">
+                <%= link_to 'Valider', documents_path, class: "btnadd banner-button text-center margin-top-xs"  %>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+
+      <div class= "hidden">
+        <%= form_tag(batch_update_documents_path, id:"post-tags-form", remote: true) do %>
+        <%= text_field_tag :add_tagname %>
+        <% @documents.each do |document| %>
+          <%= hidden_field_tag "documents_all_ids[]", document.id %>
+        <% end %>
+        <%= submit_tag nil, id: "submit-batch-tag"%>
+        <% end %>
+      </div>
+
+      <div class= "hidden">
+        <%= form_tag(delete_batch_documents_path, id:"delete-tags-form", remote: true, method: :delete) do %>
+        <%= text_field_tag :delete_tagname %>
+        <% @documents.each do |document| %>
+          <%= hidden_field_tag "documents_all_ids[]", document.id %>
+        <% end %>
+        <%= submit_tag nil, id: "delete-batch-tag"%>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

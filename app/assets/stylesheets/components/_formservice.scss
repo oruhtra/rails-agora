@@ -56,6 +56,10 @@
   color: $textcolor;
 }
 
+#credentials-form >.input > input {
+  border: 1px solid $primary !important;
+}
+
 .form-picture {
   height: 25%;
   width: 25%;
