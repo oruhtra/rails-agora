@@ -1,7 +1,5 @@
 .document-thumbnail{
   width: 150px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 1);
-  border-radius: 3px;
 }
 
 .document-thumbnail-large {
@@ -9,6 +7,9 @@
 }
 
 @media (max-width: 768px) {
+  .document-thumbnail{
+    width: 100px;
+  }
   .document-thumbnail-large {
     max-width: 100px;
   }

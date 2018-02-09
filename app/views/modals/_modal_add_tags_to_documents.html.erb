@@ -22,8 +22,8 @@
           <% end %>
             <% @documents.each do |document| %>
 
-              <div class= "card margin-left-md margin-right-md card-to-tag" id="<%= document.id %>" style="@media (max-width: 600px) {.card { height: <%= document.ratio ? (100 * document.ratio) : 140 %>px}}; @media (min-width: 600px) {.card { height: <%= document.ratio ? (200 * document.ratio) : 280 %>px}};">
-                <%= cl_image_tag document.photo, class: "document-thumbnail-large card-image", :format => 'jpg' %>
+              <div class= "card margin-left-md margin-right-md card-to-tag" id="<%= document.id %>">
+                <%= cl_image_tag document.photo, class: "document-thumbnail card-image", :format => 'jpg' %>
                 <div class="hover-card-add-tags" id="<%= document.id %>">
                   <div class="card-description">
                     <!-- Large screen -->

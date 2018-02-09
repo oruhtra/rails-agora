@@ -1,6 +1,7 @@
 <div class="modal-dialog modal-dialog-show" role="document">
   <div class="modal-content">
     <div class="modal-header">
+      <span class="fa fa-times close-modal-button action-style dismiss-modal" aria-hidden="true" data-dismiss="modal"></span>
       <h4 class="modal-title text-center title-centered" id="myModalLabel">
         <%= simple_form_for(document) do |f| %>
           <%= f.input :name, label: false, input_html: {class: "text-center"} %>
