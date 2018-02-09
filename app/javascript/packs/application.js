@@ -71,7 +71,7 @@ if (document.getElementById('myModal')) {
 }
 
 if (document.getElementById('set_user_preference')) {
-  setUserPreference();
+  setTimeout(function(){setUserPreference();},1000)
 }
 
 if (document.getElementById('myModal_add_tags')) {
