@@ -26,7 +26,7 @@ if (document.getElementById('tab_name')) {
   showActiveTab();
 }
 
-if (document.querySelectorAll(".select2")){
+if (document.querySelector(".select2")){
   applySelect2OnSearch();
 }
 
@@ -34,7 +34,7 @@ if (document.getElementById('banner-typed-text')){
   loadDynamicBannerText();
 }
 
-if (document.querySelectorAll('.service-form')) {
+if (document.querySelector('.service-form')) {
   budgeaHandshake();
 }
 
@@ -78,7 +78,7 @@ if (document.getElementById('myModal_add_tags')) {
   showModalAddTags();
 }
 
-if (document.querySelectorAll('.link-to-anchor')) {
+if (document.querySelector('.link-to-anchor')) {
   activateAnchorLinks();
 }
 
