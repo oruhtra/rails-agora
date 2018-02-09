@@ -7,9 +7,9 @@
         <%= image_tag "logo.png", height: 30 %>
       <% end %>
       <% unless @user.documents.empty? || !(params[:controller] == 'documents' && params[:action] == 'index')%>
-        <div id="datepicker-button" class="position-relative">
+        <div id="datepicker-button" class="position-relative flex-around align-items-center">
           <i class="filter-date-button hidden-xs hidden-sm">Filtrer par date</i>
-          <i class="fa fa-calendar font-25 filter-date-button" aria-hidden="true"></i>
+          <i class="fa fa-chevron-down filter-date-button" aria-hidden="true"></i>
           <input class="my-datepicker cache"></input>
         </div>
       <% end %>

@@ -26,12 +26,13 @@
   z-index: 100;
   // Navbar height is 60px;
   top: 70px;
-  background-color: $myresultsection;
-  padding-bottom: 0px;
+  background-color: white;
+  padding-bottom: 10px;
   padding-right: 5px;
   padding-left: 5px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .result-section-wrapper {

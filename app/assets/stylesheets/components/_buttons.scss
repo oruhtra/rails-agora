@@ -28,7 +28,7 @@
 
 .filter-date-button {
   color: $primary;
-  margin: 5px 10px;
+  margin: 0px 5px;
 }
 
 .close-modal-button {
@@ -46,26 +46,22 @@
   padding: 5px 30px;
 }
 
-#datepicker-button {
-  border-radius: 5px;
-}
-
 // MEDIA SIZE RELATED STYLES
 
-@media (min-width: 992px) {
-  #datepicker-button {
-    border: 1px solid $primary;
-  }
-}
+// @media (min-width: 992px) {
+//   #datepicker-button {
+//     border: 1px solid $primary;
+//   }
+// }
 
 // HOVER STYLES ON PCs
 
 @media (hover){
   .filter-date-button:hover{
-    color: $primary;
-    margin: 5px 10px;
   }
   #datepicker-button:hover {
     cursor: pointer;
+    box-shadow: 0 0 0 1px $tagcolor1 inset;
+    border-radius: 5px;
   }
 }
